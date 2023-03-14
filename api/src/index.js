@@ -1,7 +1,8 @@
 const app = require('./app')
+require('dotenv').config()
 
-app.listen(3001,(req, res) =>{
-    console.log('funciona ql');;
-} )
+app.listen(process.env.PORT, (req, res) => {
+    console.log(`Server on PORT: ${process.env.PORT}`);;
+})
 
 
