@@ -31,10 +31,10 @@ router.get('/', async (req, res) => {
 
 router.post("/sneakers", async (req, res) => {
 
-    const { ACTION, CODE, RATING, REVIEW, IMAGE, NAME, PRICE, SIZE, STATUS, STOCK } = req.body
+    const { ACTION, CODE, RATING, REVIEW, IMAGE, NAME, PRICE, SIZE, STATUS, STOCK, TYPE } = req.body
     try {
-        await db.collection('PRUEBAS').add({
-            ACTION, CODE, RATING, REVIEW, IMAGE, NAME, PRICE, SIZE, STATUS, STOCK
+        await db.collection('ZAPATILLAS').add({
+            ACTION, CODE, RATING, REVIEW, IMAGE, NAME, PRICE, SIZE, STATUS, STOCK,TYPE
         })
         res.status(201).json({
             ok: true,
