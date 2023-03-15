@@ -24,13 +24,7 @@ router.post(
 			min: 6
 		}),
 		check('EMAIL', 'El correo no es valido').isEmail(),
-		check('EMAIL').custom(async email => {
-			const existingUser = await db.collection('USUARIOS').get({ email })
-
-			if (existingUser) {
-				throw new Error('Email ya esta en uso')
-			}
-		}),
+		check('EMAIL').custom(emailExiste),
 
 		check('ROL', 'El rol no es valido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
 

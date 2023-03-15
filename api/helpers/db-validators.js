@@ -1,4 +1,4 @@
-const { db } = require('../firebase')
+const { db } = require('../src/firebase')
 
 const existeUsuarioPorId = async id => {
 	// Verificar si el correo existe
@@ -11,7 +11,8 @@ const existeUsuarioPorId = async id => {
 	}
 }
 const emailExiste = async (email = '') => {
-	const existingUser = await db.collection('USUARIOS').get({ email })
+	const DBUsers = await (await db.collection('USUARIOS').get()).docs.map(user => ({ ...user.data() }))
+	const existingUser = DBUsers.some(user => user.EMAIL === email)
 
 	if (existingUser) {
 		throw new Error('Email ya esta en uso')

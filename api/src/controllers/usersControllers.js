@@ -21,8 +21,9 @@ const getUsers = async (req, res) => {
 }
 
 const postUsers = async (req, res) => {
-	const { NAME, EMAIL, PASSWORD, IMG, STATE, ROL } = req.body
+	const { NAME, EMAIL, PASSWORD, IMG, STATE, ROL, FAVORITES } = req.body
 	const user = req.body
+	console.log(user)
 
 	// Encriptar la constraseña
 
@@ -33,7 +34,8 @@ const postUsers = async (req, res) => {
 			PASSWORD,
 			IMG,
 			STATE,
-			ROL
+			ROL,
+			FAVORITES: FAVORITES.map(sneakerId => sneakerId)
 		})
 		const salt = bcrypt.genSaltSync()
 		user.PASSWORD = bcrypt.hashSync(PASSWORD, salt)
