@@ -6,6 +6,10 @@
 	text-decoration: none;
 }
 
+body {
+	padding: 15px 2% 0;
+}
+
 button {
 	border: none;
 }
