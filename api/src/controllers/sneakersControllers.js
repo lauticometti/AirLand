@@ -39,7 +39,7 @@ const postSnickers = async (req, res) => {
 		STOCK
 	} = req.body
 	try {
-		await db.collection('PRUEBAS').add({
+		await db.collection('ZAPATILLAS').add({
 			ACTION,
 			CODE,
 			RATING,
