@@ -5,3 +5,11 @@
 	list-style: none;
 	text-decoration: none;
 }
+
+button {
+	border: none;
+}
+
+button:focus {
+	outline: none;
+}
