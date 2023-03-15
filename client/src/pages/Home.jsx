@@ -1,11 +1,10 @@
-import { Filter, Order } from '../components'
+import {Navbar } from '../components'
 
 export function Home() {
 	return (
 		<div>
+			<Navbar/>
 			<h1>Home</h1>
-			<Filter />
-			<Order />
 		</div>
 	)
 }

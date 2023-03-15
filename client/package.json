@@ -16,9 +16,12 @@
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-icons": "^4.8.0",
 		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.9.0",
-		"redux": "^4.2.1"
+		"react-slick": "^0.29.0",
+		"redux": "^4.2.1",
+		"slick-carousel": "^1.8.1"
 	},
 	"devDependencies": {
 		"@redux-devtools/core": "^3.13.1",
