@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { getShoes } from './slices/fetchShoes'
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./slices/counterSlice";
+import shoeReducer, { fetchShoes } from "./slices/shoesSlice";
 
 const store = configureStore({
-	reducer: {
-		shoes: getShoes
-	}
-})
+  reducer: {
+    counter: counterReducer,
+    shoes: shoeReducer,
+  },
+});
 
-export default store
+store.dispatch(fetchShoes());
+
+export default store;
