@@ -36,4 +36,16 @@ const filterByType = async (type) => {
   }
 }
 
-module.exports = { filterByName, filterBySize, filterByType }
+const noFilters = async () => {
+  try {
+    const sneakers = await db.collection('ZAPATILLAS').get()
+    const sneakersArr = sneakers.docs.map(sneaker => ({
+      ...sneaker.data()
+    }))
+    return sneakersArr
+  } catch (error) {
+    throw new Error('Error en la DB')
+  }
+}
+
+module.exports = { filterByName, filterBySize, filterByType, noFilters }
