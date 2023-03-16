@@ -1,0 +1,91 @@
+.shoeContainer {
+	font-family: 'Roboto';
+	color: #242424;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.image {
+	max-width: 100%;
+}
+
+.descriptionContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 0 6%;
+}
+
+.title {
+	font-size: 24px;
+}
+
+.code {
+	font-size: 14px;
+}
+
+.shoePrice {
+	font-family: sans-serif;
+	font-size: 30px;
+	margin: 20px 0 10px;
+}
+
+.sizesContainer {
+	margin: 10px 0;
+	padding: 10px 0 15px;
+	border-top: 1px solid #00000066;
+	border-bottom: 1px solid #00000066;
+}
+
+.sizesTitle {
+	font-size: 14px;
+	font-weight: 800;
+}
+
+.sizesChecks {
+	display: flex;
+	align-items: center;
+
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 10px 15px 5px;
+}
+
+.sizeCheck,
+.sizeDisabled {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #00000066;
+	border-radius: 50%;
+
+	padding: 7px;
+	font-size: 15px;
+}
+
+.addToCartButton {
+	background-color: #ccc;
+	font-family: 'Roboto';
+	font-size: 22px;
+	font-weight: 600;
+
+	width: 80%;
+	max-width: 350px;
+	height: 55px;
+	margin: 10px auto;
+	padding: 4px 8px;
+	border-radius: 3px;
+}
+
+.description {
+	margin: 40px 0;
+}
+
+.descriptionText {
+	margin-top: 20px;
+	line-height: 1.5;
+}

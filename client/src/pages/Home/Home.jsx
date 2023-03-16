@@ -1,9 +1,9 @@
-import {Navbar } from '../components'
+import { Navbar } from '../../components'
 
 export function Home() {
 	return (
 		<div>
-			<Navbar/>
+			<Navbar />
 			<h1>Home</h1>
 		</div>
 	)
