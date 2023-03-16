@@ -5,7 +5,7 @@ const getSnickers = async (req, res) => {
 		const querySnap = await db.collection('PRUEBAS').get()
 		const sneakers = querySnap.docs.map(doc => ({
 			id: doc.id,
-			...doc.data()
+			...doc.data().toLowerCase()
 		}))
 		res.status(200).json({
 			ok: true,

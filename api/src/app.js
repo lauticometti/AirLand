@@ -13,8 +13,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
 // Routes
-app.use(require('./routes/sneakersRoutes'))
-app.use(require('./routes/usersRoutes'))
+app.use('/sneakers', require('./routes/sneakersRoutes'))
+app.use('/users', require('./routes/usersRoutes'))
+app.use('/filter', require('./routes/filtersRoutes'))
+app.use('/sort', require('./routes/sortRoutes'))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
