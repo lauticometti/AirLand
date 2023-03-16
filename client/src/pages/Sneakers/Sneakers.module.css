@@ -1,0 +1,4 @@
+.sneakersMainContainer {
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -11,12 +11,12 @@ const router = Router()
 
 router.get('/', getSnickers)
 
-router.post('/sneakers', postSnickers)
+router.post('/', postSnickers)
 
-router.get('/sneakers/:id', getSnickersById)
+router.get('/:id', getSnickersById)
 
-router.delete('/sneakers/:id', deleteSnickers)
+router.delete('/:id', deleteSnickers)
 
-router.patch('/sneakers/:id', patchSnickers)
+router.patch('/:id', patchSnickers)
 
 module.exports = router
