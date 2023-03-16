@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
-import './Card.css'
+import styles from './Card.module.css'
 
 export function Card({ id, PRECIO, NOMBRE, DETALLE }) {
 	return (
-		<div className='cardContainer'>
-			<h1 className='cardTitle'>
+		<div className={styles.cardContainer}>
+			<h1 className={styles.cardTitle}>
 				<p>Zapatilla {NOMBRE}</p>
 			</h1>
 			<img src={`https://i.pravatar.cc/200?u=${id}`} alt='shoe card' />
-			<div className='cardWrapper'>
+			<div className={styles.cardWrapper}>
 				<p>PRECIO: {PRECIO}</p>
 				<p>DETALLE: {DETALLE}</p>
 			</div>

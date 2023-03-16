@@ -11,7 +11,7 @@ export function Cards() {
 	useEffect(() => {
 		dispatch(fetchShoes())
 	}, [dispatch])
-
+	console.log(shoes)
 	return (
 		<>
 			{status === 'loading' ? (
