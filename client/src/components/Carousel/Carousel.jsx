@@ -1,6 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel'
 
-function IndividualIntervalsExample() {
+function Carouselhome() {
 	return (
 		<Carousel>
 			<Carousel.Item interval={500}>
@@ -76,4 +76,4 @@ function IndividualIntervalsExample() {
 	)
 }
 
-export default IndividualIntervalsExample
+export default Carouselhome
