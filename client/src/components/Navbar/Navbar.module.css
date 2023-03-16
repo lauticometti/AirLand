@@ -2,6 +2,7 @@
   padding: 20px 0;
   display: flex;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .logo{
@@ -12,27 +13,32 @@
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 35px;
   list-style: none;
   font-weight: 900;
   font-size: 22px;
   width: 100%;
+
 }
 
 .li{
     display: flex;
+    padding: 12px;
 
 }
 
 .namelink {
   color: #000000;
   text-decoration: none;
+  
 }
 
 .divlogin{
     display: flex;
     gap: 15px;
     padding: 10px;
+
 }
 @media (min-width: 660px) {
   .li {

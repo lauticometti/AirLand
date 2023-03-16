@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../../../public/nike_icon.svg'
 import styles from './Navbar.module.css'
-import {AiOutlineUser} from 'react-icons/ai'
+import { AiOutlineUser, AiOutlineShoppingCart} from 'react-icons/ai'
 
 export function Navbar() {
 	return (
@@ -17,16 +17,16 @@ export function Navbar() {
 						SNKRS
 					</Link>
 				</li>
-
 				<li className={styles.li}>
 					<div className={styles.divlogin}>
 						<Link to='/login' className={styles.namelink}>
-							LOG IN
+							<AiOutlineUser />
 						</Link>
-						<Link to='/signin' className={styles.namelink}>
-							SIGN UP
+						
+						<Link to='/login' className={styles.namelink}>
+							<AiOutlineShoppingCart />
 						</Link>
-                        <AiOutlineUser/>
+						
 					</div>
 				</li>
 			</ul>
