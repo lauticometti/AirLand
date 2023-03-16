@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Detail, Home } from './pages'
+import { Detail, Home, Sneakers } from './pages'
 import './styles/App.css'
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
 		<div className='App'>
 			<Routes>
 				<Route exact path='/' element={<Home />} />
+				<Route exact path='/sneakers' element={<Sneakers />} />
 				<Route exact path='/detail/:id' element={<Detail />} />
 			</Routes>
 		</div>

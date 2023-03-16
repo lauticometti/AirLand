@@ -1,24 +1,18 @@
 import styles from './Sneakers.module.css'
-import {
-	Navbar,
-	Cards,
-	Dropdown,
-	Filter,
-	Footer,
-	Modal,
-	Order
-} from '../../components'
+import { Navbar, Cards, Filter, Order } from '../../components'
 
 export function Sneakers() {
 	return (
-		<div className={styles.sneakersContainer}>
+		<div>
 			<Navbar />
-			<Cards />
-			<Dropdown />
-			<Filter />
-			<Modal />
-			<Order />
-			<Footer />
+			<div className={styles.sneakersMainContainer}>
+				<div>
+					<Filter />
+					<Order />
+				</div>
+				<Cards />
+			</div>
+            <h2>footer placeholder</h2>
 		</div>
 	)
 }
