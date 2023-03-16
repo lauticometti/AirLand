@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../../../public/nike_icon.svg'
+import logo from '../../assets/nike_icon.svg'
 import styles from './Navbar.module.css'
 import { AiOutlineUser, AiOutlineShoppingCart} from 'react-icons/ai'
 
@@ -23,10 +23,9 @@ export function Navbar() {
 							<AiOutlineUser />
 						</Link>
 						
-						<Link to='/login' className={styles.namelink}>
+						<Link to='/store' className={styles.namelink}>
 							<AiOutlineShoppingCart />
 						</Link>
-						
 					</div>
 				</li>
 			</ul>
