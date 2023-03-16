@@ -5,30 +5,38 @@ import { Card } from '../../components'
 import './Cards.css'
 
 export function Cards() {
-	const shoes = useSelector(state => state.shoes.shoes)
-	const status = useSelector(state => state.shoes.status)
-	const error = useSelector(state => state.shoes.error)
+	const { shoes, status, error } = useSelector(state => state.shoes)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		dispatch(fetchShoes())
 	}, [dispatch])
 
-	if (status === 'loading') {
-		return <div>Loading...</div>
-	}
-
-	if (status === 'failed') {
-		return <div>Error: {error}</div>
-	}
-
 	return (
-		<div className='cardsContainer'>
-			<div className='cardsGrid'>
-				{shoes.sneakers.map(shoe => (
-					<Card key={shoe.id} id={shoe.id} PRECIO={shoe.PRECIO} NOMBRE={shoe.NOMBRE} DETALLE={shoe.DETALLE} />
-				))}
-			</div>
-		</div>
+		<>
+			{status === 'loading' ? (
+				<div className='cardsContainer'>
+					<h5 className='loadingText'>Loading sneakers...</h5>
+				</div>
+			) : status === 'failed' ? (
+				<div className='cardsContainer'>
+					<h5 className='errorMessageText'>Error: {error}</h5>
+				</div>
+			) : (
+				<div className='cardsContainer'>
+					<div className='cardsGrid'>
+						{shoes.sneakers.map(shoe => (
+							<Card
+								key={shoe.id}
+								id={shoe.id}
+								PRECIO={shoe.PRECIO}
+								NOMBRE={shoe.NOMBRE}
+								DETALLE={shoe.DETALLE}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+		</>
 	)
 }
