@@ -15,14 +15,16 @@ router.get('/', async (req, res) => {
         switch (sort) {
           case 'name':
             filterAndOrderedSneakers = sortByName(filteredSneakers, order)
+            break;
           case 'price':
             filterAndOrderedSneakers = sortByPrice(filteredSneakers, order)
+            break;
           default:
             filterAndOrderedSneakers = [...filteredSneakers]
         }
         return res.status(200).json({
           ok: true,
-          filterAndOrderedSneakers
+          filteredSneakers: filterAndOrderedSneakers
         })
       }
       res.status(200).json({
@@ -45,14 +47,16 @@ router.get('/', async (req, res) => {
         switch (sort) {
           case 'name':
             filterAndOrderedSneakers = sortByName(filteredSneakers, order)
+            break;
           case 'price':
             filterAndOrderedSneakers = sortByPrice(filteredSneakers, order)
+            break;
           default:
             filterAndOrderedSneakers = [...filteredSneakers]
         }
         return res.status(200).json({
           ok: true,
-          filterAndOrderedSneakers
+          filteredSneakers: filterAndOrderedSneakers
         })
       }
       res.status(200).json({
@@ -75,14 +79,16 @@ router.get('/', async (req, res) => {
         switch (sort) {
           case 'name':
             filterAndOrderedSneakers = sortByName(filteredSneakers, order)
+            break;
           case 'price':
             filterAndOrderedSneakers = sortByPrice(filteredSneakers, order)
+            break;
           default:
             filterAndOrderedSneakers = [...filteredSneakers]
         }
         return res.status(200).json({
           ok: true,
-          filterAndOrderedSneakers
+          filteredSneakers: filterAndOrderedSneakers
         })
       }
       res.status(200).json({
@@ -105,8 +111,10 @@ router.get('/', async (req, res) => {
         switch (sort) {
           case 'name':
             orderedSneakers = sortByName(sneakersArr, order)
+            break;
           case 'price':
             orderedSneakers = sortByPrice(sneakersArr, order)
+            break;
           default:
             orderedSneakers = [...sneakersArr]
         }
@@ -117,7 +125,7 @@ router.get('/', async (req, res) => {
       }
       res.status(200).json({
         ok: true,
-        sneakersArr
+        orderedSneakers: sneakersArr
       })
     } catch (error) {
       res.status(400).json({
