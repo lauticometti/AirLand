@@ -89,3 +89,10 @@
 	margin-top: 20px;
 	line-height: 1.5;
 }
+
+@media (min-width: 768px) {
+	.shoeContainer {
+		display: flex;
+		flex-direction: row;
+	}
+}
