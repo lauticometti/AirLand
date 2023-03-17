@@ -36,7 +36,8 @@ const postSnickers = async (req, res) => {
 		PRICE,
 		SIZE,
 		STATUS,
-		STOCK
+		STOCK,
+		DESCRIPTION,
 	} = req.body
 	try {
 		await db.collection('ZAPATILLAS').add({
@@ -49,7 +50,8 @@ const postSnickers = async (req, res) => {
 			PRICE,
 			SIZE,
 			STATUS,
-			STOCK
+			STOCK,
+			DESCRIPTION
 		})
 		res.status(201).json({
 			ok: true,
