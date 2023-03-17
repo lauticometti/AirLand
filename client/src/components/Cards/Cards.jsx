@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchShoes } from '../../redux/slices/shoesSlice'
 import { Card } from '../../components'
-import './Cards.css'
+import styles from './Cards.module.css'
 
 export function Cards() {
 	const { shoes, status, error } = useSelector(state => state.shoes)
@@ -15,26 +15,14 @@ export function Cards() {
 	return (
 		<>
 			{status === 'loading' ? (
-				<div className='cardsContainer'>
-					<h5 className='loadingText'>Loading sneakers...</h5>
-				</div>
+				<span className={styles.loadingText}>Loading sneakers...</span>
 			) : status === 'failed' ? (
-				<div className='cardsContainer'>
-					<h5 className='errorMessageText'>Error: {error}</h5>
-				</div>
+				<span className={styles.errorMessageText}>Error: {error}</span>
 			) : (
-				<div className='cardsContainer'>
-					<div className='cardsGrid'>
-						{shoes.sneakers.map(shoe => (
-							<Card
-								key={shoe.id}
-								id={shoe.id}
-								PRECIO={shoe.PRECIO}
-								NOMBRE={shoe.NOMBRE}
-								DETALLE={shoe.DETALLE}
-							/>
-						))}
-					</div>
+				<div className={styles.cardsContainer}>
+					{shoes.sneakers.map(shoe => (
+						<Card key={shoe.id} shoe={shoe} />
+					))}
 				</div>
 			)}
 		</>

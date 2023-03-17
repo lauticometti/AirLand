@@ -1,24 +1,30 @@
 import PropTypes from 'prop-types'
 import styles from './Card.module.css'
+import { Link } from 'react-router-dom'
 
-export function Card({ id, PRECIO, NOMBRE, DETALLE }) {
+export function Card({ shoe }) {
 	return (
-		<div className={styles.cardContainer}>
-			<h1 className={styles.cardTitle}>
-				<p>Zapatilla {NOMBRE}</p>
-			</h1>
-			<img src={`https://i.pravatar.cc/200?u=${id}`} alt='shoe card' />
-			<div className={styles.cardWrapper}>
-				<p>PRECIO: {PRECIO}</p>
-				<p>DETALLE: {DETALLE}</p>
+		<div className={styles.container}>
+			<Link to={`/detail/${shoe.id}`}>
+				<div className={styles.imageContainer}>
+					<img src={shoe.IMAGE[0]} alt={shoe.NAME} className={styles.image} />
+				</div>
+			</Link>
+			<div className={styles.textContainer}>
+				<Link to={`/detail/${shoe.id}`} className={styles.link}>
+					<h2 className={styles.name}>
+						{shoe.NAME.length < 48 ? shoe.NAME : shoe.NAME.slice(0, 48) + '...'}
+					</h2>
+				</Link>
+				<span className={styles.price}>${shoe.PRICE}</span>
 			</div>
+			<Link to={`/detail/${shoe.id}`} className={styles.link}>
+				<button className={styles.buyButton}>BUY NOW!</button>
+			</Link>
 		</div>
 	)
 }
 
 Card.propTypes = {
-	id: PropTypes.string.isRequired,
-	PRECIO: PropTypes.string.isRequired,
-	NOMBRE: PropTypes.string.isRequired,
-	DETALLE: PropTypes.string.isRequired
+	shoe: PropTypes.object.isRequired
 }

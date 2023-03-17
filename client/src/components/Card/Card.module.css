@@ -1,17 +1,55 @@
-.cardContainer {
+.container {
+	max-width: 230px;
+	height: 300px;
+	margin-bottom: 25px;
+
 	display: flex;
 	flex-direction: column;
-	padding: 2rem;
-	background-color: rgb(244, 244, 244);
-	margin: 2rem;
-	gap: 1rem;
+	justify-content: flex-start;
+	align-items: center;
+
+	position: relative;
 }
 
-.cardWrapper {
-	display: flex;
-	justify-content: space-evenly;
+.imageContainer {
+	width: 230px;
+	height: 160px;
 }
 
-.cardWrapper p {
-	font-size: 0.8rem;
+.image {
+	width: 100%;
+	height: 100%;
+}
+
+.name {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.price {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.buyButton {
+	width: 60%;
+	height: 30px;
+	border-radius: 5px;
+	background-color: #181818;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+
+	position: absolute;
+	bottom: 10px;
+	left: 0px;
+}
+
+.link {
+	color: #181818;
+	text-decoration: none;
+}
+
+.link:hover {
+	color: #323232;
 }

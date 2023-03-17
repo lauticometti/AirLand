@@ -1,4 +1,13 @@
-.sneakersMainContainer {
-    display: flex;
-    justify-content: space-evenly;
+.shoesContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.filters {
+	padding: 0 40px;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-evenly;
 }
