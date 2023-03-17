@@ -21,20 +21,20 @@ const sortByName = (arrSneakers, order) => {
 }
 
 const sortByPrice = (arrSneakers, order) => {
-  let orderedSneakers
-  switch (order) {
-    case 'asc':
-      orderedSneakers = arrSneakers.sort((a, b) => a.PRICE - b.PRICE)
-      return orderedSneakers
-    case 'desc':
-      orderedSneakers = arrSneakers.sort((a, b) => b.PRICE - a.PRICE)
-      return orderedSneakers
-    default:
-      arrSneakers
-  }
+	let orderedSneakers
+	switch (order) {
+		case 'asc':
+			orderedSneakers = arrSneakers.sort((a, b) => a.PRICE - b.PRICE)
+			return orderedSneakers
+		case 'desc':
+			orderedSneakers = arrSneakers.sort((a, b) => b.PRICE - a.PRICE)
+			return orderedSneakers
+		default:
+			return arrSneakers
+	}
 }
 
 module.exports = {
-  sortByName,
-  sortByPrice
+	sortByName,
+	sortByPrice
 }
