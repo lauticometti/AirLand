@@ -1,11 +1,10 @@
-import {Navbar } from '../../components/Navbar/Navbar'
-import Carouselhome from '../../components/Carousel/Carousel'
+import { Navbar, HomeCarousel } from '../../components'
 
 export function Home() {
 	return (
 		<div>
-			<Navbar/>
-			<Carouselhome/>
+			<Navbar />
+			<HomeCarousel />
 		</div>
 	)
 }
