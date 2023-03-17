@@ -17,7 +17,18 @@ const filterByName = async (name) => {
 }
 
 const filterBySize = async (size) => {
-
+  try {
+    const sneakers = await db.collection('ZAPATILLAS').get()
+    const sneakersArr = sneakers.docs.map(sneaker => ({
+      ...sneaker.data()
+    }))
+    const filteredSneakers = sneakersArr.filter(sneaker => {
+      if (sneaker.SIZE[size] > 0) return sneaker;
+    })
+    return filteredSneakers
+  } catch (error) {
+    throw new Error('Error en la DB');
+  }
 }
 
 const filterByType = async (type) => {
@@ -47,5 +58,7 @@ const noFilters = async () => {
     throw new Error('Error en la DB')
   }
 }
+
+
 
 module.exports = { filterByName, filterBySize, filterByType, noFilters }
