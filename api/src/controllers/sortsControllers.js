@@ -16,7 +16,7 @@ const sortByName = (arrSneakers, order) => {
       })
       return orderedSneakers
     default:
-      arrSneakers
+      return arrSneakers
   }
 }
 
