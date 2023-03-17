@@ -1,17 +1,13 @@
 .footer {
-    /* background-color: #0000000b;
-    color: #000000;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    position: absolute; */
-    position:fixed;
-   left:0px;
-   bottom:0px;
-   height:30px;
-   width:100%;
-   background:#999;
-   text-align: center;
-
+	background-color: #4242424d;
+	padding: 20px 0;
+	color: #000000;
+	text-align: center;
+	font-family: 'Roboto';
+	margin-top: 70px;
 }
 
+.p {
+	font-size: 14px;
+	margin-bottom: 0;
+}
