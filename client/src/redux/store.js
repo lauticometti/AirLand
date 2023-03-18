@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import shoeReducer, { fetchShoes } from './slices/shoesSlice'
+import { setupListeners } from '@reduxjs/toolkit/query/react'
 
-const store = configureStore({
+import { shoesApi } from './services'
+
+export const store = configureStore({
 	reducer: {
-		shoes: shoeReducer
-	}
+		[shoesApi.reducerPath]: shoesApi.reducer
+	},
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware().concat(shoesApi.middleware)
 })
 
-store.dispatch(fetchShoes())
-
-export default store
+setupListeners(store.dispatch)
