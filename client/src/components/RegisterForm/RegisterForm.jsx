@@ -1,13 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { startRegistrationUserWithEmailPassword } from "../../redux/slices/auth"
+
+const formData = {
+  displayName: '',
+  email: '',
+  password: '',
+  repeatPassword: ''
+}
 
 export function RegisterForm() {
 
-  const [form, setForm] = useState({
-    username: '',
-    email: '',
-    password: '',
-    repeatPassword: ''
-  })
+  const { status, errorMessage } = useSelector(state => state.auth)
+  const [form, setForm] = useState(formData)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleChange = (event) => {
     setForm({
@@ -19,21 +27,21 @@ export function RegisterForm() {
   const handleSubmit = (event) => {
     event.preventDefault()
     // TODO: enviar form, validar datos, mostrar errores
-    console.log(form)
-    setForm({
-      username: '',
-      email: '',
-      password: '',
-      repeatPassword: ''
-    })
+    setForm(formData)
+    dispatch(startRegistrationUserWithEmailPassword(form))
   }
+
+  useEffect(() => {
+    if (status === 'not-authenticated') return alert(errorMessage)
+    if (status === 'authenticated') return navigate('/')
+  }, [status])
 
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username: </label>
-          <input type="text" name="username" id="username" placeholder="Ej: rodolfo14" value={form.username} onChange={handleChange} />
+          <label htmlFor="displayName">FullName: </label>
+          <input type="text" name="displayName" id="displayName" placeholder="Ej: rodolfo14" value={form.displayName} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="email">E-Mail:</label>

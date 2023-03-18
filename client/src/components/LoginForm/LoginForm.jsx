@@ -1,11 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { FcGoogle } from 'react-icons/fc'
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { startLoginUserWithEmailPassword } from "../../redux/slices/auth"
+
+const formData = {
+  email: '',
+  password: ''
+}
 
 export function LoginForm() {
 
-  const [form, setForm] = useState({
-    email: '',
-    password: ''
-  })
+  const { status, errorMessage } = useSelector(state => state.auth)
+  const [form, setForm] = useState(formData)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleChange = (event) => {
     setForm({
@@ -17,12 +26,15 @@ export function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault()
     // TODO: enviar form, validar datos, mostrar errores
-    console.log(form)
-    setForm({
-      email: '',
-      password: ''
-    })
+    setForm(formData)
+    dispatch(startLoginUserWithEmailPassword(form))
+    // navigate('/')
   }
+
+  useEffect(() => {
+    if (status === 'not-authenticated') return alert(errorMessage)
+    if (status === 'authenticated') return navigate('/')
+  }, [status])
 
   return (
     <div>
@@ -37,6 +49,9 @@ export function LoginForm() {
         </div>
         <div>
           <button>Sign In</button>
+          <FcGoogle style={{ width: '32px', height: '32px' }} />
+        </div>
+        <div>
         </div>
       </form>
     </div>

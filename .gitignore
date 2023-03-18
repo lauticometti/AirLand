@@ -108,3 +108,6 @@ package-lock.json
 
 # firebase.json
 firebase.json
+
+# firebase-config.js
+config.js
