@@ -1,30 +1,29 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchShoes } from '../../redux/slices/shoesSlice'
-import { Card } from '../../components'
+import { useGetShoesQuery } from '../../redux/services/services'
+import { Card, Loader, NotFound } from '../../components'
 import styles from './Cards.module.css'
 
 export function Cards() {
-	const { shoes, status, error } = useSelector(state => state.shoes)
-	const dispatch = useDispatch()
+	const { data, isLoading, error } = useGetShoesQuery()
 
-	useEffect(() => {
-		dispatch(fetchShoes())
-	}, [dispatch])
-	console.log(shoes)
+	if (isLoading)
+		return (
+			<div className={styles.mt50vh}>
+				<Loader />
+			</div>
+		)
+
+	if (error)
+		return (
+			<div className={styles.mt50vh}>
+				<NotFound />
+			</div>
+		)
+
 	return (
-		<>
-			{status === 'loading' ? (
-				<span className={styles.loadingText}>Loading sneakers...</span>
-			) : status === 'failed' ? (
-				<span className={styles.errorMessageText}>Error: {error}</span>
-			) : (
-				<div className={styles.cardsContainer}>
-					{shoes.sneakers.map(shoe => (
-						<Card key={shoe.id} shoe={shoe} />
-					))}
-				</div>
-			)}
-		</>
+		<div className={styles.cardsContainer}>
+			{data.sneakers.map(shoe => (
+				<Card key={shoe.id} shoe={shoe} />
+			))}
+		</div>
 	)
 }

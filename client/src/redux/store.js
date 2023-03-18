@@ -1,14 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { authSlice } from './slices'
-import shoeReducer, { fetchShoes } from './slices/shoesSlice'
+import { shoesApi } from './services/services'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
-const store = configureStore({
+export const store = configureStore({
 	reducer: {
-		shoes: shoeReducer,
+		[shoesApi.reducerPath]: shoesApi.reducer,
 		auth: authSlice.reducer
-	}
+	},
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware().concat(shoesApi.middleware)
 })
 
-store.dispatch(fetchShoes())
-
-export default store
+setupListeners(store.dispatch)
