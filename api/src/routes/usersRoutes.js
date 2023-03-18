@@ -1,6 +1,5 @@
 const { Router } = require('express')
 const { check } = require('express-validator')
-const { db } = require('../firebase')
 
 const { emailExiste } = require('../../helpers/db-validators')
 const {
@@ -14,7 +13,7 @@ const { validarCampos } = require('../middlewares/validar-campos')
 
 const router = Router()
 
-router.get('/users', getUsers)
+router.get('/', getUsers)
 
 router.post(
 	'/users',
@@ -33,10 +32,10 @@ router.post(
 	postUsers
 )
 
-router.get('/users/:id', getUsersById)
+router.get('/:id', getUsersById)
 
-router.delete('/users/:id', deleteUsers)
+router.delete('/:id', deleteUsers)
 
-router.patch('/users/:id', patchUsers)
+router.patch('/:id', patchUsers)
 
 module.exports = router
