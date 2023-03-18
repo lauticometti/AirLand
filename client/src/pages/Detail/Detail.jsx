@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { Loader, Navbar, NotFound } from '../../components'
-import { useGetShoesByIdQuery } from '../../redux/services'
+import { useGetShoesByIdQuery } from '../../redux/services/services'
 import styles from './Detail.module.css'
 
 export function Detail() {

@@ -1,4 +1,4 @@
-import { useGetShoesQuery } from '../../redux/services'
+import { useGetShoesQuery } from '../../redux/services/services'
 import { Card, Loader, NotFound } from '../../components'
 import styles from './Cards.module.css'
 
