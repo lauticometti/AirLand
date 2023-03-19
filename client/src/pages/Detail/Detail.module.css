@@ -1,3 +1,15 @@
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader,
+.error {
+	margin-top: 50vh;
+}
+
 .shoeContainer {
 	font-family: 'Roboto';
 	color: #242424;
