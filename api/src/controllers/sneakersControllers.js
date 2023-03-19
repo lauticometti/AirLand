@@ -102,18 +102,10 @@ const patchSneakers = async (req, res) => {
 }
 
 module.exports = {
-<<<<<<< HEAD
-	getSnickers,
-	postSnickers,
-	getSnickersById,
-	patchSnickers,
-	deleteSnickers
-=======
 	getSneakers,
 	getSizes,
 	postSneakers,
 	getSneakersById,
 	patchSneakers,
 	deleteSneakers
->>>>>>> develop
 }
