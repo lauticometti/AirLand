@@ -1,0 +1,7 @@
+export * as exe from './exe.webp'
+export * as ivan from './ivan.webp'
+export * as joan from './joan.webp'
+export * as juli from './juli.webp'
+export * as lauti from './lauti.webp'
+export * as lichi from './lichi.webp'
+export * as nico from './nico.webp'
