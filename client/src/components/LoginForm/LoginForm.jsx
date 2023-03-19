@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { startLoginUserWithEmailPassword } from "../../redux/slices/auth"
+import { startGoogleSignIn, startLoginUserWithEmailPassword } from "../../redux/slices/auth"
 
 const formData = {
   email: '',
@@ -49,7 +49,7 @@ export function LoginForm() {
         </div>
         <div>
           <button>Sign In</button>
-          <FcGoogle style={{ width: '32px', height: '32px' }} />
+          <FcGoogle style={{ width: '32px', height: '32px' }} onClick={() => dispatch(startGoogleSignIn())} />
         </div>
         <div>
         </div>

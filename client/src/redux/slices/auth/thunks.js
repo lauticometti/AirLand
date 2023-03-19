@@ -1,4 +1,4 @@
-import { loginUserWithEmailPassword, registerUserWithEmailPassword } from "../../../firebase"
+import { loginUserWithEmailPassword, LoginWithGoogle, registerUserWithEmailPassword } from "../../../firebase"
 import { checkingCredentials, Logout, signIn } from "./"
 
 export const startRegistrationUserWithEmailPassword = ({ email, password, displayName }) => {
@@ -28,6 +28,23 @@ export const startLoginUserWithEmailPassword = ({ email, password }) => {
     // si ok = false: no se pudo logear al usuario => despacho la funcion logout
     if (!response.ok) return dispatch(Logout(response.message))
     console.log(response)
+
+    // tercero: logeo al usuario
+    dispatch(signIn(response))
+  }
+}
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    // primero: chequeo credenciales
+    dispatch(checkingCredentials())
+
+    // segundo: utilizo el provider para logear el usuario
+    const response = await LoginWithGoogle()
+    console.log(response)
+
+    // si ok = false: no se pudo logear al usuario => despacho la funcion logout
+    if (!response.ok) return dispatch(Logout(response))
 
     // tercero: logeo al usuario
     dispatch(signIn(response))
