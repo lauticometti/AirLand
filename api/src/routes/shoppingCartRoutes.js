@@ -6,10 +6,10 @@ const router = Router()
 // const testUserUid = 'WNdnEODL10Ygo3DTK3zi8rWm5pU2'
 // const testSneakerUid = '0PMeMv3KIR1DlHShwcvM'
 
-router.get('/', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   // devolver todos las zapatillas que el usuario tiene en su shopping cart
   // necesito solo el uid del usuario para devolverle todas sus zapatillas
-  const { userId } = req.body
+  const { userId } = req.params
   try {
     const cart = await getShoppingCart(userId)
     res.status(200).json(cart)
@@ -18,12 +18,12 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/add/:sneakerId', async (req, res) => {
+router.post('/add/:userId/:sneakerId', async (req, res) => {
   // agregar una zapatilla al shopping cart del usuario
   // necesito el uid de la zapatilla de la collection 'zapatillas'
   // necesito el uid del usuario para agregarle la zapatilla a su shopping cart'
-  const { userId } = req.body
-  const { sneakerId } = req.params
+  const { sneakerId, userId } = req.params
+  console.log({ userId, sneakerId })
   try {
     await addSneakersToShoppingCart(userId, sneakerId)
     res.status(200).json('Successfully added!')
@@ -32,12 +32,11 @@ router.post('/add/:sneakerId', async (req, res) => {
   }
 })
 
-router.delete('/delete/:sneakerId', async (req, res) => {
+router.delete('/delete/:userId/:sneakerId', async (req, res) => {
   // eliminar una zapatilla del shopping cart del usuario
   // necesito el uid de la zapatilla que voy a eliminar en la collection '/userId/shopping-cart/zapatillas'
   // necesito el uid del usuario del que voy a eliminar la zapatilla
-  const { userId } = req.body
-  const { sneakerId } = req.params
+  const { sneakerId, userId } = req.params
   try {
     await removeSneakersFromShoppingCart(userId, sneakerId)
     res.status(200).json('Successfully deleted!')
