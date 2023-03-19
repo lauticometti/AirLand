@@ -7,13 +7,9 @@ const getSnickers = async (req, res) => {
 			id: doc.id,
 			...doc.data()
 		}))
-		res.status(200).json({
-			sneakers
-		})
+		res.status(200).json(sneakers)
 	} catch (error) {
-		res.status(400).json({
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 
 	// trae los campos q quiero
@@ -51,13 +47,9 @@ const postSnickers = async (req, res) => {
 			STOCK,
 			DESCRIPTION
 		})
-		res.status(201).json({
-			message: 'Succesfuly created!'
-		})
+		res.status(201).json('Succesfully created!')
 	} catch (error) {
-		res.status(400).json({
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 const getSnickersById = async (req, res) => {
@@ -66,11 +58,9 @@ const getSnickersById = async (req, res) => {
 		const sneaker = await (
 			await db.collection('ZAPATILLAS').doc(req.params.id).get()
 		).data()
-		res.status(200).json({
-			sneaker
-		})
+		res.status(200).json(sneaker)
 	} catch (error) {
-		res.status(400)
+		res.status(400).json(error.message)
 	}
 }
 const deleteSnickers = async (req, res) => {
@@ -78,25 +68,17 @@ const deleteSnickers = async (req, res) => {
 	const { STATUS } = req.body
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update({ STATUS })
-		res.status(200).json({
-			message: 'Succesfuly deleted!'
-		})
+		res.status(200).json('Succesfully deleted!')
 	} catch (error) {
-		res.status(400).json({
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 const patchSnickers = async (req, res) => {
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update(req.body)
-		res.status(200).json({
-			message: 'Succesfuly updated!'
-		})
+		res.status(200).json('Succesfully updated!')
 	} catch (error) {
-		res.status(400).json({
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 

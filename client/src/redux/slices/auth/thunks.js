@@ -27,7 +27,6 @@ export const startLoginUserWithEmailPassword = ({ email, password }) => {
 
     // si ok = false: no se pudo logear al usuario => despacho la funcion logout
     if (!response.ok) return dispatch(Logout(response.message))
-    console.log(response)
 
     // tercero: logeo al usuario
     dispatch(signIn(response))
@@ -41,7 +40,6 @@ export const startGoogleSignIn = () => {
 
     // segundo: utilizo el provider para logear el usuario
     const response = await LoginWithGoogle()
-    console.log(response)
 
     // si ok = false: no se pudo logear al usuario => despacho la funcion logout
     if (!response.ok) return dispatch(Logout(response))

@@ -31,13 +31,13 @@ router.get('/', async (req, res) => {
 					filterAndOrderedSneakers
 				})
 			}
-			res.status(200).json({
+			res.status(200).json(
 				filteredSneakers
-			})
+			)
 		} catch (error) {
-			res.status(400).json({
-				message: error.message
-			})
+			res.status(400).json(
+				error.message
+			)
 		}
 	}
 	// Type
@@ -60,13 +60,13 @@ router.get('/', async (req, res) => {
 					filterAndOrderedSneakers
 				})
 			}
-			res.status(200).json({
+			res.status(200).json(
 				filteredSneakers
-			})
+			)
 		} catch (error) {
-			res.status(400).json({
-				message: error.message
-			})
+			res.status(400).json(
+				error.message
+			)
 		}
 	}
 	// Size
@@ -85,17 +85,17 @@ router.get('/', async (req, res) => {
 					default:
 						filterAndOrderedSneakers = [...filteredSneakers]
 				}
-				return res.status(200).json({
+				return res.status(200).json(
 					filterAndOrderedSneakers
-				})
+				)
 			}
-			res.status(200).json({
+			res.status(200).json(
 				filteredSneakers
-			})
+			)
 		} catch (error) {
-			res.status(400).json({
-				message: error.message
-			})
+			res.status(400).json(
+				error.message
+			)
 		}
 	}
 
@@ -114,17 +114,17 @@ router.get('/', async (req, res) => {
 					default:
 						orderedSneakers = [...sneakersArr]
 				}
-				return res.status(200).json({
+				return res.status(200).json(
 					orderedSneakers
-				})
+				)
 			}
-			res.status(200).json({
+			res.status(200).json(
 				sneakersArr
-			})
+			)
 		} catch (error) {
-			res.status(400).json({
-				message: error.message
-			})
+			res.status(400).json(
+				error.message
+			)
 		}
 	}
 })
