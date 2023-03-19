@@ -1,21 +1,15 @@
 const { db } = require('../firebase')
 
-const getSnickers = async (req, res) => {
+const getSneakers = async (req, res) => {
 	try {
 		const querySnap = await db.collection('ZAPATILLAS').get()
 		const sneakers = querySnap.docs.map(doc => ({
 			id: doc.id,
 			...doc.data()
 		}))
-		res.status(200).json({
-			ok: true,
-			sneakers
-		})
+		res.status(200).json(sneakers)
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 
 	// trae los campos q quiero
@@ -25,7 +19,7 @@ const getSnickers = async (req, res) => {
 	// console.log(querySnap.docs[0].data())
 }
 
-const postSnickers = async (req, res) => {
+const postSneakers = async (req, res) => {
 	const {
 		ACTION,
 		CODE,
@@ -53,66 +47,45 @@ const postSnickers = async (req, res) => {
 			STOCK,
 			DESCRIPTION
 		})
-		res.status(201).json({
-			ok: true,
-			message: 'Succesfuly created!'
-		})
+		res.status(201).json('Succesfully created!')
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
-const getSnickersById = async (req, res) => {
+const getSneakersById = async (req, res) => {
 	// para mostrar una zapatilla por id
 	try {
 		const sneaker = await (
 			await db.collection('ZAPATILLAS').doc(req.params.id).get()
 		).data()
-		res.status(200).json({
-			ok: true,
-			sneaker
-		})
+		res.status(200).json(sneaker)
 	} catch (error) {
-		res.status(400)
+		res.status(400).json(error.message)
 	}
 }
-const deleteSnickers = async (req, res) => {
+const deleteSneakers = async (req, res) => {
 	// para mostrar una zapatilla por id
 	const { STATUS } = req.body
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update({ STATUS })
-		res.status(200).json({
-			ok: true,
-			message: 'Succesfuly deleted!'
-		})
+		res.status(200).json('Succesfully deleted!')
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
-const patchSnickers = async (req, res) => {
+const patchSneakers = async (req, res) => {
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update(req.body)
-		res.status(200).json({
-			ok: true,
-			message: 'Succesfuly updated!'
-		})
+		res.status(200).json('Succesfully updated!')
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 
 module.exports = {
-	getSnickers,
-	postSnickers,
-	getSnickersById,
-	patchSnickers,
-	deleteSnickers
+	getSneakers,
+	postSneakers,
+	getSneakersById,
+	patchSneakers,
+	deleteSneakers
 }
