@@ -1,22 +1,22 @@
 const { Router } = require('express')
 const {
-	getSnickers,
-	postSnickers,
-	getSnickersById,
-	deleteSnickers,
-	patchSnickers
+	getSneakers,
+	postSneakers,
+	getSneakersById,
+	deleteSneakers,
+	patchSneakers
 } = require('../controllers/sneakersControllers')
 
 const router = Router()
 
-router.get('/', getSnickers)
+router.get('/', getSneakers)
 
-router.post('/', postSnickers)
+router.post('/', postSneakers)
 
-router.get('/:id', getSnickersById)
+router.get('/:id', getSneakersById)
 
-router.delete('/:id', deleteSnickers)
+router.delete('/:id', deleteSneakers)
 
-router.patch('/:id', patchSnickers)
+router.patch('/:id', patchSneakers)
 
 module.exports = router
