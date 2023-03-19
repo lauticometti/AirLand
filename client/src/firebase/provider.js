@@ -15,7 +15,6 @@ export const LoginWithGoogle = async () => {
 			FirebaseAuth,
 			googleProvider
 		)
-		console.log(response)
 		const { displayName, email, uid } = response.user
 		return {
 			ok: true,
@@ -43,7 +42,6 @@ export const registerUserWithEmailPassword = async ({
 			email,
 			password
 		)
-		console.log(response)
 		const { uid } = response.user
 		await updateProfile(FirebaseAuth.currentUser, { displayName })
 		return {
@@ -68,7 +66,6 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
 			email,
 			password
 		)
-		console.log(response)
 		const { uid, displayName } = response.user
 		return {
 			ok: true,
