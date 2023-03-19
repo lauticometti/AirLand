@@ -9,12 +9,10 @@ const getUsers = async (req, res) => {
 			...user.data()
 		}))
 		res.status(200).json({
-			ok: true,
 			usuarios
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}
@@ -41,13 +39,11 @@ const postUsers = async (req, res) => {
 		user.PASSWORD = bcrypt.hashSync(PASSWORD, salt)
 
 		res.status(201).json({
-			ok: true,
 			message: 'Succesfuly created!',
 			user
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}
@@ -59,7 +55,6 @@ const getUsersById = async (req, res) => {
 			await db.collection('USUARIOS').doc(req.params.id).get()
 		).data()
 		res.status(200).json({
-			ok: true,
 			user
 		})
 	} catch (error) {
@@ -72,12 +67,10 @@ const deleteUsers = async (req, res) => {
 	try {
 		await db.collection('USUARIOS').doc(req.params.id).update({ STATE: false })
 		res.status(200).json({
-			ok: true,
 			message: 'Succesfuly deleted!'
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}
@@ -86,12 +79,10 @@ const patchUsers = async (req, res) => {
 	try {
 		await db.collection('USUARIOS').doc(req.params.id).update(req.body)
 		res.status(200).json({
-			ok: true,
 			message: 'Succesfuly updated!'
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}

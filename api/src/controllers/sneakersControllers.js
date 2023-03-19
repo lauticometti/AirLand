@@ -8,12 +8,10 @@ const getSnickers = async (req, res) => {
 			...doc.data()
 		}))
 		res.status(200).json({
-			ok: true,
 			sneakers
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}
@@ -54,12 +52,10 @@ const postSnickers = async (req, res) => {
 			DESCRIPTION
 		})
 		res.status(201).json({
-			ok: true,
 			message: 'Succesfuly created!'
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}
@@ -71,7 +67,6 @@ const getSnickersById = async (req, res) => {
 			await db.collection('ZAPATILLAS').doc(req.params.id).get()
 		).data()
 		res.status(200).json({
-			ok: true,
 			sneaker
 		})
 	} catch (error) {
@@ -84,12 +79,10 @@ const deleteSnickers = async (req, res) => {
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update({ STATUS })
 		res.status(200).json({
-			ok: true,
 			message: 'Succesfuly deleted!'
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}
@@ -98,12 +91,10 @@ const patchSnickers = async (req, res) => {
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update(req.body)
 		res.status(200).json({
-			ok: true,
 			message: 'Succesfuly updated!'
 		})
 	} catch (error) {
 		res.status(400).json({
-			ok: false,
 			message: error.message
 		})
 	}

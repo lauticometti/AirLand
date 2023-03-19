@@ -28,17 +28,14 @@ router.get('/', async (req, res) => {
 						filterAndOrderedSneakers = [...filteredSneakers]
 				}
 				return res.status(200).json({
-					ok: true,
 					filterAndOrderedSneakers
 				})
 			}
 			res.status(200).json({
-				ok: true,
 				filteredSneakers
 			})
 		} catch (error) {
 			res.status(400).json({
-				ok: false,
 				message: error.message
 			})
 		}
@@ -60,17 +57,14 @@ router.get('/', async (req, res) => {
 						filterAndOrderedSneakers = [...filteredSneakers]
 				}
 				return res.status(200).json({
-					ok: true,
 					filterAndOrderedSneakers
 				})
 			}
 			res.status(200).json({
-				ok: true,
 				filteredSneakers
 			})
 		} catch (error) {
 			res.status(400).json({
-				ok: false,
 				message: error.message
 			})
 		}
@@ -92,17 +86,14 @@ router.get('/', async (req, res) => {
 						filterAndOrderedSneakers = [...filteredSneakers]
 				}
 				return res.status(200).json({
-					ok: true,
 					filterAndOrderedSneakers
 				})
 			}
 			res.status(200).json({
-				ok: true,
 				filteredSneakers
 			})
 		} catch (error) {
 			res.status(400).json({
-				ok: false,
 				message: error.message
 			})
 		}
@@ -124,17 +115,14 @@ router.get('/', async (req, res) => {
 						orderedSneakers = [...sneakersArr]
 				}
 				return res.status(200).json({
-					ok: true,
 					orderedSneakers
 				})
 			}
 			res.status(200).json({
-				ok: true,
 				sneakersArr
 			})
 		} catch (error) {
 			res.status(400).json({
-				ok: false,
 				message: error.message
 			})
 		}
