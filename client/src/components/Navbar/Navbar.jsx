@@ -1,29 +1,29 @@
 import { Link } from 'react-router-dom'
-import logo from '../../assets/nike_icon.svg'
+import logo from '../../assets/air_land-black.svg'
 import styles from './Navbar.module.css'
-import { AiOutlineUser, AiOutlineShoppingCart} from 'react-icons/ai'
+import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
 
 export function Navbar() {
 	return (
 		<nav className={styles.nav}>
-			<ul className={styles.container}>
-				<li className={styles.listItemIcon}>
-					<Link to='/'>
+			<ul className={styles.list}>
+				<li className={styles.li}>
+					<Link to='/' className={styles.navLogo}>
 						<img src={logo} alt='logo' className={styles.logo} />
 					</Link>
 				</li>
 				<li className={styles.li}>
-					<Link to='/snkrs' className={styles.namelink}>
+					<Link to='/snkrs' className={styles.navLink}>
 						SNKRS
 					</Link>
 				</li>
 				<li className={styles.li}>
-					<div className={styles.divlogin}>
-						<Link to='/login' className={styles.namelink}>
+					<div className={styles.rightestLiContainer}>
+						<Link to='/login' className={styles.navLink}>
 							<AiOutlineUser />
 						</Link>
-						
-						<Link to='/store' className={styles.namelink}>
+
+						<Link to='/store' className={styles.navLink}>
 							<AiOutlineShoppingCart />
 						</Link>
 					</div>
