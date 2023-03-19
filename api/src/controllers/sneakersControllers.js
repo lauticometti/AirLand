@@ -24,7 +24,25 @@ const getSnickers = async (req, res) => {
 	// trae solo el primer objeto de la coleccion
 	// console.log(querySnap.docs[0].data())
 }
-
+const getSizes = async (req, res) => {
+	try {
+		const sneakers = await db.collection('ZAPATILLAS').get()
+		const sizes = [
+			...new Set(
+				sneakers.docs
+					.map(doc => doc.data())
+					.map(sneaker => sneaker.SIZE)
+					.map(sizeObj => Object.keys(sizeObj))
+					.reduce((acc, cur) => acc.concat(cur), [])
+			)
+		]
+			.sort((a, b) => a - b)
+			.map(size => Number(size))
+		res.status(200).json(sizes)
+	} catch (error) {
+		res.status(400).json(error.message)
+	}
+}
 const postSnickers = async (req, res) => {
 	const {
 		ACTION,
@@ -37,7 +55,7 @@ const postSnickers = async (req, res) => {
 		SIZE,
 		STATUS,
 		STOCK,
-		DESCRIPTION,
+		DESCRIPTION
 	} = req.body
 	try {
 		await db.collection('ZAPATILLAS').add({
@@ -111,6 +129,7 @@ const patchSnickers = async (req, res) => {
 
 module.exports = {
 	getSnickers,
+	getSizes,
 	postSnickers,
 	getSnickersById,
 	patchSnickers,

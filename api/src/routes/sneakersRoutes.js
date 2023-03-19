@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const {
 	getSnickers,
+	getSizes,
 	postSnickers,
 	getSnickersById,
 	deleteSnickers,
@@ -11,9 +12,11 @@ const router = Router()
 
 router.get('/', getSnickers)
 
-router.post('/', postSnickers)
+router.get('/sizes', getSizes)
 
 router.get('/:id', getSnickersById)
+
+router.post('/', postSnickers)
 
 router.delete('/:id', deleteSnickers)
 
