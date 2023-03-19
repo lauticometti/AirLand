@@ -52,7 +52,7 @@ export function Footer() {
 			</div>
 			<div className={styles.bottom}>
 				<p className={styles.copyright}>
-					© 2022 Henry Devs. All Rights Reserved
+					© 2023 Henry Devs. All Rights Reserved
 				</p>
 
 				<ul className={styles.devsList}>

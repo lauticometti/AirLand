@@ -7,6 +7,8 @@ import { useState } from 'react'
 export function Dropdown({
 	title,
 	items,
+	isLoading,
+	error,
 	type,
 	filteredState,
 	setFilteredState
@@ -15,12 +17,13 @@ export function Dropdown({
 	const toggling = () => setIsOpen(!isOpen)
 
 	// ======== checkboxs handlers ======== //
-	const [marked, setMarked] = useState([items.map(el => false)])
+	const [marked, setMarked] = useState(
+		isLoading ? [] : [items.map(el => false)]
+	)
 
 	const handleCheckbox = event => {
 		const size = Number(event.target.id)
 		const currentIndex = items.indexOf(size)
-		console.log(currentIndex)
 		const newMarked = [...marked]
 
 		if (filteredState.includes(size)) {
@@ -33,8 +36,6 @@ export function Dropdown({
 			setMarked(newMarked)
 		}
 	}
-
-	const handleRadio = event => {}
 
 	return (
 		<div className='dropdown'>
@@ -100,7 +101,9 @@ Dropdown.propTypes = {
 	title: PropTypes.string.isRequired,
 	items: PropTypes.arrayOf(
 		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-	).isRequired,
+	),
+	isLoading: PropTypes.bool,
+	error: PropTypes.object,
 	type: PropTypes.string,
 	filteredState: PropTypes.array,
 	setFilteredState: PropTypes.func
