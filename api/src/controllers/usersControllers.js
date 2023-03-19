@@ -8,22 +8,15 @@ const getUsers = async (req, res) => {
 			id: user.id,
 			...user.data()
 		}))
-		res.status(200).json({
-			ok: true,
-			usuarios
-		})
+		res.status(200).json(usuarios)
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 
 const postUsers = async (req, res) => {
 	const { NAME, EMAIL, PASSWORD, IMG, STATE, ROL, FAVORITES } = req.body
 	const user = req.body
-	console.log(user)
 
 	// Encriptar la constraseña
 
@@ -41,15 +34,11 @@ const postUsers = async (req, res) => {
 		user.PASSWORD = bcrypt.hashSync(PASSWORD, salt)
 
 		res.status(201).json({
-			ok: true,
-			message: 'Succesfuly created!',
+			message: 'Succesfully created!',
 			user
 		})
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 const getUsersById = async (req, res) => {
@@ -58,12 +47,9 @@ const getUsersById = async (req, res) => {
 		const user = await (
 			await db.collection('USUARIOS').doc(req.params.id).get()
 		).data()
-		res.status(200).json({
-			ok: true,
-			user
-		})
+		res.status(200).json(user)
 	} catch (error) {
-		res.status(400)
+		res.status(400).json(error.message)
 	}
 }
 const deleteUsers = async (req, res) => {
@@ -71,29 +57,17 @@ const deleteUsers = async (req, res) => {
 
 	try {
 		await db.collection('USUARIOS').doc(req.params.id).update({ STATE: false })
-		res.status(200).json({
-			ok: true,
-			message: 'Succesfuly deleted!'
-		})
+		res.status(200).json('Succesfully created!')
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 const patchUsers = async (req, res) => {
 	try {
 		await db.collection('USUARIOS').doc(req.params.id).update(req.body)
-		res.status(200).json({
-			ok: true,
-			message: 'Succesfuly updated!'
-		})
+		res.status(200).json('Succesfully updated!')
 	} catch (error) {
-		res.status(400).json({
-			ok: false,
-			message: error.message
-		})
+		res.status(400).json(error.message)
 	}
 }
 

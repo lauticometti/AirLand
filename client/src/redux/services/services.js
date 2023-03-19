@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const BASEURL = 'http://localhost:3001'
+const BASEURL = 'http://localhost:3001/api'
 
 export const shoesApi = createApi({
 	reducerPath: 'shoesApi',
@@ -24,6 +24,11 @@ export const shoesApi = createApi({
 export const {
 	useGetShoesQuery,
 	useGetShoesByIdQuery,
+<<<<<<< HEAD
 	useGetShoesByNameQuery,
 	useGetSizesQuery
 } = shoesApi
+=======
+	useGetShoesByNameQuery
+} = shoesApi
+>>>>>>> develop
