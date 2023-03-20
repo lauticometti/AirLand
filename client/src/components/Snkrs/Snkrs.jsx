@@ -32,7 +32,7 @@ export function Snkrs() {
 					alt="'airforce1"
 				/>
 			</Link>
-			<Link to='white /detail/ZvzcfO4LfcrHWYcFcY6I' className={styles.link}>
+			<Link to='/detail/ZvzcfO4LfcrHWYcFcY6I' className={styles.link}>
 				<img
 					className={styles.img}
 					src='https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/dce93a1d-ebcb-4300-b8cf-f71da0820ea1/air-force-1-07-zapatillas-Pbt0tj.png'
