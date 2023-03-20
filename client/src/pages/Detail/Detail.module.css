@@ -79,6 +79,14 @@
 	font-size: 15px;
 }
 
+.sizeCheck {
+	background-color: white;
+}
+
+.sizeDisabled {
+	background-color: red;
+}
+
 .addToCartButton {
 	background-color: #ccc;
 	font-family: 'Roboto';
