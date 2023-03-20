@@ -2,7 +2,7 @@ const { Router } = require('express')
 const {
 	filterByName,
 	filterByType,
-	filterBySize,
+	filterBySizes,
 	noFilters
 } = require('../controllers/filtersControllers')
 const { sortByName, sortByPrice } = require('../controllers/sortsControllers')
@@ -10,7 +10,7 @@ const router = Router()
 
 // Name
 router.get('/', async (req, res) => {
-	const { name, type, size, sort, order } = req.query
+	const { name, type, sizes, sort, order } = req.query
 	// Name
 	if (name) {
 		try {
@@ -31,13 +31,9 @@ router.get('/', async (req, res) => {
 					filterAndOrderedSneakers
 				})
 			}
-			res.status(200).json(
-				filteredSneakers
-			)
+			res.status(200).json(filteredSneakers)
 		} catch (error) {
-			res.status(400).json(
-				error.message
-			)
+			res.status(400).json(error.message)
 		}
 	}
 	// Type
@@ -60,19 +56,15 @@ router.get('/', async (req, res) => {
 					filterAndOrderedSneakers
 				})
 			}
-			res.status(200).json(
-				filteredSneakers
-			)
+			res.status(200).json(filteredSneakers)
 		} catch (error) {
-			res.status(400).json(
-				error.message
-			)
+			res.status(400).json(error.message)
 		}
 	}
 	// Size
-	if (size) {
+	if (sizes) {
 		try {
-			const filteredSneakers = await filterBySize(size)
+			const filteredSneakers = await filterBySizes(sizes)
 			if (sort) {
 				let filterAndOrderedSneakers
 				switch (sort) {
@@ -85,21 +77,15 @@ router.get('/', async (req, res) => {
 					default:
 						filterAndOrderedSneakers = [...filteredSneakers]
 				}
-				return res.status(200).json(
-					filterAndOrderedSneakers
-				)
+				return res.status(200).json(filterAndOrderedSneakers)
 			}
-			res.status(200).json(
-				filteredSneakers
-			)
+			res.status(200).json(filteredSneakers)
 		} catch (error) {
-			res.status(400).json(
-				error.message
-			)
+			res.status(400).json(error.message)
 		}
 	}
 
-	if (!name && !type && !size) {
+	if (!name && !type && !sizes) {
 		try {
 			const sneakersArr = await noFilters()
 			if (sort) {
@@ -114,17 +100,11 @@ router.get('/', async (req, res) => {
 					default:
 						orderedSneakers = [...sneakersArr]
 				}
-				return res.status(200).json(
-					orderedSneakers
-				)
+				return res.status(200).json(orderedSneakers)
 			}
-			res.status(200).json(
-				sneakersArr
-			)
+			res.status(200).json(sneakersArr)
 		} catch (error) {
-			res.status(400).json(
-				error.message
-			)
+			res.status(400).json(error.message)
 		}
 	}
 })
