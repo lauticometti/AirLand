@@ -3,14 +3,13 @@ import Billie from '../../assets/BillieEilish.svg'
 import Travis from '../../assets/travisscott.svg'
 import Roc from '../../assets/roc-a-fella.svg'
 import Lunar from '../../assets/lunar.svg'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export function HomeCarousel() {
 	return (
 		<Carousel>
 			<Carousel.Item interval={500}>
-			
-			   <Link to='/detail/MZulqmUuiI3bezocwqry'>
+				<Link to='/detail/MZulqmUuiI3bezocwqry'>
 					<img
 						className='d-block w-100'
 						src={Lunar}
@@ -19,7 +18,7 @@ export function HomeCarousel() {
 				</Link>
 			</Carousel.Item>
 			<Carousel.Item interval={700}>
-			   <Link to='/detail/GJlGj1WrEDmwJdagmWO4'>
+				<Link to='/detail/GJlGj1WrEDmwJdagmWO4'>
 					<img
 						className='d-block w-100'
 						src={Roc}
