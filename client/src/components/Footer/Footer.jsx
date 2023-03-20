@@ -81,7 +81,7 @@ export function Footer() {
 						</Link>
 					</li>
 					<li className={styles.li}>
-						<Link to='/' className={styles.liLink}>
+						<Link to='/aboutus' className={styles.liLink}>
 							About
 						</Link>
 					</li>
