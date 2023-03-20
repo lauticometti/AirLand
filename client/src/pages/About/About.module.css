@@ -1,0 +1,7 @@
+.prueba {
+	display: flex;
+    background-color: aqua;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

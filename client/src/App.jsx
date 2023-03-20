@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Login, Register, Detail, Home, Sneakers} from './pages'
+import { Login, Register, Detail, Home, Sneakers, About } from './pages'
 import './styles/App.css'
 
 function App() {
@@ -10,7 +10,8 @@ function App() {
 				<Route exact path='/snkrs' element={<Sneakers />} />
 				<Route exact path='/detail/:shoeId' element={<Detail />} />
 				<Route exact path='/login' element={<Login />} />
-				<Route exact path='/signup' element={<Register />} />				
+				<Route exact path='/signup' element={<Register />} />
+				<Route exact path='/about' element={<About />} />
 			</Routes>
 		</div>
 	)
