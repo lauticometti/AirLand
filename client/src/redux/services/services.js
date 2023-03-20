@@ -24,11 +24,6 @@ export const shoesApi = createApi({
 export const {
 	useGetShoesQuery,
 	useGetShoesByIdQuery,
-<<<<<<< HEAD
-	useGetShoesByNameQuery,
-	useGetSizesQuery
-} = shoesApi
-=======
+	useGetSizesQuery,
 	useGetShoesByNameQuery
 } = shoesApi
->>>>>>> develop

@@ -1,9 +1,9 @@
-import { useGetShoesQuery } from '../../redux/services/services'
 import { Card, Loader, NotFound } from '../../components'
+import PropTypes from 'prop-types'
 import styles from './Cards.module.css'
 
-export function Cards() {
-	const { data, isLoading, error } = useGetShoesQuery()
+export function Cards({ query }) {
+	const { data, isLoading, error } = query()
 
 	if (isLoading)
 		return (
@@ -26,4 +26,8 @@ export function Cards() {
 			))}
 		</div>
 	)
+}
+
+Cards.propTypes = {
+	query: PropTypes.func
 }
