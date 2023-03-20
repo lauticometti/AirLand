@@ -58,6 +58,7 @@ const noFilters = async () => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
 		const sneakersArr = sneakers.docs.map(sneaker => ({
+			id: sneaker.id,
 			...sneaker.data()
 		}))
 		return sneakersArr

@@ -16,6 +16,8 @@ export function Detail() {
 		dispatch(addItem(shoeId, uid))
 	}
 
+	console.log(shoe)
+
 	return (
 		<>
 			<Navbar />
