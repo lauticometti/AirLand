@@ -9,7 +9,7 @@ export function HomeCarousel() {
 	return (
 		<Carousel>
 			<Carousel.Item interval={500}>
-				<a href='https://www.nike.com/es/launch/t/behind-the-design-lunar-force-1-acronym'>
+				<a href='http://localhost:5173/detail/MZulqmUuiI3bezocwqry'>
 					<img
 						className='d-block w-100'
 						src={Lunar}
@@ -18,7 +18,7 @@ export function HomeCarousel() {
 				</a>
 			</Carousel.Item>
 			<Carousel.Item interval={700}>
-				<a href='https://www.nike.com/es/launch/t/behind-the-design-air-force-1-roc-a-fella'>
+				<a href='http://localhost:5173/detail/GJlGj1WrEDmwJdagmWO4'>
 					<img
 						className='d-block w-100'
 						src={Roc}
@@ -27,7 +27,7 @@ export function HomeCarousel() {
 				</a>
 			</Carousel.Item>
 			<Carousel.Item>
-				<a href='https://about.nike.com/en/newsroom/releases/nike-x-billie-eilish-af1-low'>
+				<a href='http://localhost:5173/detail/Rpxal8wZRLwJAsbz3pSy'>
 					<img
 						className='d-block w-100'
 						src={Billie}
@@ -36,7 +36,7 @@ export function HomeCarousel() {
 				</a>
 			</Carousel.Item>
 			<Carousel.Item>
-				<a href='https://www.nike.com/es/launch/t/behind-the-design-air-force-1-travis-scott'>
+				<a href='http://localhost:5173/detail/oMF3232s1vGXPR9wEkhC'>
 					<img
 						className='d-block w-100'
 						src={Travis}
