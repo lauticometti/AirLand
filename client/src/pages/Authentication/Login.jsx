@@ -6,7 +6,7 @@ export function Login() {
 		<div>
 			<LoginForm />
 			<div>
-				Doesn&apost have an account? <Link to='/signup'>Sign Up</Link>
+				Doesn&apos;t have an account? <Link to='/signup'>Sign Up</Link>
 			</div>
 		</div>
 	)

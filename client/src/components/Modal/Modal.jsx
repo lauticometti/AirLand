@@ -19,7 +19,7 @@ export function Modal({ onClose, children, show }) {
 	}, [closeOnEscapeKeyDown])
 
 	return (
-		<div onClick={onClose} className={`modal ${show ? 'show' : ''}`}>
+		<div onClick={onClose} className={`customModal ${show ? 'show' : ''}`}>
 			<div onClick={e => e.stopPropagation()} className='modalContent'>
 				<div className='modalBody'>{children}</div>
 				<div className='modalFooter'>

@@ -14,6 +14,9 @@ export const shoesApi = createApi({
 		}),
 		getShoesByName: builder.query({
 			query: name => `/sneakers/${name}`
+		}),
+		getSizes: builder.query({
+			query: () => '/sneakers/sizes'
 		})
 	})
 })
@@ -21,5 +24,6 @@ export const shoesApi = createApi({
 export const {
 	useGetShoesQuery,
 	useGetShoesByIdQuery,
+	useGetSizesQuery,
 	useGetShoesByNameQuery
 } = shoesApi

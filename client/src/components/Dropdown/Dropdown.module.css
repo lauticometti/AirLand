@@ -29,84 +29,39 @@
 	display: flex;
 	align-items: center;
 	gap: 1.2rem;
-	padding-bottom: 5px;
+	padding-bottom: 20px;
 
 	font-weight: 700;
 	font-size: 1.5rem;
 }
 
 .headerIcon {
-	transform: rotate(0);
+	transform: rotate(-90deg);
 	transition: 0.2s;
 }
 
-.headerIcon.rotate {
-	transform: rotate(-90deg);
+.headerIconRotate {
+	transform: rotate(0);
 	transition: 0.2s;
 }
 
 .headerP {
 	color: #fff;
+	margin: 0;
 }
 
 .dropdownListContainer {
 	display: none;
 }
 
-.dropdownListContainer.displayed {
+.dropdownListContainerDisplayed {
 	display: block;
 }
 
-.dropdownList {
-	padding-left: 10px;
-	font-size: 1.3rem;
-	font-weight: 200;
-	list-style: none;
-	width: 100%;
-}
+/* ============================================================ */
+/* Old css, I dont delete it because I'll use it on other place */
 
-.dropdownListItem {
-	display: flex;
-	justify-content: space-between;
-}
-
-.sizesDropdownList {
-	width: 100%;
-	padding-left: 10px;
-	margin-top: 0;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 25px;
-	flex-wrap: wrap;
-
-	font-size: 1.3rem;
-	list-style: none;
-}
-
-.sizeListItem {
-	border: 3px solid #727272;
-	border-radius: 50%;
-	padding: 7px;
-
-	color: #727272;
-
-	font-weight: 700;
-	cursor: pointer;
-	transition: 0.2s;
-}
-
-.sizeListItem:hover {
-	border-color: #f0f8f0;
-	color: #f0f8f0;
-}
-
-.sizeListItem.active {
-	border-color: #87cefa;
-	color: #87cefa;
-}
-
+/* 
 .label {
 	width: 100%;
 	display: flex;
@@ -161,10 +116,12 @@
 .checkboxInput::before {
 	border-radius: 2px;
 }
+*/
 
 /* FOR SOME UNKNOWN REASON, WHEN I SETTING A STATE USING THE INPUT ID, THIS DOESNT TURN ON "CHECKED", SO, I GO TO CREATE A CUSTOM STYLE SIMULATING THE ORIGINAL BEHAVIOR */
 
+/* 
 .checkboxInput.active::before {
 	transition: 0.2s;
 	transform: scale(1);
-}
+} */

@@ -1,16 +1,26 @@
 import styles from './Sneakers.module.css'
-import { Navbar, Cards, Filter, Order, Footer } from '../../components'
+import { Navbar, Cards, Order, Footer, FilterButton } from '../../components'
+import { useSelector } from 'react-redux'
+import { useGetShoesBySizesQuery } from '../../redux/services/filteredShoes'
+import { useGetShoesQuery } from '../../redux/services/services'
 
 export function Sneakers() {
+	const { activeFilter, filterValues } = useSelector(state => state.filter)
+
+	const query =
+		activeFilter === 'Sizes'
+			? () => useGetShoesBySizesQuery(filterValues)
+			: useGetShoesQuery
+
 	return (
 		<div>
 			<Navbar />
 			<div className={styles.shoesContainer}>
 				<div className={styles.filters}>
-					<Filter />
+					<FilterButton />
 					<Order />
 				</div>
-				<Cards />
+				<Cards query={query} />
 			</div>
 			<Footer />
 		</div>
