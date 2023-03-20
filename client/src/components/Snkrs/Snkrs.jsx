@@ -25,10 +25,10 @@ export function Snkrs() {
 					alt="'airforce1"
 				/>
 			</Link>
-			<Link to='/detail/4fMxAHNv7sijFB5yD0B7' className={styles.link}>
+			<Link to='/detail/siGa15dpl2hXZkIcSlMP' className={styles.link}>
 				<img
 					className={styles.img}
-					src='https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/0e668a79-27eb-42c9-91a9-5babe9870d63/air-force-1-mid-07-lv8-zapatillas-pzhhVG.png'
+					src='https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/2444e0b8-40a3-4fb2-9485-439e118e0703/air-force-1-07-uno.png'
 					alt="'airforce1"
 				/>
 			</Link>
