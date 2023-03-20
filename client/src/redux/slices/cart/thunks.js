@@ -18,7 +18,7 @@ export const addItem = (sneakerId, userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/cart/add/${userId}/${sneakerId}/`)
-      dispatch(get(userId))
+      dispatch(getCart(userId))
       alert(data)
     } catch (error) {
       alert(error.message)
@@ -30,7 +30,7 @@ export const removeItem = (sneakerId, userId) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.delete(`${BASE_URL}/cart/add/${userId}/${sneakerId}/`)
-      dispatch(get(userId))
+      dispatch(getCart(userId))
       alert(data)
     } catch (error) {
       alert(error.message)
