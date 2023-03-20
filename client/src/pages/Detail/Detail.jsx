@@ -2,12 +2,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Footer, Loader, Navbar, NotFound } from '../../components'
 import { addItem } from '../../redux'
-import { useGetShoesByIdQuery } from '../../redux/services/services'
+import { useGetShoesByIdQuery, useGetSizesQuery } from '../../redux/services/services'
 import styles from './Detail.module.css'
 
 export function Detail() {
 	const { shoeId } = useParams()
 	const { data: shoe, isLoading, error } = useGetShoesByIdQuery(shoeId)
+	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
 
@@ -15,8 +16,6 @@ export function Detail() {
 		event.preventDefault()
 		dispatch(addItem(shoeId, uid))
 	}
-
-	console.log(shoe)
 
 	return (
 		<>
@@ -45,20 +44,18 @@ export function Detail() {
 							<div className={styles.sizesContainer}>
 								<p className={styles.sizesTitle}>Sizes</p>
 								<ul className={styles.sizesChecks}>
-									{Object.keys(shoe.SIZE).map(size => {
-										return (
+									{
+										sizes?.map((size) =>
+										(
 											<li
 												key={size}
-												className={
-													shoe.SIZE[size]
-														? styles.sizeCheck
-														: styles.sizeDisabled
-												}
+												className={Number(shoe.SIZE[size]) ? styles.sizeCheck : styles.sizeDisabled}
 											>
-												<span className={styles.sizeSpan}>{size}</span>
+												{size}
 											</li>
 										)
-									})}
+										)
+									}
 								</ul>
 							</div>
 							<button className={styles.addToCartButton} onClick={handleAddToCart}>Add to cart</button>
