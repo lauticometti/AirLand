@@ -1,0 +1,83 @@
+.footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 50px 50px 10px;
+	background-color: #0d0d0d;
+	color: #cacaca;
+	font-family: Rubik;
+
+}
+
+.top {
+	height: 120px;
+}
+
+.logoContainer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.logo {
+	width: 50px;
+	height: 50px;
+}
+
+.hereLink {
+	color: #cacaca;
+	font-weight: 700;
+}
+
+.hereLink:hover {
+	color: #fff;
+}
+
+.bottom {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	border-top: 1px solid #202020;
+	padding: 30px 0;
+}
+
+.copyright {
+	width: 300px;
+	margin: 0;
+	font-size: 12px;
+}
+
+.devsList {
+	display: flex;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+}
+
+.devImage {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+}
+
+.liLink {
+	text-decoration: none;
+	color: inherit;
+	font-size: 16px;
+}
+
+.liLink:hover {
+	color: #fff;
+}
+
+.list {
+	width: 300px;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-end;
+}
