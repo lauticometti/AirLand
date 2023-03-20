@@ -21,7 +21,7 @@ export function Cards() {
 
 	return (
 		<div className={styles.cardsContainer}>
-			{data.sneakers.map(shoe => (
+			{data.map(shoe => (
 				<Card key={shoe.id} shoe={shoe} />
 			))}
 		</div>
