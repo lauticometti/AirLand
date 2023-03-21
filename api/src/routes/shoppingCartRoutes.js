@@ -18,14 +18,13 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
-router.post('/add/:userId/:sneakerId', async (req, res) => {
+router.post('/add/:userId/:sneakerId/:size', async (req, res) => {
   // agregar una zapatilla al shopping cart del usuario
   // necesito el uid de la zapatilla de la collection 'zapatillas'
   // necesito el uid del usuario para agregarle la zapatilla a su shopping cart'
-  const { sneakerId, userId } = req.params
-  console.log({ userId, sneakerId })
+  const { sneakerId, userId, size } = req.params
   try {
-    await addSneakersToShoppingCart(userId, sneakerId)
+    await addSneakersToShoppingCart(userId, sneakerId, size)
     res.status(200).json('Successfully added!')
   } catch (error) {
     res.status(400).json(error.message)

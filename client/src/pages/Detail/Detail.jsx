@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Footer, Loader, Navbar, NotFound } from '../../components'
@@ -11,10 +12,15 @@ export function Detail() {
 	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
+	const [sizeSelected, setSizeSelected] = useState('')
 
 	const handleAddToCart = (event) => {
 		event.preventDefault()
-		dispatch(addItem(shoeId, uid))
+		dispatch(addItem(shoeId, uid, sizeSelected))
+	}
+
+	const handleSizeChange = (event) => {
+		setSizeSelected(event.target.value)
 	}
 
 	return (
@@ -50,6 +56,8 @@ export function Detail() {
 											<li
 												key={size}
 												className={Number(shoe.SIZE[size]) ? styles.sizeCheck : styles.sizeDisabled}
+												value={size}
+												onClick={handleSizeChange}
 											>
 												{size}
 											</li>
