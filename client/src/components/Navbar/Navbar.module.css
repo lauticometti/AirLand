@@ -44,6 +44,10 @@
 	display: flex;
 	gap: 15px;
 }
+.logo{
+    margin-left:47%;
+    
+}
 
 @media (min-width: 660px) {
 	.li {

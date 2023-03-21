@@ -13,10 +13,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: white;
     column-gap: 30px;
 }
 .form{
+    border-color: black;
+  border-width: 1px;
+  border-style: solid;
+    
     position: absolute;
     max-width: 430px;
     width: 100%;
@@ -178,12 +182,10 @@ a.google span{
   .link:hover {
      color: grey
   }
-  .logo {
-	width: 100px;
+.logo{
+    margin-left:47%;
     
 }
-
-
 
 @media screen and (max-width: 400px) {
     .form{
