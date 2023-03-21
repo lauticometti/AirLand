@@ -1,22 +1,12 @@
 import { useEffect, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
 	startGoogleSignIn,
 	startLoginUserWithEmailPassword
 } from '../../redux/slices/auth'
-import {
-	MDBBtn,
-	MDBContainer,
-	MDBRow,
-	MDBCol,
-	MDBCard,
-	MDBCardBody,
-	MDBInput,
-	MDBIcon,
-	MDBCheckbox
-} from 'mdb-react-ui-kit'
+import './LoginForm.css'
 
 const formData = {
 	email: '',
@@ -26,6 +16,7 @@ const formData = {
 export function LoginForm() {
 	const { status, errorMessage } = useSelector(state => state.auth)
 	const [form, setForm] = useState(formData)
+	const [shown, setShown] = useState(false)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
@@ -43,6 +34,7 @@ export function LoginForm() {
 		dispatch(startLoginUserWithEmailPassword(form))
 		// navigate('/')
 	}
+	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
 		if (status === 'not-authenticated') return alert(errorMessage)
@@ -50,92 +42,65 @@ export function LoginForm() {
 	}, [status])
 
 	return (
-		<form action='' onSubmit={handleSubmit}>
-			<MDBContainer fluid>
-				<MDBRow className='d-flex justify-content-center align-items-center h-100'>
-					<MDBCol col='12'>
-						<MDBCard
-							className='bg-white my-5 mx-auto'
-							style={{ borderRadius: '1rem', maxWidth: '500px' }}
-						>
-							<MDBCardBody className='p-5 w-100 d-flex flex-column'>
-								<h2 className='fw-bold mb-2 text-center'>Sign in</h2>
-								<p className='text-white-50 mb-3'>
-									Please enter your login and password!
-								</p>
-
-								<MDBInput
-									onChange={handleChange}
-									name='email'
-									wrapperClass='mb-4 w-100'
-									label='Email address'
-									id='formControlLg'
+		<div>
+			<section className='container forms'>
+				<div className='form login'>
+					<div className='form-content'>
+						<header>Login</header>
+						<form action='' onSubmit={handleSubmit}>
+							<div className='field input-field'>
+								<input
+									className='input'
 									type='email'
+									name='email'
+									id='password'
+									placeholder='usuario@correo.com'
+									onChange={handleChange}
 									value={form.email}
 								/>
-								<MDBInput
-									onChange={handleChange}
+							</div>
+							<div className='field input-field'>
+								<input
+									className='password'
+									type={shown ? 'text' : 'password'}
 									name='password'
-									wrapperClass='mb-4 w-100'
-									label='Password'
-									id='formControlLg'
-									type='password'
+									id='password'
+									onChange={handleChange}
 									value={form.password}
 								/>
-
-								<MDBCheckbox
-									name='flexCheck'
-									id='flexCheckDefault'
-									className='mb-4'
-									label='Remember password'
-								/>
-
-								<MDBBtn size='lg'>Login</MDBBtn>
-
-								<hr className='my-4' />
-
-								<MDBBtn
-									className='mb-2 w-100'
-									size='lg'
-									style={{ backgroundColor: '#dd4b39' }}
+								<i className='bx bx-hide eye-icon' onClick={switchShown}></i>
+							</div>
+							<div className='form-link'>
+								<a href='#' className='forgot-pass'>
+									Forgot password?
+								</a>
+							</div>
+							<div className='field button-field'>
+								<button>Sign In</button>
+							</div>
+							<div className='media-options'>
+								<Link
+									className='field google'
 									onClick={() => dispatch(startGoogleSignIn())}
 								>
-									<MDBIcon fab icon='google' className='mx-2' />
-									<FcGoogle />
-									Sign in with google
-								</MDBBtn>
-
-								<MDBBtn
-									className='mb-4 w-100'
-									size='lg'
-									style={{ backgroundColor: '#3b5998' }}
-								>
-									<MDBIcon fab icon='facebook-f' className='mx-2' />
-									Sign in with facebook
-								</MDBBtn>
-							</MDBCardBody>
-						</MDBCard>
-					</MDBCol>
-				</MDBRow>
-			</MDBContainer>
-		</form>
+									<FcGoogle
+										style={{ width: '32px', height: '32px' }}
+										onClick={() => dispatch(startGoogleSignIn())}
+									/>
+									<span>Login with Google</span>
+								</Link>
+							</div>
+						</form>
+						<div className='center'>
+							Doesn&apos;t have an account?{' '}
+							<Link className='link' to='/signup'>
+								Sign Up
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 	)
 }
-/* <div>
-      <form action="" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">E-Mail: </label>
-          <input type="email" name="email" id="password" placeholder="usuario@correo.com" onChange={handleChange} value={form.email} />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input type="password" name="password" id="password" onChange={handleChange} value={form.password} />
-        </div>
-        <div>
-          <button>Sign In</button>
-          <FcGoogle style={{ width: '32px', height: '32px' }} onClick={() => dispatch(startGoogleSignIn())} />
-        </div>
-        <div>
-        </div>
-      </form>
-    </div> */
+/*  */
