@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { Footer, Loader, Navbar, NotFound } from '../../components'
+import { Footer, Loader, Navbar, NotFound, WhatsAppButton } from '../../components'
 import { addItem } from '../../redux'
 import { useGetShoesByIdQuery, useGetSizesQuery } from '../../redux/services/services'
 import styles from './Detail.module.css'
@@ -69,7 +69,7 @@ export function Detail() {
 					</div>
 				)}
 			</div>
-
+			<WhatsAppButton/>
 			<Footer />
 		</>
 	)
