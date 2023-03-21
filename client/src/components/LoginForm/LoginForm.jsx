@@ -6,6 +6,7 @@ import {
 	startGoogleSignIn,
 	startLoginUserWithEmailPassword
 } from '../../redux/slices/auth'
+import logo from '../../assets/air_land-black.svg'
 import './LoginForm.css'
 
 const formData = {
@@ -43,6 +44,9 @@ export function LoginForm() {
 
 	return (
 		<div>
+			<Link to='/' className='navLogo'>
+				<img src={logo} alt='logo' className='logo' />
+			</Link>
 			<section className='container forms'>
 				<div className='form login'>
 					<div className='form-content'>
@@ -62,6 +66,7 @@ export function LoginForm() {
 							<div className='field input-field'>
 								<input
 									className='password'
+									placeholder='password'
 									type={shown ? 'text' : 'password'}
 									name='password'
 									id='password'
@@ -92,6 +97,7 @@ export function LoginForm() {
 							</div>
 						</form>
 						<div className='center'>
+							<div>&nbsp;</div>
 							Doesn&apos;t have an account?{' '}
 							<Link className='link' to='/signup'>
 								Sign Up
