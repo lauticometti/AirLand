@@ -38,12 +38,14 @@ export function Navbar() {
 						<Link to='/login' className={styles.navLink}>
 							<AiOutlineUser />
 						</Link>
-
-						<Link to='/store' className={styles.navLink}>
-							<AiOutlineShoppingCart />
-						</Link>
-
-						{cart.length ? <p>{cart.length}</p> : ''}
+						<div className={styles.cartContainer}>
+							<Link to='/store' className={styles.navLink}>
+								<AiOutlineShoppingCart />
+								{
+									cart.length ? <span>{cart.length}</span> : ''
+								}
+							</Link>
+						</div>
 					</div>
 				</li>
 			</ul>
