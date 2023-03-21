@@ -85,6 +85,11 @@ export function Footer() {
 							About
 						</Link>
 					</li>
+					<li className={styles.li}>
+						<Link to='/contact' className={styles.liLink}>
+							Contact
+						</Link>
+					</li>
 				</ul>
 			</div>
 		</footer>

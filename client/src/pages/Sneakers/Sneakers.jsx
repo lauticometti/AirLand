@@ -1,5 +1,5 @@
 import styles from './Sneakers.module.css'
-import { Navbar, Cards, Order, Footer, FilterButton } from '../../components'
+import { Navbar, Cards, Order, Footer, FilterButton, WhatsAppButton } from '../../components'
 import { useSelector } from 'react-redux'
 import { useGetShoesBySizesQuery } from '../../redux/services/filteredShoes'
 import { useGetShoesQuery } from '../../redux/services/services'
@@ -22,6 +22,7 @@ export function Sneakers() {
 				</div>
 				<Cards query={query} />
 			</div>
+			<WhatsAppButton/>
 			<Footer />
 		</div>
 	)
