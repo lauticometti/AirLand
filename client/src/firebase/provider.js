@@ -11,10 +11,7 @@ const googleProvider = new GoogleAuthProvider()
 
 export const LoginWithGoogle = async () => {
 	try {
-		const response = await signInWithPopup(
-			FirebaseAuth,
-			googleProvider
-		)
+		const response = await signInWithPopup(FirebaseAuth, googleProvider)
 		const { displayName, email, uid } = response.user
 		return {
 			ok: true,
@@ -80,4 +77,8 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
 			message: error.message
 		}
 	}
+}
+
+export const logoutFirebase = async () => {
+	return await FirebaseAuth.signOut()
 }

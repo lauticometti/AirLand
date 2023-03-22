@@ -96,7 +96,7 @@ export function LoginForm() {
 								</Link>
 							</div>
 						</form>
-						<div className='center'>
+						<div>
 							<div>&nbsp;</div>
 							Doesn&apos;t have an account?{' '}
 							<Link className='link' to='/signup'>
