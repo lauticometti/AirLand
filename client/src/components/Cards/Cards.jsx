@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux'
 import { Card, Loader, NotFound } from '../../components'
-import PropTypes from 'prop-types'
+import { useGetShoesQuery } from '../../redux/services/filteredShoes'
+
 import styles from './Cards.module.css'
 
-export function Cards({ query }) {
-	const { data, isLoading, error } = query()
+export function Cards() {
+	const filterState = useSelector(state => state.filter)
+	const { data, isLoading, error } = useGetShoesQuery(filterState)
 
 	if (isLoading)
 		return (
@@ -26,8 +29,4 @@ export function Cards({ query }) {
 			))}
 		</div>
 	)
-}
-
-Cards.propTypes = {
-	query: PropTypes.func
 }

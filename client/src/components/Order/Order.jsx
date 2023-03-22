@@ -75,19 +75,6 @@ export function Order() {
 							/>
 						</label>
 					</li>
-
-					<li className={styles.modalListItem}>
-						<label htmlFor='healthier' className={styles.label}>
-							<p>Healthier</p>
-							<input
-								type='radio'
-								name='order'
-								id='healthier'
-								className={styles.radioInput}
-								onClick={handleOrderInput}
-							/>
-						</label>
-					</li>
 				</ul>
 			</Modal>
 		</div>
