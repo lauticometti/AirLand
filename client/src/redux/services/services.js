@@ -6,7 +6,7 @@ export const shoesApi = createApi({
 	reducerPath: 'shoesApi',
 	baseQuery: fetchBaseQuery({ baseUrl: BASEURL }),
 	endpoints: builder => ({
-		getShoes: builder.query({
+		getAllShoes: builder.query({
 			query: () => '/sneakers'
 		}),
 		getShoesById: builder.query({
@@ -22,7 +22,7 @@ export const shoesApi = createApi({
 })
 
 export const {
-	useGetShoesQuery,
+	useGetAllShoesQuery,
 	useGetShoesByIdQuery,
 	useGetSizesQuery,
 	useGetShoesByNameQuery
