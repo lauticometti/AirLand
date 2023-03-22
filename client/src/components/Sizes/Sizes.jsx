@@ -10,33 +10,23 @@ export function Sizes() {
 	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 
-	const [marked, setMarked] = useState(sizes ? sizes.map(el => false) : [])
-	const [currentSizes, setCurrentSizes] = useState([])
+	const [currentSize, setCurrentSize] = useState('')
 
 	const handleCheckbox = event => {
-		const size = Number(event.target.id)
-		const currentIndex = sizes.indexOf(size)
-		const newMarked = [...marked]
+		const size = event.target.id
 
-		if (currentSizes.includes(size)) {
-			setCurrentSizes(currentSizes.filter(el => el !== size))
-			newMarked[currentIndex] = false
-			setMarked(newMarked)
-		} else {
-			setCurrentSizes([...currentSizes, size])
-			newMarked[currentIndex] = true
-			setMarked(newMarked)
-		}
+		if (currentSize === size) setCurrentSize('')
+		else setCurrentSize(size)
 	}
 
 	useEffect(() => {
 		dispatch(
 			filterSlice.actions.setFilters({
-				filterType: 'Sizes',
-				filterValues: [...currentSizes]
+				filterType: 'sizes',
+				data: currentSize
 			})
 		)
-	}, [currentSizes])
+	}, [currentSize])
 
 	return (
 		<ul className={styles.list}>
@@ -47,7 +37,9 @@ export function Sizes() {
 							key={el + i}
 							onClick={handleCheckbox}
 							id={el}
-							className={marked[i] ? styles.listItemActive : styles.listItem}
+							className={
+								el === +currentSize ? styles.listItemActive : styles.listItem
+							}
 						>
 							{el}
 						</li>
