@@ -52,7 +52,7 @@ export function Navbar() {
 								{cart.length ? <span>{cart.length}</span> : ''}
 							</Link>
 						</div>
-						<Link to='/' onClick={onLogout}>
+						<Link to='/' className={styles.navLink} onClick={onLogout}>
 							<AiOutlineLogout />
 						</Link>
 					</div>
