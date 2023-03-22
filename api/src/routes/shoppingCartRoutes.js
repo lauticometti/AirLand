@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { getShoppingCart, addSneakersToShoppingCart, removeSneakersFromShoppingCart } = require('../controllers/shoppingCartControllers')
+const { getShoppingCart, addSneakersToShoppingCart, removeSneakersFromShoppingCart, updateQuantityFromShoppingCart } = require('../controllers/shoppingCartControllers')
 
 const router = Router()
 
@@ -39,6 +39,16 @@ router.delete('/delete/:userId/:sneakerId', async (req, res) => {
   try {
     await removeSneakersFromShoppingCart(userId, sneakerId)
     res.status(200).json('Successfully deleted!')
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
+})
+
+router.patch('/update/:userId/:sneakerId/:quantity', async (req, res) => {
+  const { userId, sneakerId, quantity } = req.params
+  try {
+    await updateQuantityFromShoppingCart(userId, sneakerId, quantity)
+    res.status(200).json('Successfully updated!')
   } catch (error) {
     res.status(400).json(error.message)
   }
