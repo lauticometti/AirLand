@@ -1,5 +1,12 @@
 import styles from './Sneakers.module.css'
-import { Navbar, Cards, Order, Footer, FilterButton } from '../../components'
+import {
+	Navbar,
+	Cards,
+	Order,
+	Footer,
+	FilterButton,
+	WhatsAppButton
+} from '../../components'
 
 export function Sneakers() {
 	return (
@@ -12,6 +19,7 @@ export function Sneakers() {
 				</div>
 				<Cards />
 			</div>
+			<WhatsAppButton />
 			<Footer />
 		</div>
 	)

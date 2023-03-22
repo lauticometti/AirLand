@@ -3,19 +3,30 @@ const { db } = require('../firebase')
 const getShoppingCart = async (userId) => {
   try {
     const response = await db.collection(`${userId}/shopping-cart/zapatillas`).get()
-    const sneakers = response.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    const sneakers = response.docs.map(doc => ({
+      id: doc.id,
+      image: doc.data().IMAGE,
+      name: doc.data().NAME,
+      price: doc.data().PRICE,
+      quantity: doc.data().CANTIDAD,
+      size: doc.data().SIZE
+    }))
     return sneakers
   } catch (error) {
     throw new Error(error.message)
   }
 }
 
-const addSneakersToShoppingCart = async (userId, sneakerId) => {
+const addSneakersToShoppingCart = async (userId, sneakerId, size) => {
   try {
     const sneaker = await (await db.collection(`/ZAPATILLAS`).doc(sneakerId).get()).data()
     db.collection(`${userId}/shopping-cart/zapatillas`)
       .doc(sneakerId)
-      .set(sneaker)
+      .set({
+        ...sneaker,
+        SIZE: size,
+        CANTIDAD: 1
+      })
   } catch (error) {
     throw new Error(error.message)
   }

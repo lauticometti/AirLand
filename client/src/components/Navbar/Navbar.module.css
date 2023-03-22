@@ -2,7 +2,6 @@
 	display: flex;
 	align-items: center;
 	padding: 0 0 20px;
-
 	font-family: Rubik, sans-serif;
 }
 
@@ -15,9 +14,7 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 35px;
-
 	padding: 10px 40px;
-
 	width: 100%;
 	font-weight: 900;
 	font-size: 22px;
@@ -25,6 +22,8 @@
 
 .li {
 	display: flex;
+	
+	
 }
 
 .navLink {
@@ -33,6 +32,7 @@
 	font-weight: 700;
 	border-bottom: 1px solid transparent;
 	transition: 0.2s;
+	gap: 10px;
 }
 
 .navLink:hover {
@@ -44,10 +44,34 @@
 	display: flex;
 	gap: 15px;
 }
+.logo{
+    margin-left:47%;
+    
+}
 
 @media (min-width: 660px) {
 	.li {
 		display: inline;
 		justify-content: end;
 	}
+}
+
+.cartContainer {
+	position: relative;
+}
+
+.cartContainer > .navLink > span {
+	position: absolute;
+	right: -5px;
+	top: 0;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	font-size: 14px;
+	font-weight: 600;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: red;
 }

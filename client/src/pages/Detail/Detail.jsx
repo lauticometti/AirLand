@@ -1,19 +1,26 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { Footer, Loader, Navbar, NotFound } from '../../components'
+import { Footer, Loader, Navbar, NotFound, WhatsAppButton } from '../../components'
 import { addItem } from '../../redux'
-import { useGetShoesByIdQuery } from '../../redux/services/services'
+import { useGetShoesByIdQuery, useGetSizesQuery } from '../../redux/services/services'
 import styles from './Detail.module.css'
 
 export function Detail() {
 	const { shoeId } = useParams()
 	const { data: shoe, isLoading, error } = useGetShoesByIdQuery(shoeId)
+	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
+	const [sizeSelected, setSizeSelected] = useState('')
 
 	const handleAddToCart = (event) => {
 		event.preventDefault()
-		dispatch(addItem(shoeId, uid))
+		dispatch(addItem(shoeId, uid, sizeSelected))
+	}
+
+	const handleSizeChange = (event) => {
+		setSizeSelected(event.target.value)
 	}
 
 	return (
@@ -43,20 +50,20 @@ export function Detail() {
 							<div className={styles.sizesContainer}>
 								<p className={styles.sizesTitle}>Sizes</p>
 								<ul className={styles.sizesChecks}>
-									{Object.keys(shoe.SIZE).map(size => {
-										return (
+									{
+										sizes?.map((size) =>
+										(
 											<li
 												key={size}
-												className={
-													shoe.SIZE[size]
-														? styles.sizeCheck
-														: styles.sizeDisabled
-												}
+												className={Number(shoe.SIZE[size]) ? styles.sizeCheck : styles.sizeDisabled}
+												value={size}
+												onClick={handleSizeChange}
 											>
-												<span className={styles.sizeSpan}>{size}</span>
+												{size}
 											</li>
 										)
-									})}
+										)
+									}
 								</ul>
 							</div>
 							<button className={styles.addToCartButton} onClick={handleAddToCart}>Add to cart</button>
@@ -70,7 +77,7 @@ export function Detail() {
 					</div>
 				)}
 			</div>
-
+			<WhatsAppButton/>
 			<Footer />
 		</>
 	)

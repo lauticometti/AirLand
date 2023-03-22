@@ -14,10 +14,10 @@ export const getCart = (userId) => {
   }
 }
 
-export const addItem = (sneakerId, userId) => {
+export const addItem = (sneakerId, userId, size) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/cart/add/${userId}/${sneakerId}/`)
+      const { data } = await axios.post(`${BASE_URL}/cart/add/${userId}/${sneakerId}/${size}`)
       dispatch(getCart(userId))
       alert(data)
     } catch (error) {
