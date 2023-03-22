@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateItem } from '../../redux'
+import { removeItem, updateItem } from '../../redux'
 import styles from './CartItem.module.css'
 
 export function CartItem({ item }) {
@@ -18,6 +18,11 @@ export function CartItem({ item }) {
     event.preventDefault()
     if (quantity - 1 === 0) return
     setQuantity(quantity - 1)
+  }
+
+  const handleRemove = (event) => {
+    event.preventDefault()
+    dispatch(removeItem(item.id, uid))
   }
 
   useEffect(() => {
@@ -50,6 +55,9 @@ export function CartItem({ item }) {
       <div className={styles.sneakerSizeContainer}>
         <span><b>Talle:</b></span>
         <span>{item?.size}</span>
+      </div>
+      <div className={styles.removeHandlerContainer}>
+        <button onClick={handleRemove}>X</button>
       </div>
     </div>
   )
