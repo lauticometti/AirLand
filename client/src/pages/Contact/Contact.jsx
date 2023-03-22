@@ -59,34 +59,38 @@ export function Contact() {
 			<Navbar />
 			<h1 className={styles.contactTitle}>Contact us</h1>
 			<Services />
+			<h1 className={styles.contactTitle}>Come visit our store</h1>
 			<GoogleMap />
 			<div className={styles['contact-page']}>
-				<h1 className={styles.contactTitle}>
-					Leave us a message&nbsp;
-					<span className={styles.contactTitleClickable}>here</span>
-				</h1>
+				<h1 className={styles.contactTitle}>Send us a message here</h1>
 				<form onSubmit={sendEmail}>
-					<label>Name</label>
-					<input
-						type='text'
-						name='name'
-						value={form.name}
-						onChange={handleChange}
-					/>
-					<label>Email</label>
-					<input
-						type='email'
-						name='email'
-						value={form.email}
-						onChange={handleChange}
-					/>
-					<label>Message</label>
-					<textarea
-						name='message'
-						rows='5'
-						value={form.message}
-						onChange={handleChange}
-					/>
+					<div className={styles.formField}>
+						<label>Name</label>
+						<input
+							type='text'
+							name='name'
+							value={form.name}
+							onChange={handleChange}
+						/>
+					</div>
+					<div className={styles.formField}>
+						<label>Email</label>
+						<input
+							type='email'
+							name='email'
+							value={form.email}
+							onChange={handleChange}
+						/>
+					</div>
+					<div className={styles.formField}>
+						<label>Message</label>
+						<textarea
+							name='message'
+							rows='5'
+							value={form.message}
+							onChange={handleChange}
+						/>
+					</div>
 					<button type='submit'>Send</button>
 				</form>
 			</div>

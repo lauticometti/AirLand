@@ -17,12 +17,14 @@ p {
     max-width: 350px;
     height: 350px;
     border-radius: 0.3rem;
-    outline: 2px solid transparent;;
+    outline: 2px solid black;
+    ;
     transition: 100ms ease-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
 }
 
 .serviceElement:hover {
-    outline: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .serviceIcon>svg {
