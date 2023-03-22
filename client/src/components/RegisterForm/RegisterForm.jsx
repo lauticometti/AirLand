@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
-import { startRegistrationUserWithEmailPassword } from '../../redux/slices/auth'
+import { Link, useNavigate } from 'react-router-dom'
 import {
-	MDBBtn,
-	MDBContainer,
-	MDBCard,
-	MDBCardBody,
-	MDBInput,
-	MDBCheckbox
-} from 'mdb-react-ui-kit'
+	startGoogleSignIn,
+	startRegistrationUserWithEmailPassword
+} from '../../redux/slices/auth'
+import logo from '../../assets/air_land-black.svg'
+import './RegisterForm.css'
 
 const formData = {
 	displayName: '',
@@ -21,6 +19,7 @@ const formData = {
 export function RegisterForm() {
 	const { status, errorMessage } = useSelector(state => state.auth)
 	const [form, setForm] = useState(formData)
+	const [shown, setShown] = useState(false)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
@@ -36,7 +35,9 @@ export function RegisterForm() {
 		// TODO: enviar form, validar datos, mostrar errores
 		setForm(formData)
 		dispatch(startRegistrationUserWithEmailPassword(form))
+		// navigate('/')
 	}
+	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
 		if (status === 'not-authenticated') return alert(errorMessage)
@@ -44,97 +45,89 @@ export function RegisterForm() {
 	}, [status])
 
 	return (
-		<form action='' onSubmit={handleSubmit}>
-			<MDBContainer
-				fluid
-				className='d-flex align-items-center justify-content-center bg-image'
-				style={{
-					backgroundImage:
-						'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)'
-				}}
-			>
-				<div className='mask gradient-custom-3'></div>
-				<MDBCard className='m-5' style={{ maxWidth: '600px' }}>
-					<MDBCardBody className='px-5'>
-						<h2 className='text-uppercase text-center mb-5'>
-							Create an account
-						</h2>
-						<MDBInput
-							onChange={handleChange}
-							name='displayName'
-							wrapperClass='mb-4'
-							label='Your Name'
-							size='lg'
-							id='form1'
-							type='text'
-						/>
-						<MDBInput
-							onChange={handleChange}
-							name='email'
-							wrapperClass='mb-4'
-							label='Your Email'
-							size='lg'
-							id='form2'
-							type='email'
-						/>
-						<MDBInput
-							onChange={handleChange}
-							name='password'
-							wrapperClass='mb-4'
-							label='Password'
-							size='lg'
-							id='form3'
-							type='password'
-						/>
-						<MDBInput
-							onChange={handleChange}
-							name='repeatPassword'
-							wrapperClass='mb-4'
-							label='Repeat your password'
-							size='lg'
-							id='form4'
-							type='password'
-						/>
-						<div className='d-flex flex-row justify-content-center mb-4'>
-							<MDBCheckbox
-								name='flexCheck'
-								id='flexCheckDefault'
-								label='I agree all statements in Terms of service'
-							/>
+		<div>
+			<Link to='/'>
+				<img src={logo} alt='logo' className='logo' />
+			</Link>
+			<section className='container forms'>
+				<div className='form login'>
+					<div className='form-content'>
+						<header>Sign Up</header>
+						<form action='' onSubmit={handleSubmit}>
+							<div className='field input-field'>
+								<input
+									className='input'
+									placeholder='name'
+									type='text'
+									name='displayName'
+									id='displayName'
+									onChange={handleChange}
+									value={form.displayName}
+								/>
+							</div>
+							<div className='field input-field'>
+								<input
+									className='input'
+									placeholder='Email'
+									type='email'
+									name='email'
+									id='email'
+									onChange={handleChange}
+									value={form.email}
+								/>
+							</div>
+							<div className='field input-field'>
+								<input
+									className='password'
+									placeholder='Create password'
+									type={shown ? 'text' : 'password'}
+									name='password'
+									id='password'
+									onChange={handleChange}
+									value={form.password}
+								/>
+								<i className='bx bx-hide eye-icon' onClick={switchShown}></i>
+							</div>
+							<div className='field input-field'>
+								<input
+									className='password'
+									placeholder='Confirm password'
+									type={shown ? 'text' : 'password'}
+									name='repeatPassword'
+									id='repeatPassword'
+									onChange={handleChange}
+									value={form.repeatPassword}
+								/>
+								<i className='bx bx-hide eye-icon' onClick={switchShown}></i>
+							</div>
+
+							<div className='field button-field'>
+								<button>Sign Up</button>
+							</div>
+							<div className='media-options'>
+								<Link
+									className='field google'
+									onClick={() => dispatch(startGoogleSignIn())}
+								>
+									<FcGoogle
+										style={{ width: '32px', height: '32px' }}
+										onClick={() => dispatch(startGoogleSignIn())}
+									/>
+									<span>Login with Google</span>
+								</Link>
+							</div>
+						</form>
+
+						<div className='center'>
+							<div>&nbsp;</div>
+							Already have an account?{' '}
+							<Link className='link' to='/login'>
+								Login
+							</Link>
 						</div>
-						<MDBBtn className='mb-4 w-100 gradient-custom-4' size='lg'>
-							Register
-						</MDBBtn>
-					</MDBCardBody>
-				</MDBCard>
-			</MDBContainer>
-		</form>
+					</div>
+				</div>
+			</section>
+		</div>
 	)
 }
-
-/* <div>
-      <form action="" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="displayName">FullName: </label>
-          <input type="text" name="displayName" id="displayName" placeholder="Ej: rodolfo14" value={form.displayName} onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="email">E-Mail:</label>
-          <input type="email" name="email" id="email" placeholder="Ej: usuario@correo.com" value={form.email} onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" value={form.password} onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="repeatPassword">Repeat Password</label>
-          <input type="password" name="repeatPassword" id="repeatPassword" value={form.repeatPassword} onChange={handleChange} />
-        </div>
-        <div>
-          <button>Sign Up</button>
-        </div>
-        <div>
-          
-          </div>
-          </form>
-        </div> */
