@@ -1,0 +1,48 @@
+p {
+    margin-bottom: 0;
+}
+
+.servicesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3rem;
+}
+
+.serviceElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    max-width: 350px;
+    height: 350px;
+    border-radius: 0.3rem;
+    outline: 2px solid transparent;;
+    transition: 100ms ease-out;
+}
+
+.serviceElement:hover {
+    outline: 2px solid black;
+}
+
+.serviceIcon>svg {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+}
+
+.serviceClickableText {
+    font-weight: bold;
+    transition: 200ms ease-in-out;
+    border-bottom: solid 2px rgba(0, 0, 0, 0);
+}
+
+.serviceClickableText:hover {
+    cursor: pointer;
+    border-bottom: solid 2px black;
+}
+
+@media (max-width: 1000px) {
+    .servicesContainer {
+        flex-direction: column;
+    }
+}

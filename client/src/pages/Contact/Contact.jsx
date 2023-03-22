@@ -1,4 +1,4 @@
-import './Contact.css'
+import styles from './Contact.module.css'
 import {
 	Navbar,
 	Footer,
@@ -57,11 +57,14 @@ export function Contact() {
 	return (
 		<div>
 			<Navbar />
-			<h1 className='h1'>Contact us</h1>
+			<h1 className={styles.contactTitle}>Contact us</h1>
 			<Services />
 			<GoogleMap />
-			<div className='contact-page'>
-				<h1>leave us a message</h1>
+			<div className={styles['contact-page']}>
+				<h1 className={styles.contactTitle}>
+					Leave us a message&nbsp;
+					<span className={styles.contactTitleClickable}>here</span>
+				</h1>
 				<form onSubmit={sendEmail}>
 					<label>Name</label>
 					<input
