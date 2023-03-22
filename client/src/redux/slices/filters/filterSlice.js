@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { sizes, types, minPrice, name } from './filterTypes'
 
 export const filterSlice = createSlice({
 	name: 'filter',
 	initialState: {
 		filters: {
-			[sizes]: '',
-			[types]: [],
-			[minPrice]: 0,
-			[name]: ''
+			sizes: '',
+			types: [],
+			minPrice: 0,
+			name: ''
 		},
 		sort: {
 			type: '',
