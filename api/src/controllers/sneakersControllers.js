@@ -1,22 +1,16 @@
 const { db } = require('../firebase')
 
-const getSneakers = async (req, res) => {
+const getAllSneakers = async () => {
 	try {
 		const querySnap = await db.collection('ZAPATILLAS').get()
 		const sneakers = querySnap.docs.map(doc => ({
 			id: doc.id,
 			...doc.data()
 		}))
-		res.status(200).json(sneakers)
+		return sneakers
 	} catch (error) {
-		res.status(400).json(error.message)
+		throw Error(error.message)
 	}
-
-	// trae los campos q quiero
-	// elnombredelcampo: doc.data().elnombredelcampo
-
-	// trae solo el primer objeto de la coleccion
-	// console.log(querySnap.docs[0].data())
 }
 const getSizes = async (req, res) => {
 	try {
@@ -39,42 +33,16 @@ const getSizes = async (req, res) => {
 }
 
 const postSneakers = async (req, res) => {
-	const {
-		ACTION,
-		CODE,
-		RATING,
-		REVIEW,
-		IMAGE,
-		NAME,
-		PRICE,
-		SIZE,
-		STATUS,
-		STOCK,
-		DESCRIPTION
-	} = req.body
 	try {
-		await db.collection('ZAPATILLAS').add({
-			ACTION,
-			CODE,
-			RATING,
-			REVIEW,
-			IMAGE,
-			NAME,
-			PRICE,
-			SIZE,
-			STATUS,
-			STOCK,
-			DESCRIPTION
-		})
+		await db.collection('ZAPATILLAS').add(req.body)
 		res.status(201).json('Succesfully created!')
 	} catch (error) {
 		res.status(400).json(error.message)
 	}
 }
 const getSneakersById = async (req, res) => {
-	// para mostrar una zapatilla por id
 	try {
-		const sneaker = await (
+		const sneaker = (
 			await db.collection('ZAPATILLAS').doc(req.params.id).get()
 		).data()
 		res.status(200).json(sneaker)
@@ -83,7 +51,6 @@ const getSneakersById = async (req, res) => {
 	}
 }
 const deleteSneakers = async (req, res) => {
-	// para mostrar una zapatilla por id
 	const { STATUS } = req.body
 	try {
 		await db.collection('ZAPATILLAS').doc(req.params.id).update({ STATUS })
@@ -102,7 +69,7 @@ const patchSneakers = async (req, res) => {
 }
 
 module.exports = {
-	getSneakers,
+	getAllSneakers,
 	getSizes,
 	postSneakers,
 	getSneakersById,

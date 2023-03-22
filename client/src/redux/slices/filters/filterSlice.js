@@ -1,17 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { sizes, types, minPrice, name } from './filterTypes'
 
 export const filterSlice = createSlice({
 	name: 'filter',
 	initialState: {
-		activeFilter: '',
-		filterValues: []
+		filters: {
+			[sizes]: '',
+			[types]: [],
+			[minPrice]: 0,
+			[name]: ''
+		},
+		sort: {
+			type: '',
+			order: 'up'
+		}
 	},
 	reducers: {
 		setFilters: (state, { payload }) => {
-			state.activeFilter = payload.filterType
-			state.filterValues = payload.filterValues
+			state.filters[payload.filterType] = payload.data
+		},
+		setSort: (state, { payload }) => {
+			state.sort.type = payload.sortType
+			state.sort.order = payload.order
 		}
 	}
 })
 
-export const { setFilters } = filterSlice.actions
+export const { setFilters, setSort } = filterSlice.actions

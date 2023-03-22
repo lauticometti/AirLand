@@ -15,7 +15,7 @@ app.use(cors())
 // Routes
 app.use('/api/sneakers', require('./routes/sneakersRoutes'))
 app.use('/api/users', require('./routes/usersRoutes'))
-app.use('/api/filter', require('./routes/filtersRoutes'))
+app.use('/api/filter', require('./routes/filterRoutes'))
 app.use('/api/cart', require('./routes/shoppingCartRoutes'))
 
 app.use(express.static(path.join(__dirname, 'public')))
