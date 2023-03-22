@@ -171,11 +171,7 @@ a.google span{
     opacity: 0.6;
     color: #232836;
 }
-.center {
-    width: 100%; /* ajusta el ancho según tus necesidades */
-    margin-left: 50px;
-    margin-right: auto;
-  }
+
   .link {
     color: #FFF;
   }

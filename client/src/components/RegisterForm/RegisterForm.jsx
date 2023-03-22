@@ -57,7 +57,7 @@ export function RegisterForm() {
 							<div className='field input-field'>
 								<input
 									className='input'
-									placeholder='name'
+									placeholder='Name'
 									type='text'
 									name='displayName'
 									id='displayName'
@@ -118,7 +118,7 @@ export function RegisterForm() {
 							</div>
 						</form>
 
-						<div className='center'>
+						<div>
 							<div>&nbsp;</div>
 							Already have an account?{' '}
 							<Link className='link' to='/login'>

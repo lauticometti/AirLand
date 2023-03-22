@@ -1,12 +1,20 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/air_land-black.svg'
 import styles from './Navbar.module.css'
-import { AiOutlineUser, AiOutlineShoppingCart, AiOutlinePhone } from 'react-icons/ai'
+import {
+	AiOutlineUser,
+	AiOutlineShoppingCart,
+	AiOutlinePhone,
+	AiOutlineLogout
+} from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getCart } from '../../redux'
+import { getCart, startLogout } from '../../redux'
 
 export function Navbar() {
+	const onLogout = () => {
+		dispatch(startLogout())
+	}
 	const { cart } = useSelector(state => state.cart)
 	const { status, uid } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
@@ -33,7 +41,7 @@ export function Navbar() {
 				<li className={styles.li}>
 					<div className={styles.rightestLiContainer}>
 						<Link to='/contact' className={styles.navLink}>
-						<AiOutlinePhone />
+							<AiOutlinePhone />
 						</Link>
 						<Link to='/login' className={styles.navLink}>
 							<AiOutlineUser />
@@ -41,11 +49,12 @@ export function Navbar() {
 						<div className={styles.cartContainer}>
 							<Link to='/store' className={styles.navLink}>
 								<AiOutlineShoppingCart />
-								{
-									cart.length ? <span>{cart.length}</span> : ''
-								}
+								{cart.length ? <span>{cart.length}</span> : ''}
 							</Link>
 						</div>
+						<Link to='/' onClick={onLogout}>
+							<AiOutlineLogout />
+						</Link>
 					</div>
 				</li>
 			</ul>
