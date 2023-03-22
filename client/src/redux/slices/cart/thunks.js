@@ -37,3 +37,15 @@ export const removeItem = (sneakerId, userId) => {
     }
   }
 }
+
+export const updateItem = (sneakerId, userId, quantity) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.patch(`${BASE_URL}/cart/update/${userId}/${sneakerId}/${quantity}`)
+      dispatch(getCart(userId))
+      console.log(data)
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+}

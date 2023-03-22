@@ -1,0 +1,67 @@
+.cartItemContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.imgContainer > img {
+	width: 160px;
+	object-fit: cover;
+}
+
+.sneakerNameContainer {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: 300px;
+}
+
+.sneakerPriceContainer {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.quantityContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+}
+
+.quantityInputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.quantityInputContainer > input {
+	text-align: center;
+}
+
+.quantityHandlersContainer {
+	margin-left: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+.quantityHandlersContainer > button {
+	font-size: 20px;
+	font-weight: 500;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.quantityHandlersContainer > button:hover {
+	background-color: grey;
+	color: white;
+}
+
+.sneakerSizeContainer {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}

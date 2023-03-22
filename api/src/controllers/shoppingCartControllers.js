@@ -7,7 +7,7 @@ const getShoppingCart = async (userId) => {
       id: doc.id,
       image: doc.data().IMAGE,
       name: doc.data().NAME,
-      price: doc.data().PRICE,
+      price: doc.data().PRICE * Number(doc.data().CANTIDAD),
       quantity: doc.data().CANTIDAD,
       size: doc.data().SIZE
     }))
@@ -42,4 +42,17 @@ const removeSneakersFromShoppingCart = async (userId, sneakerId) => {
   }
 }
 
-module.exports = { getShoppingCart, addSneakersToShoppingCart, removeSneakersFromShoppingCart }
+const updateQuantityFromShoppingCart = async (userId, sneakerId, quantity) => {
+
+  console.log({ userId, sneakerId, quantity })
+
+  try {
+    db.collection(`${userId}/shopping-cart/zapatillas`)
+      .doc(sneakerId)
+      .update({ CANTIDAD: Number(quantity) })
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
+
+module.exports = { getShoppingCart, addSneakersToShoppingCart, removeSneakersFromShoppingCart, updateQuantityFromShoppingCart }
