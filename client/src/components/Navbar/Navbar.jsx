@@ -26,19 +26,19 @@ export function Navbar() {
 	return (
 		<nav className={styles.nav}>
 			<ul className={styles.list}>
-				<li className={styles.li}>
+				<li>
 					<Link to='/' className={styles.navLogo}>
 						<img src={logo} alt='logo' className={styles.logo} />
 					</Link>
 				</li>
 
-				<li className={styles.li}>
+				<li className={styles.navCenteredElement}>
 					<Link to='/snkrs' className={styles.navLink}>
 						SNKRS
 					</Link>
 				</li>
 
-				<li className={styles.li}>
+				<li>
 					<div className={styles.rightestLiContainer}>
 						<Link to='/contact' className={styles.navLink}>
 							<AiOutlinePhone />
@@ -52,7 +52,7 @@ export function Navbar() {
 								{cart.length ? <span>{cart.length}</span> : ''}
 							</Link>
 						</div>
-						<Link to='/' onClick={onLogout}>
+						<Link to='/' className={styles.navLink} onClick={onLogout}>
 							<AiOutlineLogout />
 						</Link>
 					</div>

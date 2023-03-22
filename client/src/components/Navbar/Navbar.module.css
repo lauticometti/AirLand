@@ -20,10 +20,10 @@
 	font-size: 22px;
 }
 
-.li {
-	display: flex;
-	
-	
+.navCenteredElement {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .navLink {
