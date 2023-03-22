@@ -4,6 +4,7 @@ const filterByName = async name => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
 		const sneakersArr = sneakers.docs.map(sneaker => ({
+			id: sneaker.id,
 			...sneaker.data()
 		}))
 		if (!name) return sneakersArr
@@ -20,6 +21,7 @@ const filterBySizes = async sizes => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
 		const sneakersArr = sneakers.docs.map(sneaker => ({
+			id: sneaker.id,
 			...sneaker.data()
 		}))
 
@@ -42,6 +44,7 @@ const filterByType = async type => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
 		const sneakersArr = sneakers.docs.map(sneaker => ({
+			id: sneaker.id,
 			...sneaker.data()
 		}))
 		if (!type) return sneakersArr
@@ -58,6 +61,7 @@ const noFilters = async () => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
 		const sneakersArr = sneakers.docs.map(sneaker => ({
+			id: sneaker.id,
 			...sneaker.data()
 		}))
 		return sneakersArr
