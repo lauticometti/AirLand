@@ -2,10 +2,11 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-bottom: 150px;
 }
 
 .filters {
-	padding: 0 40px;
+	padding: 0 40px 80px;
 	width: 100%;
 
 	display: flex;
