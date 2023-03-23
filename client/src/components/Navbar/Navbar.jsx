@@ -9,17 +9,19 @@ import {
 } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getCart, startLogout } from '../../redux'
+import { clearCart, getCart, startLogout } from '../../redux'
 
 export function Navbar() {
 	const onLogout = () => {
 		dispatch(startLogout())
+		dispatch(clearCart())
 	}
 	const { cart } = useSelector(state => state.cart)
 	const { status, uid } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
+		if (!uid) return
 		dispatch(getCart(uid))
 	}, [status])
 

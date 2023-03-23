@@ -9,8 +9,11 @@ export const cartSlice = createSlice({
     get: (state, { payload }) => {
       state.cart = payload
     },
+    clearCart: (state) => {
+      state.cart = []
+    }
   }
 });
 
 // Action creators are generated for each case redicer function
-export const { get } = cartSlice.actions;
+export const { get, clearCart } = cartSlice.actions;

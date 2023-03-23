@@ -40,7 +40,7 @@ export function RegisterForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
-		if (status === 'not-authenticated') return alert(errorMessage)
+		if (status === 'not-authenticated' && errorMessage) return alert(errorMessage)
 		if (status === 'authenticated') return navigate('/')
 	}, [status])
 
