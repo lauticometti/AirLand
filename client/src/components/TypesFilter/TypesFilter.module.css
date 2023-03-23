@@ -10,10 +10,6 @@
 	font-weight: 700;
 }
 
-.label:checked {
-	color: #fff;
-}
-
 .input {
 	-webkit-appearance: none;
 	appearance: none;

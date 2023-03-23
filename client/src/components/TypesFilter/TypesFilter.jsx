@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styles from './Types.module.css'
+import styles from './TypesFilter.module.css'
 import { filterSlice } from '../../redux/slices/filters/filterSlice'
 
-export function Types() {
+export function TypesFilter() {
 	const [checked, setChecked] = useState([])
 	const dispatch = useDispatch()
 
