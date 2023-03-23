@@ -44,9 +44,10 @@
 	display: flex;
 	gap: 15px;
 }
-.logo{
-    margin-left:47%;
-    
+
+.logo {
+	margin-left: 47%;
+
 }
 
 @media (min-width: 660px) {
@@ -60,7 +61,7 @@
 	position: relative;
 }
 
-.cartContainer > .navLink > span {
+.cartContainer>.navLink>span {
 	position: absolute;
 	right: -5px;
 	top: 0;

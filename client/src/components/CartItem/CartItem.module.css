@@ -5,7 +5,8 @@
 	justify-content: space-evenly;
 	margin: 0 50px;
 }
-.imgContainer > img {
+
+.imgContainer>img {
 	width: 160px;
 	object-fit: cover;
 }
@@ -35,7 +36,7 @@
 	align-items: center;
 }
 
-.quantityInputContainer > input {
+.quantityInputContainer>input {
 	text-align: center;
 	padding: 0;
 }
@@ -46,7 +47,7 @@
 	gap: 10px;
 }
 
-.quantityHandlersContainer > button {
+.quantityHandlersContainer>button {
 	font-size: 20px;
 	font-weight: 500;
 	width: 25px;
@@ -57,7 +58,7 @@
 	border-radius: 5px;
 }
 
-.quantityHandlersContainer > button:hover {
+.quantityHandlersContainer>button:hover {
 	background-color: grey;
 	color: white;
 }
