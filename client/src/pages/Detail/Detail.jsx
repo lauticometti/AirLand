@@ -25,6 +25,7 @@ export function Detail() {
 
 	const handleAddToCart = event => {
 		event.preventDefault()
+		if (!uid) return
 		dispatch(addItem(shoeId, uid, sizeSelected))
 	}
 

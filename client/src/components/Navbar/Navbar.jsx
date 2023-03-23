@@ -9,36 +9,38 @@ import {
 } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getCart, startLogout } from '../../redux'
+import { clearCart, getCart, startLogout } from '../../redux'
 
 export function Navbar() {
 	const onLogout = () => {
 		dispatch(startLogout())
+		dispatch(clearCart())
 	}
 	const { cart } = useSelector(state => state.cart)
 	const { status, uid } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
+		if (!uid) return
 		dispatch(getCart(uid))
 	}, [status])
 
 	return (
 		<nav className={styles.nav}>
 			<ul className={styles.list}>
-				<li className={styles.li}>
+				<li>
 					<Link to='/' className={styles.navLogo}>
 						<img src={logo} alt='logo' className={styles.logo} />
 					</Link>
 				</li>
 
-				<li className={styles.li}>
+				<li className={styles.navCenteredElement}>
 					<Link to='/snkrs' className={styles.navLink}>
 						SNKRS
 					</Link>
 				</li>
 
-				<li className={styles.li}>
+				<li>
 					<div className={styles.rightestLiContainer}>
 						<Link to='/contact' className={styles.navLink}>
 							<AiOutlinePhone />
@@ -52,7 +54,7 @@ export function Navbar() {
 								{cart.length ? <span>{cart.length}</span> : ''}
 							</Link>
 						</div>
-						<Link to='/' onClick={onLogout}>
+						<Link to='/' className={styles.navLink} onClick={onLogout}>
 							<AiOutlineLogout />
 						</Link>
 					</div>

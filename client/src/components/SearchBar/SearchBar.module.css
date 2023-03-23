@@ -1,0 +1,27 @@
+.searchBarContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+}
+
+.searchBarInput {
+    width: 100%;
+    height: 35px;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0, 0.35);
+    border-radius: 10px;
+}
+
+
+.searchBarIcon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 45%;
+}
+
+.searchBarInput:focus-within+.searchBarIcon {
+    opacity: 90%;
+}

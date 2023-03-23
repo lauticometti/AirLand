@@ -1,14 +1,14 @@
 .whatsapp_float {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 40px;
-  right: 40px;
+  width: 80px;
+  height: 80px;
+  bottom: 80px;
+  right: 80px;
   background-color: #25d366;
   color: #fff;
+  border: transparent solid 2px;
   border-radius: 50px;
   text-align: center;
-  font-size: 30px;
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -16,6 +16,7 @@
   transition: ease-in-out 200ms;
 }
 .whatsapp_float:hover{
-  box-shadow: 0px 0px 10px 8px rgba(0,0,0,0.20);
+  box-shadow: 0px 2px 9px rgba(0,0,0,0.4);
+  border: white solid 2px;
   transform: scale(110%);
 }
