@@ -22,9 +22,6 @@ export function TypesFilter() {
 		else setChecked([...checked, type])
 	}
 
-	console.log(filterState)
-	console.log(checked)
-
 	return (
 		<ul className={styles.list}>
 			<li className={styles.listItem}>
