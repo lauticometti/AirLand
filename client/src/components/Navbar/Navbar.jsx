@@ -45,9 +45,16 @@ export function Navbar() {
 						<Link to='/contact' className={styles.navLink}>
 							<AiOutlinePhone />
 						</Link>
-						<Link to='/login' className={styles.navLink}>
-							<AiOutlineUser />
-						</Link>
+						{
+							uid
+								? <Link to='/profile' className={styles.navLink}>
+									<AiOutlineUser />
+								</Link>
+								: <Link to='/login' className={styles.navLink}>
+									<AiOutlineUser />
+								</Link>
+
+						}
 						<div className={styles.cartContainer}>
 							<Link to='/store' className={styles.navLink}>
 								<AiOutlineShoppingCart />

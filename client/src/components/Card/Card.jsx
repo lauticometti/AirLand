@@ -7,7 +7,7 @@ export function Card({ shoe }) {
 		<div className={styles.container}>
 			<Link to={`/detail/${shoe.id}`}>
 				<div className={styles.imageContainer}>
-					<img src={shoe.IMAGE[0]} alt={shoe.NAME} className={styles.image} />
+					<img src={shoe.IMAGE.THUMBNAIL} alt={shoe.NAME} className={styles.image} />
 				</div>
 			</Link>
 			<div className={styles.textContainer}>

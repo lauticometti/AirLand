@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Footer, Loader, Navbar, NotFound, WhatsAppButton } from '../../components'
 import { addItem } from '../../redux'
 import { useGetShoesByIdQuery, useGetSizesQuery } from '../../redux/services/services'
@@ -12,11 +12,12 @@ export function Detail() {
 	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
+	const navigate = useNavigate()
 	const [sizeSelected, setSizeSelected] = useState('')
 
 	const handleAddToCart = (event) => {
 		event.preventDefault()
-		if (!uid) return
+		if (!uid) return navigate('/login')
 		dispatch(addItem(shoeId, uid, sizeSelected))
 	}
 
@@ -40,7 +41,7 @@ export function Detail() {
 				) : (
 					<div className={styles.shoeContainer}>
 						<img
-							src={shoe.IMAGE[0]}
+							src={shoe.IMAGE.THUMBNAIL}
 							alt={shoe.NAME}
 							className={styles.image}
 						/>
