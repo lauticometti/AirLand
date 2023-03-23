@@ -44,7 +44,7 @@ export function PriceFilter() {
 				onMouseUp={handleDispatch}
 				type='range'
 				id='minPrice'
-				min='0'
+				min='1'
 				max='300'
 				value={minPrice}
 				className={styles.inputRange}

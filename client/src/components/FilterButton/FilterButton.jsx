@@ -25,7 +25,7 @@ export function FilterButton() {
 				<Dropdown title='Types'>
 					<TypesFilter />
 				</Dropdown>
-				<Dropdown title='Min price'>
+				<Dropdown title='Price'>
 					<PriceFilter />
 				</Dropdown>
 			</Modal>

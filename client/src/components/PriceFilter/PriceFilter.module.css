@@ -2,10 +2,10 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	margin-top: 20px;
+	margin: 20px 0 0 30px;
 
-	background-color: #ff8e0a;
-	width: 300px;
+	background-color: #050505;
+	width: 320px;
 	height: 45px;
 	border-radius: 20px;
 	position: relative;
@@ -13,7 +13,7 @@
 
 .rangeSpan {
 	position: absolute;
-	color: #ff8e0a;
+	color: #fff;
 	font-family: Poppins;
 	font-size: 18px;
 	font-weight: 900;
@@ -24,7 +24,7 @@
 
 .rangeNumber {
 	position: absolute;
-	color: #ff8e0a;
+	color: #fff;
 	font-family: Poppins;
 	font-size: 18px;
 	font-weight: 900;
@@ -47,10 +47,41 @@
 	position: relative;
 }
 
+.inputRange::-webkit-slider-thumb {
+	border-radius: 50%;
+	background: #050505;
+	cursor: pointer;
+	box-shadow: 0px 0px 11px 8px rgba(0, 0, 0, 0.26);
+}
+
+.inputRange::-moz-range-thumb {
+	border-radius: 50%;
+	background: #050505;
+	cursor: pointer;
+	box-shadow: 0px 0px 11px 8px rgba(0, 0, 0, 0.26);
+}
+
+.inputRange::-webkit-slider-runnable-track {
+	background: #fff;
+	height: 2px;
+}
+
+.inputRange::-moz-range-track {
+	background: #fff;
+	height: 2px;
+}
+
+.inputRange:focus {
+	outline: none;
+}
+.inputRange:focus::-webkit-slider-runnable-track {
+	outline: none;
+}
+
 .rangeMin,
 .rangeMax {
 	font-family: Poppins;
 	font-size: 24px;
 	font-weight: 700;
-	color: #181818;
+	color: #fff;
 }
