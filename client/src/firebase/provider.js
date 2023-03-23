@@ -3,7 +3,8 @@ import {
 	signInWithEmailAndPassword,
 	updateProfile,
 	GoogleAuthProvider,
-	signInWithPopup
+	signInWithPopup,
+	// signInAnonymously
 } from 'firebase/auth'
 import { FirebaseAuth } from './'
 
@@ -82,3 +83,16 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
 export const logoutFirebase = async () => {
 	return await FirebaseAuth.signOut()
 }
+
+// export const loginAnonymously = async () => {
+// 	try {
+// 		const response = await signInAnonymously(FirebaseAuth)
+// 		console.log(response)
+// 	} catch (error) {
+// 		return {
+// 			ok: false,
+// 			code: error.code,
+// 			message: error.message
+// 		}
+// 	}
+// } 

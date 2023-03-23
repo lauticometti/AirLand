@@ -17,8 +17,13 @@
 .buyButtonContainer > button {
 	font-size: 20px;
 	border-radius: 20px;
-	width: 175px;
+	width: 190px;
 	height: 40px;
-	background-color: green;
+	background-color: rgb(161, 161, 161);
+	color: black;
+}
+
+.buyButtonContainer > button:hover {
+	background-color: rgb(65, 65, 65);
 	color: white;
 }

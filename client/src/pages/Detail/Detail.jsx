@@ -16,6 +16,7 @@ export function Detail() {
 
 	const handleAddToCart = (event) => {
 		event.preventDefault()
+		if (!uid) return
 		dispatch(addItem(shoeId, uid, sizeSelected))
 	}
 
@@ -77,7 +78,7 @@ export function Detail() {
 					</div>
 				)}
 			</div>
-			<WhatsAppButton/>
+			<WhatsAppButton />
 			<Footer />
 		</>
 	)

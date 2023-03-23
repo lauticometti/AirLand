@@ -2,7 +2,8 @@ import {
 	loginUserWithEmailPassword,
 	LoginWithGoogle,
 	logoutFirebase,
-	registerUserWithEmailPassword
+	registerUserWithEmailPassword,
+	// loginAnonymously
 } from '../../../firebase'
 import { checkingCredentials, Logout, signIn } from './'
 
@@ -68,3 +69,9 @@ export const startLogout = () => {
 		dispatch(Logout())
 	}
 }
+
+// export const startLoginAnonymously = () => {
+// 	return async dispatch => {
+// 		await loginAnonymously()
+// 	}
+// }

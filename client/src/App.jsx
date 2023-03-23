@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import { useCheckAuth } from './hooks/useCheckAuth'
 import {
 	Login,
 	Register,
@@ -12,6 +13,9 @@ import {
 import './styles/App.css'
 
 function App() {
+
+	useCheckAuth()
+
 	return (
 		<div className='App'>
 			<Routes>
