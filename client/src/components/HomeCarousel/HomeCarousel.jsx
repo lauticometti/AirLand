@@ -10,38 +10,22 @@ export function HomeCarousel() {
 		<Carousel>
 			<Carousel.Item interval={500}>
 				<Link to='/detail/MZulqmUuiI3bezocwqry'>
-					<img
-						className='d-block w-100'
-						src={Lunar}
-						alt='ACRONYM'
-					/>
+					<img className='d-block w-100' src={Lunar} alt='ACRONYM' />
 				</Link>
 			</Carousel.Item>
 			<Carousel.Item interval={700}>
 				<Link to='/detail/GJlGj1WrEDmwJdagmWO4'>
-					<img
-						className='d-block w-100'
-						src={Roc}
-						alt='ROC-A-FELLA'
-					/>
+					<img className='d-block w-100' src={Roc} alt='ROC-A-FELLA' />
 				</Link>
 			</Carousel.Item>
 			<Carousel.Item>
 				<Link to='/detail/Rpxal8wZRLwJAsbz3pSy'>
-					<img
-						className='d-block w-100'
-						src={Billie}
-						alt=' Billie Eilish'
-					/>
+					<img className='d-block w-100' src={Billie} alt=' Billie Eilish' />
 				</Link>
 			</Carousel.Item>
 			<Carousel.Item>
 				<Link to='/detail/oMF3232s1vGXPR9wEkhC'>
-					<img
-						className='d-block w-100'
-						src={Travis}
-						alt='TRAVIS SCOTT'
-					/>
+					<img className='d-block w-100' src={Travis} alt='TRAVIS SCOTT' />
 				</Link>
 			</Carousel.Item>
 		</Carousel>

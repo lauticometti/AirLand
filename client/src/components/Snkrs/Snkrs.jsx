@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export function Snkrs() {
 	return (
 		<div className={styles.section}>
-			<Link to='/detail/gaIBES7VEgHNcCsgiHJu'  className={styles.link}>
+			<Link to='/detail/gaIBES7VEgHNcCsgiHJu' className={styles.link}>
 				<img
 					className={styles.img}
 					src='https://tododetenis.com/wp-content/uploads/2022/11/13fda717-33be-43af-bccf-74c351665aa4-600x750.webp'
