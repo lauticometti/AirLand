@@ -47,7 +47,7 @@
 
 .modalList {
 	list-style: none;
-	font-family: Chivo;
+	font-family: Poppins;
 	font-size: 1.5rem;
 	color: #fff;
 	width: 80%;
@@ -66,7 +66,17 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	font-family: Poppins;
+	font-weight: 700;
+	font-size: 20px;
+
 	user-select: none;
+}
+
+.labelP {
+	padding: 0;
+	margin: 0;
 }
 
 .radioInput {
