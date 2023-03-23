@@ -8,6 +8,7 @@
 .loader,
 .error {
 	margin-top: 50vh;
+	margin-bottom: 100px;
 }
 
 .shoeContainer {
@@ -17,6 +18,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.imageContainer {
+	width: 350px;
+	display: flex;
+	justify-content: center;
 }
 
 .image {
@@ -84,7 +91,7 @@
 }
 
 .sizeDisabled {
-	background-color: red;
+	opacity: 0.5;
 }
 
 .addToCartButton {

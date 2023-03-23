@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import icon from '../../assets/order-icon.svg'
-import { Dropdown, Modal, Sizes } from '..'
+import { Dropdown, Modal, Sizes, Types } from '..'
 
 import styles from './FilterButton.module.css'
 
@@ -21,6 +21,9 @@ export function FilterButton() {
 			<Modal onClose={() => setShow(false)} show={show}>
 				<Dropdown title='Sizes'>
 					<Sizes />
+				</Dropdown>
+				<Dropdown title='Types'>
+					<Types />
 				</Dropdown>
 			</Modal>
 		</div>
