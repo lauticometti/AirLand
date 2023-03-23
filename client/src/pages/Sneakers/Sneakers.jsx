@@ -5,7 +5,8 @@ import {
 	Order,
 	Footer,
 	FilterButton,
-	WhatsAppButton
+	WhatsAppButton,
+	SearchBar
 } from '../../components'
 
 export function Sneakers() {
@@ -15,6 +16,7 @@ export function Sneakers() {
 			<div className={styles.shoesContainer}>
 				<div className={styles.filters}>
 					<FilterButton />
+					<SearchBar />
 					<Order />
 				</div>
 				<Cards />

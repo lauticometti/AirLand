@@ -7,8 +7,8 @@
 
 .filters {
 	padding: 0 40px 80px;
-	width: 100%;
+	width: 44vw;
 
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
