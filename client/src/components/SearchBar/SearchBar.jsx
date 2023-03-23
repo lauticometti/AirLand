@@ -21,7 +21,7 @@ export function SearchBar() {
 	useEffect(() => {
 		if (
 			searchString.length > 2 ||
-			(oldSearch.length === 1 && searchString.length === 0)
+			(oldSearch.length && searchString.length <= 1)
 		) {
 			dispatch(
 				filterSlice.actions.setFilters({
