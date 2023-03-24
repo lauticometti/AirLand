@@ -118,6 +118,7 @@
 }
 
 .addToCartButton {
+	display: block;
 	background-color: #ccc;
 	font-family: Poppins;
 	font-size: 22px;
@@ -126,9 +127,15 @@
 	width: 80%;
 	max-width: 350px;
 	height: 55px;
-	margin: 10px auto;
-	padding: 4px 8px;
+	margin: 10px auto 0;
+	padding: 4px 8px 0;
 	border-radius: 3px;
+}
+
+.addCartAlert {
+	display: block;
+	width: 350px;
+	margin: 0 auto;
 }
 
 .description {

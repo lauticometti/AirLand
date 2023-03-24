@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {
 	Footer,
 	Loader,
@@ -19,15 +19,34 @@ import styles from './Detail.module.css'
 
 export function Detail() {
 	const dispatch = useDispatch()
+	const { uid } = useSelector(state => state.auth)
 	const { shoeId } = useParams()
+
+	const [sizeSelected, setSizeSelected] = useState('')
+	const [addCartAlert, setAddCartAlert] = useState('')
+
 	const { data: shoe, isLoading, error } = useGetShoesByIdQuery(shoeId)
 	const { data: sizes } = useGetSizesQuery()
-	const { uid } = useSelector(state => state.auth)
-	const [sizeSelected, setSizeSelected] = useState('')
 
 	const handleAddToCart = event => {
 		event.preventDefault()
-		if (!uid) return
+		if (sizeSelected === '') {
+			setAddCartAlert(
+				<span className={styles.addCartAlert}>
+					Please, select a size before adding to cart
+				</span>
+			)
+			return
+		}
+		if (!uid) {
+			setAddCartAlert(
+				<span className={styles.addCartAlert}>
+					Please, <Link to='/login'>login</Link> before adding to cart
+				</span>
+			)
+			return
+		}
+		setAddCartAlert('')
 		dispatch(addItem(shoeId, uid, sizeSelected))
 	}
 
@@ -97,12 +116,17 @@ export function Detail() {
 									))}
 								</ul>
 							</div>
-							<button
-								className={styles.addToCartButton}
-								onClick={handleAddToCart}
-							>
-								Add to cart
-							</button>
+
+							<div className={styles.addCartContainer}>
+								<button
+									className={styles.addToCartButton}
+									onClick={handleAddToCart}
+								>
+									Add to cart
+								</button>
+								{addCartAlert}
+							</div>
+
 							<div className={styles.description}>
 								<h4 className={styles.descriptionh4}>Description</h4>
 								<p className={styles.descriptionText}>{shoe.DESCRIPTION}</p>
