@@ -27,10 +27,6 @@
 	justify-content: center;
 }
 
-.image {
-	width: 100%;
-}
-
 .descriptionContainer {
 	display: flex;
 	flex-direction: column;
@@ -157,13 +153,16 @@
 		flex-direction: row;
 		align-items: flex-start;
 	}
+
 	.carouselContainer {
 		width: 50%;
 	}
+
 	.descriptionContainer {
 		width: 50%;
 	}
 }
+
 @media (min-width: 1000px) {
 	.shoeContainer {
 		padding: 40px 60px;
