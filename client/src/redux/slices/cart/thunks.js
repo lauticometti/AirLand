@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 import { get } from './cartSlice'
 
 const BASE_URL = 'http://localhost:3001/api'
@@ -19,9 +20,17 @@ export const addItem = (sneakerId, userId, size) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/cart/add/${userId}/${sneakerId}/${size}`)
       dispatch(getCart(userId))
-      alert(data)
+      swal({
+        title: data,
+        icon: 'success',
+        timer: '2000'
+      })
     } catch (error) {
-      alert(error.message)
+      swal({
+        title: error.message,
+        icon: 'error',
+        timer: '2000'
+      })
     }
   }
 }
@@ -31,9 +40,17 @@ export const removeItem = (sneakerId, userId) => {
     try {
       const { data } = await axios.delete(`${BASE_URL}/cart/delete/${userId}/${sneakerId}/`)
       dispatch(getCart(userId))
-      alert(data)
+      swal({
+        title: data,
+        icon: 'success',
+        timer: '2000'
+      })
     } catch (error) {
-      alert(error.message)
+      swal({
+        title: error.message,
+        icon: 'error',
+        timer: '2000'
+      })
     }
   }
 }

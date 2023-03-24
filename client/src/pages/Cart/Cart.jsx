@@ -20,7 +20,7 @@ export function Cart() {
           <h3>Total price: ${totalPrice}</h3>
         </div>
         <div className={styles.buyButtonContainer}>
-          <button>Finalizar compra</button>
+          <button disabled={cart.length ? false : true}>Finalizar compra</button>
         </div>
       </div>
     </>

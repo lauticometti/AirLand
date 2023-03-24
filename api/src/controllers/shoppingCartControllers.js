@@ -20,13 +20,20 @@ const getShoppingCart = async (userId) => {
 const addSneakersToShoppingCart = async (userId, sneakerId, size) => {
   try {
     const sneaker = await (await db.collection(`/ZAPATILLAS`).doc(sneakerId).get()).data()
-    db.collection(`${userId}/shopping-cart/zapatillas`)
-      .doc(sneakerId)
-      .set({
+    const sneakerRef = await db.collection(`${userId}/shopping-cart/zapatillas`)
+    if ((await sneakerRef.doc(sneakerId).get()).data()) {
+      sneakerRef.doc(sneakerId).set({
+        ...sneaker,
+        SIZE: size,
+        CANTIDAD: (await sneakerRef.doc(sneakerId).get()).data().CANTIDAD + 1
+      })
+    } else {
+      sneakerRef.doc(sneakerId).set({
         ...sneaker,
         SIZE: size,
         CANTIDAD: 1
       })
+    }
   } catch (error) {
     throw new Error(error.message)
   }
