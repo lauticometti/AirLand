@@ -33,6 +33,7 @@
 	border-bottom: 1px solid transparent;
 	transition: 0.2s;
 	gap: 10px;
+	cursor: pointer;
 }
 
 .navLink:hover {
@@ -47,7 +48,6 @@
 
 .logo {
 	margin-left: 47%;
-
 }
 
 @media (min-width: 660px) {
@@ -61,7 +61,7 @@
 	position: relative;
 }
 
-.cartContainer>.navLink>span {
+.cartContainer > .navLink > span {
 	position: absolute;
 	right: -5px;
 	top: 0;

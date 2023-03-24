@@ -9,12 +9,11 @@ import {
 } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { clearCart, getCart, startLogout } from '../../redux'
+import { getCart, startLogout } from '../../redux'
 
 export function Navbar() {
 	const onLogout = () => {
 		dispatch(startLogout())
-		dispatch(clearCart())
 	}
 	const { cart } = useSelector(state => state.cart)
 	const { status, uid } = useSelector(state => state.auth)
@@ -45,18 +44,24 @@ export function Navbar() {
 						<Link to='/contact' className={styles.navLink}>
 							<AiOutlinePhone />
 						</Link>
-						<Link to='/login' className={styles.navLink}>
-							<AiOutlineUser />
-						</Link>
+						{
+							uid
+								? <Link to='/profile' className={styles.navLink}>
+									<AiOutlineUser />
+								</Link>
+								: <Link to='/login' className={styles.navLink}>
+									<AiOutlineUser />
+								</Link>
+						}
 						<div className={styles.cartContainer}>
 							<Link to='/store' className={styles.navLink}>
 								<AiOutlineShoppingCart />
 								{cart.length ? <span>{cart.length}</span> : ''}
 							</Link>
 						</div>
-						<Link to='/' className={styles.navLink} onClick={onLogout}>
+						<span className={styles.navLink} onClick={onLogout}>
 							<AiOutlineLogout />
-						</Link>
+						</span>
 					</div>
 				</li>
 			</ul>

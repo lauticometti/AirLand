@@ -5,6 +5,7 @@ import {
 	registerUserWithEmailPassword,
 	// loginAnonymously
 } from '../../../firebase'
+import { clearCart } from '../cart'
 import { checkingCredentials, Logout, signIn } from './'
 
 export const startRegistrationUserWithEmailPassword = ({
@@ -67,6 +68,7 @@ export const startLogout = () => {
 	return async dispatch => {
 		await logoutFirebase()
 		dispatch(Logout())
+		dispatch(clearCart())
 	}
 }
 

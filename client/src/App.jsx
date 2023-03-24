@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import { useCheckAuth } from './hooks/useCheckAuth'
 import {
 	Login,
 	Register,
@@ -8,13 +7,12 @@ import {
 	Sneakers,
 	About,
 	Contact,
-	Cart
+	Cart,
+	Profile
 } from './pages'
 import './styles/App.css'
 
 function App() {
-
-	useCheckAuth()
 
 	return (
 		<div className='App'>
@@ -27,6 +25,7 @@ function App() {
 				<Route exact path='/about' element={<About />} />
 				<Route exact path='/store' element={<Cart />} />
 				<Route exact path='/contact' element={<Contact />} />
+				<Route exact path='/profile' element={<Profile />} />
 			</Routes>
 		</div>
 	)

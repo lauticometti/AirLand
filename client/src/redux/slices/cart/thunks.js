@@ -29,7 +29,7 @@ export const addItem = (sneakerId, userId, size) => {
 export const removeItem = (sneakerId, userId) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(`${BASE_URL}/cart/add/${userId}/${sneakerId}/`)
+      const { data } = await axios.delete(`${BASE_URL}/cart/delete/${userId}/${sneakerId}/`)
       dispatch(getCart(userId))
       alert(data)
     } catch (error) {
@@ -43,7 +43,6 @@ export const updateItem = (sneakerId, userId, quantity) => {
     try {
       const { data } = await axios.patch(`${BASE_URL}/cart/update/${userId}/${sneakerId}/${quantity}`)
       dispatch(getCart(userId))
-      console.log(data)
     } catch (error) {
       alert(error.message)
     }

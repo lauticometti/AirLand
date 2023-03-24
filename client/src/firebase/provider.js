@@ -13,12 +13,13 @@ const googleProvider = new GoogleAuthProvider()
 export const LoginWithGoogle = async () => {
 	try {
 		const response = await signInWithPopup(FirebaseAuth, googleProvider)
-		const { displayName, email, uid } = response.user
+		const { displayName, email, uid, photoURL } = response.user
 		return {
 			ok: true,
 			displayName,
 			email,
-			uid
+			uid,
+			photoURL
 		}
 	} catch (error) {
 		return {
@@ -40,13 +41,14 @@ export const registerUserWithEmailPassword = async ({
 			email,
 			password
 		)
-		const { uid } = response.user
+		const { uid, photoURL } = response.user
 		await updateProfile(FirebaseAuth.currentUser, { displayName })
 		return {
 			ok: true,
 			displayName,
 			uid,
-			email
+			email,
+			photoURL
 		}
 	} catch (error) {
 		return {
@@ -64,12 +66,13 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
 			email,
 			password
 		)
-		const { uid, displayName } = response.user
+		const { uid, displayName, photoURL } = response.user
 		return {
 			ok: true,
 			uid,
 			displayName,
-			email
+			email,
+			photoURL
 		}
 	} catch (error) {
 		return {
@@ -83,16 +86,3 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
 export const logoutFirebase = async () => {
 	return await FirebaseAuth.signOut()
 }
-
-// export const loginAnonymously = async () => {
-// 	try {
-// 		const response = await signInAnonymously(FirebaseAuth)
-// 		console.log(response)
-// 	} catch (error) {
-// 		return {
-// 			ok: false,
-// 			code: error.code,
-// 			message: error.message
-// 		}
-// 	}
-// } 
