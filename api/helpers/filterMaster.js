@@ -20,6 +20,8 @@ const filterMaster = (shoes, { sizes, types, minPrice, name }) => {
 	if (name) {
 		const cleanName = name.trim().replace(/\s+/g, ' ').toLowerCase()
 
+		// const separatedWords = cleanName.split(' ')
+
 		shoes = shoes.filter(el => el.NAME.toLowerCase().includes(cleanName))
 	}
 
