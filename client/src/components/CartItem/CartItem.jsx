@@ -32,7 +32,7 @@ export function CartItem({ item }) {
   return (
     <div className={styles.cartItemContainer}>
       <div className={styles.imgContainer}>
-        <img src={item?.image} alt="" />
+        <img src={item?.image.THUMBNAIL} alt="" />
       </div>
       <div className={styles.sneakerNameContainer}>
         <span><b>Nombre:</b></span>
