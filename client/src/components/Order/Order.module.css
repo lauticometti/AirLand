@@ -47,7 +47,7 @@
 
 .modalList {
 	list-style: none;
-	font-family: Chivo;
+	font-family: Poppins;
 	font-size: 1.5rem;
 	color: #fff;
 	width: 80%;
@@ -66,7 +66,17 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	font-family: Poppins;
+	font-weight: 700;
+	font-size: 20px;
+
 	user-select: none;
+}
+
+.labelP {
+	padding: 0;
+	margin: 0;
 }
 
 .radioInput {
@@ -94,7 +104,7 @@
 	border-radius: 50%;
 	transform: scale(0);
 	transition: 0.2s transform ease-in-out;
-	box-shadow: inset 1em 1em #ff8e0a;
+	box-shadow: inset 1em 1em #fff;
 }
 
 .radioInput:checked::before {

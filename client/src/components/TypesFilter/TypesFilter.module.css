@@ -1,0 +1,47 @@
+.label {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	user-select: none;
+	font-family: Poppins;
+	color: #727272;
+	opacity: 1;
+	font-weight: 700;
+}
+
+.input {
+	-webkit-appearance: none;
+	appearance: none;
+	font: inherit;
+	color: black;
+
+	width: 1.15em;
+	margin: 0;
+	height: 1.15em;
+	border: none;
+	border: 0.15em solid #727272;
+	border-radius: 5px;
+	transform: translateY(0.2em);
+
+	display: grid;
+	place-content: center;
+}
+
+input:checked {
+	border-color: #fff;
+}
+
+.input::before {
+	content: '';
+	width: 0.65em;
+	height: 0.65em;
+	border-radius: 1px;
+	transform: scale(0);
+	transition: 0.2s;
+	box-shadow: inset 1em 1em #fff;
+}
+
+.input:checked::before {
+	transform: scale(1);
+}

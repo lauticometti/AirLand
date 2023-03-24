@@ -7,7 +7,6 @@
 	background-color: #0d0d0d;
 	color: #cacaca;
 	font-family: Rubik;
-
 }
 
 .top {
@@ -51,7 +50,7 @@
 }
 
 .devsList {
-	display: flex;
+	display: none;
 	gap: 10px;
 	margin: 0;
 	padding: 0;
@@ -80,4 +79,14 @@
 	display: flex;
 	gap: 10px;
 	justify-content: flex-end;
+<<<<<<< HEAD
 }
+
+@media (min-width: 768px) {
+	.devsList {
+		display: flex;
+	}
+}
+=======
+}
+>>>>>>> develop

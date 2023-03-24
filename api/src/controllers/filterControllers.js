@@ -4,7 +4,7 @@ const filterMaster = require('../../helpers/filterMaster')
 const sortMaster = require('../../helpers/sortMaster')
 
 // cache create
-const shoesCache = new NodeCache({ stdTTL: 30 })
+const shoesCache = new NodeCache({ stdTTL: 200 })
 
 const getShoes = async queries => {
 	let currentShoes

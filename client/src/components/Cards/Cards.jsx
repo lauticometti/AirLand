@@ -23,10 +23,16 @@ export function Cards() {
 		)
 
 	return (
-		<div className={styles.cardsContainer}>
-			{data.map(shoe => (
-				<Card key={shoe.id} shoe={shoe} />
-			))}
+		<div
+			className={
+				data.length ? styles.cardsContainer : styles.cardsContainerNotFound
+			}
+		>
+			{data.length ? (
+				data.map(shoe => <Card key={shoe.id} shoe={shoe} />)
+			) : (
+				<NotFound />
+			)}
 		</div>
 	)
 }

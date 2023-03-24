@@ -50,8 +50,6 @@ export const filteredShoesApi = createApi({
 					} else endpoint += `&${'sort'}=${sort.type}_${sort.order}`
 				}
 
-				console.log(endpoint)
-
 				return endpoint
 			}
 		})

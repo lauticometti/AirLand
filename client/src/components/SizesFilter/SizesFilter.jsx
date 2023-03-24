@@ -1,12 +1,12 @@
-import { Loader } from '../'
+import { Loader } from '..'
 import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { filterSlice } from '../../redux/slices/filters/filterSlice'
 import { useGetSizesQuery } from '../../redux/services/services'
 
-import styles from './Sizes.module.css'
+import styles from './SizesFilter.module.css'
 
-export function Sizes() {
+export function SizesFilter() {
 	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 
