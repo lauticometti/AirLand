@@ -22,7 +22,8 @@
 }
 
 .modalContent {
-	position: absolute; /* this could give us issues but is a easy way to make more estetic the dropdown behavior */
+	position: absolute;
+	/* this could give us issues but is a easy way to make more estetic the dropdown behavior */
 	top: 100px;
 	width: 80%;
 	max-width: 450px;

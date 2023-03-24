@@ -45,5 +45,9 @@
 	font-weight: 700;
 	user-select: none;
 	cursor: pointer;
+<<<<<<< HEAD:client/src/components/SizesFilter/SizesFilter.module.css
 	transition: 0.2s;
 }
+=======
+}
+>>>>>>> develop:client/src/components/Sizes/Sizes.module.css

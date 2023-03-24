@@ -33,6 +33,7 @@
 	border-bottom: 1px solid transparent;
 	transition: 0.2s;
 	gap: 10px;
+	cursor: pointer;
 }
 
 .navLink:hover {
@@ -44,9 +45,9 @@
 	display: flex;
 	gap: 15px;
 }
-.logo{
-    margin-left:47%;
-    
+
+.logo {
+	margin-left: 47%;
 }
 
 @media (min-width: 660px) {

@@ -6,4 +6,5 @@ export * from './Authentication/Register'
 export * from './About/About'
 export * from './Cart/Cart'
 export * from './Contact/Contact'
+export * from './Profile/Profile'
 
