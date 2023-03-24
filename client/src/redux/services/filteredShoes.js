@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import stringCleaner from '../../helpers/stringCleaner'
 
-const BASEURL = 'http://localhost:3001/api'
+const BASEURL = 'https://airland-production.up.railway.app/api'
 
 export const filteredShoesApi = createApi({
 	reducerPath: 'filteredShoesApi',
@@ -49,8 +49,6 @@ export const filteredShoesApi = createApi({
 						endpoint += `?${'sort'}=${sort.type}_${sort.order}`
 					} else endpoint += `&${'sort'}=${sort.type}_${sort.order}`
 				}
-
-				console.log(endpoint)
 
 				return endpoint
 			}

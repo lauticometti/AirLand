@@ -1,5 +1,5 @@
 .dropdown {
-	font-family: 'Roboto';
+	font-family: Poppins;
 	max-height: 200px;
 	overflow-y: auto;
 }
@@ -22,7 +22,6 @@
 	width: 80%;
 	margin: 0;
 	margin-left: 25px;
-	font-family: 'Chivo';
 }
 
 .dropdownHeader {
@@ -46,6 +45,10 @@
 }
 
 .headerP {
+	font-family: Poppins;
+	font-weight: 600;
+	font-size: 20px;
+	text-transform: uppercase;
 	color: #fff;
 	margin: 0;
 }

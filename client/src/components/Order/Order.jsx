@@ -4,16 +4,14 @@ import { Modal } from '../'
 import styles from './Order.module.css'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-
-// note: on this component, Im using input field just because it was quickly for styled but
-// I dont take care of its behavior
+import { filterSlice } from '../../redux'
 
 export function Order() {
 	const dispatch = useDispatch()
 
 	const [show, setShow] = useState(false)
 	const [order, setOrder] = useState('up')
-	const [typeOrder, setTypeOrder] = useState('')
+	const [sortType, setSortType] = useState('')
 
 	const handleOrderOrientation = () => {
 		const newOrder = order === 'up' ? 'down' : 'up'
@@ -21,19 +19,16 @@ export function Order() {
 	}
 
 	useEffect(() => {
-		switch (typeOrder) {
-			case 'alphabetic':
-				// dispatch(orderByName(order)) // ordenar alfabeticamente
-				break
-			default:
-				// dispatch(orderByName(order)) // ordenar alfabeticamente por default
-				break
-		}
-	}, [dispatch, order, typeOrder])
+		dispatch(filterSlice.actions.setSort({ sortType, order }))
+	}, [dispatch, order, sortType])
 
 	const handleOrderInput = event => {
 		const value = event.target.id
-		setTypeOrder(value)
+
+		if (sortType === value) {
+			setSortType('')
+			event.target.checked = false
+		} else setSortType(value)
 	}
 
 	return (
@@ -64,12 +59,12 @@ export function Order() {
 			<Modal onClose={() => setShow(false)} show={show}>
 				<ul className={styles.modalList}>
 					<li className={styles.modalListItem}>
-						<label htmlFor='alphabetic' className={styles.label}>
-							<p>Alphabetically</p>
+						<label htmlFor='price' className={styles.label}>
+							<p className={styles.labelP}>Price</p>
 							<input
 								type='radio'
 								name='order'
-								id='alphabetic'
+								id='price'
 								className={styles.radioInput}
 								onClick={handleOrderInput}
 							/>

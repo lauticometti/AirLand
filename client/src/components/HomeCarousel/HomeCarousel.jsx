@@ -13,17 +13,17 @@ export function HomeCarousel() {
 					<img className='d-block w-100' src={Lunar} alt='ACRONYM' />
 				</Link>
 			</Carousel.Item>
-			<Carousel.Item interval={700}>
+			<Carousel.Item interval={500}>
 				<Link to='/detail/GJlGj1WrEDmwJdagmWO4'>
 					<img className='d-block w-100' src={Roc} alt='ROC-A-FELLA' />
 				</Link>
 			</Carousel.Item>
-			<Carousel.Item>
+			<Carousel.Item interval={500}>
 				<Link to='/detail/Rpxal8wZRLwJAsbz3pSy'>
 					<img className='d-block w-100' src={Billie} alt=' Billie Eilish' />
 				</Link>
 			</Carousel.Item>
-			<Carousel.Item>
+			<Carousel.Item interval={500}>
 				<Link to='/detail/oMF3232s1vGXPR9wEkhC'>
 					<img className='d-block w-100' src={Travis} alt='TRAVIS SCOTT' />
 				</Link>
