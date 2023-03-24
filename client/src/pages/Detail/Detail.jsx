@@ -13,13 +13,15 @@ import {
 	useGetShoesByIdQuery,
 	useGetSizesQuery
 } from '../../redux/services/services'
+import Carousel from 'react-bootstrap/Carousel'
+
 import styles from './Detail.module.css'
 
 export function Detail() {
+	const dispatch = useDispatch()
 	const { shoeId } = useParams()
 	const { data: shoe, isLoading, error } = useGetShoesByIdQuery(shoeId)
 	const { data: sizes } = useGetSizesQuery()
-	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
 	const [sizeSelected, setSizeSelected] = useState('')
 
@@ -48,16 +50,29 @@ export function Detail() {
 					</div>
 				) : (
 					<div className={styles.shoeContainer}>
-						<div className={styles.imageContainer}>
-							<img
-								src={shoe.IMAGE.THUMBNAIL}
-								alt={shoe.NAME}
-								className={styles.image}
-							/>
+						<div className={styles.carouselContainer}>
+							<Carousel>
+								{shoe.IMAGE ? (
+									Object.keys(shoe.IMAGE).map((image, i) => {
+										if (image === 'THUMBNAIL') return null
+										return (
+											<Carousel.Item key={i}>
+												<img
+													className='w-100'
+													src={shoe.IMAGE[image]}
+													alt={`Slide ${i + 1}`}
+												/>
+											</Carousel.Item>
+										)
+									})
+								) : (
+									<Loader />
+								)}
+							</Carousel>
 						</div>
 						<div className={styles.descriptionContainer}>
 							<h3 className={styles.title}>{shoe.NAME}</h3>
-							<span className={styles.code}>Item nr: {shoe.CODE}</span>
+							<span className={styles.code}>Item No. {shoe.CODE}</span>
 							<h2 className={styles.shoePrice}>${shoe.PRICE}</h2>
 							<div className={styles.sizesContainer}>
 								<p className={styles.sizesTitle}>Sizes</p>
@@ -66,12 +81,16 @@ export function Detail() {
 										<li
 											key={size}
 											className={
-												Number(shoe.SIZE[size])
+												sizeSelected === size
+													? styles.sizeChecked
+													: Number(shoe.SIZE[size])
 													? styles.sizeCheck
 													: styles.sizeDisabled
 											}
 											value={size}
-											onClick={handleSizeChange}
+											onClick={
+												Number(shoe.SIZE[size]) ? handleSizeChange : null
+											}
 										>
 											{size}
 										</li>
