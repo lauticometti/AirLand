@@ -51,14 +51,14 @@ export function Detail() {
 				) : (
 					<div className={styles.shoeContainer}>
 						<div className={styles.carouselContainer}>
-							<Carousel>
+							<Carousel variant='dark'>
 								{shoe.IMAGE ? (
 									Object.keys(shoe.IMAGE).map((image, i) => {
 										if (image === 'THUMBNAIL') return null
 										return (
 											<Carousel.Item key={i}>
 												<img
-													className='w-100'
+													className='w-75 mx-auto d-block'
 													src={shoe.IMAGE[image]}
 													alt={`Slide ${i + 1}`}
 												/>
