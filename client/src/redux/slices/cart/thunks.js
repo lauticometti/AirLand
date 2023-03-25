@@ -5,14 +5,14 @@ import { get } from './cartSlice'
 const BASE_URL = 'https://airland-production.up.railway.app/api'
 
 export const getCart = userId => {
-	return async dispatch => {
-		try {
-			const { data } = await axios.get(`${BASE_URL}/cart/${userId}`)
-			dispatch(get(data))
-		} catch (error) {
-			alert(error.message)
-		}
-	}
+  return async dispatch => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/cart/${userId}`)
+      dispatch(get(data))
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 }
 
 export const addItem = (sneakerId, userId, size) => {
@@ -53,16 +53,17 @@ export const removeItem = (sneakerId, userId) => {
       })
     }
   }
+}
 
 export const updateItem = (sneakerId, userId, quantity) => {
-	return async dispatch => {
-		try {
-			const { data } = await axios.patch(
-				`${BASE_URL}/cart/update/${userId}/${sneakerId}/${quantity}`
-			)
-			dispatch(getCart(userId))
-		} catch (error) {
-			alert(error.message)
-		}
-	}
+  return async dispatch => {
+    try {
+      const { data } = await axios.patch(
+        `${BASE_URL}/cart/update/${userId}/${sneakerId}/${quantity}`
+      )
+      dispatch(getCart(userId))
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 }
