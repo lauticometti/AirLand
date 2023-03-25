@@ -1,7 +1,7 @@
 import styles from './Footer.module.css'
 import { Link } from 'react-router-dom'
 import { exe, ivan, joan, juli, lauti, lichi, nico } from '../../assets/devs'
-import logo from '../../assets/air_land-white.svg'
+import logo from '../../assets/icons/air_land-white.svg'
 
 export function Footer() {
 	const devs = {

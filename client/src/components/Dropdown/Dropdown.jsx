@@ -1,7 +1,7 @@
 import styles from './Dropdown.module.css'
 import PropTypes from 'prop-types'
 
-import downArrow from '../../assets/down-arrow.svg'
+import downArrow from '../../assets/icons/down-arrow.svg'
 import { useState } from 'react'
 
 export function Dropdown({ title, children }) {

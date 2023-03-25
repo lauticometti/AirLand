@@ -22,6 +22,11 @@
 	object-fit: cover;
 }
 
+.imageLink {
+	color: #181818;
+	font-size: 12px;
+}
+
 .name {
 	font-size: 14px;
 	font-weight: 700;

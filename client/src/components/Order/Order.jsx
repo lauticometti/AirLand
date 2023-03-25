@@ -1,4 +1,4 @@
-import icon from '../../assets/order-icon.svg'
+import icon from '../../assets/icons/order-icon.svg'
 import { Modal } from '../'
 
 import styles from './Order.module.css'

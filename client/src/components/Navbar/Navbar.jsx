@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../../assets/air_land-white.svg'
+import logo from '../../assets/icons/air_land-white.svg'
 import styles from './Navbar.module.css'
 import {
 	AiOutlineUser,

@@ -3,9 +3,10 @@ import styles from './Card.module.css'
 import { Link } from 'react-router-dom'
 
 export function Card({ shoe }) {
+	console.log(shoe.NAME)
 	return (
 		<div className={styles.container}>
-			<Link to={`/detail/${shoe.id}`}>
+			<Link to={`/detail/${shoe.id}`} className={styles.imageLink}>
 				<div className={styles.imageContainer}>
 					<img
 						src={shoe.IMAGE.THUMBNAIL}
