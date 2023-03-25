@@ -27,3 +27,8 @@
 	background-color: rgb(65, 65, 65);
 	color: white;
 }
+
+.buyButtonContainer > button:disabled {
+	background-color: rgba(80, 80, 80, 0.788);
+	color: black;
+}
