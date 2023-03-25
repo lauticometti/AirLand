@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getCart, startLogout } from '../../redux'
+import Swal from 'sweetalert2'
 
 export function Navbar() {
 	const onLogout = () => {
@@ -54,10 +55,27 @@ export function Navbar() {
 								</Link>
 						}
 						<div className={styles.cartContainer}>
-							<Link to='/store' className={styles.navLink}>
-								<AiOutlineShoppingCart />
-								{cart.length ? <span>{cart.length}</span> : ''}
-							</Link>
+							{
+								uid
+									? <Link to='/store' className={styles.navLink}>
+										<AiOutlineShoppingCart />
+										{cart.length ? <span>{cart.length}</span> : ''}
+									</Link>
+									: <Link className={styles.navLink} onClick={() => Swal.fire({
+										position: 'top-right',
+										icon: 'info',
+										html:
+											'Please, ' +
+											'<a href="/login">login</a>' +
+											' before viewing your cart',
+
+										showConfirmButton: false
+									})}>
+										<AiOutlineShoppingCart />
+										{cart.length ? <span>{cart.length}</span> : ''}
+									</Link>
+
+							}
 						</div>
 						<span className={styles.navLink} onClick={onLogout}>
 							<AiOutlineLogout />

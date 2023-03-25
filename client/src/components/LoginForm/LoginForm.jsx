@@ -30,16 +30,14 @@ export function LoginForm() {
 
 	const handleSubmit = event => {
 		event.preventDefault()
-		// TODO: enviar form, validar datos, mostrar errores
 		setForm(formData)
 		dispatch(startLoginUserWithEmailPassword(form))
-		// navigate('/')
 	}
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
 		if (status === 'not-authenticated' && errorMessage) return alert(errorMessage)
-		if (status === 'authenticated') return navigate('/')
+		if (status === 'authenticated') return navigate(localStorage.getItem('lastPage'))
 	}, [status])
 
 	return (

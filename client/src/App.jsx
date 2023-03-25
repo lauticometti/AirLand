@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import {
 	Login,
 	Register,
@@ -13,6 +14,12 @@ import {
 import './styles/App.css'
 
 function App() {
+
+	const { pathname } = useLocation()
+	useEffect(() => {
+		if (pathname === '/login' || pathname === '/signup') return
+		localStorage.setItem('lastPage', pathname)
+	}, [pathname])
 
 	return (
 		<div className='App'>
