@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import swal from 'sweetalert'
 import { removeItem, updateItem } from '../../redux'
 import styles from './CartItem.module.css'
 
@@ -11,6 +12,14 @@ export function CartItem({ item }) {
 
   const handleQuantityAddition = (event) => {
     event.preventDefault()
+    if (quantity + 1 > Number(item.sizes[item.selectedSize])) {
+      return swal({
+        title: 'Limite de stock',
+        message: `El stock limite es de: ${item.sizes[item.selectedSize]}`,
+        icon: 'warning',
+        timer: 2000
+      })
+    }
     setQuantity(quantity + 1)
   }
 
@@ -23,6 +32,10 @@ export function CartItem({ item }) {
   const handleRemove = (event) => {
     event.preventDefault()
     dispatch(removeItem(item.id, uid))
+  }
+
+  const handleInputChange = (event) => {
+    const updatedQuantity = event.target.value
   }
 
   useEffect(() => {
@@ -45,7 +58,7 @@ export function CartItem({ item }) {
       <div className={styles.quantityContainer}>
         <div className={styles.quantityInputContainer}>
           <label htmlFor="quantity"><b>Cantidad:</b></label>
-          <input type="text" id="quantity" name="quantity" value={quantity} />
+          <input type="text" id="quantity" name="quantity" value={quantity} onChange={handleInputChange} />
         </div>
         <div className={styles.quantityHandlersContainer}>
           <button onClick={handleQuantityAddition}>+</button>
@@ -54,7 +67,7 @@ export function CartItem({ item }) {
       </div>
       <div className={styles.sneakerSizeContainer}>
         <span><b>Talle:</b></span>
-        <span>{item?.size}</span>
+        <span>{item?.selectedSize}</span>
       </div>
       <div className={styles.removeHandlerContainer}>
         <button onClick={handleRemove}>X</button>
