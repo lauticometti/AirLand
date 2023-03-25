@@ -2,14 +2,16 @@ const { db } = require('../firebase')
 
 const getShoppingCart = async (userId) => {
   try {
-    const response = await db.collection(`${userId}/shopping-cart/zapatillas`).get()
+    // const response = await db.collection(`${userId}/shopping-cart/zapatillas`).get()
+    const response = await db.collection(`users/${userId}/cart`).get()
     const sneakers = response.docs.map(doc => ({
       id: doc.id,
       image: doc.data().IMAGE,
       name: doc.data().NAME,
-      price: doc.data().PRICE * Number(doc.data().CANTIDAD),
-      quantity: doc.data().CANTIDAD,
-      size: doc.data().SIZE
+      price: doc.data().PRICE * Number(doc.data().QUANTITY),
+      quantity: doc.data().QUANTITY,
+      selectedSize: doc.data().SELECTED_SIZE,
+      sizes: doc.data().SIZE
     }))
     return sneakers
   } catch (error) {
@@ -20,18 +22,18 @@ const getShoppingCart = async (userId) => {
 const addSneakersToShoppingCart = async (userId, sneakerId, size) => {
   try {
     const sneaker = await (await db.collection(`/ZAPATILLAS`).doc(sneakerId).get()).data()
-    const sneakerRef = await db.collection(`${userId}/shopping-cart/zapatillas`)
-    if ((await sneakerRef.doc(sneakerId).get()).data()) {
-      sneakerRef.doc(sneakerId).set({
+    const sneakerRef = await db.collection('users')
+    if ((await sneakerRef.doc(`${userId}/cart/${sneakerId}`).get()).data()) {
+      sneakerRef.doc(`${userId}/cart/${sneakerId}`).set({
         ...sneaker,
-        SIZE: size,
-        CANTIDAD: (await sneakerRef.doc(sneakerId).get()).data().CANTIDAD + 1
+        SELECTED_SIZE: size,
+        QUANTITY: (await sneakerRef.doc(`${userId}/cart/${sneakerId}`).get()).data().QUANTITY + 1
       })
     } else {
-      sneakerRef.doc(sneakerId).set({
+      sneakerRef.doc(`${userId}/cart/${sneakerId}`).set({
         ...sneaker,
-        SIZE: size,
-        CANTIDAD: 1
+        SELECTED_SIZE: size,
+        QUANTITY: 1
       })
     }
   } catch (error) {
@@ -41,8 +43,8 @@ const addSneakersToShoppingCart = async (userId, sneakerId, size) => {
 
 const removeSneakersFromShoppingCart = async (userId, sneakerId) => {
   try {
-    db.collection(`${userId}/shopping-cart/zapatillas`)
-      .doc(sneakerId)
+    db.collection(`users`)
+      .doc(`${userId}/cart/${sneakerId}`)
       .delete()
   } catch (error) {
     throw new Error(error.message)
@@ -50,13 +52,10 @@ const removeSneakersFromShoppingCart = async (userId, sneakerId) => {
 }
 
 const updateQuantityFromShoppingCart = async (userId, sneakerId, quantity) => {
-
-  console.log({ userId, sneakerId, quantity })
-
   try {
-    db.collection(`${userId}/shopping-cart/zapatillas`)
-      .doc(sneakerId)
-      .update({ CANTIDAD: Number(quantity) })
+    db.collection(`users`)
+      .doc(`${userId}/cart/${sneakerId}`)
+      .update({ QUANTITY: Number(quantity) })
   } catch (error) {
     throw new Error(error.message)
   }
