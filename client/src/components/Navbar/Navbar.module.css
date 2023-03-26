@@ -48,35 +48,3 @@
 	color: #fff;
 	border-color: #fff;
 }
-
-.rightestLiContainer {
-	display: flex;
-	gap: 15px;
-}
-
-@media (min-width: 660px) {
-	.li {
-		display: inline;
-		justify-content: end;
-	}
-}
-
-.cartContainer {
-	position: relative;
-}
-
-.cartContainer > .navLink > span {
-	position: absolute;
-	right: -5px;
-	top: 0;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	font-size: 14px;
-	font-weight: 600;
-	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: red;
-}
