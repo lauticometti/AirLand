@@ -7,4 +7,4 @@ export * from './About/About'
 export * from './Cart/Cart'
 export * from './Contact/Contact'
 export * from './Profile/Profile'
-
+export * from './Page404/Page404'
