@@ -1,30 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/icons/air_land-white.svg'
 import styles from './Navbar.module.css'
-import {
-	AiOutlineUser,
-	AiOutlineShoppingCart,
-	AiOutlineLogout
-} from 'react-icons/ai'
 import { SearchBar } from '../'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { getCart, startLogout } from '../../redux'
-import Swal from 'sweetalert2'
+import SubNavbarRight from './SubNavbarRight/SubNavbarRight'
 
 export function Navbar() {
-	const dispatch = useDispatch()
-	const { cart } = useSelector(state => state.cart)
-	const { status, uid } = useSelector(state => state.auth)
 	const { pathname } = useLocation()
-	useEffect(() => {
-		if (!uid) return
-		dispatch(getCart(uid))
-	}, [status])
-
-	const handleLogout = () => {
-		dispatch(startLogout())
-	}
 
 	return (
 		<nav className={styles.nav}>
@@ -40,49 +21,12 @@ export function Navbar() {
 						<SearchBar />
 					) : (
 						<Link to='/snkrs' className={styles.navLink}>
-							SNKRS
+							Sneakers
 						</Link>
 					)}
 				</li>
-
 				<li>
-					<div className={styles.rightestLiContainer}>
-						{uid ? (
-							<Link to='/profile' className={styles.navLink}>
-								<AiOutlineUser />
-							</Link>
-						) : (
-							<Link to='/login' className={styles.navLink}>
-								<AiOutlineUser />
-							</Link>
-						)}
-						<div className={styles.cartContainer}>
-							{
-								uid
-									? <Link to='/store' className={styles.navLink}>
-										<AiOutlineShoppingCart />
-										{cart.length ? <span>{cart.length}</span> : ''}
-									</Link>
-									: <Link className={styles.navLink} onClick={() => Swal.fire({
-										position: 'top-right',
-										icon: 'info',
-										html:
-											'Please, ' +
-											'<a href="/login">login</a>' +
-											' before viewing your cart',
-
-										showConfirmButton: false
-									})}>
-										<AiOutlineShoppingCart />
-										{cart.length ? <span>{cart.length}</span> : ''}
-									</Link>
-
-							}
-						</div>
-						<span className={styles.navLink} onClick={handleLogout}>
-							<AiOutlineLogout />
-						</span>
-					</div>
+					<SubNavbarRight />
 				</li>
 			</ul>
 		</nav>

@@ -5,7 +5,8 @@ import {
 	Order,
 	Footer,
 	FilterButton,
-	WhatsAppButton
+	WhatsAppButton,
+	CurrentFilters
 } from '../../components'
 
 export function Sneakers() {
@@ -17,6 +18,7 @@ export function Sneakers() {
 					<FilterButton />
 					<Order />
 				</div>
+				<CurrentFilters />
 				<Cards />
 			</div>
 			<WhatsAppButton />

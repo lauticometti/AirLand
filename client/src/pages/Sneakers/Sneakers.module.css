@@ -6,9 +6,15 @@
 }
 
 .filters {
-	padding-bottom: 80px;
-	width: 50%;
+	padding-bottom: 20px;
+	width: 90%;
 
 	display: flex;
 	justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+	.filters {
+		width: 50%;
+	}
 }
