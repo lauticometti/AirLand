@@ -39,7 +39,8 @@
 		"redux-persist": "^6.0.0",
 		"slick-carousel": "^1.8.1",
 		"styled-components": "^5.3.9",
-		"sweetalert": "^2.1.2"
+		"sweetalert": "^2.1.2",
+		"sweetalert2": "^11.7.3"
 	},
 	"devDependencies": {
 		"@redux-devtools/core": "^3.13.1",
