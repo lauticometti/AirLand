@@ -5,6 +5,7 @@ import styles from './Order.module.css'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { filterSlice } from '../../redux'
+import { capitalize } from '../../helpers/capitalize'
 
 export function Order() {
 	const dispatch = useDispatch()
@@ -31,11 +32,17 @@ export function Order() {
 		} else setSortType(value)
 	}
 
+	const handleInitialInput = () => {
+		setSortType('')
+	}
+
 	return (
 		<div>
 			<button onClick={() => setShow(true)} className={styles.orderBox}>
 				<img src={icon} alt='' className={styles.icon} />
-				<span className={styles.span}>Order</span>
+				<span className={styles.span}>
+					{capitalize(sortType || 'Initial results')}
+				</span>
 				<div
 					className={styles.upArrowContainer}
 					onClick={e => {
@@ -58,6 +65,18 @@ export function Order() {
 
 			<Modal onClose={() => setShow(false)} show={show}>
 				<ul className={styles.modalList}>
+					<li className={styles.modalListItem}>
+						<label htmlFor='initial' className={styles.label}>
+							<p className={styles.labelP}>Initial results</p>
+							<input
+								type='radio'
+								name='order'
+								id='initial'
+								className={styles.radioInput}
+								onClick={handleInitialInput}
+							/>
+						</label>
+					</li>
 					<li className={styles.modalListItem}>
 						<label htmlFor='price' className={styles.label}>
 							<p className={styles.labelP}>Price</p>
