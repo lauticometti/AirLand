@@ -1,22 +1,25 @@
 import styles from './SearchBar.module.css'
 import { ImSearch } from 'react-icons/im'
+import { IconContext } from 'react-icons'
+
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { filterSlice } from '../../redux/slices/filters/filterSlice'
+import { useLocation, useNavigate } from 'react-router'
 
 export function SearchBar() {
 	const dispatch = useDispatch()
 	const [oldSearch, setOldSearch] = useState('')
 	const [searchString, setSearchString] = useState('')
 
+	const { pathname } = useLocation()
+	const navigate = useNavigate()
+
 	const handleChange = event => {
 		const old = searchString
 		setSearchString(event.target.value)
 		setOldSearch(old)
 	}
-
-	console.log('actual: ', searchString)
-	console.log('old: ', oldSearch)
 
 	useEffect(() => {
 		if (
@@ -38,10 +41,13 @@ export function SearchBar() {
 				type='text'
 				value={searchString}
 				className={styles.searchBarInput}
+				placeholder='Search...'
 				onChange={handleChange}
 			/>
 			<span className={styles.searchBarIcon}>
-				<ImSearch />
+				<IconContext.Provider value={{ size: '18px' }}>
+					<ImSearch />
+				</IconContext.Provider>
 			</span>
 		</div>
 	)

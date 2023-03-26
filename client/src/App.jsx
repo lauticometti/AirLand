@@ -8,12 +8,12 @@ import {
 	About,
 	Contact,
 	Cart,
-	Profile
+	Profile,
+	Page404
 } from './pages'
 import './styles/App.css'
 
 function App() {
-
 	return (
 		<div className='App'>
 			<Routes>
@@ -26,6 +26,7 @@ function App() {
 				<Route exact path='/store' element={<Cart />} />
 				<Route exact path='/contact' element={<Contact />} />
 				<Route exact path='/profile' element={<Profile />} />
+				<Route path='*' element={<Page404 />} />
 			</Routes>
 		</div>
 	)

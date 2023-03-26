@@ -1,0 +1,5 @@
+export * as billie from './billie-eilish.svg'
+export * as travis from './travis-scott.svg'
+export * as roc from './roc-a-fella.svg'
+export * as lunar from './lunar.svg'
+export * as error from './error-404.png'

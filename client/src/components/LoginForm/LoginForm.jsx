@@ -6,7 +6,7 @@ import {
 	startGoogleSignIn,
 	startLoginUserWithEmailPassword
 } from '../../redux/slices/auth'
-import logo from '../../assets/air_land-black.svg'
+import logo from '../../assets/icons/air_land-black.svg'
 import './LoginForm.css'
 
 const formData = {
@@ -38,7 +38,8 @@ export function LoginForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
-		if (status === 'not-authenticated' && errorMessage) return alert(errorMessage)
+		if (status === 'not-authenticated' && errorMessage)
+			return alert(errorMessage)
 		if (status === 'authenticated') return navigate('/')
 	}, [status])
 

@@ -1,35 +1,35 @@
 .section {
-    display: flex;
-    width: 100%;
-    height: 430px;
-    padding: 20px;
+	display: flex;
+	width: 100%;
+	height: 430px;
+	padding: 20px 3%;
 }
 
 .link {
-    width: 0px;
-    flex-grow: 1;
-    object-fit: cover;
-    opacity: .8;
-    transition: .5s ease;
-    display: flex;
+	width: 0px;
+	flex-grow: 1;
+	object-fit: cover;
+	opacity: 0.8;
+	transition: 0.5s ease;
+	display: flex;
 }
 
 .link:hover {
-    width: 200px;
-    opacity: 1;
-    filter: contrast(100%);
+	width: 200px;
+	opacity: 1;
+	filter: contrast(100%);
 }
 
 .img {
-    width: 0px;
-    flex-grow: 1;
-    object-fit: cover;
-    opacity: .8;
-    transition: .5s ease;
+	width: 0px;
+	flex-grow: 1;
+	object-fit: cover;
+	opacity: 0.8;
+	transition: 0.5s ease;
 }
 
 .img:hover {
-    width: 200px;
-    opacity: 1;
-    filter: contrast(100%);
+	width: 200px;
+	opacity: 1;
+	filter: contrast(100%);
 }

@@ -6,7 +6,7 @@ import {
 	startGoogleSignIn,
 	startRegistrationUserWithEmailPassword
 } from '../../redux/slices/auth'
-import logo from '../../assets/air_land-black.svg'
+import logo from '../../assets/icons/air_land-black.svg'
 import './RegisterForm.css'
 
 const formData = {
@@ -40,7 +40,8 @@ export function RegisterForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
-		if (status === 'not-authenticated' && errorMessage) return alert(errorMessage)
+		if (status === 'not-authenticated' && errorMessage)
+			return alert(errorMessage)
 		if (status === 'authenticated') return navigate('/')
 	}, [status])
 

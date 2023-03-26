@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import icon from '../../assets/order-icon.svg'
+import icon from '../../assets/icons/order-icon.svg'
 import { Dropdown, Modal, SizesFilter, TypesFilter, PriceFilter } from '..'
 
 import styles from './FilterButton.module.css'
