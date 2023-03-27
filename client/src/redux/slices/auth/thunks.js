@@ -68,7 +68,9 @@ export const startLogout = () => {
 	return async dispatch => {
 		await logoutFirebase()
 		dispatch(Logout())
-		dispatch(clearCart())
+		setTimeout(() => {
+			return dispatch(clearCart())
+		}, 1000)
 	}
 }
 
