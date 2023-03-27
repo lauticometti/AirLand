@@ -1,9 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/icons/air_land-white.svg'
 import styles from './Navbar.module.css'
-
 import { SearchBar } from '../'
-
 import SubNavbarRight from './SubNavbarRight/SubNavbarRight'
 
 export function Navbar() {
@@ -27,7 +25,6 @@ export function Navbar() {
 						</Link>
 					)}
 				</li>
-
 				<li>
 					<SubNavbarRight />
 				</li>
