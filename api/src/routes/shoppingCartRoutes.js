@@ -1,5 +1,6 @@
 const { Router } = require('express')
-const { getShoppingCart, addSneakersToShoppingCart, removeSneakersFromShoppingCart, updateQuantityFromShoppingCart } = require('../controllers/shoppingCartControllers')
+const { getShoppingCart, addSneakersToShoppingCart, removeSneakersFromShoppingCart, updateQuantityFromShoppingCart, addCartToShopping, getShoppingById, createPreference } = require('../controllers/shoppingCartControllers')
+const mercadopago = require("mercadopago")
 
 const router = Router()
 
@@ -49,6 +50,26 @@ router.patch('/update/:userId/:sneakerId/:quantity', async (req, res) => {
   try {
     await updateQuantityFromShoppingCart(userId, sneakerId, quantity)
     res.status(200).json('Successfully updated!')
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
+})
+
+router.post('/payment', async (req, res) => {
+  const { userId, cartId } = req.body
+
+  try {
+    const preference = await createPreference(userId, cartId)
+    mercadopago.preferences.create(preference)
+      .then(function (response) {
+        res.json({
+          response: response.body,
+          id: response.body.id
+        });
+      })
+      .catch(function (error) {
+        throw new Error(error)
+      });
   } catch (error) {
     res.status(400).json(error.message)
   }
