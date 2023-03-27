@@ -7,12 +7,15 @@ import {
 	AiOutlineLogout
 } from 'react-icons/ai'
 
+import Swal from 'sweetalert2'
+
 import { getCart, startLogout } from '../../../redux'
 import styles from './SubNavbarRight.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function SubNavbarRight() {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const { cart } = useSelector(state => state.cart)
 	const { status, uid, displayName } = useSelector(state => state.auth)
 
@@ -23,6 +26,7 @@ export default function SubNavbarRight() {
 
 	const handleLogout = () => {
 		dispatch(startLogout())
+		navigate('/')
 	}
 
 	return (
@@ -43,14 +47,31 @@ export default function SubNavbarRight() {
 				</div>
 			)}
 			<div className={styles.cartContainer}>
-				<Link to='/store' className={styles.cartLink}>
-					<AiOutlineShoppingCart />
-					{cart.length ? (
-						<span className={styles.cartSpan}>{cart.length}</span>
-					) : (
-						''
-					)}
-				</Link>
+				{
+					uid
+						? (
+							<Link to='/store' className={styles.cartLink}>
+								<AiOutlineShoppingCart />
+								{cart.length ? (
+									<span className={styles.cartSpan}>{cart.length}</span>
+								) : (
+									''
+								)}
+							</Link>
+						) : (
+							<Link className={styles.cartLink} onClick={() => Swal.fire({
+								position: 'top-right',
+								icon: 'warning',
+								html:
+									'Please, ' +
+									'<a href="/login">login</a>' +
+									' before viewing your cart',
+								showConfirmButton: false
+							})}>
+								<AiOutlineShoppingCart />
+							</Link>
+						)
+				}
 			</div>
 			{uid ? (
 				<span className={styles.logout} onClick={handleLogout}>
