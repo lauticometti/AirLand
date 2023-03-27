@@ -1,7 +1,13 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
+const mercadopago = require("mercadopago")
 const path = require('path')
+require('dotenv').config()
+
+mercadopago.configure({
+  access_token: process.env.MERCADOPAGO_ACCESS_TOKEN
+})
 
 // Server create
 const app = express()
