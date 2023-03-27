@@ -36,8 +36,10 @@ export function LoginForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
-		if (status === 'not-authenticated' && errorMessage) return alert(errorMessage)
-		if (status === 'authenticated') return navigate(localStorage.getItem('lastPage'))
+		if (status === 'not-authenticated' && errorMessage)
+			return alert(errorMessage)
+		if (status === 'authenticated')
+			return navigate(localStorage.getItem('lastPage'))
 	}, [status])
 
 	return (
@@ -56,7 +58,7 @@ export function LoginForm() {
 									type='email'
 									name='email'
 									id='password'
-									placeholder='usuario@correo.com'
+									placeholder='user@mail.com'
 									onChange={handleChange}
 									value={form.email}
 								/>

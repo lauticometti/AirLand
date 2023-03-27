@@ -4,6 +4,7 @@ import swal from 'sweetalert'
 import { removeItem, updateItem } from '../../redux'
 import styles from './CartItem.module.css'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 export function CartItem({ item }) {
 	const [quantity, setQuantity] = useState(item.quantity)
@@ -44,47 +45,50 @@ export function CartItem({ item }) {
 
 	return (
 		<div className={styles.cartItemContainer}>
-			<div className={styles.imgContainer}>
-				<img src={item?.image.THUMBNAIL} alt='' />
-			</div>
-			<div className={styles.sneakerNameContainer}>
-				<span>
-					<b>Nombre:</b>
-				</span>
-				<span>{item?.name}</span>
-			</div>
-			<div className={styles.sneakerPriceContainer}>
-				<span>
-					<b>Precio:</b>
-				</span>
-				<span>${item?.price}</span>
-			</div>
+			<article className={styles.articleCart}>
+				<div className={styles.imgContainer}>
+					<img src={item?.image.THUMBNAIL} alt='' />
+				</div>
+				<div className={styles.itemCartInfo}>
+					<div className={styles.titleContainer}>
+						<Link to={`/detail/${item.id}`} className={styles.titleLink}>
+							<h3 className={styles.title}>{item?.name}</h3>
+						</Link>
+						<span className={styles.size}>Size: {item?.selectedSize}</span>
+					</div>
+					<span onClick={handleRemove} className={styles.remove}>
+						Delete
+					</span>
+				</div>
+			</article>
+
 			<div className={styles.quantityContainer}>
-				<div className={styles.quantityInputContainer}>
-					<label htmlFor='quantity'>
-						<b>Cantidad:</b>
-					</label>
+				<form className={styles.quantityForm}>
+					<button
+						onClick={handleQuantitySubstraction}
+						className={styles.quantityButton}
+					>
+						-
+					</button>
 					<input
 						type='text'
 						id='quantity'
 						name='quantity'
 						value={quantity}
 						onChange={handleInputChange}
+						className={styles.quantityInput}
 					/>
-				</div>
-				<div className={styles.quantityHandlersContainer}>
-					<button onClick={handleQuantityAddition}>+</button>
-					<button onClick={handleQuantitySubstraction}>-</button>
-				</div>
+					<button
+						onClick={handleQuantityAddition}
+						className={styles.quantityButton}
+					>
+						+
+					</button>
+				</form>
 			</div>
-			<div className={styles.sneakerSizeContainer}>
-				<span>
-					<b>Talle:</b>
-				</span>
-				<span>{item?.selectedSize}</span>
-			</div>
-			<div className={styles.removeHandlerContainer}>
-				<button onClick={handleRemove}>X</button>
+
+			<div className={styles.itemPriceContainer}>
+				<span>${item?.price}</span>
 			</div>
 		</div>
 	)

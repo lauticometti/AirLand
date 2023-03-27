@@ -10,18 +10,18 @@ import {
 	Contact,
 	Cart,
 	Profile,
-	Page404
+	Page404,
+	Checkout
 } from './pages'
 import './styles/App.css'
 
 function App() {
-
 	const { pathname } = useLocation()
 	useEffect(() => {
 		if (pathname === '/login' || pathname === '/signup') return
 		localStorage.setItem('lastPage', pathname)
 	}, [pathname])
-  
+
 	return (
 		<div className='App'>
 			<Routes>
@@ -34,6 +34,7 @@ function App() {
 				<Route exact path='/store' element={<Cart />} />
 				<Route exact path='/contact' element={<Contact />} />
 				<Route exact path='/profile' element={<Profile />} />
+				<Route exact path='/checkout' element={<Checkout />} />
 				<Route path='*' element={<Page404 />} />
 			</Routes>
 		</div>
