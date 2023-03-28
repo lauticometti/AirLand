@@ -12,6 +12,7 @@ const getAllSneakers = async () => {
 		throw Error(error.message)
 	}
 }
+
 const getSizes = async (req, res) => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
