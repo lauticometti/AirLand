@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
+	checkingCredentials,
 	startGoogleSignIn,
 	startLoginUserWithEmailPassword
 } from '../../redux/slices/auth'
@@ -18,7 +19,6 @@ export function LoginForm() {
 	const { status, errorMessage } = useSelector(state => state.auth)
 	const [form, setForm] = useState(formData)
 	const [shown, setShown] = useState(false)
-	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
 	const handleChange = event => {
@@ -36,10 +36,10 @@ export function LoginForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
-		if (status === 'not-authenticated' && errorMessage)
-			return alert(errorMessage)
-		if (status === 'authenticated')
-			return navigate(localStorage.getItem('lastPage'))
+		if (status === 'not-authenticated' && errorMessage) {
+			alert(errorMessage)
+		}
+		dispatch(checkingCredentials())
 	}, [status])
 
 	return (
