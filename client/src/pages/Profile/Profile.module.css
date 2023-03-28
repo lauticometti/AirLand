@@ -1,0 +1,55 @@
+.header {
+	padding: 0 50px 0;
+	border-bottom: 1px solid #cecece;
+}
+
+.topHeader {
+	display: flex;
+	justify-content: space-between;
+}
+
+.topHeader h2 {
+	font-size: 1.4rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.topHeaderLogo {
+	width: 50px;
+}
+
+.bottomHeader {
+	text-align: center;
+}
+
+.tabList {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.listItem:not(:last-child),
+.listItemActive:not(:last-child) {
+	margin-right: 5px;
+}
+
+.listItem,
+.listItemActive {
+	font-size: 15px;
+	text-transform: uppercase;
+	padding: 22px 16px;
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.listItemActive {
+	font-weight: 600;
+	border-color: #000;
+}
+
+.listItem:hover {
+	border-color: #000;
+}
