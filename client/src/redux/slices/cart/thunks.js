@@ -2,7 +2,7 @@ import axios from 'axios'
 import swal from 'sweetalert'
 import { get } from './cartSlice'
 
-const BASE_URL = 'http://localhost:3001/api'
+const BASE_URL = 'https://airland-production.up.railway.app/api'
 
 export const getCart = userId => {
 	return async dispatch => {
