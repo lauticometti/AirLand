@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const BASEURL = 'https://airland-production.up.railway.app/api'
+const BASEURL = 'http://localhost:3001/api'
 
 export const shoesApi = createApi({
 	reducerPath: 'shoesApi',
