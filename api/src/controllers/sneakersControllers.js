@@ -13,7 +13,7 @@ const getAllSneakers = async () => {
 	}
 }
 
-const getSizes = async (req, res) => {
+const getSizes = async () => {
 	try {
 		const sneakers = await db.collection('ZAPATILLAS').get()
 		const sizes = [
@@ -27,45 +27,45 @@ const getSizes = async (req, res) => {
 		]
 			.sort((a, b) => a - b)
 			.map(size => Number(size))
-		res.status(200).json(sizes)
+		return sizes
 	} catch (error) {
-		res.status(400).json(error.message)
+		throw Error(error.message)
 	}
 }
 
-const postSneakers = async (req, res) => {
+const postSneakers = async (sneaker) => {
 	try {
-		await db.collection('ZAPATILLAS').add(req.body)
-		res.status(201).json('Succesfully created!')
+		await db.collection('ZAPATILLAS').add(sneaker)
+		return 'Succesfully created!'
 	} catch (error) {
-		res.status(400).json(error.message)
+		throw Error(error.message)
 	}
 }
-const getSneakersById = async (req, res) => {
+const getSneakersById = async (id) => {
 	try {
 		const sneaker = (
-			await db.collection('ZAPATILLAS').doc(req.params.id).get()
+			await db.collection('ZAPATILLAS').doc(id).get()
 		).data()
-		res.status(200).json(sneaker)
+		console.log(sneaker)
+		return sneaker
 	} catch (error) {
-		res.status(400).json(error.message)
+		throw Error(error.message)
 	}
 }
-const deleteSneakers = async (req, res) => {
-	const { STATUS } = req.body
+const deleteSneakers = async (id, status) => {
 	try {
-		await db.collection('ZAPATILLAS').doc(req.params.id).update({ STATUS })
-		res.status(200).json('Succesfully deleted!')
+		await db.collection('ZAPATILLAS').doc(id).update({ STATUS: status })
+		return 'Succesfully deleted!'
 	} catch (error) {
-		res.status(400).json(error.message)
+		throw Error(error.message)
 	}
 }
-const patchSneakers = async (req, res) => {
+const patchSneakers = async (id, updateObj) => {
 	try {
-		await db.collection('ZAPATILLAS').doc(req.params.id).update(req.body)
-		res.status(200).json('Succesfully updated!')
+		await db.collection('ZAPATILLAS').doc(id).update(updateObj)
+		return 'Succesfully updated!'
 	} catch (error) {
-		res.status(400).json(error.message)
+		throw Error(error.message)
 	}
 }
 
