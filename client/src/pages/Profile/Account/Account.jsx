@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import PersonalData from './PersonalData/PersonalData'
+import AddressBook from './AddressBook/AddressBook'
 import rightArrow from '../../../assets/icons/right-arrow.svg'
 import styles from './Account.module.css'
+import Favorites from './Favorites/Favorites'
 
 export default function Account() {
 	const [currentComponent, setCurrentComponent] = useState('personalData')
 
 	const components = {
-		personalData: <PersonalData />
+		personalData: <PersonalData />,
+		addresses: <AddressBook />,
+		favorites: <Favorites />
 	}
 
 	const handleSummaryLinks = event => {
