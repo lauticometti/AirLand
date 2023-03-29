@@ -7,6 +7,9 @@ import styles from './Cards.module.css'
 export function Cards() {
 	const filterState = useSelector(state => state.filter)
 	const { data, isLoading, error } = useGetShoesQuery(filterState)
+	const { page, pageSize } = useSelector(state => state.pagination)
+
+	const slicedData = data.slice((page - 1) * pageSize, page * pageSize)
 
 	if (isLoading)
 		return (
@@ -25,11 +28,11 @@ export function Cards() {
 	return (
 		<div
 			className={
-				data.length ? styles.cardsContainer : styles.cardsContainerNotFound
+				slicedData.length ? styles.cardsContainer : styles.cardsContainerNotFound
 			}
 		>
-			{data.length ? (
-				data.map(shoe => <Card key={shoe.id} shoe={shoe} />)
+			{slicedData.length ? (
+				slicedData.map(shoe => <Card key={shoe.id} shoe={shoe} />)
 			) : (
 				<NotFound />
 			)}
