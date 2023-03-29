@@ -3,6 +3,8 @@ import stringCleaner from '../../helpers/stringCleaner'
 
 const BASEURL = 'https://airland-production.up.railway.app/api'
 
+// const BASEURL = 'http://localhost:3001/api'
+
 export const filteredShoesApi = createApi({
 	reducerPath: 'filteredShoesApi',
 	baseQuery: fetchBaseQuery({ baseUrl: BASEURL }),
