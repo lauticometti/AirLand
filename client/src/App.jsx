@@ -40,7 +40,7 @@ function App() {
 							<Route exact path='/profile' element={<Profile />} />
 							<Route exact path='/checkout' element={<Checkout />} />
 							<Route exact path='/login' element={<Navigate to={localStorage.getItem('lastPath')} />} />
-							<Route exact path='/register' element={<Navigate to={localStorage.getItem('lastPath')} />} />
+							<Route exact path='/signup' element={<Navigate to={localStorage.getItem('lastPath')} />} />
 							<Route path='*' element={<Page404 />} />
 						</>
 						: <>
