@@ -21,7 +21,7 @@ export function Cards() {
 				<NotFound />
 			</div>
 		)
-
+	console.log(data[1])
 	return (
 		<div
 			className={
