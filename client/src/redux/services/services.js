@@ -11,7 +11,7 @@ export const shoesApi = createApi({
 			query: () => '/sneakers'
 		}),
 		getShoesById: builder.query({
-			query: id => `/sneakers/${id}`
+			query: id => `/sneakers?id=${id}`
 		}),
 		getShoesByName: builder.query({
 			query: name => `/sneakers/${name}`
