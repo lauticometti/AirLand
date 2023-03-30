@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { FaStar } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import {
@@ -17,7 +16,6 @@ import {
 import Carousel from 'react-bootstrap/Carousel'
 
 import styles from './Detail.module.css'
-import StartRating from './StartRating'
 
 export function Detail() {
 	const dispatch = useDispatch()
@@ -97,7 +95,6 @@ export function Detail() {
 							<h2 className={styles.shoePrice}>${shoe.PRICE}</h2>
 							<div className={styles.sizesContainer}>
 								<p className={styles.sizesTitle}>Sizes</p>
-
 								<ul className={styles.sizesChecks}>
 									{sizes?.map(size => (
 										<li
@@ -121,9 +118,6 @@ export function Detail() {
 							</div>
 
 							<div className={styles.addCartContainer}>
-								<div className={styles.mainContainer}>
-									<StartRating />
-								</div>
 								<button
 									className={styles.addToCartButton}
 									onClick={handleAddToCart}
