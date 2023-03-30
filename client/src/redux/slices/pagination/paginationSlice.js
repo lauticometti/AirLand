@@ -5,16 +5,16 @@ export const paginationSlice = createSlice({
 	initialState: {
 		page: 1,
 		pageSize: 9,
-		totalPages: 1
+		totalEntries: 1
 	},
 	reducers: {
 		setPage: (state, action) => {
 			state.page = action.payload
 		},
-		setTotalPages: (state, action) => {
-			state.totalPages = action.payload
+		setTotalEntries: (state, action) => {
+			state.totalEntries = action.payload
 		}
 	}
 })
 
-export const { setPage, setTotalPages } = paginationSlice.actions
+export const { setPage, setTotalEntries } = paginationSlice.actions
