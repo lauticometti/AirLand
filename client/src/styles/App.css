@@ -18,10 +18,3 @@ button {
 button:focus {
 	outline: none;
 }
-.star{
-cursor: pointer;
-transition: color 200ms;
-}
-input[type = 'radio']{
-	display: none;
-}
