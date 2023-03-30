@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import { authSlice, cartSlice, filterSlice } from './slices'
+import { authSlice, cartSlice, filterSlice, paginationSlice } from './slices'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { shoesApi } from './services/services'
 import { filteredShoesApi } from './services/filteredShoes'
@@ -18,6 +18,7 @@ const reducer = combineReducers({
 	auth: authSlice.reducer,
 	filter: filterSlice.reducer,
 	cart: cartSlice.reducer,
+	pagination: paginationSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer)
