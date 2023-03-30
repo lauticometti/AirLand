@@ -1,0 +1,99 @@
+.main {
+	padding: 80px 3% 50px;
+	background-color: #f7f7f7;
+}
+
+.title {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+}
+
+.orders {
+	background-color: #fff;
+	width: 90%;
+	min-height: 200px;
+	padding: 30px 25px;
+	margin: 0 0 50px 0;
+}
+
+.orderContainer {
+	margin-bottom: 50px;
+}
+
+.orderTop {
+	display: flex;
+	justify-content: space-between;
+	padding: 16px 30px;
+	border: 1px solid #e5e5e5;
+
+	border-radius: 10px 10px 0 0;
+	background-color: #f7f7f7;
+}
+
+.orderDateTitle {
+	text-transform: uppercase;
+}
+
+.orderDateText {
+	font-weight: 600;
+}
+
+.totalPrice {
+	width: 50%;
+}
+
+.totalPriceTitle {
+	text-transform: uppercase;
+}
+
+.totalPriceText {
+	font-weight: 600;
+}
+
+.extraOrderId {
+	font-size: 15px;
+}
+
+.totalOrderStatus {
+	background-color: #00a650;
+	width: fit-content;
+	padding: 3px 5px;
+	border-radius: 4px;
+	font-size: 15px;
+	color: #fff;
+}
+
+.emptyOrdersContainer {
+	padding: 30px 25px;
+	border-bottom: 1px solid #cecece;
+}
+
+.emptyOrders {
+	max-width: 500px;
+}
+
+.emptyOrders span {
+	display: block;
+	margin-top: 20px;
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.emptyOrdersLink {
+	color: #000;
+	transition: 0.2s;
+}
+
+.emptyOrdersLink:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+.recommended {
+	margin-top: 100px;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+}

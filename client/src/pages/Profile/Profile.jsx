@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { Footer, Navbar } from '../../components'
 import Account from './Account/Account'
-import Purchases from './Purchases/Purchases'
+import Orders from './Orders/Orders'
 import styles from './Profile.module.css'
 import logo from '../../assets/icons/air_land-black.svg'
 
@@ -14,7 +14,7 @@ export function Profile() {
 
 	const components = {
 		account: <Account />,
-		purchases: <Purchases />
+		orders: <Orders />
 	}
 
 	const handleTabList = event => {
@@ -48,9 +48,9 @@ export function Profile() {
 						</li>
 						<li
 							onClick={handleTabList}
-							id='purchases'
+							id='orders'
 							className={
-								currentComponent === 'purchases'
+								currentComponent === 'orders'
 									? styles.listItemActive
 									: styles.listItem
 							}
