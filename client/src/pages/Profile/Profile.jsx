@@ -57,6 +57,17 @@ export function Profile() {
 						>
 							Purchases
 						</li>
+						<li
+							onClick={handleTabList}
+							id='dashboard'
+							className={
+								currentComponent === 'dashboard'
+									? styles.listItemActive
+									: styles.listItem
+							}
+						>
+							Dashboard
+						</li>
 					</ul>
 				</div>
 			</div>

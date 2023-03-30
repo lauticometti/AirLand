@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import {
 	Login,
 	Register,
@@ -25,38 +25,63 @@ function App() {
 		localStorage.setItem('lastPath', pathname)
 	}, [pathname])
 
+	const email = 'lauti@eladmin.com'
+
 	return (
 		<>
 			<Routes>
-				{
-					(status === 'authenticated')
-						? <>
-							<Route exact path='/' element={<Home />} />
-							<Route exact path='/snkrs' element={<Sneakers />} />
-							<Route exact path='/detail/:shoeId' element={<Detail />} />
-							<Route exact path='/about' element={<About />} />
-							<Route exact path='/store' element={<Cart />} />
-							<Route exact path='/contact' element={<Contact />} />
-							<Route exact path='/profile' element={<Profile />} />
-							<Route exact path='/checkout' element={<Checkout />} />
-							<Route exact path='/login' element={<Navigate to={localStorage.getItem('lastPath')} />} />
-							<Route exact path='/signup' element={<Navigate to={localStorage.getItem('lastPath')} />} />
-							<Route path='*' element={<Page404 />} />
-						</>
-						: <>
-							<Route exact path='/' element={<Home />} />
-							<Route exact path='/snkrs' element={<Sneakers />} />
-							<Route exact path='/detail/:shoeId' element={<Detail />} />
-							<Route exact path='/login' element={<Login />} />
-							<Route exact path='/signup' element={<Register />} />
-							<Route exact path='/about' element={<About />} />
-							<Route exact path='/profile' element={<Navigate to={localStorage.getItem('lastPath')} />} />
-							<Route exact path='/store' element={<Navigate to={localStorage.getItem('lastPath')} />} />
-							<Route exact path='/checkout' element={<Navigate to={localStorage.getItem('lastPath')} />} />
-							<Route exact path='/contact' element={<Contact />} />
-							<Route path='*' element={<Page404 />} />
-						</>
-				}
+				{status === 'authenticated' ? (
+					<>
+						<Route exact path='/' element={<Home />} />
+						<Route exact path='/snkrs' element={<Sneakers />} />
+						<Route exact path='/detail/:shoeId' element={<Detail />} />
+						<Route exact path='/about' element={<About />} />
+						<Route exact path='/store' element={<Cart />} />
+						<Route exact path='/contact' element={<Contact />} />
+						<Route exact path='/profile' element={<Profile />} />
+						<Route exact path='/checkout' element={<Checkout />} />
+						<Route
+							exact
+							path='/login'
+							element={<Navigate to={localStorage.getItem('lastPath')} />}
+						/>
+						<Route
+							exact
+							path='/signup'
+							element={<Navigate to={localStorage.getItem('lastPath')} />}
+						/>
+						{/* {email === 'lauti@eladmin.com' ? (
+							<Route path='/admin' element={<Admin />} />
+						) : null} */}
+						<Route path='*' element={<Page404 />} />
+					</>
+				) : (
+					<>
+						<Route exact path='/' element={<Home />} />
+						<Route exact path='/snkrs' element={<Sneakers />} />
+						<Route exact path='/detail/:shoeId' element={<Detail />} />
+						<Route exact path='/login' element={<Login />} />
+						<Route exact path='/signup' element={<Register />} />
+						<Route exact path='/about' element={<About />} />
+						<Route
+							exact
+							path='/profile'
+							element={<Navigate to={localStorage.getItem('lastPath')} />}
+						/>
+						<Route
+							exact
+							path='/store'
+							element={<Navigate to={localStorage.getItem('lastPath')} />}
+						/>
+						<Route
+							exact
+							path='/checkout'
+							element={<Navigate to={localStorage.getItem('lastPath')} />}
+						/>
+						<Route exact path='/contact' element={<Contact />} />
+						<Route path='*' element={<Page404 />} />
+					</>
+				)}
 			</Routes>
 		</>
 	)
