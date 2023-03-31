@@ -9,7 +9,7 @@
 	justify-content: center;
 	align-items: center;
 
-	background-color: rgba(5, 5, 5, 0.95);
+	background-color: rgba(5, 5, 5, 0.9);
 	opacity: 0;
 	transition: all 0.3s ease-in-out;
 	pointer-events: none;
@@ -27,9 +27,9 @@
 	top: 100px;
 	width: 80%;
 	max-width: 450px;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255);
 	backdrop-filter: blur(5px);
-	border-radius: 10px;
+	border-radius: 2px;
 
 	transition: all 0.3s ease-in-out;
 }
@@ -55,18 +55,20 @@
 	background-color: #050505;
 	color: #fff;
 	border: none;
-	border-radius: 10px;
+	border-radius: 5px;
 	width: 85%;
+	height: 35px;
 	padding: 5px 15px;
 
 	font-family: Poppins;
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: 600;
+	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: 0.2s;
 }
 
 .button:hover {
-	color: #87cefa;
+	color: #a5a5a5;
 	cursor: pointer;
 }
