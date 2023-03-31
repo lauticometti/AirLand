@@ -17,7 +17,7 @@ import {
 import './styles/App.css'
 
 function App() {
-	const { status } = useSelector(state => state.auth)
+	const { status, email } = useSelector(state => state.auth)
 	const { pathname } = useLocation()
 
 	useEffect(() => {
@@ -25,7 +25,7 @@ function App() {
 		localStorage.setItem('lastPath', pathname)
 	}, [pathname])
 
-	const email = 'lauti@eladmin.com'
+	const adminEmail = 'administrador@email.com'
 
 	return (
 		<>
@@ -50,10 +50,10 @@ function App() {
 							path='/signup'
 							element={<Navigate to={localStorage.getItem('lastPath')} />}
 						/>
-						{/* {email === 'lauti@eladmin.com' ? (
+						<Route path='*' element={<Page404 />} />
+						{/* {email === 'adminEmail' ? (
 							<Route path='/admin' element={<Admin />} />
 						) : null} */}
-						<Route path='*' element={<Page404 />} />
 					</>
 				) : (
 					<>

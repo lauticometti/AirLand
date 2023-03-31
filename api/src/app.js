@@ -1,13 +1,9 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-const mercadopago = require("mercadopago")
 const path = require('path')
-require('dotenv').config()
 
-mercadopago.configure({
-  access_token: process.env.MERCADOPAGO_ACCESS_TOKEN
-})
+require('dotenv').config()
 
 // Server create
 const app = express()
@@ -23,6 +19,8 @@ app.use('/api/sneakers', require('./routes/sneakersRoutes'))
 app.use('/api/users', require('./routes/usersRoutes'))
 app.use('/api/filter', require('./routes/filterRoutes'))
 app.use('/api/cart', require('./routes/shoppingCartRoutes'))
+app.use('/api/payment', require('./routes/paymentRoutes'))
+app.use('/api/order', require('./routes/ordersRoutes'))
 
 app.use(express.static(path.join(__dirname, 'public')))
 

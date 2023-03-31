@@ -16,7 +16,7 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function SubNavbarRight() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const { cart } = useSelector(state => state.cart)
+	const { cartItems } = useSelector(state => state.shopping)
 	const { status, uid, displayName } = useSelector(state => state.auth)
 
 	useEffect(() => {
@@ -52,8 +52,8 @@ export default function SubNavbarRight() {
 						? (
 							<Link to='/store' className={styles.cartLink}>
 								<AiOutlineShoppingCart />
-								{cart.length ? (
-									<span className={styles.cartSpan}>{cart.length}</span>
+								{cartItems.length ? (
+									<span className={styles.cartSpan}>{cartItems.length}</span>
 								) : (
 									''
 								)}

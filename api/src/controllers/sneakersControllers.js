@@ -41,6 +41,7 @@ const postSneakers = async (sneaker) => {
 		throw Error(error.message)
 	}
 }
+
 const getSneakersById = async (id) => {
 	try {
 		const sneaker = (
@@ -52,14 +53,16 @@ const getSneakersById = async (id) => {
 		throw Error(error.message)
 	}
 }
-const deleteSneakers = async (id, status) => {
+
+const deleteSneakers = async (id) => {
 	try {
-		await db.collection('ZAPATILLAS').doc(id).update({ STATUS: status })
+		await db.collection('ZAPATILLAS').doc(id).update({ "STATUS": false })
 		return 'Succesfully deleted!'
 	} catch (error) {
 		throw Error(error.message)
 	}
 }
+
 const patchSneakers = async (id, updateObj) => {
 	try {
 		await db.collection('ZAPATILLAS').doc(id).update(updateObj)
