@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useCallback, useEffect } from 'react'
 import './Modal.css'
 
-export function Modal({ onClose, children, show }) {
+export function Modal({ onClose, children, show, buttonText }) {
 	const closeOnEscapeKeyDown = useCallback(
 		e => {
 			if ((e.charCode || e.keyCode) === 27) {
@@ -24,7 +24,7 @@ export function Modal({ onClose, children, show }) {
 				<div className='modalBody'>{children}</div>
 				<div className='modalFooter'>
 					<button onClick={onClose} className='button'>
-						Done
+						{buttonText}
 					</button>
 				</div>
 			</div>
@@ -35,5 +35,6 @@ export function Modal({ onClose, children, show }) {
 Modal.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	children: PropTypes.node.isRequired,
-	show: PropTypes.bool.isRequired
+	show: PropTypes.bool.isRequired,
+	buttonText: PropTypes.string.isRequired
 }

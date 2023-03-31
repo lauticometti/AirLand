@@ -13,7 +13,7 @@
 
 .rangeSpan {
 	position: absolute;
-	color: #fff;
+	color: #000;
 	font-family: Poppins;
 	font-size: 18px;
 	font-weight: 900;
@@ -24,7 +24,7 @@
 
 .rangeNumber {
 	position: absolute;
-	color: #fff;
+	color: #000;
 	font-family: Poppins;
 	font-size: 18px;
 	font-weight: 900;
@@ -43,7 +43,6 @@
 	width: 70%;
 	padding: 0;
 	height: 4px;
-	border-radius: 5px;
 	position: relative;
 }
 
