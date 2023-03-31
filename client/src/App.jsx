@@ -21,7 +21,7 @@ function App() {
 	const { pathname } = useLocation()
 
 	useEffect(() => {
-		if (pathname === '/login' || pathname === '/register') return
+		if (pathname === '/login' || pathname === '/signup') return
 		localStorage.setItem('lastPath', pathname)
 	}, [pathname])
 
