@@ -1,10 +1,13 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Snkrs } from '../../../components'
+import { getAllOrders } from '../../../redux'
 import styles from './Orders.module.css'
 import PurchasedProduct from './PurchasedProduct/PurchasedProduct'
 
 export default function Orders() {
-	const orders = [
+	const orders2 = [
 		{
 			cartItems: [
 				{
@@ -91,13 +94,21 @@ export default function Orders() {
 		}
 	]
 
+	const { orders } = useSelector(state => state.shopping)
+	const { uid } = useSelector(state => state.auth)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(getAllOrders(uid))
+	}, [])
+
 	return (
 		<div className={styles.main}>
 			<h3 className={styles.title}>Orders</h3>
 
-			{orders.length ? (
+			{orders2.length ? (
 				<div className={styles.orders}>
-					{orders.map((order, i) => (
+					{orders2.map((order, i) => (
 						<div key={i} className={styles.orderContainer}>
 							<div className={styles.orderTop}>
 								<div className={styles.orderDate}>

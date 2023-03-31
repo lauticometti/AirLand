@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import { authSlice, cartSlice, filterSlice, paginationSlice } from './slices'
+import { authSlice, shoppingSlice, filterSlice, paginationSlice } from './slices'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { shoesApi } from './services/services'
 import { filteredShoesApi } from './services/filteredShoes'
@@ -17,7 +17,7 @@ const reducer = combineReducers({
 	[filteredShoesApi.reducerPath]: filteredShoesApi.reducer,
 	auth: authSlice.reducer,
 	filter: filterSlice.reducer,
-	cart: cartSlice.reducer,
+	shopping: shoppingSlice.reducer,
 	pagination: paginationSlice.reducer
 })
 
