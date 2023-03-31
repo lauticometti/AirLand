@@ -12,7 +12,8 @@ import {
 	Cart,
 	Profile,
 	Page404,
-	Checkout
+	Checkout,
+	AdminDetail
 } from './pages'
 import './styles/App.css'
 
@@ -35,6 +36,7 @@ function App() {
 						<Route exact path='/' element={<Home />} />
 						<Route exact path='/snkrs' element={<Sneakers />} />
 						<Route exact path='/detail/:shoeId' element={<Detail />} />
+						<Route exact path='/detail/admin/:shoeId' element={<AdminDetail />} />
 						<Route exact path='/about' element={<About />} />
 						<Route exact path='/store' element={<Cart />} />
 						<Route exact path='/contact' element={<Contact />} />
