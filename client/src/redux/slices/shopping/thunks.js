@@ -1,14 +1,14 @@
 import axios from 'axios'
 import swal from 'sweetalert'
-import { get } from './cartSlice'
+import { getCartItems, getOrders } from './shoppingSlice'
 
-const BASE_URL = 'https://airland-production.up.railway.app/api'
+const BASE_URL = import.meta.env.VITE_FRONT_URL || 'http://localhost:3001/api'
 
 export const getCart = userId => {
 	return async dispatch => {
 		try {
 			const { data } = await axios.get(`${BASE_URL}/cart/${userId}`)
-			dispatch(get(data))
+			dispatch(getCartItems(data))
 		} catch (error) {
 			alert(error.message)
 		}
@@ -66,6 +66,35 @@ export const updateItem = (sneakerId, userId, quantity) => {
 				`${BASE_URL}/cart/update/${userId}/${sneakerId}/${quantity}`
 			)
 			dispatch(getCart(userId))
+		} catch (error) {
+			alert(error.message)
+		}
+	}
+}
+
+export const getPayment = (userId) => {
+	return async dispatch => {
+		try {
+			const { data } = await axios.post(
+				`${BASE_URL}/payment/create-preference`,
+				{
+					userId
+				}
+			)
+			window.location.href = data.init_point
+		} catch (error) {
+			alert(error.message)
+		}
+	}
+}
+
+export const getAllOrders = (userId) => {
+	return async dispatch => {
+		try {
+			const { data } = await axios.get(
+				`${BASE_URL}/order/${userId}`
+			)
+			dispatch(getOrders(data))
 		} catch (error) {
 			alert(error.message)
 		}

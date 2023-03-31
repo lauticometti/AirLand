@@ -5,7 +5,7 @@ import {
 	registerUserWithEmailPassword,
 	// loginAnonymously
 } from '../../../firebase'
-import { clearCart } from '../cart'
+import { clearCartItems } from '../shopping/shoppingSlice'
 import { checkingCredentials, Logout, signIn } from './'
 
 export const startRegistrationUserWithEmailPassword = ({
@@ -69,7 +69,7 @@ export const startLogout = () => {
 		await logoutFirebase()
 		dispatch(Logout())
 		setTimeout(() => {
-			return dispatch(clearCart())
+			return dispatch(clearCartItems())
 		}, 1000)
 	}
 }

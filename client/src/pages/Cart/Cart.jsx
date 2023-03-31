@@ -4,14 +4,13 @@ import { CartItem, Footer, Navbar, Snkrs } from '../../components'
 import styles from './Cart.module.css'
 
 export function Cart() {
-	const { cart } = useSelector(state => state.cart)
-	const totalPrice = cart.reduce((acum, sneaker) => acum + sneaker.price, 0)
+	const { cartItems, totalPrice } = useSelector(state => state.shopping)
 
 	return (
 		<>
 			<Navbar />
 			<div className={styles.cartContainer}>
-				{cart.map(sneaker => (
+				{cartItems?.map(sneaker => (
 					<CartItem item={sneaker} key={sneaker.id} />
 				))}
 
@@ -27,7 +26,7 @@ export function Cart() {
 
 				<div className={styles.buyButtonContainer}>
 					<Link to='/checkout'>
-						<button disabled={!cart.length} className={styles.buyButton}>
+						<button disabled={!cartItems?.length} className={styles.buyButton}>
 							Checkout
 						</button>
 					</Link>

@@ -1,13 +1,26 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { Footer, Navbar } from '../../components'
+import { getPayment } from '../../redux'
 import styles from './Checkout.module.css'
 
+
+
 export function Checkout() {
+
+	const { uid } = useSelector(state => state.auth)
+	const dispatch = useDispatch()
+
+	const handleCheckoutSubmit = (event) => {
+		event.preventDefault()
+		dispatch(getPayment(uid))
+	}
+
 	return (
 		<>
 			<Navbar />
 			<div className={styles.formContainer}>
 				<h2 className={styles.title}>Checkout details</h2>
-				<form className={styles.form}>
+				<form className={styles.form} onSubmit={handleCheckoutSubmit}>
 					<h3 className={styles.formTitle}>Shipping adress</h3>
 					<label htmlFor='name' className={styles.nameLabel}>
 						Name
@@ -18,7 +31,7 @@ export function Checkout() {
 						placeholder='Name'
 						className={styles.nameInput}
 					/>
-					<label htmlFor='adress' className={styles.addressLabel}>
+					<label htmlFor='adresss' className={styles.addressLabel}>
 						Address
 					</label>
 					<input
