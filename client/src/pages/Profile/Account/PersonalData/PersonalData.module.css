@@ -24,8 +24,8 @@
 	text-transform: uppercase;
 }
 
-.myData span,
-.accessData span {
+.editSpan,
+.editSpan {
 	font-weight: 600;
 	letter-spacing: 1px;
 	text-transform: uppercase;
@@ -34,8 +34,8 @@
 	cursor: pointer;
 }
 
-.myData span:hover,
-.accessData span:hover {
+.editSpan:hover,
+.editSpan:hover {
 	background-color: #000;
 	text-decoration: none;
 	color: #fff;
