@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useCallback, useEffect } from 'react'
 import styles from './UserModal.module.css'
 
-export function UserModal({ onClose, children, show, buttonText }) {
+export function UserModal({ onClose, children, show }) {
 	const closeOnEscapeKeyDown = useCallback(
 		e => {
 			if ((e.charCode || e.keyCode) === 27) {

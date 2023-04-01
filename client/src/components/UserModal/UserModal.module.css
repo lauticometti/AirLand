@@ -56,6 +56,7 @@
 
 @media (min-width: 768px) {
 	.modalContent {
+		width: fit-content;
 		max-width: 600px;
 		top: 5vh;
 		max-height: 90vh;

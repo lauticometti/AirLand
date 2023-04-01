@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import rightArrow from '../../../../../assets/icons/right_arrow-largeWhite.svg'
-import styles from './AddAddress.module.css'
+import styles from './EditAddress.module.css'
 
-export default function AddAddress({ onClose }) {
+export default function EditAddress({ onClose }) {
 	return (
 		<div className={styles.addAddressContainer}>
-			<h3 className={styles.addAddressTitle}>Add new address</h3>
+			<h3 className={styles.addAddressTitle}>Edit address</h3>
 			<div className={styles.fullNameContainer}>
 				<section>
 					<label htmlFor='addAddress_firstName'>
@@ -71,6 +71,6 @@ export default function AddAddress({ onClose }) {
 	)
 }
 
-AddAddress.propTypes = {
+EditAddress.propTypes = {
 	onClose: PropTypes.func.isRequired
 }
