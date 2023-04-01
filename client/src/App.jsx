@@ -12,7 +12,8 @@ import {
 	Cart,
 	Profile,
 	Page404,
-	Checkout
+	Checkout,
+	PaymentSuccess
 } from './pages'
 import './styles/App.css'
 
@@ -21,7 +22,7 @@ function App() {
 	const { pathname } = useLocation()
 
 	useEffect(() => {
-		if (pathname === '/login' || pathname === '/register') return
+		if (pathname === '/login' || pathname === '/signup') return
 		localStorage.setItem('lastPath', pathname)
 	}, [pathname])
 
@@ -50,6 +51,7 @@ function App() {
 							path='/signup'
 							element={<Navigate to={localStorage.getItem('lastPath')} />}
 						/>
+						<Route path='/payment-success' element={<PaymentSuccess />} />
 						<Route path='*' element={<Page404 />} />
 						{/* {email === 'adminEmail' ? (
 							<Route path='/admin' element={<Admin />} />

@@ -1,18 +1,35 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Footer, Navbar } from '../../components'
 import { getPayment } from '../../redux'
 import styles from './Checkout.module.css'
 
-
-
 export function Checkout() {
 
+
 	const { uid } = useSelector(state => state.auth)
+	const { totalPrice } = useSelector(state => state.shopping)
 	const dispatch = useDispatch()
+
+	const [form, setForm] = useState({
+		zipCode: '',
+		streetName: '',
+		streetNumber: '',
+		cityName: '',
+		stateName: '',
+		countryName: ''
+	})
 
 	const handleCheckoutSubmit = (event) => {
 		event.preventDefault()
-		dispatch(getPayment(uid))
+		dispatch(getPayment(uid, form, totalPrice))
+	}
+
+	const handleInputChange = (event) => {
+		setForm({
+			...form,
+			[event.target.name]: event.target.value
+		})
 	}
 
 	return (
@@ -22,41 +39,29 @@ export function Checkout() {
 				<h2 className={styles.title}>Checkout details</h2>
 				<form className={styles.form} onSubmit={handleCheckoutSubmit}>
 					<h3 className={styles.formTitle}>Shipping adress</h3>
-					<label htmlFor='name' className={styles.nameLabel}>
-						Name
+					<label htmlFor='streetName' className={styles.cityLabel}>
+						Street Name
 					</label>
 					<input
 						type='text'
-						id='name'
-						placeholder='Name'
-						className={styles.nameInput}
-					/>
-					<label htmlFor='adresss' className={styles.addressLabel}>
-						Address
-					</label>
-					<input
-						type='text'
-						id='address'
-						placeholder='Address'
-						className={styles.addressInput}
-					/>
-					<label htmlFor='city' className={styles.cityLabel}>
-						City
-					</label>
-					<input
-						type='text'
-						id='city'
-						placeholder='City'
+						id='streetName'
+						placeholder='Street Name'
 						className={styles.cityInput}
+						name='streetName'
+						value={form.streetName}
+						onChange={handleInputChange}
 					/>
-					<label htmlFor='state' className={styles.stateLabel}>
-						State
+					<label htmlFor='streetNumber' className={styles.stateLabel}>
+						Street Number
 					</label>
 					<input
 						type='text'
-						id='state'
-						placeholder='State'
+						id='streetNumber'
+						placeholder='Street Number'
 						className={styles.stateInput}
+						name='streetNumber'
+						value={form.streetNumber}
+						onChange={handleInputChange}
 					/>
 					<label htmlFor='zipCode' className={styles.zipCodeLabel}>
 						Zip code
@@ -66,26 +71,52 @@ export function Checkout() {
 						id='zipCode'
 						placeholder='Zip code'
 						className={styles.zipCodeInput}
+						name='zipCode'
+						value={form.zipCode}
+						onChange={handleInputChange}
 					/>
-					<label htmlFor='country' className={styles.countryLabel}>
+					<label htmlFor='cityName' className={styles.phoneLabel}>
+						City
+					</label>
+					<input
+						type='text'
+						id='cityName'
+						placeholder='City'
+						className={styles.phoneInput}
+						name='cityName'
+						value={form.cityName}
+						onChange={handleInputChange}
+					/>
+					<label htmlFor='stateName' className={styles.nameLabel}>
+						State
+					</label>
+					<input
+						type='text'
+						id='stateName'
+						placeholder='State'
+						className={styles.nameInput}
+						name='stateName'
+						value={form.stateName}
+						onChange={handleInputChange}
+					/>
+					<label htmlFor='countryName' className={styles.addressLabel}>
 						Country
 					</label>
 					<input
 						type='text'
-						id='country'
+						id='countryName'
 						placeholder='Country'
-						className={styles.countryInput}
+						className={styles.addressInput}
+						name='countryName'
+						value={form.countryName}
+						onChange={handleInputChange}
 					/>
-					<label htmlFor='phone' className={styles.phoneLabel}>
-						Phone
-					</label>
-					<input
-						type='text'
-						id='phone'
-						placeholder='Phone'
-						className={styles.phoneInput}
-					/>
-					<button className={styles.paymentButton}>Go payment</button>
+					<button
+						className={styles.paymentButton}
+						disabled={Object.values(form).some(input => input === '') ? true : false}
+					>
+						Go payment
+					</button>
 				</form>
 			</div>
 			<Footer />
