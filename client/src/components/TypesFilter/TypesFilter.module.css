@@ -5,7 +5,7 @@
 	align-items: center;
 	user-select: none;
 	font-family: Poppins;
-	color: #727272;
+	color: #101113;
 	opacity: 1;
 	font-weight: 700;
 }
@@ -14,13 +14,13 @@
 	-webkit-appearance: none;
 	appearance: none;
 	font: inherit;
-	color: black;
+	color: #666;
 
 	width: 1.15em;
 	margin: 0;
 	height: 1.15em;
 	border: none;
-	border: 0.15em solid #727272;
+	border: 0.15em solid #666;
 	border-radius: 5px;
 	transform: translateY(0.2em);
 
@@ -28,18 +28,22 @@
 	place-content: center;
 }
 
+label:checked {
+}
+
 input:checked {
-	border-color: #fff;
+	border-color: #000;
+	color: #000;
 }
 
 .input::before {
 	content: '';
-	width: 0.65em;
-	height: 0.65em;
-	border-radius: 1px;
+	width: 0.7em;
+	height: 0.7em;
+	border-radius: 2px;
 	transform: scale(0);
 	transition: 0.2s;
-	box-shadow: inset 1em 1em #fff;
+	box-shadow: inset 1em 1em #000;
 }
 
 .input:checked::before {

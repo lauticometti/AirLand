@@ -1,9 +1,13 @@
 import { useSelector } from 'react-redux'
 import styles from './PersonalData.module.css'
 import rightArrowLarge from '../../../../assets/icons/right_arrow-large.svg'
+import { Modal } from '../../../../components'
+import { useState } from 'react'
 
 export default function PersonalData() {
 	const { displayName, email } = useSelector(state => state.auth)
+
+	const [show, setShow] = useState(false)
 
 	const birthday = '2003/04/02'
 	const password = '20030402'
@@ -18,7 +22,8 @@ export default function PersonalData() {
 				<p className={styles.myDataName}>{displayName}</p>
 				<p className={styles.myDataBirthday}>{birthday || null}</p>
 				<p className={styles.myDataGender}>{gender}</p>
-				<span>Edit</span>
+				<span onClick={() => setShow(true)}>Edit</span>
+				<Modal onClose={() => setShow(false)} show={show} />
 			</div>
 			<div className={styles.accessData}>
 				<h4 className={styles.accessDataTitle}>Login details</h4>

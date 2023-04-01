@@ -18,7 +18,7 @@ export function FilterButton() {
 				<img src={icon} alt='' className={styles.icon} />
 				<span className={styles.span}>Filter</span>
 			</button>
-			<Modal onClose={() => setShow(false)} show={show}>
+			<Modal onClose={() => setShow(false)} show={show} buttonText='Done'>
 				<Dropdown title='Sizes'>
 					<SizesFilter />
 				</Dropdown>

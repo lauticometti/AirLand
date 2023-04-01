@@ -14,12 +14,12 @@
 .listItem {
 	width: 40px;
 	text-align: center;
-	border: 2px solid #727272;
+	border: 2px solid #666;
 	border-radius: 50%;
 	padding: 6px;
 
 	font-size: 1.1rem;
-	color: #727272;
+	color: #666;
 
 	font-weight: 700;
 	user-select: none;
@@ -28,19 +28,19 @@
 }
 
 .listItem:hover {
-	border-color: #f0f8f0;
-	color: #f0f8f0;
+	border-color: #000;
+	color: #000;
 }
 
 .listItemActive {
 	width: 40px;
 	text-align: center;
-	border: 2px solid #fff;
+	border: 2px solid #000;
 	border-radius: 50%;
 	padding: 6px;
 
 	font-size: 1.1rem;
-	color: #fff;
+	color: #000;
 
 	font-weight: 700;
 	user-select: none;

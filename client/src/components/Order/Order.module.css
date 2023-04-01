@@ -54,7 +54,7 @@
 	list-style: none;
 	font-family: Poppins;
 	font-size: 1.5rem;
-	color: #fff;
+	color: #000;
 	width: 80%;
 	margin: 0 auto;
 	padding: 0;
@@ -82,6 +82,7 @@
 .labelP {
 	padding: 0;
 	margin: 0;
+	text-transform: uppercase;
 }
 
 .radioInput {
@@ -94,12 +95,16 @@
 	margin: 0;
 	height: 1.15em;
 	border: none;
-	border: 0.15em solid #fff;
+	border: 0.15em solid #000;
 	border-radius: 50%;
 	transform: translateY(0.2em);
 
 	display: grid;
 	place-content: center;
+}
+
+.radioInput:checked {
+	border-color: #000;
 }
 
 .radioInput::before {
@@ -109,7 +114,7 @@
 	border-radius: 50%;
 	transform: scale(0);
 	transition: 0.2s transform ease-in-out;
-	box-shadow: inset 1em 1em #fff;
+	box-shadow: inset 1em 1em #000;
 }
 
 .radioInput:checked::before {

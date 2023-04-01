@@ -63,7 +63,7 @@ export function Order() {
 				</div>
 			</button>
 
-			<Modal onClose={() => setShow(false)} show={show}>
+			<Modal onClose={() => setShow(false)} show={show} buttonText='Done'>
 				<ul className={styles.modalList}>
 					<li className={styles.modalListItem}>
 						<label htmlFor='initial' className={styles.label}>
