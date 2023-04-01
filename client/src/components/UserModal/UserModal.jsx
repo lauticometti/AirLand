@@ -25,14 +25,6 @@ export function UserModal({ onClose, children, show, buttonText }) {
 		>
 			<div onClick={e => e.stopPropagation()} className={styles.modalContent}>
 				<div className={styles.modalBody}>{children}</div>
-				<div className={styles.modalFooter}>
-					<button onClick={onClose} className={styles.button}>
-						{buttonText}
-					</button>
-					<button onClick={onClose} className={styles.buttonCancel}>
-						Cancel
-					</button>
-				</div>
 			</div>
 		</div>
 	)

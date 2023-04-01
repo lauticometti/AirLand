@@ -54,41 +54,6 @@
 	padding: 10px;
 }
 
-.button,
-.buttonCancel {
-	background-color: #050505;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	width: 95%;
-	height: 50px;
-	padding: 5px 15px;
-
-	font-family: Poppins;
-	font-size: 15px;
-	font-weight: 600;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	text-align: start;
-	cursor: pointer;
-	transition: 0.2s;
-}
-
-.button:hover {
-	color: #a5a5a5;
-}
-
-.buttonCancel {
-	margin-top: 10px;
-	background-color: #fff;
-	border: 1px solid #050505;
-	color: #050505;
-}
-
-.buttonCancel:hover {
-	color: #555;
-}
-
 @media (min-width: 768px) {
 	.modalContent {
 		max-width: 600px;
