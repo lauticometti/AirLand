@@ -72,13 +72,15 @@ export const updateItem = (sneakerId, userId, quantity) => {
 	}
 }
 
-export const getPayment = userId => {
+export const getPayment = (userId, form, totalPrice) => {
 	return async dispatch => {
 		try {
 			const { data } = await axios.post(
 				`${BASE_URL}/payment/create-preference`,
 				{
-					userId
+					userId,
+					form,
+					totalPrice
 				}
 			)
 			window.location.href = data.init_point

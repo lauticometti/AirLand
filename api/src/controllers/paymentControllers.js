@@ -5,7 +5,8 @@ mercadopago.configure({
   access_token: process.env.MERCADOPAGO_ACCESS_TOKEN
 })
 
-const createPreference = async (userId) => {
+const createPreference = async (userId, form, totalPrice) => {
+
   let order
 
   try {
@@ -21,10 +22,25 @@ const createPreference = async (userId) => {
       quantity: Number(zapatilla.quantity)
     })),
 
+    shipments: {
+      receiver_address: {
+        zip_code: form.zipCode,
+        street_name: form.streetName,
+        street_number: Number(form.streetNumber),
+        floor: '',
+        apartment: '',
+        city_name: form.cityName,
+        state_name: form.stateName,
+        country_name: form.countryName
+      }
+    },
+
+    total_amount: totalPrice,
+
     back_urls: {
-      "success": "http://localhost:5173/",
-      "failure": "http://localhost:5173/",
-      "pending": "http://localhost:5173/"
+      "success": `${process.env.LOCALHOST_URL}/payment-success`,
+      "failure": "",
+      "pending": ""
     },
     auto_return: "approved",
   }
@@ -32,11 +48,13 @@ const createPreference = async (userId) => {
   const response = mercadopago.preferences.create(preference)
     .then(res => {
       return {
-        res: res,
         isApproved: res.body.auto_return === 'approved' ? true : false,
         paymentId: res.body.id,
         init_point: res.body.init_point,
-        dateCreated: new Date(res.body.date_created).toLocaleDateString()
+        dateCreated: new Date(res.body.date_created).toLocaleDateString(),
+        shipments: res.body.shipments.receiver_address,
+        totalAmount: totalPrice,
+        orderCode: Math.floor(Math.random() * 10000000000)
       };
     })
     .catch(error => {

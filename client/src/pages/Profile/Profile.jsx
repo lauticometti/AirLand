@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux'
 import { Footer, Navbar } from '../../components'
 import Account from './Account/Account'
 import Orders from './Orders/Orders'
-import Dashboard from './Dashboard/Dashboard'
+
+import AdminDashboard from './AdminDashboard/AdminDashboard'
+import styles from './Profile.module.css'
 
 import logo from '../../assets/icons/air_land-black.svg'
 import styles from './Profile.module.css'
@@ -17,7 +19,7 @@ export function Profile() {
 	const components = {
 		account: <Account />,
 		orders: <Orders />,
-		dashboard: <Dashboard />
+		adminDashboard: <AdminDashboard />
 	}
 
 	const handleTabList = event => {
@@ -62,9 +64,9 @@ export function Profile() {
 						</li>
 						<li
 							onClick={handleTabList}
-							id='dashboard'
+							id='adminDashboard'
 							className={
-								currentComponent === 'dashboard'
+								currentComponent === 'adminDashboard'
 									? styles.listItemActive
 									: styles.listItem
 							}

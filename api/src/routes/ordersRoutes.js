@@ -14,9 +14,9 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const { userId, paymentId, dateCreated } = req.body
+  const { userId, paymentId, dateCreated, totalAmount, shipments, orderCode } = req.body
   try {
-    await addOrders(userId, paymentId, dateCreated)
+    await addOrders(userId, paymentId, dateCreated, totalAmount, shipments, orderCode)
     res.status(200).json({ ok: true })
   } catch (error) {
     res.status(400).json(error.message)

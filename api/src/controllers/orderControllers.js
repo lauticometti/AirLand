@@ -10,10 +10,10 @@ const getAllOrdersById = async (userId) => {
   }
 }
 
-const addOrders = async (userId, paymentId, dateCreated) => {
+const addOrders = async (userId, paymentId, dateCreated, totalAmount, shipments, orderCode) => {
   try {
     const cart = await getShoppingCart(userId)
-    await db.collection(`users/${userId}/orders`).add({ cart: cart, status: 'approved', paymentId, dateCreated })
+    await db.collection(`users/${userId}/orders`).add({ cart: cart, status: 'approved', paymentId, dateCreated, totalAmount, shipments, orderCode })
     await (await db.collection(`users/${userId}/cart`).get()).docs.map(sneaker => removeSneakersFromShoppingCart(userId, sneaker.id))
     cart.forEach(sneaker => deleteStock(sneaker))
   } catch (error) {
@@ -31,8 +31,6 @@ const deleteStock = async (sneakerObj) => {
         [selectedSize]: (sneaker.SIZE[selectedSize] - sneakerObj.quantity).toString()
       }
     })
-    console.log(sneaker.SIZE)
-
   } catch (error) {
     throw new Error(error.message)
   }
