@@ -10,7 +10,8 @@
 		"firebase-admin": "^11.5.0",
 		"mercadopago": "^1.5.15",
 		"morgan": "^1.10.0",
-		"node-cache": "^5.1.2"
+		"node-cache": "^5.1.2",
+		"nodemailer": "^6.9.1"
 	},
 	"devDependencies": {
 		"eslint": "^8.36.0",

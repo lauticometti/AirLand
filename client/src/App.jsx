@@ -13,7 +13,7 @@ import {
 	Profile,
 	Page404,
 	Checkout,
-	PaymentSuccess
+	PaymentSuccess,
 	AdminDetail
 } from './pages'
 import './styles/App.css'
