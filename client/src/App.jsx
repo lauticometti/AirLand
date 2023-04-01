@@ -13,6 +13,7 @@ import {
 	Profile,
 	Page404,
 	Checkout,
+	PaymentSuccess
 	AdminDetail
 } from './pages'
 import './styles/App.css'
@@ -52,6 +53,7 @@ function App() {
 							path='/signup'
 							element={<Navigate to={localStorage.getItem('lastPath')} />}
 						/>
+						<Route path='/payment-success' element={<PaymentSuccess />} />
 						<Route path='*' element={<Page404 />} />
 						{/* {email === 'adminEmail' ? (
 							<Route path='/admin' element={<Admin />} />

@@ -1,6 +1,3 @@
-.title {
-}
-
 .formContainer {
 	width: 50%;
 	margin: 0 auto;
@@ -35,6 +32,11 @@
 .paymentButton:hover {
 	background-color: rgb(65, 65, 65);
 	color: white;
+}
+
+.paymentButton:hover:disabled {
+	background-color: rgb(161, 161, 161);
+	color: black;
 }
 
 input {
