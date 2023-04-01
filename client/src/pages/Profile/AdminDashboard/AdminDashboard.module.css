@@ -1,0 +1,59 @@
+.main {
+	display: flex;
+	padding: 80px 3% 50px;
+	background-color: #f7f7f7;
+}
+
+.summary {
+	padding: 0 15px;
+	min-width: 250px;
+}
+
+.summaryTitle {
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding-bottom: 18px;
+}
+
+.summaryLinksContainer {
+	background-color: #fff;
+}
+
+.summaryLinks {
+	padding: 0;
+	margin: 0;
+}
+
+.summaryLink,
+.summaryLinkActive {
+	display: flex;
+	justify-content: space-between;
+	padding: 18px 16px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.summaryLinkActive {
+	font-weight: 700;
+}
+
+.summaryLink:hover,
+.summaryLinkActive:hover {
+	background-color: #000;
+	color: #fff;
+	font-weight: 700;
+
+	transition: 0.2s;
+}
+
+.rightArrow {
+	width: 10px;
+}
+
+.currentComponent {
+	background-color: #fff;
+	width: 100%;
+	padding: 30px 25px;
+	margin: 0 0 50px 70px;
+}
