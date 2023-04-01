@@ -1,11 +1,11 @@
 import icon from '../../assets/icons/order-icon.svg'
 import { Modal } from '../'
 
-import styles from './Order.module.css'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { filterSlice } from '../../redux'
 import { capitalize } from '../../helpers/capitalize'
+import styles from './Order.module.css'
 
 export function Order() {
 	const dispatch = useDispatch()

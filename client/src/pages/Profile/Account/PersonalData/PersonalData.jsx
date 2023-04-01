@@ -1,13 +1,16 @@
 import { useSelector } from 'react-redux'
-import styles from './PersonalData.module.css'
-import rightArrowLarge from '../../../../assets/icons/right_arrow-large.svg'
-import { Modal } from '../../../../components'
+import rightArrowLarge from '../../../../assets/icons/right_arrow-largeBlack.svg'
+import { UserModal } from '../../../../components'
 import { useState } from 'react'
+import EditData from './EditData/EditData'
+import styles from './PersonalData.module.css'
+import EditPassword from './EditPassword/EditPassword'
 
 export default function PersonalData() {
 	const { displayName, email } = useSelector(state => state.auth)
 
-	const [show, setShow] = useState(false)
+	const [showEditDetail, setShowEditDetail] = useState(false)
+	const [showEditPassword, setShowEditPassword] = useState(false)
 
 	const birthday = '2003/04/02'
 	const password = '20030402'
@@ -22,8 +25,19 @@ export default function PersonalData() {
 				<p className={styles.myDataName}>{displayName}</p>
 				<p className={styles.myDataBirthday}>{birthday || null}</p>
 				<p className={styles.myDataGender}>{gender}</p>
-				<span onClick={() => setShow(true)}>Edit</span>
-				<Modal onClose={() => setShow(false)} show={show} />
+				<span
+					onClick={() => setShowEditDetail(true)}
+					className={styles.editSpan}
+				>
+					Edit
+				</span>
+				<UserModal
+					onClose={() => setShowEditDetail(false)}
+					show={showEditDetail}
+					buttonText='Update details'
+				>
+					<EditData onClose={() => setShowEditDetail(false)} />
+				</UserModal>
 			</div>
 			<div className={styles.accessData}>
 				<h4 className={styles.accessDataTitle}>Login details</h4>
@@ -31,7 +45,19 @@ export default function PersonalData() {
 				<p className={styles.email}>{email || null}</p>
 				<h5 className={styles.accessDataPassword}>Password</h5>
 				<p className={styles.email}>{password || null}</p>
-				<span>Edit</span>
+				<span
+					onClick={() => setShowEditPassword(true)}
+					className={styles.editSpan}
+				>
+					Edit
+				</span>
+				<UserModal
+					onClose={() => setShowEditPassword(false)}
+					show={showEditPassword}
+					buttonText='Update password'
+				>
+					<EditPassword onClose={() => setShowEditPassword(false)} />
+				</UserModal>
 			</div>
 			<div className={styles.logout}>
 				<h5 className={styles.logoutTitle}>Log out from all web browsers</h5>

@@ -1,4 +1,5 @@
-.customModal {
+.customModal,
+.customModalShow {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -16,7 +17,7 @@
 	z-index: 100;
 }
 
-.customModal.show {
+.customModalShow {
 	opacity: 1;
 	pointer-events: visible;
 }
@@ -24,12 +25,14 @@
 .modalContent {
 	position: absolute;
 	/* this could give us issues but is a easy way to make more estetic the dropdown behavior */
-	top: 100px;
-	width: 80%;
-	max-width: 450px;
+	top: 15vh;
+	width: 100%;
+	max-height: 85vh;
+	overflow-y: auto;
 	background-color: rgba(255, 255, 255);
 	backdrop-filter: blur(5px);
 	border-radius: 2px;
+	padding-bottom: 35px;
 
 	transition: all 0.3s ease-in-out;
 }
@@ -51,24 +54,16 @@
 	padding: 10px;
 }
 
-.button {
-	background-color: #050505;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	width: 85%;
-	height: 35px;
-	padding: 5px 15px;
-
-	font-family: Poppins;
-	font-size: 15px;
-	font-weight: 600;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: 0.2s;
+@media (min-width: 768px) {
+	.modalContent {
+		max-width: 600px;
+		top: 5vh;
+		max-height: 90vh;
+	}
 }
 
-.button:hover {
-	color: #a5a5a5;
-	cursor: pointer;
+@media (min-width: 1000px) {
+	.modalContent {
+		max-width: 650px;
+	}
 }

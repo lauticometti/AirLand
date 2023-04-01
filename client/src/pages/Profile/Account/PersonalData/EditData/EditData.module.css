@@ -1,0 +1,139 @@
+.editDataContainer {
+	padding: 12px 20px 0;
+}
+
+.editDataTitle {
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+}
+
+section {
+	margin-bottom: 30px;
+}
+
+section input {
+	height: 50px;
+}
+
+section input:focus {
+	outline: 1px solid #222;
+}
+
+section label {
+	margin-left: 5px;
+	font-size: 16px;
+}
+
+.birthDate h4,
+.genderContainer h4 {
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.birthDateInputs {
+	display: flex;
+	gap: 10px;
+	width: 90%;
+}
+
+.birthDateInputs label {
+	text-transform: uppercase;
+}
+
+.genderMaleInputContainer,
+.genderFemaleInputContainer {
+	display: flex;
+}
+
+.genderInputs {
+	display: flex;
+	gap: 20px;
+}
+
+.genderInputs input {
+	width: fit-content;
+}
+
+.genderInputs input {
+	-webkit-appearance: none;
+	appearance: none;
+	font: inherit;
+	color: black;
+
+	width: 14px;
+	margin: 0;
+	height: 14px;
+	border: none;
+	border: 2px solid #333;
+	border-radius: 50%;
+	transform: translateY(0.2em);
+
+	display: grid;
+	place-content: center;
+}
+
+.genderInputs input:checked {
+	border-color: #000;
+}
+
+.genderInputs input::before {
+	content: '';
+	width: 0.65em;
+	height: 0.65em;
+	border-radius: 50%;
+	transform: scale(0);
+	transition: 0.2s transform ease-in-out;
+	box-shadow: inset 20px 20px #000;
+}
+
+.genderInputs input:checked::before {
+	transform: scale(1);
+}
+
+.button,
+.buttonCancel {
+	background-color: #050505;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	width: 95%;
+	height: 50px;
+	padding: 5px 15px;
+
+	font-family: Poppins;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-align: start;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.button {
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.button img {
+	width: 30px;
+}
+
+.button:hover {
+	color: #a5a5a5;
+}
+
+.buttonCancel {
+	margin-top: 10px;
+	background-color: #fff;
+	border: 1px solid #050505;
+	color: #050505;
+}
+
+.buttonCancel:hover {
+	color: #555;
+}
