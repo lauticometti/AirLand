@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Footer, Navbar } from '../../components'
 import Account from './Account/Account'
 import Orders from './Orders/Orders'
-import Dashboard from './Account/Admin/Dashboard'
+import Dashboard from './Admin/Dashboard'
 import styles from './Profile.module.css'
 import logo from '../../assets/icons/air_land-black.svg'
 

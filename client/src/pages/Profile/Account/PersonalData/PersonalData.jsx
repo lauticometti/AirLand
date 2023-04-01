@@ -12,7 +12,6 @@ export default function PersonalData() {
 	const [showEditDetail, setShowEditDetail] = useState(false)
 	const [showEditPassword, setShowEditPassword] = useState(false)
 
-	
 	const birthday = '2003/04/02'
 	const password = '20030402'
 	const gender = 'Male'
