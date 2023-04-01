@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import rightArrowLarge from '../../../../assets/icons/right_arrow-large.svg'
+import rightArrowLarge from '../../../../assets/icons/right_arrow-largeBlack.svg'
 import { UserModal } from '../../../../components'
 import { useState } from 'react'
 import EditData from './EditData/EditData'
@@ -36,7 +36,7 @@ export default function PersonalData() {
 					show={showEditDetail}
 					buttonText='Update details'
 				>
-					<EditData />
+					<EditData onClose={() => setShowEditDetail(false)} />
 				</UserModal>
 			</div>
 			<div className={styles.accessData}>
@@ -56,7 +56,7 @@ export default function PersonalData() {
 					show={showEditPassword}
 					buttonText='Update password'
 				>
-					<EditPassword />
+					<EditPassword onClose={() => setShowEditPassword(false)} />
 				</UserModal>
 			</div>
 			<div className={styles.logout}>

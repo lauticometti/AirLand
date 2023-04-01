@@ -1,6 +1,9 @@
+import PropTypes from 'prop-types'
+import rightArrow from '../../../../../assets/icons/right_arrow-largeWhite.svg'
+
 import styles from './EditData.module.css'
 
-export default function EditData() {
+export default function EditData({ onClose }) {
 	return (
 		<div className={styles.editDataContainer}>
 			<h3 className={styles.editDataTitle}>Edit your details</h3>
@@ -63,6 +66,17 @@ export default function EditData() {
 					</section>
 				</div>
 			</div>
+			<button onClick={onClose} className={styles.button}>
+				Update Details
+				<img src={rightArrow} alt='' />
+			</button>
+			<button onClick={onClose} className={styles.buttonCancel}>
+				Cancel
+			</button>
 		</div>
 	)
+}
+
+EditData.propTypes = {
+	onClose: PropTypes.func.isRequired
 }

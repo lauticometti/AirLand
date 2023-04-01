@@ -1,7 +1,12 @@
 import styles from './AddressBook.module.css'
 import addSign from '../../../../assets/icons/add_sign.svg'
+import { useState } from 'react'
+import { UserModal } from '../../../../components'
+import AddAddress from './AddAddress/AddAddress'
 
 export default function AddressBook() {
+	const [showAddress, setShowAddress] = useState(false)
+
 	const addresses = [
 		{
 			firstName: 'Lautaro',
@@ -60,7 +65,10 @@ export default function AddressBook() {
 
 			<div className={styles.addresses}>
 				{slots ? (
-					<div className={styles.addressCard}>
+					<div
+						className={styles.addressCard}
+						onClick={() => setShowAddress(true)}
+					>
 						<div className={styles.addressCardTitle}>New Address</div>
 						<div className={styles.addressCardSpace}></div>
 						<div className={styles.addressCardAddContainer}>
@@ -68,6 +76,14 @@ export default function AddressBook() {
 						</div>
 					</div>
 				) : null}
+
+				<UserModal
+					onClose={() => setShowAddress(false)}
+					show={showAddress}
+					buttonText='Save'
+				>
+					<AddAddress onClose={() => setShowAddress(false)} />
+				</UserModal>
 
 				{addresses.map((address, i) => (
 					<div
@@ -94,7 +110,10 @@ export default function AddressBook() {
 
 						<div className={styles.addressCardBottom}>
 							<div>
-								<button className={styles.addressCardModifyButton}>
+								<button
+									className={styles.addressCardModifyButton}
+									onClick={() => setShowAddress(true)}
+								>
 									Edit address
 								</button>
 								<button className={styles.addressCardDeleteButton}>
