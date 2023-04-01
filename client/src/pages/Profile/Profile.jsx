@@ -6,7 +6,6 @@ import Account from './Account/Account'
 import Orders from './Orders/Orders'
 
 import AdminDashboard from './AdminDashboard/AdminDashboard'
-import styles from './Profile.module.css'
 
 import logo from '../../assets/icons/air_land-black.svg'
 import styles from './Profile.module.css'
