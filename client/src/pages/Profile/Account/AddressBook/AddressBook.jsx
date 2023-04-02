@@ -84,7 +84,6 @@ export default function AddressBook() {
 				<UserModal
 					onClose={() => setShowAddAddress(false)}
 					show={showAddAddress}
-					buttonText='Save'
 				>
 					<AddAddress onClose={() => setShowAddAddress(false)} />
 				</UserModal>
@@ -123,6 +122,7 @@ export default function AddressBook() {
 								<UserModal
 									onClose={() => setShowEditAddress(false)}
 									show={showEditAddress}
+									background='rgba(5, 5, 5, 0.335)'
 								>
 									<EditAddress onClose={() => setShowEditAddress(false)} />
 								</UserModal>
@@ -136,6 +136,7 @@ export default function AddressBook() {
 								<UserModal
 									onClose={() => setShowDeleteAddress(false)}
 									show={showDeleteAddress}
+									background='rgba(5, 5, 5, 0.335)'
 								>
 									<DeleteAddress onClose={() => setShowDeleteAddress(false)} />
 								</UserModal>

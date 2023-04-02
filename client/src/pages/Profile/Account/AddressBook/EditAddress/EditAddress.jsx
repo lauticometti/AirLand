@@ -1,8 +1,21 @@
 import PropTypes from 'prop-types'
 import rightArrow from '../../../../../assets/icons/right_arrow-largeWhite.svg'
 import styles from './EditAddress.module.css'
+import { useState } from 'react'
 
 export default function EditAddress({ onClose }) {
+	const [input, setInput] = useState({
+		firstName: ''
+	})
+
+	const handleFirstName = event => {
+		const value = event.target.value
+		setInput({
+			...input,
+			[event.target.name]: value
+		})
+	}
+
 	return (
 		<div className={styles.addAddressContainer}>
 			<h3 className={styles.addAddressTitle}>Edit address</h3>
@@ -11,7 +24,13 @@ export default function EditAddress({ onClose }) {
 					<label htmlFor='addAddress_firstName'>
 						First Name <span className={styles.asterisc}>*</span>
 					</label>
-					<input type='text' id='addAddress_firstName' />
+					<input
+						type='text'
+						name='firstName'
+						id='addAddress_firstName'
+						onChange={handleFirstName}
+						value={input.firstName}
+					/>
 				</section>
 				<section>
 					<label htmlFor='addAddress_lastName'>
