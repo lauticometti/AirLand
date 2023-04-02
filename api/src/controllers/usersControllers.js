@@ -1,80 +1,78 @@
 const { db } = require('../firebase')
-const bcrypt = require('bcrypt')
-
-const getUsers = async (req, res) => {
-	try {
-		const querySnap = await db.collection('USUARIOS').get()
-		const usuarios = querySnap.docs.map(user => ({
-			id: user.id,
-			...user.data()
-		}))
-		res.status(200).json(usuarios)
-	} catch (error) {
-		res.status(400).json(error.message)
-	}
-}
 
 const postUsers = async (req, res) => {
-	const { NAME, EMAIL, PASSWORD, IMG, STATE, ROL, FAVORITES } = req.body
-	const user = req.body
-
-	// Encriptar la constraseña
-
+	const { user } = req.body
 	try {
-		await db.collection('USUARIOS').add({
-			NAME,
-			EMAIL,
-			PASSWORD,
-			IMG,
-			STATE,
-			ROL,
-			FAVORITES: FAVORITES.map(sneakerId => sneakerId)
-		})
-		const salt = bcrypt.genSaltSync()
-		user.PASSWORD = bcrypt.hashSync(PASSWORD, salt)
-
-		res.status(201).json({
-			message: 'Succesfully created!',
-			user
-		})
+		const userRef = await db.collection(`users`)
+		if ((await userRef.doc(`${user.uid}/userInfo/personalInfo`).get()).data()) {
+			const userRef = (await db.collection(`users/${user.uid}/userInfo`).get())
+			const userDB = userRef.docs.map(doc => ({ ...doc.data() }))
+			return res.status(200).json({
+				...userDB
+			})
+		} else {
+			await userRef.doc(`${user.uid}/userInfo/personalInfo`).set(user)
+			return res.status(201).json({
+				message: 'Succesfully created!',
+				user
+			})
+		}
 	} catch (error) {
 		res.status(400).json(error.message)
 	}
 }
+
 const getUsersById = async (req, res) => {
-	// para mostrar una zapatilla por id
+	const { id } = req.params
 	try {
-		const user = await (
-			await db.collection('USUARIOS').doc(req.params.id).get()
-		).data()
-		res.status(200).json(user)
+		const userRef = await db.collection(`users`)
+		const userDB = (await userRef.doc(`${id}/userInfo/personalInfo`).get()).data()
+		res.status(200).json({ ...userDB })
 	} catch (error) {
 		res.status(400).json(error.message)
 	}
 }
-const deleteUsers = async (req, res) => {
-	// para mostrar una zapatilla por id
 
+const getAddressById = async (req, res) => {
+	const { id } = req.params
 	try {
-		await db.collection('USUARIOS').doc(req.params.id).update({ STATE: false })
-		res.status(200).json('Succesfully created!')
+		const addressRef = await db.collection(`users/${id}/addressInfo`).get()
+		const addressDB = addressRef.docs.map(doc => ({ ...doc.data() }))
+		res.status(200).json([...addressDB])
 	} catch (error) {
 		res.status(400).json(error.message)
 	}
 }
-const patchUsers = async (req, res) => {
+
+const addUserInfo = async (req, res) => {
+	const { id } = req.params
+	const { userInfo } = req.body
 	try {
-		await db.collection('USUARIOS').doc(req.params.id).update(req.body)
-		res.status(200).json('Succesfully updated!')
+		db.collection(`users`)
+			.doc(`${id}/userInfo/personalInfo`)
+			.update(userInfo)
+		res.status(200).json(userInfo)
+	} catch (error) {
+		res.status(400).json(error.message)
+	}
+}
+
+const addUserAddress = async (req, res) => {
+	const { id } = req.params
+	const { userAddress } = req.body
+	try {
+		db.collection(`users/${id}/addressInfo`)
+			.add({ ...userAddress })
+		res.status(200).json([userAddress])
 	} catch (error) {
 		res.status(400).json(error.message)
 	}
 }
 
 module.exports = {
-	getUsers,
 	postUsers,
 	getUsersById,
-	patchUsers,
-	deleteUsers
+	getAddressById,
+	addUserInfo,
+	addUserAddress
 }

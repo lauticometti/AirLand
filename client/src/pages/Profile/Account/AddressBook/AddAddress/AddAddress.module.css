@@ -82,6 +82,11 @@
 	color: #a5a5a5;
 }
 
+.button:disabled {
+	color: #a5a5a5;
+	cursor: initial;
+}
+
 .buttonCancel {
 	margin-left: 30px;
 	background-color: #fff;
