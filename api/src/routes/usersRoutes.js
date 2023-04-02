@@ -1,41 +1,23 @@
 const { Router } = require('express')
-const { check } = require('express-validator')
-
-const { emailExiste } = require('../../helpers/db-validators')
 const {
-	getUsers,
 	postUsers,
 	getUsersById,
-	deleteUsers,
-	patchUsers
+	addUserInfo,
+	addUserAddress,
+	getAddressById
 } = require('../controllers/usersControllers')
-const { validarCampos } = require('../middlewares/validar-campos')
 
 const router = Router()
 
-router.get('/', getUsers)
+router.post('/', postUsers)
 
-router.post(
-	'/users',
-	[
-		check('NAME', 'El nombre es obligatorio').not().isEmpty(),
-		check('PASSWORD', 'El password debe ser mas de 6 letras').isLength({
-			min: 6
-		}),
-		check('EMAIL', 'El correo no es valido').isEmail(),
-		check('EMAIL').custom(emailExiste),
+router.patch('/user-info/:id', addUserInfo)
 
-		check('ROL', 'El rol no es valido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
-
-		validarCampos
-	],
-	postUsers
-)
+router.post('/user-address/:id', addUserAddress)
 
 router.get('/:id', getUsersById)
 
-router.delete('/:id', deleteUsers)
+router.get('/user-address/:id', getAddressById)
 
-router.patch('/:id', patchUsers)
 
 module.exports = router

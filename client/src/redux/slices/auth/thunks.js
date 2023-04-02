@@ -5,8 +5,11 @@ import {
 	registerUserWithEmailPassword,
 	// loginAnonymously
 } from '../../../firebase'
+import axios from 'axios'
 import { clearCartItems } from '../shopping/shoppingSlice'
-import { checkingCredentials, Logout, signIn } from './'
+import { checkingCredentials, loadUserAddress, loadUserData, logOut, signIn } from './'
+
+const BASE_URL = import.meta.env.VITE_BACK_URL || "http://localhost:3001/api"
 
 export const startRegistrationUserWithEmailPassword = ({
 	email,
@@ -24,11 +27,19 @@ export const startRegistrationUserWithEmailPassword = ({
 			displayName
 		})
 
-		// si ok = false: no se pudo registrar al usuario => despacho la funcion logout
-		if (!response.ok) return dispatch(Logout(response.message))
+		// si ok = false: no se pudo registrar al usuario => despacho la funcion logOut
+		if (!response.ok) return dispatch(logOut(response.message))
 
-		// tercero: logeo al usuario correctamente registrado
-		dispatch(signIn(response))
+		// tercero: cargo el usuario a la DB
+		const { data } = await axios.post(
+			`${BASE_URL}/users`,
+			{
+				user: response
+			}
+		)
+
+		// cuarto: logeo al usuario correctamente registrado
+		dispatch(signIn(data))
 	}
 }
 
@@ -40,11 +51,22 @@ export const startLoginUserWithEmailPassword = ({ email, password }) => {
 		// segundo: utilizo el provider para logear el usuario
 		const response = await loginUserWithEmailPassword({ email, password })
 
-		// si ok = false: no se pudo logear al usuario => despacho la funcion logout
-		if (!response.ok) return dispatch(Logout(response.message))
+		// si ok = false: no se pudo logear al usuario => despacho la funcion logOut
+		if (!response.ok) return dispatch(logOut(response.message))
 
-		// tercero: logeo al usuario
-		dispatch(signIn(response))
+		// tercero: traigo los datos del usuario de la DB
+		const { data: userData } = await axios.get(
+			`${BASE_URL}/users/${response.uid}`,
+		)
+
+		// cuarto: traigo la data de address de la DB
+		const { data: addressData } = await axios.get(
+			`${BASE_URL}/users/user-address/${response.uid}`
+		)
+
+		// quinto: logeo al usuario y cargo addressdata
+		dispatch(signIn(userData))
+		dispatch(loadUserAddress(addressData))
 	}
 }
 
@@ -56,26 +78,58 @@ export const startGoogleSignIn = () => {
 		// segundo: utilizo el provider para logear el usuario
 		const response = await LoginWithGoogle()
 
-		// si ok = false: no se pudo logear al usuario => despacho la funcion logout
-		if (!response.ok) return dispatch(Logout(response))
+		// si ok = false: no se pudo logear al usuario => despacho la funcion logOut
+		if (!response.ok) return dispatch(logOut(response))
 
-		// tercero: logeo al usuario
-		dispatch(signIn(response))
+		// tercero: cargo el usuario a la DB o lo traigo de la DB si ya existe
+		const { data: userData } = await axios.post(
+			`${BASE_URL}/users`,
+			{
+				user: response
+			}
+		)
+
+		// cuarto: traigo la data de address de la DB
+		const { data: addressData } = await axios.get(
+			`${BASE_URL}/users/user-address/${response.uid}`
+		)
+
+		// quinto: logeo al usuario y cargo addressdata
+		dispatch(signIn(userData))
+		dispatch(loadUserAddress(addressData))
 	}
 }
 
 export const startLogout = () => {
 	return async dispatch => {
 		await logoutFirebase()
-		dispatch(Logout())
+		dispatch(logOut())
 		setTimeout(() => {
 			return dispatch(clearCartItems())
 		}, 1000)
 	}
 }
 
-// export const startLoginAnonymously = () => {
-// 	return async dispatch => {
-// 		await loginAnonymously()
-// 	}
-// }
+export const editUserInfo = (id, form) => {
+	return async dispatch => {
+		const { data } = await axios.patch(
+			`${BASE_URL}/users/user-info/${id}`,
+			{
+				userInfo: form
+			}
+		)
+		dispatch(loadUserData(data))
+	}
+}
+
+export const editUserAddress = (id, form) => {
+	return async dispatch => {
+		const { data } = await axios.post(
+			`${BASE_URL}/users/user-address/${id}`,
+			{
+				userAddress: form
+			}
+		)
+		dispatch(loadUserAddress(data))
+	}
+}

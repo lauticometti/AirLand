@@ -127,6 +127,11 @@ section label {
 	color: #a5a5a5;
 }
 
+.button:disabled {
+	color: #a5a5a5;
+	cursor: initial;
+}
+
 .buttonCancel {
 	margin-top: 10px;
 	background-color: #fff;
