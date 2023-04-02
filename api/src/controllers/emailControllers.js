@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const homeURL = 'https://airland-9c55f.web.app/'
 
 let transporter = nodemailer.createTransport({
-	host: 'smtp.gmail.email',
+	host: 'smtp.gmail.com',
 	port: 465,
 	secure: true, // true for 465, false for other ports
 	auth: {
