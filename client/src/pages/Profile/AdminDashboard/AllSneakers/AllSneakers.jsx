@@ -1,9 +1,22 @@
-import React from 'react'
+import { useGetShoesQuery } from '../../../../redux/services/filteredShoes'
+import { AdminCard } from '../../../../components'
+import { useSelector } from 'react-redux'
 
-function AllSneakers() {
+export default function AllSneakers() {
+  let slicedData = []
+  const filterState = useSelector(state => state.filter)
+  const { data } = useGetShoesQuery(filterState)
+  if (data) {
+    // const filteredData = data.filter((shoe) => shoe.STATUS === true)
+    // if ((page - 1) * pageSize > data.length) dispatch(setPage(1))
+    // dispatch(setTotalEntries(data.length))
+    slicedData = data
+  }
   return (
-    <div>AllSneakers</div>
+    <div>
+      {slicedData.map(shoe => (
+        <AdminCard key={shoe.id} shoe={shoe} />
+      ))}
+    </div>
   )
 }
-
-export default AllSneakers
