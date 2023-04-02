@@ -1,4 +1,5 @@
 import {
+	changePassword,
 	loginUserWithEmailPassword,
 	LoginWithGoogle,
 	logoutFirebase,
@@ -131,5 +132,11 @@ export const editUserAddress = (id, form) => {
 			}
 		)
 		dispatch(loadUserAddress(data))
+	}
+}
+
+export const editUserPassword = (newPassword) => {
+	return async dispatch => {
+		await changePassword(newPassword)
 	}
 }
