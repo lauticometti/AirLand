@@ -52,17 +52,24 @@
 	font-weight: 600;
 }
 
+.extra {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
 .extraOrderId {
 	font-size: 15px;
 }
 
-.totalOrderStatus {
+.extraOrderStatus {
 	background-color: #00a650;
 	width: fit-content;
 	padding: 3px 5px;
 	border-radius: 4px;
 	font-size: 15px;
 	color: #fff;
+	text-transform: capitalize;
 }
 
 .emptyOrdersContainer {

@@ -3,9 +3,13 @@ import addSign from '../../../../assets/icons/add_sign.svg'
 import { useState } from 'react'
 import { UserModal } from '../../../../components'
 import AddAddress from './AddAddress/AddAddress'
+import DeleteAddress from './DeleteAddress/DeleteAddress'
+import EditAddress from './EditAddress/EditAddress'
 
 export default function AddressBook() {
-	const [showAddress, setShowAddress] = useState(false)
+	const [showAddAddress, setShowAddAddress] = useState(false)
+	const [showEditAddress, setShowEditAddress] = useState(false)
+	const [showDeleteAddress, setShowDeleteAddress] = useState(false)
 
 	const addresses = [
 		{
@@ -67,7 +71,7 @@ export default function AddressBook() {
 				{slots ? (
 					<div
 						className={styles.addressCard}
-						onClick={() => setShowAddress(true)}
+						onClick={() => setShowAddAddress(true)}
 					>
 						<div className={styles.addressCardTitle}>New Address</div>
 						<div className={styles.addressCardSpace}></div>
@@ -78,11 +82,11 @@ export default function AddressBook() {
 				) : null}
 
 				<UserModal
-					onClose={() => setShowAddress(false)}
-					show={showAddress}
+					onClose={() => setShowAddAddress(false)}
+					show={showAddAddress}
 					buttonText='Save'
 				>
-					<AddAddress onClose={() => setShowAddress(false)} />
+					<AddAddress onClose={() => setShowAddAddress(false)} />
 				</UserModal>
 
 				{addresses.map((address, i) => (
@@ -112,13 +116,29 @@ export default function AddressBook() {
 							<div>
 								<button
 									className={styles.addressCardModifyButton}
-									onClick={() => setShowAddress(true)}
+									onClick={() => setShowEditAddress(true)}
 								>
 									Edit address
 								</button>
-								<button className={styles.addressCardDeleteButton}>
+								<UserModal
+									onClose={() => setShowEditAddress(false)}
+									show={showEditAddress}
+								>
+									<EditAddress onClose={() => setShowEditAddress(false)} />
+								</UserModal>
+
+								<button
+									className={styles.addressCardDeleteButton}
+									onClick={() => setShowDeleteAddress(true)}
+								>
 									Delete address
 								</button>
+								<UserModal
+									onClose={() => setShowDeleteAddress(false)}
+									show={showDeleteAddress}
+								>
+									<DeleteAddress onClose={() => setShowDeleteAddress(false)} />
+								</UserModal>
 							</div>
 							<div>
 								<button className={styles.addressCardDefaultButton}>

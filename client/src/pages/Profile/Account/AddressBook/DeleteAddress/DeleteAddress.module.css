@@ -1,29 +1,13 @@
-.editPasswordContainer {
+.deleteAddressContainer {
 	padding: 12px 20px 0;
-	width: 600px;
 }
-.editPasswordTitle {
+
+.deleteAddressTitle {
+	margin-bottom: 25px;
 	font-size: 2rem;
 	font-weight: 600;
+	color: #000;
 	text-transform: uppercase;
-	margin-bottom: 25px;
-}
-
-section {
-	margin-bottom: 30px;
-}
-
-section input {
-	height: 50px;
-}
-
-section input:focus {
-	outline: 1px solid #222;
-}
-
-section label {
-	margin-left: 5px;
-	font-size: 16px;
 }
 
 .button,
@@ -31,8 +15,8 @@ section label {
 	background-color: #050505;
 	color: #fff;
 	border: none;
-	border-radius: 5px;
-	width: 95%;
+	border-radius: 4px;
+	width: 20%;
 	height: 50px;
 	padding: 5px 15px;
 
@@ -61,10 +45,10 @@ section label {
 }
 
 .buttonCancel {
-	margin-top: 10px;
+	margin-left: 30px;
 	background-color: #fff;
-	border: 1px solid #050505;
 	color: #050505;
+	text-decoration: underline;
 }
 
 .buttonCancel:hover {

@@ -37,11 +37,16 @@ function App() {
 						<Route exact path='/' element={<Home />} />
 						<Route exact path='/snkrs' element={<Sneakers />} />
 						<Route exact path='/detail/:shoeId' element={<Detail />} />
-						<Route exact path='/detail/admin/:shoeId' element={<AdminDetail />} />
+						<Route
+							exact
+							path='/detail/admin/:shoeId'
+							element={<AdminDetail />}
+						/>
 						<Route exact path='/about' element={<About />} />
 						<Route exact path='/store' element={<Cart />} />
 						<Route exact path='/contact' element={<Contact />} />
 						<Route exact path='/profile' element={<Profile />} />
+
 						<Route exact path='/checkout' element={<Checkout />} />
 						<Route
 							exact

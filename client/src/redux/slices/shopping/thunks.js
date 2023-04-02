@@ -90,12 +90,10 @@ export const getPayment = (userId, form, totalPrice) => {
 	}
 }
 
-export const getAllOrders = (userId) => {
+export const getAllOrders = userId => {
 	return async dispatch => {
 		try {
-			const { data } = await axios.get(
-				`${BASE_URL}/order/${userId}`
-			)
+			const { data } = await axios.get(`${BASE_URL}/order/${userId}`)
 			dispatch(getOrders(data))
 		} catch (error) {
 			alert(error.message)

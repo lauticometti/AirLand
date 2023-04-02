@@ -13,14 +13,6 @@ export function Cards() {
 	const { data, isLoading, error } = useGetShoesQuery(filterState)
 	const { page, pageSize } = useSelector(state => state.pagination)
 
-	let slicedData = []
-	if (data) {
-		const filteredData = data.filter((shoe) => shoe.STATUS === true)
-		if ((page - 1) * pageSize > filteredData.length) dispatch(setPage(1))
-		dispatch(setTotalEntries(filteredData.length))
-		slicedData = filteredData.slice((page - 1) * pageSize, page * pageSize)
-	}
-
 	if (isLoading)
 		return (
 			<div className={styles.mt50vh}>
@@ -34,6 +26,15 @@ export function Cards() {
 				<NotFound />
 			</div>
 		)
+
+	let slicedData = []
+	if (data) {
+		const filteredData = data.filter(shoe => shoe.STATUS === true)
+		if ((page - 1) * pageSize > filteredData.length) dispatch(setPage(1))
+		dispatch(setTotalEntries(filteredData.length))
+		slicedData = filteredData.slice((page - 1) * pageSize, page * pageSize)
+	}
+
 	return (
 		<div
 			className={
