@@ -1,13 +1,32 @@
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem } from '../../../../redux'
 import styles from './PurchasedProduct.module.css'
 
 export default function PurchasedProduct({ product }) {
 	const cleanName = product.name.replace(/-/g, ' ')
+
+	const { uid } = useSelector(state => state.auth)
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+
+	const handleBuyAgain = () => {
+		dispatch(addItem(product.id, uid, product.selectedSize))
+
+		setTimeout(() => {
+			navigate('/store')
+		}, 2500)
+	}
+
 	return (
 		<div className={styles.orderBottomProduct}>
 			<div className={styles.imageContainer}>
-				<img src={product.imageURL} alt={cleanName} className={styles.image} />
+				<img
+					src={product.image.THUMBNAIL}
+					alt={cleanName}
+					className={styles.image}
+				/>
 			</div>
 
 			<div className={styles.orderDetails}>
@@ -15,13 +34,22 @@ export default function PurchasedProduct({ product }) {
 					{cleanName}
 				</Link>
 				<span className={styles.orderQuantity}>
-					{product.cartQuantity} unit{product.cartQuantity > 1 ? 's' : null} $
-					{Number(product.price) * Number(product.cartQuantity)}
+					{product.quantity} unit{product.quantity > 1 ? 's' : null} $
+					{Number(product.price) * Number(product.quantity)}
 				</span>
 			</div>
 			<div className={styles.buttons}>
-				<button className={styles.seePurchaseButton}>See purchase</button>
-				<button className={styles.buyAgainButton}>Buy again</button>
+				<button onClick={handleBuyAgain} className={styles.buyAgainButton}>
+					Buy again
+				</button>
+				<a
+					href='https://api.whatsapp.com/send?phone=5491164602560&text=Hi!+I+need+return+a+product...'
+					target='_blank'
+					rel='noopener noreferrer'
+					className={styles.returnButton}
+				>
+					Return
+				</a>
 			</div>
 		</div>
 	)

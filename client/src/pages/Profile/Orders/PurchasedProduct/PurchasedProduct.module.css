@@ -23,6 +23,11 @@
 }
 
 .orderName {
+	color: #222;
+	transition: 0.1s;
+}
+
+.orderName:hover {
 	color: #000;
 }
 
@@ -36,21 +41,29 @@
 	gap: 8px;
 }
 
-.seePurchaseButton,
+.returnButton,
 .buyAgainButton {
-	padding: 5px 25px;
-	background: #3483fa;
+	padding: 5px 5px;
 	border-radius: 5px;
 	font-size: 14px;
-	font-weight: 600;
-	color: #e2edfc;
+	font-weight: 500;
+	color: #222;
+	text-align: center;
+}
+
+.returnButton:hover {
+	color: #101113;
 }
 
 .buyAgainButton {
-	padding: 5px 25px;
-	background: #e2edfc;
+	padding: 5px 15px;
+	background: #3483fa;
 	font-size: 14px;
 	font-weight: 600;
-	color: #3483fa;
+	color: #e2edfc;
 	border-radius: 5px;
+}
+
+.buyAgainButton:hover {
+	color: #d4d4d4;
 }
