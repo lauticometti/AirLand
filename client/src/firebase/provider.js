@@ -4,7 +4,7 @@ import {
 	updateProfile,
 	GoogleAuthProvider,
 	signInWithPopup,
-	// signInAnonymously
+	updatePassword,
 } from 'firebase/auth'
 import { FirebaseAuth } from './'
 
@@ -85,4 +85,12 @@ export const loginUserWithEmailPassword = async ({ email, password }) => {
 
 export const logoutFirebase = async () => {
 	return await FirebaseAuth.signOut()
+}
+
+export const changePassword = async (newPassword) => {
+	try {
+		await updatePassword(FirebaseAuth.currentUser, newPassword)
+	} catch (error) {
+		alert(error.message)
+	}
 }
