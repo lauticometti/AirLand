@@ -43,7 +43,10 @@ const getAddressById = async (req, res) => {
 	const { id } = req.params
 	try {
 		const addressRef = await db.collection(`users/${id}/addressInfo`).get()
-		const addressDB = addressRef.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+		const addressDB = addressRef.docs.map(doc => ({
+			id: doc.id,
+			...doc.data()
+		}))
 		res.status(200).json([...addressDB])
 	} catch (error) {
 		res.status(400).json(error.message)

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Home from './Home/Home'
-import Orders from './Orders/Orders'
-import AllSneakers from './AllSneakers/AllSneakers'
-import CreateSneaker from './CreateSneaker/CreateSneaker'
+import { Home } from './Home/Home'
+import { Orders } from './Orders/Orders'
+import { AllSneakers } from './AllSneakers/AllSneakers'
+import { CreateSneaker } from './CreateSneaker/CreateSneaker'
 import rightArrow from '../../../assets/icons/right-arrow.svg'
 import styles from './AdminDashboard.module.css'
 
