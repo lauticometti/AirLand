@@ -5,17 +5,12 @@ const postUsers = async (req, res) => {
 	try {
 		const userRef = await db.collection(`users`)
 		if ((await userRef.doc(`${user.uid}/userInfo/personalInfo`).get()).data()) {
-			const userRef = (await db.collection(`users/${user.uid}/userInfo`).get())
+			const userRef = await db.collection(`users/${user.uid}/userInfo`).get()
 			const userDB = userRef.docs.map(doc => ({ ...doc.data() }))
-			return res.status(200).json({
-				...userDB
-			})
+			return res.status(200).json(...userDB)
 		} else {
 			await userRef.doc(`${user.uid}/userInfo/personalInfo`).set(user)
-			return res.status(201).json({
-				message: 'Succesfully created!',
-				user
-			})
+			return res.status(201).json(user)
 		}
 	} catch (error) {
 		res.status(400).json(error.message)
@@ -26,7 +21,9 @@ const getUsersById = async (req, res) => {
 	const { id } = req.params
 	try {
 		const userRef = await db.collection(`users`)
-		const userDB = (await userRef.doc(`${id}/userInfo/personalInfo`).get()).data()
+		const userDB = (
+			await userRef.doc(`${id}/userInfo/personalInfo`).get()
+		).data()
 		res.status(200).json({ ...userDB })
 	} catch (error) {
 		res.status(400).json(error.message)
@@ -48,9 +45,7 @@ const addUserInfo = async (req, res) => {
 	const { id } = req.params
 	const { userInfo } = req.body
 	try {
-		db.collection(`users`)
-			.doc(`${id}/userInfo/personalInfo`)
-			.update(userInfo)
+		db.collection(`users`).doc(`${id}/userInfo/personalInfo`).update(userInfo)
 		res.status(200).json(userInfo)
 	} catch (error) {
 		res.status(400).json(error.message)
@@ -61,8 +56,7 @@ const addUserAddress = async (req, res) => {
 	const { id } = req.params
 	const { userAddress } = req.body
 	try {
-		db.collection(`users/${id}/addressInfo`)
-			.add({ ...userAddress })
+		db.collection(`users/${id}/addressInfo`).add({ ...userAddress })
 		res.status(200).json([userAddress])
 	} catch (error) {
 		res.status(400).json(error.message)
