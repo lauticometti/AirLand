@@ -23,7 +23,7 @@ const welcomeEmail = async (email, displayName) => {
 			// text: "Hello world?", // plain text body
 			html: `
 			<h2> Welcome to AirLand's family ${displayName} </h2>
-			<h3> We are very happy that you choose us for your future purshares </h3>
+			<h3> We are very happy that you choose us for your future purchases </h3>
 			<h4> Go to our website by clicking here ${homeURL}</h4>
 			`
 		})
