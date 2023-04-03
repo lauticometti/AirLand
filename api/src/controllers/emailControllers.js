@@ -13,10 +13,11 @@ let transporter = nodemailer.createTransport({
 		rejectUnauthorized: false
 	}
 })
+
 // send mail with defined transport object
 const welcomeEmail = async (email, displayName) => {
 	try {
-		let info = await transporter.sendMail({
+		await transporter.sendMail({
 			from: `Welcome user ${process.env.MAIL}`, // sender address
 			to: email, // list of receivers
 			subject: 'Welcome to AirLand', // Subject line
@@ -27,15 +28,13 @@ const welcomeEmail = async (email, displayName) => {
 			<h4> Go to our website by clicking here ${homeURL}</h4>
 			`
 		})
-
-		return info
 	} catch (error) {
 		throw new Error(error.message)
 	}
 }
 const successPurchase = async (email, displayName) => {
 	try {
-		let info = await transporter.sendMail({
+		await transporter.sendMail({
 			from: `Shopping success ${process.env.MAIL}`, // sender address
 			to: email, // list of receivers
 			subject: 'Purchase successfully completed', // Subject line
@@ -46,14 +45,13 @@ const successPurchase = async (email, displayName) => {
 			<h5> Thank you for shopping with us</h5>
 			`
 		})
-		return info
 	} catch (error) {
 		throw new Error(error.message)
 	}
 }
 const failPurchase = async (email, displayName) => {
 	try {
-		let info = await transporter.sendMail({
+		await transporter.sendMail({
 			from: `Shopping fail ${process.env.MAIL}`, // sender address
 			to: email, // list of receivers
 			subject: 'There has been a problem with your payment', // Subject line
@@ -64,7 +62,6 @@ const failPurchase = async (email, displayName) => {
 			<h5> If Your problem continues please contact us.</h5>
 			`
 		})
-		return info
 	} catch (error) {
 		throw new Error(error.message)
 	}
