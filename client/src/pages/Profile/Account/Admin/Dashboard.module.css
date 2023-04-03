@@ -1,0 +1,41 @@
+.shoesContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 2rem;
+}
+
+.filters {
+	padding-bottom: 20px;
+	width: 90%;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.paginationContainer {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+	.filters {
+		width: 50%;
+	}
+}
+
+
+.contenedor {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 3rem;
+  }
+  
+  .listaelementos {
+	width: 70%; /* ajustar el ancho de la lista de elementos según necesidades */
+  }
+  
+  .filtros {
+	width: 30%; /* ajustar el ancho de los filtros según necesidades */
+  }

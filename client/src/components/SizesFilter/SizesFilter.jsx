@@ -32,18 +32,21 @@ export function SizesFilter() {
 		<ul className={styles.list}>
 			{sizes ? (
 				sizes.map((el, i) => {
-					return (
-						<li
-							key={el + i}
-							onClick={handleCheckbox}
-							id={el}
-							className={
-								el === +currentSize ? styles.listItemActive : styles.listItem
-							}
-						>
-							{el}
-						</li>
-					)
+					if (el > 2) {
+						return (
+							<li
+								key={el + i}
+								onClick={handleCheckbox}
+								id={el}
+								className={
+									el === +currentSize ? styles.listItemActive : styles.listItem
+								}
+							>
+								{' '}
+								{el}
+							</li>
+						)
+					}
 				})
 			) : (
 				<Loader />

@@ -1,0 +1,36 @@
+
+.micheckbox {
+	display: inline-block;
+	position: relative;
+	padding-left: 30px; /* ajusta el espaciado del checkbox */
+	margin-right: 10px; /* ajusta el espaciado entre checkboxes */
+	font-size: 16px;
+	line-height: 24px;
+	cursor: pointer;
+  }
+  
+  .micheckbox input[type="checkbox"] {
+	display: none;
+  }
+
+
+  .checkbox-custom {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px; /* ajusta el tamaño del checkbox */
+	width: 20px; /* ajusta el tamaño del checkbox */
+	border: 2px solid #ccc; /* ajusta el borde del checkbox */
+	border-radius: 3px;
+  }
+  
+  .micheckbox input[type="checkbox"]:checked + .checkbox-custom::before {
+	content: '\2714'; /* muestra una marca de verificación si el checkbox está marcado */
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 18px;
+	line-height: 0;
+  }

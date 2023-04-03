@@ -27,13 +27,15 @@ const getSizes = async () => {
 		]
 			.sort((a, b) => a - b)
 			.map(size => Number(size))
+
+		console.log(size)
 		return sizes
 	} catch (error) {
 		throw Error(error.message)
 	}
 }
 
-const postSneakers = async (sneaker) => {
+const postSneakers = async sneaker => {
 	try {
 		await db.collection('ZAPATILLAS').add(sneaker)
 		return 'Succesfully created!'
@@ -42,11 +44,9 @@ const postSneakers = async (sneaker) => {
 	}
 }
 
-const getSneakersById = async (id) => {
+const getSneakersById = async id => {
 	try {
-		const sneaker = (
-			await db.collection('ZAPATILLAS').doc(id).get()
-		).data()
+		const sneaker = (await db.collection('ZAPATILLAS').doc(id).get()).data()
 		console.log(sneaker)
 		return sneaker
 	} catch (error) {
@@ -54,9 +54,9 @@ const getSneakersById = async (id) => {
 	}
 }
 
-const deleteSneakers = async (id) => {
+const deleteSneakers = async id => {
 	try {
-		await db.collection('ZAPATILLAS').doc(id).update({ "STATUS": false })
+		await db.collection('ZAPATILLAS').doc(id).update({ STATUS: false })
 		return 'Succesfully deleted!'
 	} catch (error) {
 		throw Error(error.message)

@@ -1,27 +1,29 @@
-import React from 'react';
+import React from 'react'
 // import { useGetAllShoesQuery } from '../../../../redux/services/services';
-import { useGetShoesQuery } from '../../../../redux/services/filteredShoes';
-import { AdminCard } from '../../../../components';
-import { useSelector } from 'react-redux';
+import { useGetShoesQuery } from '../../../../redux/services/filteredShoes'
+import { AdminCard, FilterButton, Order } from '../../../../components'
+import { useSelector } from 'react-redux'
+import styles from './Dashboard.module.css'
 
 const Dashboard = () => {
-    let slicedData = []
-    const filterState = useSelector(state => state.filter)
-    const { data } = useGetShoesQuery(filterState)
-    if (data) {
-        // const filteredData = data.filter((shoe) => shoe.STATUS === true)
-        // if ((page - 1) * pageSize > data.length) dispatch(setPage(1))
-        // dispatch(setTotalEntries(data.length))
-        slicedData = data
-    }
-    return (
-        <div>
+	let slicedData = []
+	const filterState = useSelector(state => state.filter)
+	const { data } = useGetShoesQuery(filterState)
+	if (data) {
+		slicedData = data
+	}
+	return (
+		<div class={styles.contenedor}>
+			<div>
+				{slicedData.map(shoe => (
+					<AdminCard key={shoe.id} shoe={shoe} />
+				))}
+			</div>
+			<div>
+				<FilterButton />
+			</div>
+		</div>
+	)
+}
 
-            {slicedData.map(shoe => <AdminCard key={shoe.id} shoe={shoe} />)}
-
-        </div>
-    );
-};
-
-
-export default Dashboard;
+export default Dashboard
