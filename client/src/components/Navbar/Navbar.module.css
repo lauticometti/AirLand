@@ -2,10 +2,14 @@
 	display: flex;
 	align-items: center;
 	height: 100px;
-	margin: 10px 0 50px;
+	margin: 0 0 50px;
 	background: #181818;
 
 	font-family: Rubik, sans-serif;
+}
+
+.navLogo {
+	display: none;
 }
 
 .logo {
@@ -28,10 +32,6 @@
 .navCenteredElement {
 	display: flex;
 	justify-content: center;
-
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
 }
 
 .navLink {
@@ -47,4 +47,10 @@
 .navLink:hover {
 	color: #fff;
 	border-color: #fff;
+}
+
+@media (min-width: 768px) {
+	.navLogo {
+		display: block;
+	}
 }
