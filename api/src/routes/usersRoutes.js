@@ -20,7 +20,7 @@ router.get('/:id', getUsersById)
 
 router.get('/user-address/:id', getAddressById)
 
-router.delete('user-address/:id/:addressID', deleteUserAdress)
+router.delete('/user-address', deleteUserAdress)
 
 
 module.exports = router
