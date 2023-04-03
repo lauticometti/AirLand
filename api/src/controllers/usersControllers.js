@@ -34,7 +34,10 @@ const getAddressById = async (req, res) => {
 	const { id } = req.params
 	try {
 		const addressRef = await db.collection(`users/${id}/addressInfo`).get()
-		const addressDB = addressRef.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+		const addressDB = addressRef.docs.map(doc => ({
+			id: doc.id,
+			...doc.data()
+		}))
 		res.status(200).json([...addressDB])
 	} catch (error) {
 		res.status(400).json(error.message)
@@ -66,9 +69,7 @@ const addUserAddress = async (req, res) => {
 const deleteUserAdress = async (req, res) => {
 	const { id, addressID } = req.params
 	try {
-		db.collection(`users`)
-			.doc(`${id}/addressInfo/${addressID}`)
-			.delete()
+		db.collection(`users`).doc(`${id}/addressInfo/${addressID}`).delete()
 		res.status(200).json('Address deleted!')
 	} catch (error) {
 		res.status(400).json(error.message)

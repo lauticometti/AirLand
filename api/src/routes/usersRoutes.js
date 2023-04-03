@@ -22,5 +22,4 @@ router.get('/user-address/:id', getAddressById)
 
 router.delete('user-address/:id/:addressID', deleteUserAdress)
 
-
 module.exports = router

@@ -75,6 +75,7 @@ label {
 
 .editButton,
 .removeButton {
+	cursor: pointer;
 	transition: 200ms ease-in-out;
 }
 
