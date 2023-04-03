@@ -14,14 +14,14 @@ export function Snkrs() {
 			<Link to='/detail/EeT7b7bK6qhBx8YppB2F' className={styles.link}>
 				<img
 					className={styles.img}
-					src="https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike-Air-Force-1-High-Unlocked-By-You-(full).webp?alt=media&token=f07c8007-98fc-45b2-b7f5-5f8a58bf608e"
+					src='https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike-Air-Force-1-High-Unlocked-By-You-(full).webp?alt=media&token=f07c8007-98fc-45b2-b7f5-5f8a58bf608e'
 					alt="'airforce1"
 				/>
 			</Link>
 			<Link to='/detail/xhz9pkXasQDGusDn4eDd ' className={styles.link}>
 				<img
 					className={styles.img}
-					src="https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike-Air-Force-1-High-By-You-(full).webp?alt=media&token=e78b469d-6d68-4b46-8e4b-41c50b28c966"
+					src='https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike-Air-Force-1-Mid-Plaid-Brown-(full).webp?alt=media&token=cc5fad6a-660a-4a26-b588-3222fc533432'
 					alt="'airforce1"
 				/>
 			</Link>

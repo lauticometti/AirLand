@@ -48,29 +48,29 @@ export default function SubNavbarRight() {
 			)}
 			<div className={styles.cartContainer}>
 				{
-					uid
-						? (
-							<Link to='/store' className={styles.cartLink}>
-								<AiOutlineShoppingCart />
-								{cartItems.length ? (
-									<span className={styles.cartSpan}>{cartItems.length}</span>
-								) : (
-									''
-								)}
-							</Link>
-						) : (
-							<Link className={styles.cartLink} onClick={() => Swal.fire({
-								position: 'top-right',
-								icon: 'warning',
-								html:
-									'Please, ' +
-									'<a href="/login">login</a>' +
-									' before viewing your cart',
-								showConfirmButton: false
-							})}>
-								<AiOutlineShoppingCart />
-							</Link>
-						)
+					uid ? (
+						<Link to='/store' className={styles.cartLink}>
+							<AiOutlineShoppingCart />
+							{cartItems.length ? (
+								<span className={styles.cartSpan}>{cartItems.length}</span>
+							) : (
+								''
+							)}
+						</Link>
+					) : null
+					// ) : (
+					// 	<Link className={styles.cartLink} onClick={() => Swal.fire({
+					// 		position: 'top-right',
+					// 		icon: 'warning',
+					// 		html:
+					// 			'Please, ' +
+					// 			'<a href="/login">login</a>' +
+					// 			' before viewing your cart',
+					// 		showConfirmButton: false
+					// 	})}>
+					// 		<AiOutlineShoppingCart />
+					// 	</Link>
+					// )
 				}
 			</div>
 			{uid ? (
