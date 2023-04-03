@@ -8,6 +8,10 @@
 	font-family: Rubik, sans-serif;
 }
 
+.navLogo {
+	display: none;
+}
+
 .logo {
 	width: 80px;
 	margin: 0;
@@ -28,10 +32,6 @@
 .navCenteredElement {
 	display: flex;
 	justify-content: center;
-
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
 }
 
 .navLink {
@@ -47,4 +47,10 @@
 .navLink:hover {
 	color: #fff;
 	border-color: #fff;
+}
+
+@media (min-width: 768px) {
+	.navLogo {
+		display: block;
+	}
 }

@@ -12,6 +12,7 @@
 }
 
 .userGreet {
+	display: none;
 	color: #fff;
 	font-size: 14px;
 	margin: 0;
@@ -79,4 +80,10 @@
 
 .logout:hover {
 	color: #c9c9c9;
+}
+
+@media (min-width: 768px) {
+	.userGreet {
+		display: block;
+	}
 }

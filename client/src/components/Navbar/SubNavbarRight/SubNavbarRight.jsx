@@ -17,7 +17,9 @@ export default function SubNavbarRight() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const { cartItems } = useSelector(state => state.shopping)
-	const { status, uid, displayName } = useSelector(state => state.auth)
+	const { status, uid, displayName, firstName } = useSelector(
+		state => state.auth
+	)
 
 	useEffect(() => {
 		if (!uid) return
@@ -33,7 +35,7 @@ export default function SubNavbarRight() {
 		<div className={styles.container}>
 			{uid ? (
 				<Link to='/profile' className={styles.signContainer}>
-					<p className={styles.userGreet}>Hi, {displayName}</p>
+					<p className={styles.userGreet}>Hi, {firstName || displayName}</p>
 					<AiOutlineUser className={styles.userPhoto} />
 				</Link>
 			) : (
@@ -47,19 +49,20 @@ export default function SubNavbarRight() {
 				</div>
 			)}
 			<div className={styles.cartContainer}>
-				{
-					uid
-						? (
-							<Link to='/store' className={styles.cartLink}>
-								<AiOutlineShoppingCart />
-								{cartItems.length ? (
-									<span className={styles.cartSpan}>{cartItems.length}</span>
-								) : (
-									''
-								)}
-							</Link>
+				{uid ? (
+					<Link to='/store' className={styles.cartLink}>
+						<AiOutlineShoppingCart />
+						{cartItems.length ? (
+							<span className={styles.cartSpan}>{cartItems.length}</span>
 						) : (
-							<Link className={styles.cartLink} onClick={() => Swal.fire({
+							''
+						)}
+					</Link>
+				) : (
+					<Link
+						className={styles.cartLink}
+						onClick={() =>
+							Swal.fire({
 								position: 'top-right',
 								icon: 'warning',
 								html:
@@ -67,11 +70,12 @@ export default function SubNavbarRight() {
 									'<a href="/login">login</a>' +
 									' before viewing your cart',
 								showConfirmButton: false
-							})}>
-								<AiOutlineShoppingCart />
-							</Link>
-						)
-				}
+							})
+						}
+					>
+						<AiOutlineShoppingCart />
+					</Link>
+				)}
 			</div>
 			{uid ? (
 				<span className={styles.logout} onClick={handleLogout}>
