@@ -3,14 +3,20 @@ import {
 	loginUserWithEmailPassword,
 	LoginWithGoogle,
 	logoutFirebase,
-	registerUserWithEmailPassword,
+	registerUserWithEmailPassword
 	// loginAnonymously
 } from '../../../firebase'
 import axios from 'axios'
 import { clearCartItems } from '../shopping/shoppingSlice'
-import { checkingCredentials, loadUserAddress, loadUserData, logOut, signIn } from './'
+import {
+	checkingCredentials,
+	loadUserAddress,
+	loadUserData,
+	logOut,
+	signIn
+} from './'
 
-const BASE_URL = import.meta.env.VITE_BACK_URL || "http://localhost:3001/api"
+const BASE_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
 
 export const startRegistrationUserWithEmailPassword = ({
 	email,
@@ -32,12 +38,9 @@ export const startRegistrationUserWithEmailPassword = ({
 		if (!response.ok) return dispatch(logOut(response.message))
 
 		// tercero: cargo el usuario a la DB
-		const { data } = await axios.post(
-			`${BASE_URL}/users`,
-			{
-				user: response
-			}
-		)
+		const { data } = await axios.post(`${BASE_URL}/users`, {
+			user: response
+		})
 
 		// cuarto: logeo al usuario correctamente registrado
 		dispatch(signIn(data))
@@ -57,7 +60,7 @@ export const startLoginUserWithEmailPassword = ({ email, password }) => {
 
 		// tercero: traigo los datos del usuario de la DB
 		const { data: userData } = await axios.get(
-			`${BASE_URL}/users/${response.uid}`,
+			`${BASE_URL}/users/${response.uid}`
 		)
 
 		// cuarto: traigo la data de address de la DB
@@ -83,12 +86,9 @@ export const startGoogleSignIn = () => {
 		if (!response.ok) return dispatch(logOut(response))
 
 		// tercero: cargo el usuario a la DB o lo traigo de la DB si ya existe
-		const { data: userData } = await axios.post(
-			`${BASE_URL}/users`,
-			{
-				user: response
-			}
-		)
+		const { data: userData } = await axios.post(`${BASE_URL}/users`, {
+			user: response
+		})
 
 		// cuarto: traigo la data de address de la DB
 		const { data: addressData } = await axios.get(
@@ -113,29 +113,23 @@ export const startLogout = () => {
 
 export const editUserInfo = (id, form) => {
 	return async dispatch => {
-		const { data } = await axios.patch(
-			`${BASE_URL}/users/user-info/${id}`,
-			{
-				userInfo: form
-			}
-		)
+		const { data } = await axios.patch(`${BASE_URL}/users/user-info/${id}`, {
+			userInfo: form
+		})
 		dispatch(loadUserData(data))
 	}
 }
 
 export const editUserAddress = (id, form) => {
 	return async dispatch => {
-		const { data } = await axios.post(
-			`${BASE_URL}/users/user-address/${id}`,
-			{
-				userAddress: form
-			}
-		)
+		const { data } = await axios.post(`${BASE_URL}/users/user-address/${id}`, {
+			userAddress: form
+		})
 		dispatch(loadUserAddress(data))
 	}
 }
 
-export const editUserPassword = (newPassword) => {
+export const editUserPassword = newPassword => {
 	return async dispatch => {
 		await changePassword(newPassword)
 	}

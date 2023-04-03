@@ -7,14 +7,11 @@ import styles from './PersonalData.module.css'
 import EditPassword from './EditPassword/EditPassword'
 
 export default function PersonalData() {
-	const { displayName, email } = useSelector(state => state.auth)
+	const { displayName, firstName, lastName, email, birthDate, gender } =
+		useSelector(state => state.auth)
 
 	const [showEditDetail, setShowEditDetail] = useState(false)
 	const [showEditPassword, setShowEditPassword] = useState(false)
-
-	const birthday = '2003/04/02'
-	const password = '20030402'
-	const gender = 'Male'
 
 	return (
 		<article className={styles.personalData}>
@@ -22,9 +19,11 @@ export default function PersonalData() {
 			<p>Modify your personal details below to keep your account up to date.</p>
 			<div className={styles.myData}>
 				<h4 className={styles.myDataDetail}>Details</h4>
-				<p className={styles.myDataName}>{displayName}</p>
-				<p className={styles.myDataBirthday}>{birthday || null}</p>
-				<p className={styles.myDataGender}>{gender}</p>
+				<p className={styles.myDataName}>
+					{firstName && lastName ? firstName + ' ' + lastName : displayName}
+				</p>
+				<p className={styles.myDataBirthday}>{birthDate || 'MM/DD/YYYY'}</p>
+				<p className={styles.myDataGender}>{gender || 'Other'}</p>
 				<span
 					onClick={() => setShowEditDetail(true)}
 					className={styles.editSpan}
@@ -44,7 +43,7 @@ export default function PersonalData() {
 				<h5 className={styles.accessDataMail}>Email</h5>
 				<p className={styles.email}>{email || null}</p>
 				<h5 className={styles.accessDataPassword}>Password</h5>
-				<p className={styles.email}>{password || null}</p>
+				<p className={styles.email}>*********</p>
 				<span
 					onClick={() => setShowEditPassword(true)}
 					className={styles.editSpan}

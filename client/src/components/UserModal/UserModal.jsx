@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useCallback, useEffect } from 'react'
 import styles from './UserModal.module.css'
 
-export function UserModal({ onClose, children, show }) {
+export function UserModal({ onClose, children, show, background }) {
 	const closeOnEscapeKeyDown = useCallback(
 		e => {
 			if ((e.charCode || e.keyCode) === 27) {
@@ -21,6 +21,7 @@ export function UserModal({ onClose, children, show }) {
 	return (
 		<div
 			onClick={onClose}
+			style={background ? { background } : null}
 			className={show ? styles.customModalShow : styles.customModal}
 		>
 			<div onClick={e => e.stopPropagation()} className={styles.modalContent}>
@@ -34,5 +35,5 @@ UserModal.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	children: PropTypes.node.isRequired,
 	show: PropTypes.bool.isRequired,
-	buttonText: PropTypes.string.isRequired
+	background: PropTypes.string
 }

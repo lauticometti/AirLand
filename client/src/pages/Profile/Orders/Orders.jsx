@@ -19,7 +19,7 @@ export default function Orders() {
 		<div className={styles.main}>
 			<h3 className={styles.title}>Orders</h3>
 
-			{orders ? (
+			{orders && orders.lenght ? (
 				<div className={styles.orders}>
 					{orders.map((order, i) => (
 						<div key={i} className={styles.orderContainer}>

@@ -12,24 +12,22 @@ const formData = {
 	province: '',
 	zipCode: '',
 	country: 'AR',
-	phone: '',
+	phone: ''
 }
 
 export default function AddAddress({ onClose }) {
-
 	const [form, setForm] = useState(formData)
 	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
 
-
-	const handleInputChange = (e) => {
+	const handleInputChange = e => {
 		setForm({
 			...form,
 			[e.target.name]: e.target.value
 		})
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = e => {
 		e.preventDefault()
 		dispatch(editUserAddress(uid, form))
 	}
@@ -42,13 +40,25 @@ export default function AddAddress({ onClose }) {
 					<label htmlFor='addAddress_streetName'>
 						Street Name <span className={styles.asterisc}>*</span>
 					</label>
-					<input type='text' id='addAddress_streetName' name='streetName' value={form.streetName} onChange={handleInputChange} />
+					<input
+						type='text'
+						id='addAddress_streetName'
+						name='streetName'
+						value={form.streetName}
+						onChange={handleInputChange}
+					/>
 				</section>
 				<section>
 					<label htmlFor='addAddress_streetNumber'>
 						Street Number <span className={styles.asterisc}>*</span>
 					</label>
-					<input type='text' id='addAddress_streetNumber' name='streetNumber' value={form.streetNumber} onChange={handleInputChange} />
+					<input
+						type='text'
+						id='addAddress_streetNumber'
+						name='streetNumber'
+						value={form.streetNumber}
+						onChange={handleInputChange}
+					/>
 				</section>
 			</div>
 
@@ -64,11 +74,21 @@ export default function AddAddress({ onClose }) {
 					<label htmlFor='addAddress_city'>
 						City/Town <span className={styles.asterisc}>*</span>
 					</label>
-					<input type='text' id='addAddress_city' name='city' value={form.city} onChange={handleInputChange} />
+					<input
+						type='text'
+						id='addAddress_city'
+						name='city'
+						value={form.city}
+						onChange={handleInputChange}
+					/>
 				</section>
 				<section className={styles.cityStateSelectSection}>
-					<select name='province' value={form.province} onChange={handleInputChange}>
-						<option value=''>Selecciona una provincia</option>
+					<select
+						name='province'
+						value={form.province}
+						onChange={handleInputChange}
+					>
+						<option value=''>Choose your province</option>
 						<option value='Buenos Aires'>Buenos Aires</option>
 						<option value='Catamarca'>Catamarca</option>
 						<option value='Chaco'>Chaco</option>
@@ -100,7 +120,13 @@ export default function AddAddress({ onClose }) {
 				<label htmlFor='addAddress_zipCode'>
 					Zip Code <span className={styles.asterisc}>*</span>
 				</label>
-				<input type='text' id='addAddress_zipCode' name='zipCode' value={form.zipCode} onChange={handleInputChange} />
+				<input
+					type='text'
+					id='addAddress_zipCode'
+					name='zipCode'
+					value={form.zipCode}
+					onChange={handleInputChange}
+				/>
 			</section>
 			<span className={styles.countrySpan}>
 				<strong>Country: </strong>
@@ -111,20 +137,33 @@ export default function AddAddress({ onClose }) {
 				<label htmlFor='addAddress_phoneNumber'>
 					Phone Number <span className={styles.asterisc}>*</span>
 				</label>
-				<input type='text' id='addAddress_phoneNumber' name='phone' value={form.phone} onChange={handleInputChange} />
+				<input
+					type='text'
+					id='addAddress_phoneNumber'
+					name='phone'
+					value={form.phone}
+					onChange={handleInputChange}
+				/>
 			</section>
 
-			<button onClick={(e) => {
-				onClose()
-				handleSubmit(e)
-			}} className={styles.button} disabled={Object.values(form).some(input => input === '') ? true : false}>
+			<button
+				onClick={e => {
+					onClose()
+					handleSubmit(e)
+				}}
+				className={styles.button}
+				disabled={Object.values(form).some(input => input === '')}
+			>
 				Save
 				<img src={rightArrow} alt='' />
 			</button>
-			<button onClick={() => {
-				onClose()
-				setForm(formData)
-			}} className={styles.buttonCancel}>
+			<button
+				onClick={() => {
+					onClose()
+					setForm(formData)
+				}}
+				className={styles.buttonCancel}
+			>
 				Cancel
 			</button>
 		</div>
