@@ -7,14 +7,12 @@ const postUsers = async (req, res) => {
 		if ((await userRef.doc(`${user.uid}/userInfo/personalInfo`).get()).data()) {
 			const userRef = (await db.collection(`users/${user.uid}/userInfo`).get())
 			const userDB = userRef.docs.map(doc => ({ ...doc.data() }))
-			return res.status(200).json({
-				...userDB
-			})
+			return res.status(200).json([...userDB])
 		} else {
 			await userRef.doc(`${user.uid}/userInfo/personalInfo`).set(user)
 			return res.status(201).json({
 				message: 'Succesfully created!',
-				user
+				...user
 			})
 		}
 	} catch (error) {
