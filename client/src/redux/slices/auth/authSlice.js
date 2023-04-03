@@ -13,7 +13,7 @@ export const authSlice = createSlice({
 		firstName: null,
 		lastName: null,
 		address: [],
-		errorMessage: null,
+		errorMessage: null
 	},
 	reducers: {
 		checkingCredentials: state => {
@@ -24,7 +24,7 @@ export const authSlice = createSlice({
 			state.uid = payload.uid
 			state.email = payload.email
 			state.displayName = payload.displayName
-			state.photoURL = payload.photoURL
+			state.photoURL = payload.photoURL || null
 			state.birthDate = payload.birthDate || null
 			state.gender = payload.gender || null
 			state.firstName = payload.firstName || null
@@ -58,4 +58,10 @@ export const authSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { checkingCredentials, signIn, logOut, loadUserData, loadUserAddress } = authSlice.actions
+export const {
+	checkingCredentials,
+	signIn,
+	logOut,
+	loadUserData,
+	loadUserAddress
+} = authSlice.actions
