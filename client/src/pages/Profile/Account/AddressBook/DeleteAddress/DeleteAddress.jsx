@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import rightArrowWhite from '../../../../../assets/icons/right_arrow-largeWhite.svg'
-import rightArrowBlack from '../../../../../assets/icons/right_arrow-largeBlack.svg'
 import styles from './DeleteAddress.module.css'
 
 export default function DeleteAddress({ onClose }) {
@@ -16,7 +15,6 @@ export default function DeleteAddress({ onClose }) {
 			</button>
 			<button onClick={onClose} className={styles.buttonCancel}>
 				Cancel
-				<img src={rightArrowBlack} alt='' />
 			</button>
 		</div>
 	)

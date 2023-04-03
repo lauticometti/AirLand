@@ -1,62 +1,16 @@
-import styles from './AddressBook.module.css'
 import addSign from '../../../../assets/icons/add_sign.svg'
 import { useState } from 'react'
 import { UserModal } from '../../../../components'
 import AddAddress from './AddAddress/AddAddress'
 import DeleteAddress from './DeleteAddress/DeleteAddress'
-import EditAddress from './EditAddress/EditAddress'
+import styles from './AddressBook.module.css'
+import { useSelector } from 'react-redux'
 
 export default function AddressBook() {
 	const [showAddAddress, setShowAddAddress] = useState(false)
-	const [showEditAddress, setShowEditAddress] = useState(false)
 	const [showDeleteAddress, setShowDeleteAddress] = useState(false)
 
-	const addresses = [
-		{
-			firstName: 'Lautaro',
-			lastName: 'Cometti',
-			streetAddress: 'Roque Saenz Peña',
-			number: '3876',
-			city: 'Chajari',
-			province: 'Entre Rios',
-			zipCode: '3228',
-			phoneNumber: '1134158607',
-			default: true
-		},
-		{
-			firstName: 'Lautaro',
-			lastName: 'Cometti',
-			streetAddress: 'Roque Saenz Peña',
-			number: '3876',
-			city: 'Chajari',
-			province: 'Entre Rios',
-			zipCode: '3228',
-			phoneNumber: '1134158607',
-			default: false
-		},
-		{
-			firstName: 'Lautaro',
-			lastName: 'Cometti',
-			streetAddress: 'Roque Saenz Peña',
-			number: '3876',
-			city: 'Chajari',
-			province: 'Entre Rios',
-			zipCode: '3228',
-			phoneNumber: '1134158607',
-			default: false
-		},
-		{
-			firstName: 'Lautaro',
-			lastName: 'Cometti',
-			streetAddress: 'Roque Saenz Peña',
-			number: '3876',
-			city: 'Chajari',
-			province: 'Entre Rios',
-			zipCode: '3228',
-			phoneNumber: '1134158607',
-			default: false
-		}
-	]
+	const { address: addresses } = useSelector(state => state.auth)
 
 	const slots = 5 - addresses.length
 
@@ -95,9 +49,6 @@ export default function AddressBook() {
 							address.default ? styles.addressCardDefault : styles.addressCard
 						}
 					>
-						<strong className={styles.addressCardTitle}>
-							{address.firstName + ' ' + address.lastName}
-						</strong>
 						<div className={styles.addressCardContent}>
 							<div>{address.streetAddress + ', ' + address.number}</div>
 							<div>
@@ -114,20 +65,6 @@ export default function AddressBook() {
 						<div className={styles.addressCardBottom}>
 							<div>
 								<button
-									className={styles.addressCardModifyButton}
-									onClick={() => setShowEditAddress(true)}
-								>
-									Edit address
-								</button>
-								<UserModal
-									onClose={() => setShowEditAddress(false)}
-									show={showEditAddress}
-									background='rgba(5, 5, 5, 0.335)'
-								>
-									<EditAddress onClose={() => setShowEditAddress(false)} />
-								</UserModal>
-
-								<button
 									className={styles.addressCardDeleteButton}
 									onClick={() => setShowDeleteAddress(true)}
 								>
@@ -143,7 +80,7 @@ export default function AddressBook() {
 							</div>
 							<div>
 								<button className={styles.addressCardDefaultButton}>
-									{address.default ? 'Default' : 'Set as default'}
+									{address.default ? 'Default' : ''}
 								</button>
 							</div>
 						</div>
