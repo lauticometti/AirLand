@@ -2,8 +2,7 @@ import axios from 'axios'
 import swal from 'sweetalert'
 import { getCartItems, getOrders, getAllOrdersAdmin } from './shoppingSlice'
 
-// const BASE_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
-const BASE_URL = 'http://localhost:3001/api'
+const BASE_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
 
 export const getCart = userId => {
 	return async dispatch => {
