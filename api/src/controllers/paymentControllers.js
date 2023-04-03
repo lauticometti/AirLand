@@ -38,7 +38,7 @@ const createPreference = async (userId, form, totalPrice) => {
 
 		back_urls: {
 			success: `${process.env.LOCALHOST_URL}/payment-success`,
-			failure: ``,
+			failure: '',
 			pending: ''
 		},
 		auto_return: 'approved'
