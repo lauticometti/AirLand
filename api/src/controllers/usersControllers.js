@@ -1,4 +1,5 @@
 const { db } = require('../firebase')
+const axios = require('axios')
 
 const postUsers = async (req, res) => {
 	const { user } = req.body
@@ -10,6 +11,14 @@ const postUsers = async (req, res) => {
 			return res.status(200).json(...userDB)
 		} else {
 			await userRef.doc(`${user.uid}/userInfo/personalInfo`).set(user)
+			const { data } = await axios.post(
+				`${process.env.LOCALHOST_BACK_URL}/email/new-user`,
+				{
+					email: user.email,
+					displayName: user.displayName
+				}
+			)
+			console.log(data)
 			return res.status(201).json(user)
 		}
 	} catch (error) {
@@ -67,9 +76,14 @@ const addUserAddress = async (req, res) => {
 }
 
 const deleteUserAdress = async (req, res) => {
-	const { id, addressID } = req.params
+	const { index, userId } = req.body
 	try {
-		db.collection(`users`).doc(`${id}/addressInfo/${addressID}`).delete()
+		const addressRef = await db.collection(`users/${userId}/addressInfo`).get()
+		const addressDB = addressRef.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+		const addressToDelete = addressDB[index].id
+		db.collection(`users`)
+			.doc(`${userId}/addressInfo/${addressToDelete}`)
+			.delete()
 		res.status(200).json('Address deleted!')
 	} catch (error) {
 		res.status(400).json(error.message)
