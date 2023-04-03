@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom'
 import {
 	Login,
 	Register,
@@ -13,9 +13,9 @@ import {
 	Profile,
 	Page404,
 	Checkout,
-	PaymentSuccess,
-	AdminDetail
+	PaymentSuccess
 } from './pages'
+import { EditSneaker } from './pages/Profile/AdminDashboard/'
 import './styles/App.css'
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
 						<Route
 							exact
 							path='/detail/admin/:shoeId'
-							element={<AdminDetail />}
+							element={<EditSneaker />}
 						/>
 						<Route exact path='/about' element={<About />} />
 						<Route exact path='/store' element={<Cart />} />

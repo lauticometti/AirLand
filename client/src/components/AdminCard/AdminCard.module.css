@@ -1,0 +1,123 @@
+.adminCardContainer {
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	outline: solid #ddd 1px;
+	border: solid #ddd 1px;
+	padding: 0 1.5rem 0 1.5rem;
+	font-size: 1.3rem;
+	border-radius: 0.25rem;
+}
+
+.adminCardContainer:hover {
+	background-color: #f1f1f1;
+}
+
+.textContainer {
+	display: flex;
+	justify-content: space-between;
+	width: calc(100% - 1.5rem);
+	padding-left: 1.5rem;
+
+}
+
+label {
+	margin: 0 !important;
+}
+
+.iconsContainer {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 1.5rem;
+	padding-left: 1.5rem;
+	margin-bottom: 0.1rem;
+}
+
+.imageContainer {
+	width: 5rem;
+	height: 5rem;
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.imageLink {
+	color: #181818;
+}
+
+.name {
+	font-size: unset;
+	font-weight: 700;
+	height: 100%;
+}
+
+.price {
+	font-weight: 700;
+	text-align: right;
+	font-size: unset;
+	height: 100%;
+}
+
+.link {
+	display: flex;
+	color: #181818;
+	text-decoration: none;
+}
+
+.link:hover {
+	color: #323232;
+}
+
+.editButton,
+.removeButton {
+	transition: 200ms ease-in-out;
+}
+
+.editButton:hover {
+	color: rgb(0, 85, 255);
+	transform: scale(115%);
+}
+
+.removeButton:hover {
+	color: red;
+	transform: scale(115%);
+}
+
+.editModal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.editModalContent {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+	transform: translateY(-25%);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
