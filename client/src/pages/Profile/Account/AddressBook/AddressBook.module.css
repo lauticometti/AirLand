@@ -20,7 +20,7 @@
 }
 
 .addressCard,
-.addressCardDefault {
+.addAddressCard {
 	width: 400px;
 	padding: 20px;
 
@@ -29,15 +29,18 @@
 	justify-content: space-between;
 
 	border: 1px solid #cecece;
+}
+
+.addAddressCard {
 	cursor: pointer;
 }
 
-.addressCardDefault {
-	border-color: #000;
-	cursor: default;
+.addressCardContent {
+	margin-bottom: 64px;
 }
 
-.addressCard:hover {
+.addressCard:hover,
+.addAddressCard:hover {
 	border-color: #000;
 }
 
@@ -46,11 +49,7 @@
 }
 
 .addressCardSpace {
-	height: 125px;
-}
-
-.addressCardContent {
-	margin-bottom: 50px;
+	height: 85px;
 }
 
 .addressCardBottom {

@@ -12,7 +12,6 @@ export function Home() {
 			<Navbar />
 
 			<section className={styles.carouselSection}>
-				<h2 className={styles.h2}>Collabs with our stars</h2>
 				<HomeCarousel />
 			</section>
 

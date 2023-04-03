@@ -24,7 +24,7 @@ export default function AddressBook() {
 			<div className={styles.addresses}>
 				{slots ? (
 					<div
-						className={styles.addressCard}
+						className={styles.addAddressCard}
 						onClick={() => setShowAddAddress(true)}
 					>
 						<div className={styles.addressCardTitle}>New Address</div>
@@ -43,14 +43,9 @@ export default function AddressBook() {
 				</UserModal>
 
 				{addresses.map((address, i) => (
-					<div
-						key={i}
-						className={
-							address.default ? styles.addressCardDefault : styles.addressCard
-						}
-					>
+					<div key={i} className={styles.addressCard}>
 						<div className={styles.addressCardContent}>
-							<div>{address.streetAddress + ', ' + address.number}</div>
+							<div>{address.streetName + ', ' + address.streetNumber}</div>
 							<div>
 								{address.city +
 									', ' +
@@ -77,11 +72,6 @@ export default function AddressBook() {
 								>
 									<DeleteAddress onClose={() => setShowDeleteAddress(false)} />
 								</UserModal>
-							</div>
-							<div>
-								<button className={styles.addressCardDefaultButton}>
-									{address.default ? 'Default' : ''}
-								</button>
 							</div>
 						</div>
 					</div>
