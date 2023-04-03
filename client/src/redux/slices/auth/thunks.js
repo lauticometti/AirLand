@@ -96,7 +96,7 @@ export const startGoogleSignIn = () => {
 		)
 
 		// quinto: logeo al usuario y cargo addressdata
-		dispatch(signIn(...userData))
+		dispatch(signIn(userData))
 		dispatch(loadUserAddress(addressData))
 	}
 }
