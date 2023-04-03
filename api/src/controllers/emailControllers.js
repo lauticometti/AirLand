@@ -36,7 +36,7 @@ const welcomeEmail = async (email, displayName) => {
 const successPurchase = async (email, displayName) => {
 	try {
 		let info = await transporter.sendMail({
-			from: `Shopping succes ${process.env.MAIL}`, // sender address
+			from: `Shopping success ${process.env.MAIL}`, // sender address
 			to: email, // list of receivers
 			subject: 'Purchase successfully completed', // Subject line
 			// text: "Hello world?", // plain text body
@@ -51,8 +51,27 @@ const successPurchase = async (email, displayName) => {
 		throw new Error(error.message)
 	}
 }
+const failPurchase = async (email, displayName) => {
+	try {
+		let info = await transporter.sendMail({
+			from: `Shopping fail ${process.env.MAIL}`, // sender address
+			to: email, // list of receivers
+			subject: 'There has been a problem with your payment', // Subject line
+			// text: "Hello world?", // plain text body
+			html: `
+			<h2> Hello ${displayName}</h2>
+			<h3> You are receiving this email because we were unable to receive your payment, please try again in a few minutes.</h3>
+			<h5> If Your problem continues please contact us.</h5>
+			`
+		})
+		return info
+	} catch (error) {
+		throw new Error(error.message)
+	}
+}
 module.exports = {
 	transporter,
 	welcomeEmail,
-	successPurchase
+	successPurchase,
+	failPurchase
 }
