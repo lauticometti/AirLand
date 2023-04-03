@@ -5,7 +5,9 @@ const {
 	postSneakers,
 	getSneakersById,
 	deleteSneakers,
-	patchSneakers
+	patchSneakers,
+	addReviewSneaker,
+	deleteReviewSneaker
 } = require('../controllers/sneakersControllers')
 
 const router = Router()
@@ -65,6 +67,27 @@ router.patch('/:id', async (req, res) => {
 		res.status(200).json(message)
 	} catch (error) {
 		res.status(400).json(error.message)
+	}
+})
+
+router.post('/review/:sneakerID/:userID', async (req, res) => {
+	const { sneakerID, userID } = req.params
+	const { name, stars, comment } = req.body
+	try {
+		const message = await addReviewSneaker(sneakerID, userID, name, stars, comment)
+		res.status(200).json(message)
+	} catch (error) {
+		res.status(400).json(error.message)
+	}
+})
+
+router.delete('/review/:sneakerID/:userID', async (req, res) => {
+	const { sneakerID, userID } = req.params
+	try {
+		const message = await deleteReviewSneaker(sneakerID, userID)
+		res.status(200).json(message)
+	} catch (error) {
+		res.status(200).json(error.message)
 	}
 })
 
