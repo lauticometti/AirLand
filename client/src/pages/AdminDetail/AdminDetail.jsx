@@ -15,6 +15,7 @@ import {
 } from '../../redux/services/services'
 import Carousel from 'react-bootstrap/Carousel'
 
+<<<<<<< guardoadmin
 import styles from './AdminDetail.module.css'
 import { doc, setDoc } from 'firebase/firestore'
 import { initializeApp } from 'firebase/app'
@@ -28,6 +29,25 @@ import {
 	uploadBytesResumable,
 	getDownloadURL
 } from 'firebase/storage'
+=======
+import { doc, setDoc } from 'firebase/firestore'
+
+import { getFirestore } from 'firebase/firestore'
+import styles from '../Detail/Detail.module.css'
+>>>>>>> local
+
+import {
+	getStorage,
+	ref,
+	uploadBytes,
+	uploadBytesResumable,
+	getDownloadURL
+} from 'firebase/storage'
+
+import { FirebaseApp, firebaseDb, storage } from '../../firebase/config'
+import { initializeApp } from 'firebase/app'
+
+import 'firebase/storage'
 
 export function AdminDetail() {
 	const dispatch = useDispatch()
@@ -40,6 +60,7 @@ export function AdminDetail() {
 	const { data: shoe, isLoading, error } = useGetShoesByIdQuery(shoeId)
 	const { data: sizes } = useGetSizesQuery()
 
+<<<<<<< guardoadmin
 	console.log('adasdasdasd')
 
 	// TODO: Replace the following with your app's Firebase project configuration
@@ -57,6 +78,13 @@ export function AdminDetail() {
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig)
 	const storage = getStorage(app)
+=======
+	console.log('Functin AdminDetail')
+
+	// TODO: Replace the following with your app's Firebase project configuration
+	// See: https://support.google.com/firebase/answer/7015592
+
+>>>>>>> local
 	const handleAddToCart = async event => {
 		const valorNOMBRE = document.getElementById('miInput').value
 		const valorPRICE = document.getElementById('miPrice').value
@@ -69,6 +97,19 @@ export function AdminDetail() {
 		const TOPVIEW = document.getElementById('TOPVIEW').value
 		const miCODE = document.getElementById('miCODE').value
 
+<<<<<<< guardoadmin
+=======
+		//talles
+		const primero = document.getElementById('zize38').value
+		const segundo = document.getElementById('zize39').value
+		const tercero = document.getElementById('zize40').value
+		const cuarto = document.getElementById('zize41').value
+		const quinto = document.getElementById('zize42').value
+		const sexto = document.getElementById('zize43').value
+		const septimo = document.getElementById('zize44').value
+		const octabvo = document.getElementById('zize45').value
+
+>>>>>>> local
 		var checkbox = document.getElementById('miCheckbox')
 		if (checkbox.checked) {
 			console.log(true)
@@ -78,7 +119,11 @@ export function AdminDetail() {
 			checkbox = false
 		}
 
+<<<<<<< guardoadmin
 		await setDoc(doc(db, 'ZAPATILLAS-PRUEBA', shoeId), {
+=======
+		await setDoc(doc(firebaseDb, 'ZAPATILLAS-PRUEBA', shoeId), {
+>>>>>>> local
 			ACTION: '',
 			CODE: miCODE,
 			DESCRIPTION: valorDESCRIPTION,
@@ -95,16 +140,34 @@ export function AdminDetail() {
 			REVIEW: '',
 			STATUS: checkbox,
 			STOCK: checkbox,
+<<<<<<< guardoadmin
 			SIZE: '',
+=======
+			SIZE: {
+				38: primero,
+				39: segundo,
+				40: tercero,
+				41: cuarto,
+				42: quinto,
+				43: sexto,
+				44: septimo,
+				45: octabvo
+			},
+>>>>>>> local
 			TYPE: ''
 		})
 		console.log('guardado')
 		//agregar size
 	}
 	const handleImageChange = e => {
+<<<<<<< guardoadmin
 		console.log('ggola')
 		const file = e.target.files[0]
 		// console.log(file);
+=======
+		const file = e.target.files[0]
+		console.log(file)
+>>>>>>> local
 
 		const storageRef = ref(storage, `Zapatillas-prueba-exe/${file.name}`)
 		const uploadTask = uploadBytesResumable(storageRef, file)
@@ -120,7 +183,14 @@ export function AdminDetail() {
 			},
 			() => {
 				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+<<<<<<< guardoadmin
 					document.getElementById('FULL').value = downloadURL
+=======
+					if (document.getElementById('FULL').value == 'FULL') {
+						console.log('entro aca')
+						document.getElementById('FULL').value = downloadURL
+					}
+>>>>>>> local
 
 					//setProduct({ ...product, imageURL: downloadURL })
 					toast.success('Image uploaded successfully.')
@@ -136,6 +206,7 @@ export function AdminDetail() {
 	return (
 		<>
 			<Navbar />
+<<<<<<< guardoadmin
 			<div className={styles.mainContainer}>
 				{isLoading ? (
 					<div className={styles.loader}>
@@ -148,6 +219,20 @@ export function AdminDetail() {
 				) : (
 					<div className={styles.shoeContainer}>
 						<label className={styles.title}>
+=======
+			<div>
+				{isLoading ? (
+					<div>
+						<Loader />
+					</div>
+				) : error ? (
+					<div>
+						<NotFound />
+					</div>
+				) : (
+					<div>
+						<label>
+>>>>>>> local
 							FULL
 							<input type='NAME' id='FULL' />
 							<input
@@ -158,7 +243,11 @@ export function AdminDetail() {
 								onChange={e => handleImageChange(e)}
 							/>
 						</label>
+<<<<<<< guardoadmin
 						<label className={styles.title}>
+=======
+						<label>
+>>>>>>> local
 							LEFT
 							<input type='NAME' id='LEFT' />
 							<input
@@ -170,7 +259,11 @@ export function AdminDetail() {
 							/>
 						</label>
 
+<<<<<<< guardoadmin
 						<label className={styles.title}>
+=======
+						<label>
+>>>>>>> local
 							RIGHT
 							<input type='NAME' id='RIGHT' />
 							<input
@@ -182,7 +275,11 @@ export function AdminDetail() {
 							/>
 						</label>
 
+<<<<<<< guardoadmin
 						<label className={styles.title}>
+=======
+						<label>
+>>>>>>> local
 							THUMBNAIL
 							<input type='NAME' id='THUMBNAIL' />
 							<input
@@ -193,7 +290,11 @@ export function AdminDetail() {
 								onChange={e => handleImageChange(e)}
 							/>
 						</label>
+<<<<<<< guardoadmin
 						<label className={styles.title}>
+=======
+						<label>
+>>>>>>> local
 							TOPVIEW
 							<input type='NAME' id='TOPVIEW' />
 							<input
@@ -205,17 +306,28 @@ export function AdminDetail() {
 							/>
 						</label>
 						<Carousel />
+<<<<<<< guardoadmin
 						<div className={styles.descriptionContainer}>
 							<div>
 								CAMBIAR EL NOMBRE:
 								<label className={styles.title}>
+=======
+						<div>
+							<div>
+								CAMBIAR EL NOMBRE:
+								<label>
+>>>>>>> local
 									<input type='NAME' id='miInput' placeholder={shoe.NAME} />
 								</label>
 							</div>
 							<div>
 								CAMBIAR CODIGO:
 								<div>
+<<<<<<< guardoadmin
 									<label className={styles.title}>
+=======
+									<label>
+>>>>>>> local
 										<input
 											type='CODE'
 											name='CODE'
@@ -224,12 +336,20 @@ export function AdminDetail() {
 										/>
 									</label>
 								</div>
+<<<<<<< guardoadmin
 								<span className={styles.code}>Item No. {shoe.CODE}</span>
+=======
+								<span>Item No. {shoe.CODE}</span>
+>>>>>>> local
 							</div>
 
 							<div>
 								CAMBIAR EL PRECIO:
+<<<<<<< guardoadmin
 								<label className={styles.title}>
+=======
+								<label>
+>>>>>>> local
 									<input
 										type='PRICE'
 										name='PRICE'
@@ -249,6 +369,7 @@ export function AdminDetail() {
 								</label>
 							</div>
 
+<<<<<<< guardoadmin
 							<div className={styles.sizesContainer}>
 								<p className={styles.sizesTitle}>Sizes</p>
 								<ul className={styles.sizesChecks}>
@@ -276,6 +397,48 @@ export function AdminDetail() {
 							<div className={styles.description}>
 								<h4 className={styles.descriptionh4}>Description</h4>
 								<p className={styles.descriptionText}>{shoe.DESCRIPTION}</p>
+=======
+							<div>
+								<p>Sizes</p>
+								<ul>
+									<label>
+										38
+										<input type='NAME' id='zize38' />
+									</label>
+									<label>
+										39
+										<input type='NAME' id='zize39' />
+									</label>
+									<label>
+										40
+										<input type='NAME' id='zize40' />
+									</label>
+									<label>
+										41
+										<input type='NAME' id='zize41' />
+									</label>
+									<label>
+										42
+										<input type='NAME' id='zize42' />
+									</label>
+									<label>
+										43
+										<input type='NAME' id='zize43' />
+									</label>
+									<label>
+										44
+										<input type='NAME' id='zize44' />
+									</label>
+									<label>
+										45
+										<input type='NAME' id='zize45' />
+									</label>
+								</ul>
+							</div>
+							<div>
+								<h4>Description</h4>
+								<p>{shoe.DESCRIPTION}</p>
+>>>>>>> local
 								<div>
 									<label className={styles.title}>
 										<input
