@@ -32,64 +32,8 @@
 	flex-wrap: wrap;
 }
 
-.imageTitle {
-	width: 100%;
-	text-align: center;
-}
-
-.inputImage {
-	width: 125px;
-	height: 125px;
-}
-
-.inputImagePreview {
-	width: 125px;
-	height: 125px;
-}
-
-.inputImageFileWrapper {
-	position: relative;
-	top: -7.82rem;
-	height: 125px;
-	display: flex;
-	border-radius: 0;
-	cursor: pointer;
-}
-
-.inputImageFileWrapper:hover {
-	background-color: rgba(0, 0, 0, 0.096);
-}
-
-.inputImageFile {
-	width: 100%;
-	height: 100%;
-	font-size: .68rem;
-	padding: 0;
-	opacity: 0%;
-	cursor: pointer;
-}
-
-.inputImageFile:hover {
-	opacity: 100%;
-}
-
-.inputImageURL {
-	position: relative;
-	top: -7.82rem;
-	width: 125px;
-	font-size: 0.9rem;
-	transition: 100ms ease-in-out;
-	z-index: 1;
-}
-
-.inputImageURL:hover {
-	width: 500px;
-	z-index: 99;
-}
-
 .imageElement {
 	width: 125px;
-	height: 125px;
 }
 
 .carouselContainer {
@@ -105,8 +49,6 @@
 	flex-wrap: wrap;
 	padding: 0 3%;
 }
-
-
 
 .inputFieldGrid {
 	display: grid;
@@ -269,4 +211,3 @@
 	font-size: 1rem;
 	margin-top: 16px;
 }
-

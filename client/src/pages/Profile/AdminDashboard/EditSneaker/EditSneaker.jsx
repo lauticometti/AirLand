@@ -5,6 +5,8 @@ import {
 	useGetSizesQuery,
 	useEditShoeByIdMutation
 } from '../../../../redux/services/services'
+import { firebaseStorage } from '../../../../firebase'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import Carousel from 'react-bootstrap/Carousel'
 import PropTypes from 'prop-types'
 import styles from './EditSneaker.module.css'
@@ -21,6 +23,8 @@ export function EditSneaker({ shoeId }) {
 	const [editedShoe, setEditedShoe] = useState(shoe)
 	const [updateShoe] = useEditShoeByIdMutation()
 
+	const imageProperties = ['TOPVIEW', 'LEFT', 'FULL', 'RIGHT', 'THUMBNAIL']
+
 	const handleInputChange = event => {
 		const { name, value } = event.target
 		setEditedShoe({ ...editedShoe, [name]: value })
@@ -36,7 +40,38 @@ export function EditSneaker({ shoeId }) {
 		})
 	}
 
-	const handleImagesChange = event => {
+	const handleImagesChange = e => {
+		const { name, files } = event.target
+		const file = files[0]
+
+		const storageRef = ref(
+			firebaseStorage,
+			`Zapatillas-images-uploaded/${file.name}`
+		)
+		const uploadTask = uploadBytesResumable(storageRef, file)
+
+		uploadTask.on(
+			'state_changed',
+			snapshot => {
+				const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+				console.log(progress)
+			},
+			error => {
+				alert(error.message)
+			},
+			() => {
+				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+					setEditedShoe({
+						...editedShoe,
+						IMAGE: { ...editedShoe.IMAGE, [name]: downloadURL }
+					})
+					console.log('Image uploaded successfully.')
+				})
+			}
+		)
+	}
+
+	const handleImageURLChange = e => {
 		const { name, value } = event.target
 		setEditedShoe({
 			...editedShoe,
@@ -59,9 +94,15 @@ export function EditSneaker({ shoeId }) {
 				refetch()
 			})
 			.catch(error => {
-				alert(error.message)
+				swal({
+					title: 'An error occurred while updating',
+					message: error.message,
+					icon: 'warning',
+					timer: 2000
+				})
 			})
 	}
+
 	useEffect(() => {
 		setEditedShoe(shoe)
 	}, [shoe])
@@ -101,31 +142,36 @@ export function EditSneaker({ shoeId }) {
 								</Carousel>
 							</div>
 							<div className={styles.separateImagesContainer}>
-								<img
-									src={editedShoe?.IMAGE.TOPVIEW}
-									alt='topview'
-									className={styles.imageElement}
-								/>
-								<img
-									src={editedShoe?.IMAGE.LEFT}
-									alt='left'
-									className={styles.imageElement}
-								/>
-								<img
-									src={editedShoe?.IMAGE.RIGHT}
-									alt='right'
-									className={styles.imageElement}
-								/>
-								<img
-									src={editedShoe?.IMAGE.FULL}
-									alt='full'
-									className={styles.imageElement}
-								/>
-								<img
-									src={editedShoe?.IMAGE.THUMBNAIL}
-									alt='thumbnail'
-									className={styles.imageElement}
-								/>
+								{imageProperties.map(image => {
+									return (
+										<div key={image + '-input'} className={styles.inputImage}>
+											<label className={styles.imageTitle}>{image}:</label>
+											<img
+												className={styles.inputImagePreview}
+												src={editedShoe?.IMAGE[image]}
+												alt=''
+											/>
+											<div className={styles.inputImageFileWrapper}>
+												<input
+													className={styles.inputImageFile}
+													type='file'
+													id={image}
+													name={image}
+													onChange={handleImagesChange}
+												/>
+											</div>
+
+											<input
+												className={styles.inputImageURL}
+												type='text'
+												id={image + '-url'}
+												name={image}
+												value={editedShoe?.IMAGE[image]}
+												onChange={handleImageURLChange}
+											/>
+										</div>
+									)
+								})}
 							</div>
 						</div>
 						<div className={styles.descriptionContainer}>
@@ -151,12 +197,22 @@ export function EditSneaker({ shoeId }) {
 								</h2>
 								<h2 className={styles.title}>
 									Status:
-									<input
-										type='text'
-										name='STATUS'
-										value={editedShoe?.STATUS}
-										onChange={handleInputChange}
-									/>
+									<div className={styles.statusContainer}>
+										<select
+											className={styles.selectStatus}
+											type='text'
+											name='STATUS'
+											value={editedShoe?.STATUS}
+											onChange={handleInputChange}
+										>
+											<option value='true'>
+												true <span>✅</span>
+											</option>
+											<option value='false'>
+												false <span>❌</span>
+											</option>
+										</select>
+									</div>
 								</h2>
 								<h2 className={styles.title}>
 									Price:

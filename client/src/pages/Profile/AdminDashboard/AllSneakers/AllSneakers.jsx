@@ -17,8 +17,6 @@ export function AllSneakers() {
 		dispatch(fetchSneakers())
 	}, [editCount])
 
-	console.log(allSneakers)
-
 	return (
 		<div className={styles.adminCardsContainer}>
 			{allSneakers ? (

@@ -37,7 +37,7 @@ label {
 
 .imageContainer {
 	width: 5rem;
-	height: 5rem;
+	height: 3.5rem;
 }
 
 .image {
@@ -117,11 +117,8 @@ label {
 
 .editModalContent {
 	background-color: #fefefe;
-	margin: 15% auto;
-	padding: 20px;
+	padding: 2rem;
 	border: 1px solid #888;
-	width: 1200px;
-	transform: translateY(-25%);
 }
 
 .close {
