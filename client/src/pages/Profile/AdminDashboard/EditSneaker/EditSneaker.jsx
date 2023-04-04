@@ -1,22 +1,52 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Loader, NotFound } from '../../../../components'
 import {
 	useGetShoesByIdQuery,
-	useGetSizesQuery
+	useGetSizesQuery,
+	useEditShoeByIdMutation
 } from '../../../../redux/services/services'
 import Carousel from 'react-bootstrap/Carousel'
 import PropTypes from 'prop-types'
 import styles from './EditSneaker.module.css'
+import { useDispatch } from 'react-redux'
+import { setEditCount } from '../../../../redux'
 
 export function EditSneaker({ shoeId }) {
+	const dispatch = useDispatch()
 	const [sizeSelected, setSizeSelected] = useState('')
 
-	const { data: shoe, isLoading, error } = useGetShoesByIdQuery(shoeId)
+	const { data: shoe, isLoading, error, refetch } = useGetShoesByIdQuery(shoeId)
 	const { data: sizes } = useGetSizesQuery()
+
+	const [editedShoe, setEditedShoe] = useState(shoe)
+	const [updateShoe] = useEditShoeByIdMutation()
 
 	const handleSizeChange = event => {
 		setSizeSelected(event.target.value)
 	}
+
+	const handleInputChange = event => {
+		const { name, value } = event.target
+		setEditedShoe({ ...editedShoe, [name]: value })
+	}
+
+	const handleFormSubmit = event => {
+		event.preventDefault()
+		updateShoe({ id: shoeId, shoe: editedShoe })
+			.unwrap()
+			.then(updatedShoe => {
+				alert(`Updated successfully!`)
+				dispatch(setEditCount())
+				refetch()
+			})
+			.catch(error => {
+				alert(error.message)
+			})
+	}
+
+	useEffect(() => {
+		setEditedShoe(shoe)
+	}, [shoe])
 
 	return (
 		<>
@@ -31,6 +61,27 @@ export function EditSneaker({ shoeId }) {
 					</div>
 				) : (
 					<div className={styles.shoeContainer}>
+						<form onSubmit={handleFormSubmit}>
+							<label>
+								Price:
+								<input
+									type='text'
+									name='PRICE'
+									value={editedShoe?.PRICE}
+									onChange={handleInputChange}
+								/>
+							</label>
+							<label>
+								Name:
+								<input
+									type='text'
+									name='NAME'
+									value={editedShoe?.NAME}
+									onChange={handleInputChange}
+								/>
+							</label>
+							<button type='submit'>Save changes</button>
+						</form>
 						<div className={styles.allImagesContainer}>
 							<div className={styles.carouselContainer}>
 								<Carousel variant='dark'>
@@ -55,27 +106,27 @@ export function EditSneaker({ shoeId }) {
 							<div className={styles.separateImagesContainer}>
 								<img
 									src={shoe.IMAGE.TOPVIEW}
-									alt='cat'
+									alt='topview'
 									className={styles.imageElement}
 								/>
 								<img
 									src={shoe.IMAGE.LEFT}
-									alt='cat'
+									alt='left'
 									className={styles.imageElement}
 								/>
 								<img
 									src={shoe.IMAGE.RIGHT}
-									alt='cat'
+									alt='right'
 									className={styles.imageElement}
 								/>
 								<img
 									src={shoe.IMAGE.FULL}
-									alt='cat'
+									alt='full'
 									className={styles.imageElement}
 								/>
 								<img
 									src={shoe.IMAGE.THUMBNAIL}
-									alt='cat'
+									alt='thumbnail'
 									className={styles.imageElement}
 								/>
 							</div>
@@ -107,14 +158,12 @@ export function EditSneaker({ shoeId }) {
 									))}
 								</ul>
 							</div>
-
-							<div className={styles.addCartContainer}>
-								<button className={styles.addToCartButton}>Save changes</button>
-							</div>
-
 							<div className={styles.description}>
 								<h4 className={styles.descriptionh4}>Description</h4>
 								<p className={styles.descriptionText}>{shoe.DESCRIPTION}</p>
+							</div>
+							<div className={styles.addCartContainer}>
+								<button className={styles.addToCartButton}>Save changes</button>
 							</div>
 						</div>
 					</div>
