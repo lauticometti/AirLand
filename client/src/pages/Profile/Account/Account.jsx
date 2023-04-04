@@ -3,15 +3,13 @@ import PersonalData from './PersonalData/PersonalData'
 import AddressBook from './AddressBook/AddressBook'
 import rightArrow from '../../../assets/icons/right-arrow.svg'
 import styles from './Account.module.css'
-import Favorites from './Favorites/Favorites'
 
 export default function Account() {
 	const [currentComponent, setCurrentComponent] = useState('personalData')
 
 	const components = {
 		personalData: <PersonalData />,
-		addresses: <AddressBook />,
-		favorites: <Favorites />
+		addresses: <AddressBook />
 	}
 
 	const handleSummaryLinks = event => {
@@ -51,7 +49,7 @@ export default function Account() {
 							Addresses
 							<img src={rightArrow} alt='' className={styles.rightArrow} />
 						</li>
-						<li
+						{/* <li
 							onClick={handleSummaryLinks}
 							id='favorites'
 							className={
@@ -62,7 +60,7 @@ export default function Account() {
 						>
 							Favorites
 							<img src={rightArrow} alt='' className={styles.rightArrow} />
-						</li>
+						</li> */}
 						<li className={styles.summaryLink}>Log out</li>
 					</ul>
 				</div>

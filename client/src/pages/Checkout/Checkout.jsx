@@ -5,8 +5,6 @@ import { getPayment } from '../../redux'
 import styles from './Checkout.module.css'
 
 export function Checkout() {
-
-
 	const { uid } = useSelector(state => state.auth)
 	const { totalPrice } = useSelector(state => state.shopping)
 	const dispatch = useDispatch()
@@ -20,12 +18,12 @@ export function Checkout() {
 		countryName: ''
 	})
 
-	const handleCheckoutSubmit = (event) => {
+	const handleCheckoutSubmit = event => {
 		event.preventDefault()
 		dispatch(getPayment(uid, form, totalPrice))
 	}
 
-	const handleInputChange = (event) => {
+	const handleInputChange = event => {
 		setForm({
 			...form,
 			[event.target.name]: event.target.value
@@ -113,7 +111,7 @@ export function Checkout() {
 					/>
 					<button
 						className={styles.paymentButton}
-						disabled={Object.values(form).some(input => input === '') ? true : false}
+						disabled={Object.values(form).some(input => input === '')}
 					>
 						Go payment
 					</button>
