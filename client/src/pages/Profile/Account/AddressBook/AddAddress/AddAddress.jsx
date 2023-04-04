@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import rightArrow from '../../../../../assets/icons/right_arrow-largeWhite.svg'
 import { editUserAddress } from '../../../../../redux/slices/auth'
 import styles from './AddAddress.module.css'
+import addressDataHasError from '../../../../../helpers/addressDataHasError'
 
 const formData = {
 	streetName: '',
@@ -15,10 +16,37 @@ const formData = {
 	phone: ''
 }
 
+const errorsData = {
+	streetName: '',
+	streetNumber: '',
+	city: '',
+	zipCode: '',
+	phone: ''
+}
+
 export default function AddAddress({ onClose }) {
 	const [form, setForm] = useState(formData)
 	const dispatch = useDispatch()
 	const { uid } = useSelector(state => state.auth)
+
+	const [errors, setErrors] = useState(errorsData)
+
+	const handleErrors = e => {
+		const { name, value } = e.target
+
+		const error = addressDataHasError(name, value)
+		if (error) {
+			setErrors({
+				...errors,
+				[name]: error
+			})
+		} else {
+			setErrors({
+				...errors,
+				[name]: ''
+			})
+		}
+	}
 
 	const handleInputChange = e => {
 		setForm({
@@ -46,7 +74,11 @@ export default function AddAddress({ onClose }) {
 						name='streetName'
 						value={form.streetName}
 						onChange={handleInputChange}
+						onBlur={handleErrors}
 					/>
+					{errors.streetName ? (
+						<span className={styles.error}>{errors.streetName}</span>
+					) : null}
 				</section>
 				<section>
 					<label htmlFor='addAddress_streetNumber'>
@@ -58,16 +90,13 @@ export default function AddAddress({ onClose }) {
 						name='streetNumber'
 						value={form.streetNumber}
 						onChange={handleInputChange}
+						onBlur={handleErrors}
 					/>
+					{errors.streetNumber ? (
+						<span className={styles.error}>{errors.streetNumber}</span>
+					) : null}
 				</section>
 			</div>
-
-			{/* <section>
-				<label htmlFor='addAddress_street'>
-					Street Address <span className={styles.asterisc}>*</span>
-				</label>
-				<input type='text' id='addAddress_street' />
-			</section> */}
 
 			<div className={styles.cityStateContainer}>
 				<section>
@@ -80,9 +109,16 @@ export default function AddAddress({ onClose }) {
 						name='city'
 						value={form.city}
 						onChange={handleInputChange}
+						onBlur={handleErrors}
 					/>
+					{errors.city ? (
+						<span className={styles.error}>{errors.city}</span>
+					) : null}
 				</section>
 				<section className={styles.cityStateSelectSection}>
+					<label htmlFor='addAddress_province'>
+						Province <span className={styles.asterisc}>*</span>
+					</label>
 					<select
 						name='province'
 						value={form.province}
@@ -126,7 +162,11 @@ export default function AddAddress({ onClose }) {
 					name='zipCode'
 					value={form.zipCode}
 					onChange={handleInputChange}
+					onBlur={handleErrors}
 				/>
+				{errors.zipCode ? (
+					<span className={styles.error}>{errors.zipCode}</span>
+				) : null}
 			</section>
 			<span className={styles.countrySpan}>
 				<strong>Country: </strong>
@@ -143,7 +183,11 @@ export default function AddAddress({ onClose }) {
 					name='phone'
 					value={form.phone}
 					onChange={handleInputChange}
+					onBlur={handleErrors}
 				/>
+				{errors.phone ? (
+					<span className={styles.error}>{errors.phone}</span>
+				) : null}
 			</section>
 
 			<button
@@ -152,7 +196,10 @@ export default function AddAddress({ onClose }) {
 					handleSubmit(e)
 				}}
 				className={styles.button}
-				disabled={Object.values(form).some(input => input === '')}
+				disabled={
+					Object.values(form).some(input => input === '') ||
+					Object.values(errors).some(input => input !== '')
+				}
 			>
 				Save
 				<img src={rightArrow} alt='' />
@@ -161,6 +208,7 @@ export default function AddAddress({ onClose }) {
 				onClick={() => {
 					onClose()
 					setForm(formData)
+					setErrors(errorsData)
 				}}
 				className={styles.buttonCancel}
 			>
