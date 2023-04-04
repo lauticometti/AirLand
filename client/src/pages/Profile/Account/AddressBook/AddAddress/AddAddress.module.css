@@ -20,7 +20,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: flex-end;
+	align-items: flex-start;
 }
 
 .cityStateContainer section {
@@ -46,6 +46,12 @@
 .countrySpan {
 	display: inline-block;
 	margin: 0 0 25px 5px;
+}
+
+.error {
+	font-size: 14px;
+	color: red;
+	opacity: 0.8;
 }
 
 .button,

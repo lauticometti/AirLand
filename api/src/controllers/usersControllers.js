@@ -79,7 +79,10 @@ const deleteUserAdress = async (req, res) => {
 	const { index, userId } = req.body
 	try {
 		const addressRef = await db.collection(`users/${userId}/addressInfo`).get()
-		const addressDB = addressRef.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+		const addressDB = addressRef.docs.map(doc => ({
+			id: doc.id,
+			...doc.data()
+		}))
 		const addressToDelete = addressDB[index].id
 		db.collection(`users`)
 			.doc(`${userId}/addressInfo/${addressToDelete}`)

@@ -5,14 +5,13 @@ import rightArrow from '../../../../../assets/icons/right_arrow-largeWhite.svg'
 import { editUserInfo } from '../../../../../redux/slices/auth'
 
 import styles from './EditData.module.css'
+import personalDataHasError from '../../../../../helpers/personalDataHasError'
 
 export default function EditData({ onClose }) {
 	const dispatch = useDispatch()
 	const { uid, firstName, lastName, birthDate, gender } = useSelector(
 		state => state.auth
 	)
-
-	console.log(birthDate)
 
 	const [form, setForm] = useState({
 		firstName,
@@ -22,6 +21,32 @@ export default function EditData({ onClose }) {
 		birthYear: birthDate ? birthDate.split('/')[2] : '',
 		gender
 	})
+
+	const [errors, setErrors] = useState({
+		firstName: '',
+		lastName: '',
+		birthMonth: '',
+		birthDay: '',
+		birthYear: ''
+	})
+
+	const handleErrors = e => {
+		const name = e.target.name
+		const value = e.target.value
+
+		const error = personalDataHasError(name, value)
+		if (error) {
+			setErrors({
+				...errors,
+				[name]: error
+			})
+		} else {
+			setErrors({
+				...errors,
+				[name]: ''
+			})
+		}
+	}
 
 	const handleInputChange = e => {
 		setForm({
@@ -39,14 +64,6 @@ export default function EditData({ onClose }) {
 			gender: form.gender
 		}
 		dispatch(editUserInfo(uid, submitForm))
-		setForm({
-			firstName,
-			lastName,
-			birthMonth: birthDate ? birthDate.split('/')[0] : null,
-			birthDay: birthDate ? birthDate.split('/')[1] : null,
-			birthYear: birthDate ? birthDate.split('/')[2] : null,
-			gender
-		})
 	}
 
 	return (
@@ -63,7 +80,9 @@ export default function EditData({ onClose }) {
 					name='firstName'
 					value={form.firstName}
 					onChange={handleInputChange}
+					onBlur={handleErrors}
 				/>
+				{errors.firstName ? <span>{errors.firstName}</span> : null}
 			</section>
 			<section className={styles.lastNameInputContainer}>
 				<label htmlFor='editData_LastName'>
@@ -75,7 +94,9 @@ export default function EditData({ onClose }) {
 					name='lastName'
 					value={form.lastName}
 					onChange={handleInputChange}
+					onBlur={handleErrors}
 				/>
+				{errors.lastName ? <span>{errors.lastName}</span> : null}
 			</section>
 
 			<div className={styles.birthDate}>
@@ -91,7 +112,9 @@ export default function EditData({ onClose }) {
 							name='birthMonth'
 							value={form.birthMonth}
 							onChange={handleInputChange}
+							onBlur={handleErrors}
 						/>
+						{errors.birthMonth ? <span>{errors.birthMonth}</span> : null}
 					</section>
 					<section className={styles.birthDateDayInputContainer}>
 						<label htmlFor='editData_BirthDateDay'>
@@ -103,7 +126,9 @@ export default function EditData({ onClose }) {
 							name='birthDay'
 							value={form.birthDay}
 							onChange={handleInputChange}
+							onBlur={handleErrors}
 						/>
+						{errors.birthDay ? <span>{errors.birthDay}</span> : null}
 					</section>
 					<section className={styles.birthDateYearInputContainer}>
 						<label htmlFor='editData_BirthDateYear'>
@@ -115,7 +140,9 @@ export default function EditData({ onClose }) {
 							name='birthYear'
 							value={form.birthYear}
 							onChange={handleInputChange}
+							onBlur={handleErrors}
 						/>
+						{errors.birthYear ? <span>{errors.birthYear}</span> : null}
 					</section>
 				</div>
 			</div>
@@ -145,6 +172,17 @@ export default function EditData({ onClose }) {
 						/>
 						<label htmlFor='editData_GenderFemaleInput'>Female</label>
 					</section>
+					<section className={styles.genderFemaleInputContainer}>
+						<input
+							type='radio'
+							id='editData_GenderOtherInput'
+							name='gender'
+							value='other'
+							onChange={handleInputChange}
+							defaultChecked={form.gender === 'other'}
+						/>
+						<label htmlFor='editData_GenderOtherInput'>Other</label>
+					</section>
 				</div>
 			</div>
 			<button
@@ -153,7 +191,10 @@ export default function EditData({ onClose }) {
 					handleSubmit(e)
 				}}
 				className={styles.button}
-				disabled={Object.values(form).some(input => input === '')}
+				disabled={
+					Object.values(form).some(input => input === '') ||
+					Object.values(errors).some(input => input !== '')
+				}
 			>
 				Update Details
 				<img src={rightArrow} alt='' />
