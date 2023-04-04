@@ -14,8 +14,8 @@ export default function StringPill({ pill, type }) {
 		typeof filters[type] === 'string'
 			? ''
 			: typeof filters[type] === 'number'
-			? 0
-			: filters[type].filter(el => el !== pill)
+				? 0
+				: filters[type].filter(el => el !== pill)
 
 	const handleDelete = event => {
 		dispatch(
@@ -24,6 +24,12 @@ export default function StringPill({ pill, type }) {
 				data: cleanFilter
 			})
 		)
+		if (type === 'sizes') {
+			localStorage.removeItem('sizes')
+		}
+		if (type === 'types') {
+			localStorage.setItem('types', JSON.stringify(JSON.parse(localStorage.getItem('types')).filter(r => r !== pill)))
+		}
 	}
 
 	return (

@@ -10,7 +10,7 @@ export function SizesFilter() {
 	const { data: sizes } = useGetSizesQuery()
 	const dispatch = useDispatch()
 
-	const [currentSize, setCurrentSize] = useState('')
+	const [currentSize, setCurrentSize] = useState(localStorage.getItem('sizes') || '')
 
 	const handleCheckbox = event => {
 		const size = event.target.id
@@ -26,6 +26,7 @@ export function SizesFilter() {
 				data: currentSize
 			})
 		)
+		localStorage.setItem('sizes', currentSize)
 	}, [currentSize])
 
 	return (
