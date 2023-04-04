@@ -10,10 +10,11 @@ let transporter = nodemailer.createTransport({
 		pass: process.env.MAIL_PASSWORD // generated ethereal password
 	}
 })
+
 // send mail with defined transport object
 const welcomeEmail = async () => {
 	try {
-		let info = await transporter.sendMail({
+		await transporter.sendMail({
 			from: `Welcome user ${process.env.MAIL}`, // sender address
 			to: user.email, // list of receivers
 			subject: 'Welcome to AirLand', // Subject line
@@ -28,11 +29,11 @@ const welcomeEmail = async () => {
 		throw new Error(error.message)
 	}
 }
-const succesPurshare = async () => {
+const successPurchase = async () => {
 	try {
-		let info = await transporter.sendMail({
-			from: `Shopping succes ${process.env.MAIL}`, // sender address
-			to: user.email, // list of receivers
+		await transporter.sendMail({
+			from: `Shopping success ${process.env.MAIL}`, // sender address
+			to: email, // list of receivers
 			subject: 'Purchase successfully completed', // Subject line
 			// text: "Hello world?", // plain text body
 			html: `
@@ -45,8 +46,26 @@ const succesPurshare = async () => {
 		throw new Error(error.message)
 	}
 }
+const failPurchase = async (email, displayName) => {
+	try {
+		await transporter.sendMail({
+			from: `Shopping fail ${process.env.MAIL}`, // sender address
+			to: email, // list of receivers
+			subject: 'There has been a problem with your payment', // Subject line
+			// text: "Hello world?", // plain text body
+			html: `
+			<h2> Hello ${displayName}</h2>
+			<h3> You are receiving this email because we were unable to receive your payment, please try again in a few minutes.</h3>
+			<h5> If Your problem continues please contact us.</h5>
+			`
+		})
+	} catch (error) {
+		throw new Error(error.message)
+	}
+}
 module.export = {
 	transporter,
 	welcomeEmail,
-	succesPurshare
+	successPurchase,
+	failPurchase
 }

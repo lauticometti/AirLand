@@ -3,10 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../../../../redux'
 import styles from './PurchasedProduct.module.css'
+import { useState } from 'react'
+import { UserModal } from '../../../../components'
+import { AddReview } from '../Reviews/AddReview'
 
 export default function PurchasedProduct({ product }) {
 	const cleanName = product.name.replace(/-/g, ' ')
 
+	const [showAddReview, setShowAddReview] = useState(false)
 	const { uid } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -42,6 +46,16 @@ export default function PurchasedProduct({ product }) {
 				<button onClick={handleBuyAgain} className={styles.buyAgainButton}>
 					Buy again
 				</button>
+				<button onClick={() => setShowAddReview(true)} className={styles.buyAgainButton}>
+					Add review
+				</button>
+				<UserModal
+					onClose={() => setShowAddReview(false)}
+					show={showAddReview}
+					buttonText='Update details'
+				>
+					<AddReview onClose={() => setShowAddReview(false)} sneakerID={product.id} sneakerName={product.name} sneakerImage={product.image} />
+				</UserModal>
 				<a
 					href='https://api.whatsapp.com/send?phone=5491164602560&text=Hi!+I+need+return+a+product...'
 					target='_blank'
