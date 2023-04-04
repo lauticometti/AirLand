@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -14,6 +14,7 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function SubNavbarRight() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	const [leave, setLeave] = useState(false)
 	const { cartItems } = useSelector(state => state.shopping)
 	const { status, uid, displayName, firstName } = useSelector(
 		state => state.auth
@@ -24,9 +25,13 @@ export default function SubNavbarRight() {
 		dispatch(getCart(uid))
 	}, [status])
 
+	useEffect(() => {
+		if (leave) navigate('/')
+		setLeave(false)
+	}, [leave])
+
 	const handleLogout = () => {
-		dispatch(startLogout())
-		navigate('/')
+		dispatch(startLogout(setLeave))
 	}
 
 	return (
