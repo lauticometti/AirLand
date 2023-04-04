@@ -62,7 +62,6 @@ export function EditSneaker({ shoeId }) {
 				alert(error.message)
 			})
 	}
-
 	useEffect(() => {
 		setEditedShoe(shoe)
 	}, [shoe])

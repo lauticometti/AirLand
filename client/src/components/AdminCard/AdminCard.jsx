@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styles from './AdminCard.module.css'
-import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa'
+import { FaRegEdit } from 'react-icons/fa'
 import { useState } from 'react'
 import { EditSneaker } from '../../pages/Profile/AdminDashboard/'
 
@@ -40,15 +40,15 @@ export function AdminCard({ shoe }) {
 					<label className={styles.shoeId}>{shoe.id}</label>
 				</div>
 				<div className={styles.priceContainer}>
-					{shoe.STATUS ? (
+					{String(shoe.STATUS) === 'true' ? (
 						<label className={`${styles.statusLabel} ${styles.statusTrue}`}>
 							Status ON
 						</label>
-					) : (
+					) : String(shoe.STATUS) === 'false' ? (
 						<label className={`${styles.statusLabel} ${styles.statusFalse}`}>
 							Status OFF
 						</label>
-					)}
+					) : null}
 					<label className={styles.price}>${shoe.PRICE}</label>
 				</div>
 			</div>

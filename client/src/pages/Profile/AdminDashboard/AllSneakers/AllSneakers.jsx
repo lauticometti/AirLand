@@ -1,36 +1,31 @@
-import { useGetShoesQuery } from '../../../../redux/services/filteredShoes'
-import { AdminCard, Loader, NotFound } from '../../../../components'
-import { useSelector } from 'react-redux'
+import { AdminCard, Loader } from '../../../../components'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './AllSneakers.module.css'
 import { useEffect } from 'react'
+import { fetchSneakers } from '../../../../redux/slices/sneakers'
 
 export function AllSneakers() {
-	const filterState = useSelector(state => state.filter)
-	const { data, isLoading, error, refetch } = useGetShoesQuery(filterState)
+	const dispatch = useDispatch()
+	const { allSneakers } = useSelector(state => state.sneakers)
 	const { editCount } = useSelector(state => state.refresh)
 
 	useEffect(() => {
-		refetch()
+		dispatch(fetchSneakers())
+	}, [])
+
+	useEffect(() => {
+		dispatch(fetchSneakers())
 	}, [editCount])
 
-	if (isLoading)
-		return (
-			<div className={styles.mt50vh}>
-				<Loader />
-			</div>
-		)
+	console.log(allSneakers)
 
-	if (error)
-		return (
-			<div className={styles.mt50vh}>
-				<NotFound />
-			</div>
-		)
 	return (
 		<div className={styles.adminCardsContainer}>
-			{data?.map(shoe => (
-				<AdminCard key={shoe.id} shoe={shoe} />
-			))}
+			{allSneakers ? (
+				allSneakers.map(shoe => <AdminCard key={shoe.id} shoe={shoe} />)
+			) : (
+				<Loader />
+			)}
 		</div>
 	)
 }
