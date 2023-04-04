@@ -15,7 +15,9 @@ export default function SubNavbarRight() {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const { cartItems } = useSelector(state => state.shopping)
-	const { status, uid, displayName } = useSelector(state => state.auth)
+	const { status, uid, displayName, firstName } = useSelector(
+		state => state.auth
+	)
 
 	useEffect(() => {
 		if (!uid) return
@@ -31,7 +33,7 @@ export default function SubNavbarRight() {
 		<div className={styles.container}>
 			{uid ? (
 				<Link to='/profile' className={styles.signContainer}>
-					<p className={styles.userGreet}>Hi, {displayName}</p>
+					<p className={styles.userGreet}>Hi, {firstName || displayName}</p>
 					<AiOutlineUser className={styles.userPhoto} />
 				</Link>
 			) : (

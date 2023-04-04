@@ -11,7 +11,7 @@ import logo from '../../assets/icons/air_land-black.svg'
 import styles from './Profile.module.css'
 
 export function Profile() {
-	const { displayName } = useSelector(state => state.auth)
+	const { displayName, firstName } = useSelector(state => state.auth)
 
 	const [currentComponent, setCurrentComponent] = useState('account')
 
@@ -34,7 +34,7 @@ export function Profile() {
 
 			<div className={styles.header}>
 				<div className={styles.topHeader}>
-					<h2>Hi, {displayName}</h2>
+					<h2>Hi, {firstName || displayName}</h2>
 					<img src={logo} alt='' className={styles.topHeaderLogo} />
 				</div>
 				<div className={styles.bottomHeader}>

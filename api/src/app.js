@@ -21,6 +21,7 @@ app.use('/api/filter', require('./routes/filterRoutes'))
 app.use('/api/cart', require('./routes/shoppingCartRoutes'))
 app.use('/api/payment', require('./routes/paymentRoutes'))
 app.use('/api/order', require('./routes/ordersRoutes'))
+app.use('/api/email', require('./routes/emailRoutes'))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
