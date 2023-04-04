@@ -22,7 +22,7 @@ export function Orders() {
 							))}
 						</div>
 				  ))
-				: 'loading...'}
+				: <p>loading...</p>}
 		</div>
 	)
 }

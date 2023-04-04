@@ -2,10 +2,16 @@ import { useGetShoesQuery } from '../../../../redux/services/filteredShoes'
 import { AdminCard, Loader, NotFound } from '../../../../components'
 import { useSelector } from 'react-redux'
 import styles from './AllSneakers.module.css'
+import { useEffect } from 'react'
 
 export function AllSneakers() {
 	const filterState = useSelector(state => state.filter)
-	const { data, isLoading, error } = useGetShoesQuery(filterState)
+	const { data, isLoading, error, refetch } = useGetShoesQuery(filterState)
+	const { editCount } = useSelector(state => state.refresh)
+
+	useEffect(() => {
+		refetch()
+	}, [editCount])
 
 	if (isLoading)
 		return (
