@@ -60,7 +60,7 @@ export function AdminCard({ shoe }) {
 							onClick={handleShowEditModal}
 							className={styles.editButton}
 						/>
-						<FaRegTrashAlt className={styles.removeButton} />
+						{/* <FaRegTrashAlt className={styles.removeButton} /> */}
 					</div>
 				</>
 			)}
