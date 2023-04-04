@@ -8,12 +8,8 @@
 	font-family: Rubik, sans-serif;
 }
 
-.navLogo {
-	display: none;
-}
-
 .logo {
-	width: 80px;
+	width: 50px;
 	margin: 0;
 }
 
@@ -27,11 +23,6 @@
 	width: 100%;
 	font-weight: 900;
 	font-size: 22px;
-}
-
-.navCenteredElement {
-	display: flex;
-	justify-content: center;
 }
 
 .navLink {
@@ -49,8 +40,12 @@
 	border-color: #fff;
 }
 
+.searchbarContainer {
+	margin: -50px 0 50px;
+}
+
 @media (min-width: 768px) {
-	.navLogo {
-		display: block;
+	.logo {
+		width: 80px;
 	}
 }
