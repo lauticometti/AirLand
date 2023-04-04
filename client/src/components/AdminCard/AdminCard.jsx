@@ -26,44 +26,39 @@ export function AdminCard({ shoe }) {
 						<EditSneaker shoeId={shoe.id} />
 					</div>
 				</div>
-			) : (
-				<>
-					<div className={styles.imageContainer}>
-						<img
-							src={shoe.IMAGE.THUMBNAIL}
-							alt={shoe.NAME}
-							className={styles.image}
-						/>
-					</div>
-					<div className={styles.textContainer}>
-						<div className={styles.nameIdContainer}>
-							<label className={styles.name}>{shoe.NAME}</label>
-							<label className={styles.shoeId}>{shoe.id}</label>
-						</div>
-						<div className={styles.priceContainer}>
-							{shoe.STATUS ? (
-								<label className={`${styles.statusLabel} ${styles.statusTrue}`}>
-									Status ON
-								</label>
-							) : (
-								<label
-									className={`${styles.statusLabel} ${styles.statusFalse}`}
-								>
-									Status OFF
-								</label>
-							)}
-							<label className={styles.price}>${shoe.PRICE}</label>
-						</div>
-					</div>
-					<div className={styles.iconsContainer}>
-						<FaRegEdit
-							onClick={handleShowEditModal}
-							className={styles.editButton}
-						/>
-						{/* <FaRegTrashAlt className={styles.removeButton} /> */}
-					</div>
-				</>
-			)}
+			) : null}
+			<div className={styles.imageContainer}>
+				<img
+					src={shoe.IMAGE.THUMBNAIL}
+					alt={shoe.NAME}
+					className={styles.image}
+				/>
+			</div>
+			<div className={styles.textContainer}>
+				<div className={styles.nameIdContainer}>
+					<label className={styles.name}>{shoe.NAME}</label>
+					<label className={styles.shoeId}>{shoe.id}</label>
+				</div>
+				<div className={styles.priceContainer}>
+					{shoe.STATUS ? (
+						<label className={`${styles.statusLabel} ${styles.statusTrue}`}>
+							Status ON
+						</label>
+					) : (
+						<label className={`${styles.statusLabel} ${styles.statusFalse}`}>
+							Status OFF
+						</label>
+					)}
+					<label className={styles.price}>${shoe.PRICE}</label>
+				</div>
+			</div>
+			<div className={styles.iconsContainer}>
+				<FaRegEdit
+					onClick={handleShowEditModal}
+					className={styles.editButton}
+				/>
+				{/* <FaRegTrashAlt className={styles.removeButton} /> */}
+			</div>
 		</div>
 	)
 }

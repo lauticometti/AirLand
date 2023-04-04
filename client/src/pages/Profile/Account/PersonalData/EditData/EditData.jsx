@@ -12,8 +12,6 @@ export default function EditData({ onClose }) {
 		state => state.auth
 	)
 
-	console.log(birthDate)
-
 	const [form, setForm] = useState({
 		firstName,
 		lastName,

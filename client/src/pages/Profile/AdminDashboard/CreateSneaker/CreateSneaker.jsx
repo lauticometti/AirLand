@@ -36,7 +36,7 @@ export function CreateSneaker() {
 	const handleImageChange = e => {
 		const file = e.target.files[0]
 
-		const storageRef = ref(firebaseStorage, `Zapatillas(images)/${file.name}`)
+		const storageRef = ref(firebaseStorage, `Zapatillas-images-uploaded/${file.name}`)
 		const uploadTask = uploadBytesResumable(storageRef, file)
 
 		uploadTask.on(

@@ -120,16 +120,19 @@ label {
 	margin: 15% auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 80%;
+	width: 1200px;
 	transform: translateY(-25%);
 }
 
 .close {
+	position: absolute;
+	right: 0;
+	line-height: 2.2rem;
 	color: #aaa;
-	float: right;
-	font-size: 28px;
+	font-size: 3rem;
 	font-weight: bold;
 	cursor: pointer;
+	margin: 0.8rem;
 }
 
 .close:hover,
