@@ -28,7 +28,7 @@ export function Snkrs() {
 			<Link to='/detail/siGa15dpl2hXZkIcSlMP' className={styles.link}>
 				<img
 					className={styles.img}
-					src="https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FAIR-FORCE-1-'07-UNO-(full).webp?alt=media&token=d72fc0fd-bb99-4ba4-8fe1-c2cdc6c0a52d"
+					src="https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FAIR-FORCE-1-'07-UNO-(full).webp?alt=media&token=01a10838-1bbc-46af-9758-de083aecab3c"
 					alt="'airforce1"
 				/>
 			</Link>
