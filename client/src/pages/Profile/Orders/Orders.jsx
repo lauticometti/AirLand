@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Snkrs } from '../../../components'
 import { getAllOrders } from '../../../redux'
 import PurchasedProduct from './PurchasedProduct/PurchasedProduct'
 import styles from './Orders.module.css'
+import { Snkrs } from '../../../components'
 
 export default function Orders() {
 	const { orders } = useSelector(state => state.shopping)

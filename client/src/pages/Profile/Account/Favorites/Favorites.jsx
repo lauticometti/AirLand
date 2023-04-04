@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { Snkrs } from '../../../../components'
 
 import styles from './Favorites.module.css'
 
@@ -76,9 +75,7 @@ export default function Favorites() {
 					<h4 className={styles.emptyFavoritesTitle}>
 						We thought you might like these sneakers
 					</h4>
-					<div className={styles.emptyFavoritesRecommended}>
-						<Snkrs />
-					</div>
+					<div className={styles.emptyFavoritesRecommended}></div>
 				</div>
 			)}
 		</div>
