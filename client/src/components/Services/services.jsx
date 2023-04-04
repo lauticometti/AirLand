@@ -18,7 +18,7 @@ export function Services() {
 				<h4>Contact</h4>
 				<p>
 					To get in touch, feel free to send us a message on Whatsapp at +54 11
-					23456789.
+					23456789 .
 				</p>
 			</div>
 			<div className={styles.serviceElement}>
