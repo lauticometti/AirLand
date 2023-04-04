@@ -4,7 +4,6 @@ import {
 	LoginWithGoogle,
 	logoutFirebase,
 	registerUserWithEmailPassword
-	// loginAnonymously
 } from '../../../firebase'
 import axios from 'axios'
 import { clearCartItems } from '../shopping/shoppingSlice'

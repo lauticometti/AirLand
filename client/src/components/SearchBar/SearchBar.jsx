@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from 'react-router'
 export function SearchBar() {
 	const dispatch = useDispatch()
 	const [oldSearch, setOldSearch] = useState('')
-	const [searchString, setSearchString] = useState('')
+	const [searchString, setSearchString] = useState(localStorage.getItem('search') || '')
 
 	const { pathname } = useLocation()
 	const navigate = useNavigate()
@@ -18,6 +18,7 @@ export function SearchBar() {
 	const handleChange = event => {
 		const old = searchString
 		setSearchString(event.target.value)
+		localStorage.setItem('search', event.target.value)
 		setOldSearch(old)
 	}
 
