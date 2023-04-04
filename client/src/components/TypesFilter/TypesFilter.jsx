@@ -4,7 +4,7 @@ import styles from './TypesFilter.module.css'
 import { filterSlice } from '../../redux/slices/filters/filterSlice'
 
 export function TypesFilter() {
-	const [checked, setChecked] = useState([])
+	const [checked, setChecked] = useState(JSON.parse(localStorage.getItem('types')) || [])
 	const dispatch = useDispatch()
 
 	const filterState = useSelector(state => state.filter)
@@ -13,6 +13,7 @@ export function TypesFilter() {
 		dispatch(
 			filterSlice.actions.setFilters({ filterType: 'types', data: checked })
 		)
+		localStorage.setItem('types', JSON.stringify(checked))
 	}, [checked])
 
 	const handleCheckbox = event => {

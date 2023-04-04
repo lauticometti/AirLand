@@ -1,5 +1,24 @@
-const { db } = require("../firebase")
+const { db, admin } = require("../firebase")
 const { removeSneakersFromShoppingCart, getShoppingCart } = require("./shoppingCartControllers")
+
+const getAllOrders = async () => {
+	try {
+		const listUsersResult = await admin.auth().listUsers()
+		const userIds = listUsersResult.users.map(user => user.uid)
+		const ordersPromises = userIds.map(async userId => {
+			const ordersById = await (
+				await db.collection(`users/${userId}/orders`).get()
+			).docs.map(doc => ({ id: doc.id, ...doc.data() }))
+			return ordersById
+		})
+		const ordersByUser = await Promise.all(ordersPromises)
+		const arrFlat = [].concat(...ordersByUser)
+		console.log(arrFlat.length)
+		return arrFlat
+	} catch (error) {
+		throw Error(error.message)
+	}
+}
 
 const getAllOrdersById = async (userId) => {
   try {
@@ -37,6 +56,7 @@ const deleteStock = async (sneakerObj) => {
 }
 
 module.exports = {
+  getAllOrders,
   getAllOrdersById,
   addOrders
 }

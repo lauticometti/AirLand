@@ -18,6 +18,7 @@ const transporter = nodemailer.createTransport({
 const welcomeEmail = async (email, displayName) => {
 	try {
 		const info = await transporter.sendMail({
+
 			from: `Welcome user ${process.env.MAIL}`, // sender address
 			to: email, // list of receivers
 			subject: 'Welcome to AirLand', // Subject line
@@ -52,7 +53,6 @@ const successPurchase = async (email, displayName) => {
 		throw new Error(error.message)
 	}
 }
-
 const failPurchase = async (email, displayName) => {
 	try {
 		await transporter.sendMail({
@@ -70,7 +70,7 @@ const failPurchase = async (email, displayName) => {
 		throw new Error(error.message)
 	}
 }
-module.export = {
+module.exports = {
 	transporter,
 	welcomeEmail,
 	successPurchase,

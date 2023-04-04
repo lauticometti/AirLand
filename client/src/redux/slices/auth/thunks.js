@@ -4,8 +4,8 @@ import {
 	LoginWithGoogle,
 	logoutFirebase,
 	registerUserWithEmailPassword
-	// loginAnonymously
 } from '../../../firebase'
+import Swal from 'sweetalert2'
 import axios from 'axios'
 import { clearCartItems } from '../shopping/shoppingSlice'
 import {
@@ -33,7 +33,6 @@ export const startRegistrationUserWithEmailPassword = ({
 			password,
 			displayName
 		})
-
 		// si ok = false: no se pudo registrar al usuario => despacho la funcion logOut
 		if (!response.ok) return dispatch(logOut(response.message))
 
@@ -44,6 +43,12 @@ export const startRegistrationUserWithEmailPassword = ({
 
 		// cuarto: logeo al usuario correctamente registrado
 		dispatch(signIn(data))
+		Swal.fire({
+			title: `Bienvenido ${data.displayName}`,
+			height: 600,
+			// icon: 'success',
+			timer: '2000'
+		})
 	}
 }
 
@@ -71,6 +76,13 @@ export const startLoginUserWithEmailPassword = ({ email, password }) => {
 		// quinto: logeo al usuario y cargo addressdata
 		dispatch(signIn(userData))
 		dispatch(loadUserAddress(addressData))
+		Swal.fire({
+			title: `Bienvenido otra véz, ${userData.displayName}`,
+			// icon: 'success',
+			heigth: 600,
+			timer: '2000',
+			showConfirmButton: false
+		})
 	}
 }
 
@@ -98,16 +110,35 @@ export const startGoogleSignIn = () => {
 		// quinto: logeo al usuario y cargo addressdata
 		dispatch(signIn(userData))
 		dispatch(loadUserAddress(addressData))
+		Swal.fire({
+			title: `Bienvenido ${userData.displayName}`,
+			height: 1000,
+			timer: '2000',
+			showConfirmButton: false
+		})
 	}
 }
 
-export const startLogout = () => {
+export const startLogout = (setLeave) => {
 	return async dispatch => {
 		await logoutFirebase()
-		dispatch(logOut())
-		setTimeout(() => {
-			return dispatch(clearCartItems())
-		}, 1000)
+		Swal.fire({
+			position: 'center',
+			title: 'Are you sure you want to go?',
+			showCancelButton: true,
+			confirmButtonText: 'Yes',
+		}).then((result) => {
+			/* Read more about isConfirmed, isDenied below */
+			if (result.isConfirmed) {
+				dispatch(logOut())
+				setTimeout(() => {
+					return dispatch(clearCartItems())
+				}, 1000)
+				setLeave(true)
+			} else if (result.isDenied) {
+				return
+			}
+		})
 	}
 }
 
@@ -132,5 +163,35 @@ export const editUserAddress = (id, form) => {
 export const editUserPassword = newPassword => {
 	return async dispatch => {
 		await changePassword(newPassword)
+	}
+}
+
+export const getAllUserAddress = (uid) => {
+	return async dispatch => {
+		const { data: addressData } = await axios.get(
+			`${BASE_URL}/users/user-address/${uid}`
+		)
+		dispatch(loadUserAddress(data))
+	}
+}
+
+export const deleteUserAddress = (index, uid) => {
+	return async dispatch => {
+		const { data: message } = await axios.delete(
+			`${BASE_URL}/users/user-address/`,
+			{
+				index: index,
+				userId: uid
+			}
+		)
+		const { data: addressData } = await axios.get(
+			`${BASE_URL}/users/user-address/${uid}`,
+		)
+		Swal.fire({
+			title: message,
+			icon: 'success',
+			timer: '2000'
+		})
+		dispatch(loadUserAddress(addressData))
 	}
 }

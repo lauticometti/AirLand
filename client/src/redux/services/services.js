@@ -17,6 +17,13 @@ export const shoesApi = createApi({
 		}),
 		getSizes: builder.query({
 			query: () => '/sneakers/sizes'
+		}),
+		editShoeById: builder.mutation({
+			query: ({ id, shoe }) => ({
+				url: `/sneakers/${id}`,
+				method: 'PATCH',
+				body: shoe
+			})
 		})
 	})
 })
@@ -25,5 +32,6 @@ export const {
 	useGetAllShoesQuery,
 	useGetShoesByIdQuery,
 	useGetSizesQuery,
-	useGetShoesByNameQuery
+	useGetShoesByNameQuery,
+	useEditShoeByIdMutation
 } = shoesApi
