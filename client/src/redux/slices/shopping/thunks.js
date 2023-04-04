@@ -1,6 +1,6 @@
 import axios from 'axios'
 import swal from 'sweetalert'
-import { getCartItems, getOrders } from './shoppingSlice'
+import { getCartItems, getOrders, getAllOrdersAdmin } from './shoppingSlice'
 
 const BASE_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
 
@@ -62,7 +62,7 @@ export const removeItem = (sneakerId, userId) => {
 export const updateItem = (sneakerId, userId, quantity) => {
 	return async dispatch => {
 		try {
-			const { data } = await axios.patch(
+			await axios.patch(
 				`${BASE_URL}/cart/update/${userId}/${sneakerId}/${quantity}`
 			)
 			dispatch(getCart(userId))
@@ -95,6 +95,18 @@ export const getAllOrders = userId => {
 		try {
 			const { data } = await axios.get(`${BASE_URL}/order/${userId}`)
 			dispatch(getOrders(data))
+		} catch (error) {
+			alert(error.message)
+		}
+	}
+}
+
+export const getAllOrdersGlobal = () => {
+	return async dispatch => {
+		try {
+			const { data } = await axios.get(`${BASE_URL}/order/`)
+			console.log(data)
+			dispatch(getAllOrdersAdmin(data))
 		} catch (error) {
 			alert(error.message)
 		}

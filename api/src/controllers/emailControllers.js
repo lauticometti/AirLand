@@ -18,6 +18,7 @@ const transporter = nodemailer.createTransport({
 const welcomeEmail = async (email, displayName) => {
 	try {
 		const info = await transporter.sendMail({
+
 			from: `Welcome user ${process.env.MAIL}`, // sender address
 			to: email, // list of receivers
 			subject: 'Welcome to AirLand', // Subject line
@@ -70,7 +71,24 @@ const failPurchase = async (email, displayName) => {
 		throw new Error(error.message)
 	}
 }
-module.export = {
+const failPurchase = async (email, displayName) => {
+	try {
+		await transporter.sendMail({
+			from: `Shopping fail ${process.env.MAIL}`, // sender address
+			to: email, // list of receivers
+			subject: 'There has been a problem with your payment', // Subject line
+			// text: "Hello world?", // plain text body
+			html: `
+			<h2> Hello ${displayName}</h2>
+			<h3> You are receiving this email because we were unable to receive your payment, please try again in a few minutes.</h3>
+			<h5> If Your problem continues please contact us.</h5>
+			`
+		})
+	} catch (error) {
+		throw new Error(error.message)
+	}
+}
+module.exports = {
 	transporter,
 	welcomeEmail,
 	successPurchase,

@@ -5,12 +5,16 @@ export const shoppingSlice = createSlice({
 	initialState: {
 		cartItems: [],
 		totalPrice: 0,
-		orders: []
+		orders: [],
+		allOrders: []
 	},
 	reducers: {
 		getCartItems: (state, { payload }) => {
 			state.cartItems = payload
-			state.totalPrice = state.cartItems.reduce((acum, sneaker) => acum + sneaker.price, 0)
+			state.totalPrice = state.cartItems.reduce(
+				(acum, sneaker) => acum + sneaker.price,
+				0
+			)
 		},
 		clearCartItems: state => {
 			state.cartItems = []
@@ -19,11 +23,15 @@ export const shoppingSlice = createSlice({
 		getOrders: (state, { payload }) => {
 			state.orders = payload
 		},
-		clearOrders: (state) => {
+		getAllOrdersAdmin: (state, { payload }) => {
+			state.allOrders = payload
+		},
+		clearOrders: state => {
 			state.orders = []
 		}
 	}
 })
 
 // Action creators are generated for each case redicer function
-export const { getCartItems, clearCartItems, getOrders, clearOrders } = shoppingSlice.actions
+export const { getCartItems, clearCartItems, getOrders, getAllOrdersAdmin, clearOrders } =
+	shoppingSlice.actions
