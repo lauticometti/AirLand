@@ -20,7 +20,7 @@ router.post('/success-purchase', async (req, res) => {
 	const { email, displayName } = req.body
 
 	try {
-		await suc cessPurchase(email, displayName)
+		await successPurchase(email, displayName)
 		res.status(200).json('Message sent!')
 	} catch (error) {
 		res.status(400).json(error.message)
