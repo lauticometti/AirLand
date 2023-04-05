@@ -30,9 +30,14 @@
 	color: #fff;
 	font-weight: 700;
 	border-bottom: 1px solid transparent;
-	transition: 0.2s;
+	transition: border-color 0.2s;
 	gap: 10px;
 	cursor: pointer;
+
+	position: absolute;
+	left: 50%;
+	top: 2.1rem;
+	transform: translate(-50%);
 }
 
 .navLink:hover {

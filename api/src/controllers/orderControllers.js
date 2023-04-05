@@ -13,7 +13,6 @@ const getAllOrders = async () => {
 		})
 		const ordersByUser = await Promise.all(ordersPromises)
 		const arrFlat = [].concat(...ordersByUser)
-		console.log(arrFlat.length)
 		return arrFlat
 	} catch (error) {
 		throw Error(error.message)

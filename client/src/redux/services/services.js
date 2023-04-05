@@ -24,6 +24,13 @@ export const shoesApi = createApi({
 				method: 'PATCH',
 				body: shoe
 			})
+		}),
+		addShoe: builder.mutation({
+			query: shoe => ({
+				url: '/sneakers',
+				method: 'POST',
+				body: shoe
+			})
 		})
 	})
 })
@@ -33,5 +40,6 @@ export const {
 	useGetShoesByIdQuery,
 	useGetSizesQuery,
 	useGetShoesByNameQuery,
-	useEditShoeByIdMutation
+	useEditShoeByIdMutation,
+	useAddShoeMutation
 } = shoesApi
