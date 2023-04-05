@@ -62,7 +62,7 @@ export function Profile() {
 							Purchases
 						</li>
 						{
-							email === import.meta.env.VITE_ADMIN_MAIL
+							email === 'airland.henry@gmail.com'
 								? <li
 									onClick={handleTabList}
 									id='adminDashboard'

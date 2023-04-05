@@ -43,7 +43,7 @@ export function Snkrs() {
 		)
 	return (
 		<div className={styles.section}>
-			{slicedData.map((shoe, i) => (
+			{slicedData?.map((shoe, i) => (
 				<Link to={`/detail/${shoe.id}`} key={i} className={styles.card}>
 					<div className={styles.imageContainer}>
 						<img

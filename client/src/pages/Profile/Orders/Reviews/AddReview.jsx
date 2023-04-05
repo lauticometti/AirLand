@@ -4,6 +4,8 @@ import { useSelector } from "react-redux"
 import StarsRating from 'react-star-rate'
 import Swal from "sweetalert2"
 
+const BASE_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
+
 export function AddReview({ onClose, sneakerID, sneakerName, sneakerImage }) {
 
   const { displayName, uid } = useSelector(state => state.auth)
@@ -13,7 +15,7 @@ export function AddReview({ onClose, sneakerID, sneakerName, sneakerImage }) {
   const handleSubmit = (event) => {
     event.preventDefault()
     axios.post(
-      `http://localhost:3001/api/sneakers/review/${sneakerID}/${uid}`,
+      `${BASE_URL}/sneakers/review/${sneakerID}/${uid}`,
       {
         name: displayName,
         comment: comment,
