@@ -27,6 +27,10 @@
 	background: #fff;
 }
 
+.login-form {
+	margin-top: -50px;
+}
+
 .form.signup {
 	opacity: 0;
 	pointer-events: none;

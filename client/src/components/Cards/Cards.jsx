@@ -6,12 +6,15 @@ import {
 	setTotalEntries
 } from '../../redux/slices/pagination/paginationSlice'
 import styles from './Cards.module.css'
+import { setRefresh } from '../../redux'
 
 export function Cards() {
 	const dispatch = useDispatch()
 	const filterState = useSelector(state => state.filter)
 	const { data, isLoading, error } = useGetShoesQuery(filterState)
+	dispatch(setRefresh('false'))
 	const { page, pageSize } = useSelector(state => state.pagination)
+	console.log(filterState)
 
 	if (isLoading)
 		return (

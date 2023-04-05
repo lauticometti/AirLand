@@ -67,10 +67,14 @@ export function RegisterForm() {
 	useEffect(() => {
 		let alert
 		if (status === 'not-authenticated' && errorMessage) {
-			if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') alert = 'Email already in use'
-			if (errorMessage === 'Firebase: Error (auth/missing-email).') alert = 'Missing email'
-			if (errorMessage === 'Firebase: Error (auth/internal-error).') alert = 'Internal error'
-			if (errorMessage === 'Firebase: Error (auth/invalid-email).') alert = 'Invalid email'
+			if (errorMessage === 'Firebase: Error (auth/email-already-in-use).')
+				alert = 'Email already in use'
+			if (errorMessage === 'Firebase: Error (auth/missing-email).')
+				alert = 'Missing email'
+			if (errorMessage === 'Firebase: Error (auth/internal-error).')
+				alert = 'Internal error'
+			if (errorMessage === 'Firebase: Error (auth/invalid-email).')
+				alert = 'Invalid email'
 		}
 		toast.error(alert, {
 			position: 'bottom-right',
