@@ -29,7 +29,9 @@ export function Cards() {
 
 	let slicedData = []
 	if (data) {
-		const filteredData = data.filter(shoe => shoe.STATUS === true)
+		const filteredData = data.filter(
+			shoe => shoe.STATUS === 'true' || (shoe.STATUS !== 'false' && shoe.STATUS)
+		)
 		if ((page - 1) * pageSize > filteredData.length) dispatch(setPage(1))
 		dispatch(setTotalEntries(filteredData.length))
 		slicedData = filteredData.slice((page - 1) * pageSize, page * pageSize)
