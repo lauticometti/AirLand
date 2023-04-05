@@ -7,27 +7,20 @@ const sortMaster = require('../../helpers/sortMaster')
 const shoesCache = new NodeCache({ stdTTL: 200 })
 
 const getShoes = async queries => {
-	async function getAllShoes() {
-		let shoes
+	let currentShoes
+	if (shoesCache.has('shoes')) {
+		currentShoes = shoesCache.get('shoes')
+	} else {
 		try {
 			const querySnap = await db.collection('ZAPATILLAS').get()
-			shoes = querySnap.docs.map(doc => ({
+			currentShoes = querySnap.docs.map(doc => ({
 				id: doc.id,
 				...doc.data()
 			}))
-			shoesCache.set('shoes', shoes)
+			shoesCache.set('shoes', currentShoes)
 		} catch (error) {
 			throw Error('Database error')
 		}
-		return shoes
-	}
-	let currentShoes
-	if (queries.refresh) {
-		currentShoes = getAllShoes()
-	} else if (shoesCache.has('shoes')) {
-		currentShoes = shoesCache.get('shoes')
-	} else {
-		currentShoes = getAllShoes()
 	}
 
 	// filterMaster return an array with filtered shoes, and sortMaster take that array like parameter.
