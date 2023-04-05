@@ -70,21 +70,9 @@ function App() {
 						<Route exact path='/login' element={<Login />} />
 						<Route exact path='/signup' element={<Register />} />
 						<Route exact path='/about' element={<About />} />
-						<Route
-							exact
-							path='/profile'
-							element={<Navigate to='/' />}
-						/>
-						<Route
-							exact
-							path='/store'
-							element={<Navigate to='/' />}
-						/>
-						<Route
-							exact
-							path='/checkout'
-							element={<Navigate to='/' />}
-						/>
+						<Route exact path='/profile' element={<Navigate to='/' />} />
+						<Route exact path='/store' element={<Navigate to='/' />} />
+						<Route exact path='/checkout' element={<Navigate to='/' />} />
 						<Route exact path='/contact' element={<Contact />} />
 						<Route path='*' element={<Page404 />} />
 					</>
