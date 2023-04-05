@@ -29,7 +29,7 @@ export function AdminCard({ shoe }) {
 			) : null}
 			<div className={styles.imageContainer}>
 				<img
-					src={shoe.IMAGE.THUMBNAIL}
+					src={shoe.IMAGE?.THUMBNAIL}
 					alt={shoe.NAME}
 					className={styles.image}
 				/>
