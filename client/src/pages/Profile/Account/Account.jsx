@@ -61,7 +61,7 @@ export default function Account() {
 							Favorites
 							<img src={rightArrow} alt='' className={styles.rightArrow} />
 						</li> */}
-						<li className={styles.summaryLink}>Log out</li>
+						{/* <li className={styles.summaryLink}>Log out</li> */}
 					</ul>
 				</div>
 			</div>

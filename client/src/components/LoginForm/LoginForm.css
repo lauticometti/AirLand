@@ -212,6 +212,17 @@ a.google span {
 	color: grey;
 }
 
+.logoContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.navLogo {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: center;
+}
+
 .logo {
 	width: 100px;
 }

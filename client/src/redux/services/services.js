@@ -4,7 +4,14 @@ const BASEURL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
 
 export const shoesApi = createApi({
 	reducerPath: 'shoesApi',
-	baseQuery: fetchBaseQuery({ baseUrl: BASEURL }),
+	baseQuery: fetchBaseQuery({
+		baseUrl: BASEURL,
+		prepareHeaders: (headers, { getState }) => {
+			headers.set('Cache-Control', 'no-cache')
+			return headers
+		}
+	}),
+	keepUnusedDataFor: 5,
 	endpoints: builder => ({
 		getAllShoes: builder.query({
 			query: () => '/sneakers'

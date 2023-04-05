@@ -4,6 +4,8 @@ const { createPreference } = require('../controllers/paymentControllers')
 
 const router = Router()
 
+const BASE_URL = process.env.BACK_URL || 'http://localhost:3001/api'
+
 router.post('/create-preference', async (req, res) => {
   const { userId, form, totalPrice } = req.body
 
@@ -11,7 +13,7 @@ router.post('/create-preference', async (req, res) => {
     const preference = await createPreference(userId, form, totalPrice)
     if (preference.isApproved) {
       await axios.post(
-        `http://localhost:3001/api/order/`,
+        `${BASE_URL}/order/`,
         {
           userId,
           paymentId: preference.paymentId,
