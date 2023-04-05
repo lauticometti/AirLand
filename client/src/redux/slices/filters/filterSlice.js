@@ -12,7 +12,8 @@ export const filterSlice = createSlice({
 		sort: {
 			type: '',
 			order: 'up'
-		}
+		},
+		refresh: false
 	},
 	reducers: {
 		setFilters: (state, { payload }) => {
@@ -21,8 +22,11 @@ export const filterSlice = createSlice({
 		setSort: (state, { payload }) => {
 			state.sort.type = payload.sortType
 			state.sort.order = payload.order
+		},
+		setRefresh: (state, { payload }) => {
+			state.refresh = payload
 		}
 	}
 })
 
-export const { setFilters, setSort } = filterSlice.actions
+export const { setFilters, setSort, setRefresh } = filterSlice.actions
