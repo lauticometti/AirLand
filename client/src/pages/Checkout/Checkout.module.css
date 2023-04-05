@@ -10,42 +10,13 @@
 	margin-bottom: 100px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .formTitle {
-	margin-bottom: 25px;
-	font-size: 2rem;
-	font-weight: 600;
-	color: #000;
-	text-transform: uppercase;
-}
-
-.form section {
 	width: 100%;
-	max-width: 500px;
-}
-
-.formTop {
-	display: flex;
-	gap: 50px;
-}
-
-.stateCityContainer {
-	display: flex;
-	gap: 50px;
-	width: 100%;
-}
-
-.selectContainer select {
-	width: 100%;
-	appearance: none;
-	-webkit-appearance: none;
-	background-color: #fff;
-	border: 1px solid #cecece;
-	border-radius: 5px;
-	padding-left: 20px;
-	height: 50px;
+	text-align: start;
+	padding: 10px 0;
 }
 
 .paymentButton {
@@ -70,9 +41,4 @@
 
 input {
 	margin-bottom: 25px;
-	width: 100%;
-}
-
-.form label {
-	font-size: 16px;
 }
