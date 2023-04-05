@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import stringCleaner from '../../helpers/stringCleaner'
 
-const BASEURL = 'http://localhost:3001/api'
+const BASEURL = process.env.BACK_URL || 'http://localhost:3001/api'
 
 export const filteredShoesApi = createApi({
 	reducerPath: 'filteredShoesApi',
