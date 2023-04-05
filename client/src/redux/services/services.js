@@ -6,12 +6,12 @@ export const shoesApi = createApi({
 	reducerPath: 'shoesApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: BASEURL,
-		prepareHeaders: (headers, { getState }) => {
-			headers.set('Cache-Control', 'no-cache')
-			return headers
-		}
+		// prepareHeaders: (headers, { getState }) => {
+		// 	headers.set('Cache-Control', 'no-cache')
+		// 	return headers
+		// }
 	}),
-	keepUnusedDataFor: 5,
+	keepUnusedDataFor: 10,
 	endpoints: builder => ({
 		getAllShoes: builder.query({
 			query: () => '/sneakers'
