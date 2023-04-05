@@ -23,8 +23,6 @@ export default function Favorites() {
 			current = current.parentNode
 		}
 
-		console.log(current)
-
 		navigate(`/detail/${current.id}`)
 	}
 
