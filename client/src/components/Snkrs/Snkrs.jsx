@@ -7,8 +7,7 @@ import styles from './Snkrs.module.css'
 
 export function Snkrs() {
 	const filterState = useSelector(state => state.filter)
-	const { data, isLoading, error, refetch } = useGetShoesQuery(filterState)
-
+	const { data, isLoading, error } = useGetShoesQuery(filterState)
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
 	useEffect(() => {
@@ -30,24 +29,18 @@ export function Snkrs() {
 
 	const slicedData = data?.slice(0, totalShoes)
 
-	useEffect(() => {
-		refetch()
-	}, [])
-
 	if (isLoading)
 		return (
 			<div className={styles.mt50vh}>
 				<Loader />
 			</div>
 		)
-
 	if (error)
 		return (
 			<div className={styles.mt50vh}>
 				<NotFound />
 			</div>
 		)
-
 	return (
 		<div className={styles.section}>
 			{slicedData.map((shoe, i) => (
