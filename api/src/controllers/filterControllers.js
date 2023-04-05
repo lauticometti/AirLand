@@ -3,21 +3,18 @@ const filterMaster = require('../../helpers/filterMaster')
 const sortMaster = require('../../helpers/sortMaster')
 
 const getShoes = async queries => {
-	async function getAllShoes() {
-		let shoes
-		try {
-			const querySnap = await db.collection('ZAPATILLAS').get()
-			shoes = querySnap.docs.map(doc => ({
-				id: doc.id,
-				...doc.data()
-			}))
-			// shoesCache.set('shoes', shoes)
-		} catch (error) {
-			throw Error('Database error')
-		}
-		return shoes
+	let currentShoes
+
+	try {
+		const querySnap = await db.collection('ZAPATILLAS').get()
+		currentShoes = querySnap.docs.map(doc => ({
+			id: doc.id,
+			...doc.data()
+		}))
+		// shoesCache.set('shoes', shoes)
+	} catch (error) {
+		throw Error('Database error')
 	}
-	let currentShoes = getAllShoes()
 
 	// filterMaster return an array with filtered shoes, and sortMaster take that array like parameter.
 	// then, sortMaster return the shoes sorted and the getShoes return it

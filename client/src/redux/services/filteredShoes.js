@@ -15,7 +15,7 @@ export const filteredShoesApi = createApi({
 	keepUnusedDataFor: 5,
 	endpoints: builder => ({
 		getShoes: builder.query({
-			query: ({ filters, sort, refresh }) => {
+			query: ({ filters, sort }) => {
 				let endpoint = '/filter'
 				let firstFilter = true
 
@@ -55,12 +55,6 @@ export const filteredShoesApi = createApi({
 					if (firstFilter) {
 						endpoint += `?${'sort'}=${sort.type}_${sort.order}`
 					} else endpoint += `&${'sort'}=${sort.type}_${sort.order}`
-				}
-
-				if (refresh) {
-					if (firstFilter) {
-						endpoint += `?${'refresh'}=${'true'}`
-					} else endpoint += `&${'refresh'}=${refresh}`
 				}
 
 				return endpoint

@@ -10,6 +10,7 @@ import styles from './Cards.module.css'
 export function Cards() {
 	const dispatch = useDispatch()
 	const filterState = useSelector(state => state.filter)
+
 	const { data, isLoading, error } = useGetShoesQuery(filterState)
 	const { page, pageSize } = useSelector(state => state.pagination)
 

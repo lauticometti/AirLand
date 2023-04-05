@@ -1,6 +1,5 @@
 const filterMaster = (shoes, { sizes, types, minPrice, name }) => {
 	if (sizes) {
-		console.log(sizes)
 		shoes = shoes.filter(el => el.SIZE[sizes] && el.SIZE[sizes] > 0)
 	}
 

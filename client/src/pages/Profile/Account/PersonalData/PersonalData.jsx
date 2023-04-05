@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import rightArrowLarge from '../../../../assets/icons/right_arrow-largeBlack.svg'
+// import rightArrowLarge from '../../../../assets/icons/right_arrow-largeBlack.svg'
 import { UserModal } from '../../../../components'
 import { useState } from 'react'
 import EditData from './EditData/EditData'

@@ -39,9 +39,12 @@ export function LoginForm() {
 	useEffect(() => {
 		let alert
 		if (status === 'not-authenticated' && errorMessage) {
-			if (errorMessage === 'Firebase: Error (auth/wrong-password).') alert = 'Wrong password'
-			if (errorMessage === 'Firebase: Error (auth/user-not-found).') alert = 'User not found'
-			if (errorMessage === 'Firebase: Error (auth/invalid-email).') alert = 'Invalid email'
+			if (errorMessage === 'Firebase: Error (auth/wrong-password).')
+				alert = 'Wrong password'
+			if (errorMessage === 'Firebase: Error (auth/user-not-found).')
+				alert = 'User not found'
+			if (errorMessage === 'Firebase: Error (auth/invalid-email).')
+				alert = 'Invalid email'
 		}
 		toast.error(alert, {
 			position: 'bottom-right',
@@ -55,10 +58,10 @@ export function LoginForm() {
 
 	return (
 		<div>
-			<Link to='/' className='navLogo'>
+			<Link to='/' className='logoContainer'>
 				<img src={logo} alt='logo' className='logo' />
 			</Link>
-			<section className='container forms'>
+			<section className='container forms login-form'>
 				<div className='form login'>
 					<div className='form-content'>
 						<header>Login</header>
