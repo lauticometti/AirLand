@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import rightArrowLarge from '../../../../assets/icons/right_arrow-largeBlack.svg'
+// import rightArrowLarge from '../../../../assets/icons/right_arrow-largeBlack.svg'
 import { UserModal } from '../../../../components'
 import { useState } from 'react'
 import EditData from './EditData/EditData'
@@ -58,7 +58,7 @@ export default function PersonalData() {
 					<EditPassword onClose={() => setShowEditPassword(false)} />
 				</UserModal>
 			</div>
-			<div className={styles.logout}>
+			{/* <div className={styles.logout}>
 				<h5 className={styles.logoutTitle}>Log out from all web browsers</h5>
 				<p className={styles.logoutText}>
 					Choosing this option will log you out of all web browsers you have
@@ -80,7 +80,7 @@ export default function PersonalData() {
 					If you delete your account, you will no longer have access to the
 					information stored in your account
 				</p>
-			</div>
+			</div> */}
 		</article>
 	)
 }
