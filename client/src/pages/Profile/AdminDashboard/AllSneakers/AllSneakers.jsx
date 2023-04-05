@@ -11,15 +11,11 @@ export function AllSneakers() {
 
 	useEffect(() => {
 		dispatch(fetchSneakers())
-	}, [])
-
-	useEffect(() => {
-		dispatch(fetchSneakers())
 	}, [editCount])
 
 	return (
 		<div className={styles.adminCardsContainer}>
-			{allSneakers ? (
+			{allSneakers && allSneakers.length ? (
 				allSneakers.map(shoe => <AdminCard key={shoe.id} shoe={shoe} />)
 			) : (
 				<Loader />
