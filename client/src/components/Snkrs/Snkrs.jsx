@@ -22,7 +22,7 @@ export function Snkrs() {
 		}
 	})
 
-	const WIDTH_ONE_SHOE = 250
+	const WIDTH_ONE_SHOE = 320
 
 	const totalShoes =
 		windowWidth < 500 ? 1 : Math.floor(windowWidth / WIDTH_ONE_SHOE)
@@ -52,6 +52,7 @@ export function Snkrs() {
 							alt={shoe.NAME}
 						/>
 					</div>
+					<h5 className={styles.price}>${shoe.PRICE}</h5>
 					<h5 className={styles.name}>{shoe.NAME}</h5>
 				</Link>
 			))}

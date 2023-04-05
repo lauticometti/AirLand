@@ -7,11 +7,12 @@
 .section {
 	display: flex;
 	justify-content: center;
+	padding: 0 40px;
 	gap: 30px;
 }
 
 .card {
-	width: 200px;
+	width: 250px;
 	text-decoration: none;
 	border-radius: 10px;
 	background-color: #fafafa;
@@ -23,7 +24,7 @@
 }
 
 .imageContainer {
-	width: 180px;
+	width: 230px;
 	border-bottom: 1px solid #313131;
 }
 
@@ -31,10 +32,24 @@
 	width: 100%;
 }
 
+.price {
+	padding-top: 20px;
+	color: #000;
+	font-size: 22px;
+	font-weight: 600;
+}
+
 .name {
-	padding-top: 10px;
+	padding: 10px 0 5px;
 	font-size: 16px;
 	font-weight: 600;
 	color: #313131;
 	transition: 0.2s;
+}
+
+@media (min-width: 768px) {
+	.section {
+		justify-content: space-between;
+		padding: 0 5%;
+	}
 }

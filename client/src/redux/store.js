@@ -6,27 +6,38 @@ import { filteredShoesApi } from './services/filteredShoes'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
 
-const persistConfig = {
-	key: 'root',
-	version: 1,
+const authPersistConfig = {
+	key: 'auth',
 	storage
 }
 
-const reducer = combineReducers({
+const shoppingPersistConfig = {
+	key: 'shopping',
+	storage
+}
+
+const paginationPersistConfig = {
+	key: 'pagination',
+	storage
+}
+
+const persistedAuthReducer = persistReducer(authPersistConfig, authSlice.reducer)
+const persistedShoppingReducer = persistReducer(shoppingPersistConfig, shoppingSlice.reducer)
+const persistedPaginationReducer = persistReducer(paginationPersistConfig, paginationSlice.reducer)
+
+const rootReducer = combineReducers({
 	[shoesApi.reducerPath]: shoesApi.reducer,
 	[filteredShoesApi.reducerPath]: filteredShoesApi.reducer,
-	auth: authSlice.reducer,
 	filter: filterSlice.reducer,
-	shopping: shoppingSlice.reducer,
-	pagination: paginationSlice.reducer,
 	refresh: refreshSlice.reducer,
-	sneakers: sneakersSlice.reducer
+	sneakers: sneakersSlice.reducer,
+	pagination: persistedPaginationReducer,
+	auth: persistedAuthReducer,
+	shopping: persistedShoppingReducer,
 })
 
-const persistedReducer = persistReducer(persistConfig, reducer)
-
 export const store = configureStore({
-	reducer: persistedReducer,
+	reducer: rootReducer,
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware()
 			.concat(shoesApi.middleware)
