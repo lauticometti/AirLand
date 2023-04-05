@@ -18,7 +18,11 @@ export function Services() {
 				<h4>Contact</h4>
 				<p>
 					To get in touch, feel free to send us a message on Whatsapp at +54 11
-					23456789.
+					23456789 by tapping on the floating icon. Or send us an{' '}
+					<span className={styles.serviceClickableText} onClick={handleScroll}>
+						email message
+					</span>
+					.
 				</p>
 			</div>
 			<div className={styles.serviceElement}>
@@ -28,11 +32,7 @@ export function Services() {
 				<h4>Orders</h4>
 				<p>
 					We currently only offer in-store pick up for shoe orders. Check out
-					our map location{' '}
-					<span className={styles.serviceClickableText} onClick={handleScroll}>
-						below
-					</span>
-					.
+					our map location below.
 				</p>
 			</div>
 			<div className={styles.serviceElement}>
