@@ -14,6 +14,7 @@ import {
 	useGetSizesQuery
 } from '../../redux/services/services'
 import Carousel from 'react-bootstrap/Carousel'
+import StarsRating from 'react-star-rate'
 
 import styles from './Detail.module.css'
 
@@ -53,7 +54,10 @@ export function Detail() {
 	const handleSizeChange = event => {
 		setSizeSelected(event.target.value)
 	}
-
+	let reviews
+	if (shoe?.REVIEW) {
+		reviews = Object.keys(shoe?.REVIEW).map(user => shoe.REVIEW[user])
+	}
 	return (
 		<>
 			<Navbar />
@@ -134,6 +138,32 @@ export function Detail() {
 						</div>
 					</div>
 				)}
+				{ reviews?.length ? (
+				<div>
+					<h4 style={{ textAlign: 'center' }}>Customer reviews</h4>
+					<Carousel>
+						{reviews ? (
+							reviews.map(review => (
+								<Carousel.Item
+									style={{
+										textAlign: 'center',
+										height: '200px',
+										marginTop: '15px'
+									}}
+									interval={3000}
+								>
+									<h5>{review.name}</h5>
+									<div>
+										<StarsRating value={review.stars} disabled={true} />
+									</div>
+									<p>{review.comment}</p>
+								</Carousel.Item>
+							))
+						) : (
+							<Loader />
+						)}
+					</Carousel>
+				</div>):""}
 			</div>
 			<WhatsAppButton />
 			<Footer />

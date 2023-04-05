@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import { authSlice, shoppingSlice, filterSlice, paginationSlice, refreshSlice } from './slices'
+import { authSlice, shoppingSlice, filterSlice, paginationSlice, refreshSlice, sneakersSlice } from './slices'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { shoesApi } from './services/services'
 import { filteredShoesApi } from './services/filteredShoes'
@@ -19,7 +19,8 @@ const reducer = combineReducers({
 	filter: filterSlice.reducer,
 	shopping: shoppingSlice.reducer,
 	pagination: paginationSlice.reducer,
-	refresh: refreshSlice.reducer
+	refresh: refreshSlice.reducer,
+	sneakers: sneakersSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer)

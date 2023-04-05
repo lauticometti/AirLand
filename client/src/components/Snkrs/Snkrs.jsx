@@ -27,7 +27,7 @@ export function Snkrs() {
 	const totalShoes =
 		windowWidth < 500 ? 1 : Math.floor(windowWidth / WIDTH_ONE_SHOE)
 
-	const slicedData = data.slice(0, totalShoes)
+	const slicedData = data?.slice(0, totalShoes)
 
 	if (isLoading)
 		return (
