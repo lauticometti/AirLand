@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Home } from './Home/Home'
 import { Orders } from './Orders/Orders'
 import { AllSneakers } from './AllSneakers/AllSneakers'
 import { CreateSneaker } from './CreateSneaker/CreateSneaker'
@@ -7,10 +6,9 @@ import rightArrow from '../../../assets/icons/right-arrow.svg'
 import styles from './AdminDashboard.module.css'
 
 export default function AdminDashboard() {
-	const [currentComponent, setCurrentComponent] = useState('home')
+	const [currentComponent, setCurrentComponent] = useState('orders')
 
 	const components = {
-		home: { title: 'Home', component: <Home /> },
 		orders: { title: 'Orders', component: <Orders /> },
 		allSneakers: { title: 'All Sneakers', component: <AllSneakers /> },
 		createSneaker: { title: 'Create Sneaker', component: <CreateSneaker /> }

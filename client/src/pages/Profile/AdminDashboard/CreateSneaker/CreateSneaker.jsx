@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Loader, NotFound } from '../../../../components'
+import { useGetSizesQuery } from '../../../../redux/services/services'
 import { firebaseStorage } from '../../../../firebase'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import Carousel from 'react-bootstrap/Carousel'
 import styles from './CreateSneaker.module.css'
 import { useDispatch } from 'react-redux'
-import { useGetSizesQuery } from '../../../../redux/services/services'
-import { Loader } from '../../../../components'
-import Carousel from 'react-bootstrap/Carousel'
 import { setEditCount } from '../../../../redux'
 import swal from 'sweetalert'
 
@@ -14,18 +14,48 @@ export function CreateSneaker() {
 
 	const { data: sizes } = useGetSizesQuery()
 
-	const [shoe, setEditedShoe] = useState({})
+	const [shoe, setShoe] = useState({
+		TYPE: '',
+		IMAGE: {
+			TOPVIEW:
+				"https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike%20Air%20Force%201%20'07%20White%20(topview).webp?alt=media&token=e1e6a029-ad28-4e4d-b9ed-91b810fc8626",
+			LEFT: "https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike%20Air%20Force%201%20'07%20White%20(left).webp?alt=media&token=2e4a03ec-eeb9-4d5f-9c03-578e83320b40",
+			RIGHT:
+				"https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike%20Air%20Force%201%20'07%20White%20(right).webp?alt=media&token=8203ee98-c8c2-4ede-b008-4f3b379e3a79",
+			THUMBNAIL:
+				"https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike%20Air%20Force%201%20'07%20White%20(thumbnail).webp?alt=media&token=7a1109fc-1303-40df-81ae-11a59b3f857d",
+			FULL: "https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike%20Air%20Force%201%20'07%20White%20(full).webp?alt=media&token=df47e90a-9c8e-471d-95d1-d80bcf047571"
+		},
+		NAME: 'Nike Air Force',
+		DESCRIPTION: '',
+		CODE: '',
+		PRICE: '0',
+		STATUS: true,
+		SIZE: {
+			38: '0',
+			39: '0',
+			40: '0',
+			41: '0',
+			42: '0',
+			43: '0',
+			44: '0',
+			45: '0'
+		},
+		REVIEW: {}
+	})
+
+	const imageProperties = ['TOPVIEW', 'LEFT', 'FULL', 'RIGHT', 'THUMBNAIL']
 
 	const handleInputChange = event => {
 		const { name, value } = event.target
-		setEditedShoe({ ...shoe, [name]: value })
+		setShoe({ ...shoe, [name]: value })
 	}
 
 	const handleSizesChange = event => {
 		let { name, value } = event.target
 		if (value === 'true') value = true
 		if (value === 'false') value = false
-		setEditedShoe({
+		setShoe({
 			...shoe,
 			SIZE: { ...shoe.SIZE, [name]: value }
 		})
@@ -52,7 +82,7 @@ export function CreateSneaker() {
 			},
 			() => {
 				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-					setEditedShoe({
+					setShoe({
 						...shoe,
 						IMAGE: { ...shoe.IMAGE, [name]: downloadURL }
 					})
@@ -64,7 +94,7 @@ export function CreateSneaker() {
 
 	const handleImageURLChange = e => {
 		const { name, value } = event.target
-		setEditedShoe({
+		setShoe({
 			...shoe,
 			IMAGE: { ...shoe.IMAGE, [name]: value }
 		})
@@ -72,26 +102,29 @@ export function CreateSneaker() {
 
 	const handleFormSubmit = event => {
 		event.preventDefault()
-		try {
-			dispatch(setEditCount())
-		} catch (error) {
-			swal({
-				title: 'An error occurred while creating',
-				message: error.message,
-				icon: 'warning',
-				timer: 2000
-			})
-		}
+		dispatch(setEditCount())
 	}
 
 	useEffect(() => {
-		setEditedShoe(shoe)
+		setShoe(shoe)
 	}, [shoe])
 
 	return (
-		<>
+		<div className={styles.mainContainer}>
 			<form className={styles.shoeContainer} onSubmit={handleFormSubmit}>
 				<div className={styles.allImagesContainer}>
+					<p>
+						<span style={{ fontWeight: 'bold' }}>
+							Recommended Image format:
+						</span>{' '}
+						alpha bg WEBP 1000x1000px
+					</p>
+					<p>
+						<span style={{ fontWeight: 'bold' }}>
+							Recommended Thumbnail format:
+						</span>{' '}
+						white bg WEBP 300x300px
+					</p>
 					<div className={styles.carouselContainer}>
 						<Carousel variant='dark'>
 							{shoe?.IMAGE ? (
@@ -113,31 +146,36 @@ export function CreateSneaker() {
 						</Carousel>
 					</div>
 					<div className={styles.separateImagesContainer}>
-						<img
-							src={shoe?.IMAGE.TOPVIEW}
-							alt='topview'
-							className={styles.imageElement}
-						/>
-						<img
-							src={shoe?.IMAGE.LEFT}
-							alt='left'
-							className={styles.imageElement}
-						/>
-						<img
-							src={shoe?.IMAGE.RIGHT}
-							alt='right'
-							className={styles.imageElement}
-						/>
-						<img
-							src={shoe?.IMAGE.FULL}
-							alt='full'
-							className={styles.imageElement}
-						/>
-						<img
-							src={shoe?.IMAGE.THUMBNAIL}
-							alt='thumbnail'
-							className={styles.imageElement}
-						/>
+						{imageProperties.map(image => {
+							return (
+								<div key={image + '-input'} className={styles.inputImage}>
+									<label className={styles.imageTitle}>{image}:</label>
+									<img
+										className={styles.inputImagePreview}
+										src={shoe?.IMAGE[image]}
+										alt=''
+									/>
+									<div className={styles.inputImageFileWrapper}>
+										<input
+											className={styles.inputImageFile}
+											type='file'
+											id={image}
+											name={image}
+											onChange={handleImagesChange}
+										/>
+									</div>
+
+									<input
+										className={styles.inputImageURL}
+										type='text'
+										id={image + '-url'}
+										name={image}
+										value={shoe?.IMAGE[image]}
+										onChange={handleImageURLChange}
+									/>
+								</div>
+							)
+						})}
 					</div>
 				</div>
 				<div className={styles.descriptionContainer}>
@@ -177,6 +215,23 @@ export function CreateSneaker() {
 									<option value='false'>
 										false <span>❌</span>
 									</option>
+								</select>
+							</div>
+						</h2>
+						<h2 className={styles.title}>
+							Type:
+							<div className={styles.statusContainer}>
+								<select
+									className={styles.selectStatus}
+									style={{ textAlign: 'left' }}
+									type='text'
+									name='TYPE'
+									value={shoe?.TYPE}
+									onChange={handleInputChange}
+								>
+									<option value='Low'>Low</option>
+									<option value='Mid'>Mid</option>
+									<option value='High'>High</option>
 								</select>
 							</div>
 						</h2>
@@ -236,71 +291,7 @@ export function CreateSneaker() {
 						</button>
 					</div>
 				</div>
-				<div>
-					<div>
-						<label htmlFor='full'>Full image:</label>
-						<input
-							type='file'
-							id='full'
-							accept='image/*'
-							name='FULL'
-							onChange={handleImageChange}
-						/>
-					</div>
-					<div>
-						<label htmlFor='left'>Left image:</label>
-						<input
-							type='file'
-							id='left'
-							name='LEFT'
-							onChange={handleImageChange}
-						/>
-						<img src={images.LEFT} alt='' />
-						<input
-							type='text'
-							id='left-url'
-							name='LEFT'
-							value={images.LEFT}
-							onChange={handleImageURLChange}
-						/>
-					</div>
-					<div>
-						<label htmlFor='right'>Right image:</label>
-						<input
-							type='file'
-							id='right'
-							name='RIGHT'
-							value={images.RIGHT}
-							onChange={handleImageChange}
-						/>
-					</div>
-					<div>
-						<label htmlFor='thumbnail'>Thumbnail image:</label>
-						<input
-							type='file'
-							id='thumbnail'
-							name='THUMBNAIL'
-							value={images.THUMBNAIL}
-							onChange={handleImageChange}
-						/>
-					</div>
-					<div>
-						<label htmlFor='topview'>Top view image:</label>
-						<input
-							type='file'
-							id='topview'
-							name='TOPVIEW'
-							value={images.TOPVIEW}
-							onChange={handleImageChange}
-						/>
-					</div>
-				</div>
-				<div>
-					<button type='submit'>Create</button>
-				</div>
 			</form>
-		</>
+		</div>
 	)
 }
-
-export default CreateSneaker

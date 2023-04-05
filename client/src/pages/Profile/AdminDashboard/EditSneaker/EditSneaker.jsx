@@ -108,172 +108,199 @@ export function EditSneaker({ shoeId }) {
 	}, [shoe])
 
 	return (
-		<>
-			<div className={styles.mainContainer}>
-				{isLoading ? (
-					<div className={styles.loader}>
-						<Loader />
-					</div>
-				) : error ? (
-					<div className={styles.error}>
-						<NotFound />
-					</div>
-				) : (
-					<form className={styles.shoeContainer} onSubmit={handleFormSubmit}>
-						<div className={styles.allImagesContainer}>
-							<div className={styles.carouselContainer}>
-								<Carousel variant='dark'>
-									{editedShoe?.IMAGE ? (
-										Object.keys(editedShoe.IMAGE).map((image, i) => {
-											if (image === 'THUMBNAIL') return null
-											return (
-												<Carousel.Item key={i}>
-													<img
-														className='w-75 mx-auto d-block'
-														src={editedShoe.IMAGE[image]}
-														alt={`Slide ${i + 1}`}
-													/>
-												</Carousel.Item>
-											)
-										})
-									) : (
-										<Loader />
-									)}
-								</Carousel>
-							</div>
-							<div className={styles.separateImagesContainer}>
-								{imageProperties.map(image => {
-									return (
-										<div key={image + '-input'} className={styles.inputImage}>
-											<label className={styles.imageTitle}>{image}:</label>
-											<img
-												className={styles.inputImagePreview}
-												src={editedShoe?.IMAGE[image]}
-												alt=''
-											/>
-											<div className={styles.inputImageFileWrapper}>
-												<input
-													className={styles.inputImageFile}
-													type='file'
-													id={image}
-													name={image}
-													onChange={handleImagesChange}
+		<div className={styles.mainContainer}>
+			{isLoading ? (
+				<div className={styles.loader}>
+					<Loader />
+				</div>
+			) : error ? (
+				<div className={styles.error}>
+					<NotFound />
+				</div>
+			) : (
+				<form className={styles.shoeContainer} onSubmit={handleFormSubmit}>
+					<div className={styles.allImagesContainer}>
+						<p>
+							<span style={{ fontWeight: 'bold' }}>
+								Recommended Image format:
+							</span>{' '}
+							alpha bg WEBP 1000x1000px
+						</p>
+						<p>
+							<span style={{ fontWeight: 'bold' }}>
+								Recommended Thumbnail format:
+							</span>{' '}
+							white bg WEBP 300x300px
+						</p>
+						<div className={styles.carouselContainer}>
+							<Carousel variant='dark'>
+								{editedShoe?.IMAGE ? (
+									Object.keys(editedShoe.IMAGE).map((image, i) => {
+										if (image === 'THUMBNAIL') return null
+										return (
+											<Carousel.Item key={i}>
+												<img
+													className='w-75 mx-auto d-block'
+													src={editedShoe.IMAGE[image]}
+													alt={`Slide ${i + 1}`}
 												/>
-											</div>
-
+											</Carousel.Item>
+										)
+									})
+								) : (
+									<Loader />
+								)}
+							</Carousel>
+						</div>
+						<div className={styles.separateImagesContainer}>
+							{imageProperties.map(image => {
+								return (
+									<div key={image + '-input'} className={styles.inputImage}>
+										<label className={styles.imageTitle}>{image}:</label>
+										<img
+											className={styles.inputImagePreview}
+											src={editedShoe?.IMAGE[image]}
+											alt=''
+										/>
+										<div className={styles.inputImageFileWrapper}>
 											<input
-												className={styles.inputImageURL}
-												type='text'
-												id={image + '-url'}
+												className={styles.inputImageFile}
+												type='file'
+												id={image}
 												name={image}
-												value={editedShoe?.IMAGE[image]}
-												onChange={handleImageURLChange}
+												onChange={handleImagesChange}
 											/>
 										</div>
-									)
-								})}
-							</div>
-						</div>
-						<div className={styles.descriptionContainer}>
-							<div className={styles.inputFieldGrid}>
-								<h1 className={styles.title}>
-									Name:
-									<input
-										type='text'
-										name='NAME'
-										value={editedShoe?.NAME}
-										onChange={handleInputChange}
-									/>
-								</h1>
 
-								<h2 className={styles.title}>
-									Code:
-									<input
-										type='text'
-										name='CODE'
-										value={editedShoe?.CODE}
-										onChange={handleInputChange}
-									/>
-								</h2>
-								<h2 className={styles.title}>
-									Status:
-									<div className={styles.statusContainer}>
-										<select
-											className={styles.selectStatus}
+										<input
+											className={styles.inputImageURL}
 											type='text'
-											name='STATUS'
-											value={editedShoe?.STATUS}
-											onChange={handleInputChange}
-										>
-											<option value='true'>
-												true <span>✅</span>
-											</option>
-											<option value='false'>
-												false <span>❌</span>
-											</option>
-										</select>
+											id={image + '-url'}
+											name={image}
+											value={editedShoe?.IMAGE[image]}
+											onChange={handleImageURLChange}
+										/>
 									</div>
-								</h2>
-								<h2 className={styles.title}>
-									Price:
-									<input
-										type='text'
-										name='PRICE'
-										value={editedShoe?.PRICE}
-										onChange={handleInputChange}
-									/>
-								</h2>
-							</div>
-
-							<div className={styles.sizesContainer}>
-								<h1 className={styles.title}>Sizes:</h1>
-								<ul className={styles.sizesChecks}>
-									{sizes?.map(size => (
-										<li className={styles.sizeCheckInputContainer} key={size}>
-											<span
-												key={size}
-												className={
-													Number(editedShoe?.SIZE[size]) > 0
-														? styles.sizeCheck
-														: styles.sizeDisabled
-												}
-												value={size}
-											>
-												{size}
-											</span>
-											<input
-												className={styles.sizeInput}
-												type='text'
-												name={size}
-												value={editedShoe?.SIZE[size]}
-												onChange={handleSizesChange}
-											/>
-										</li>
-									))}
-								</ul>
-							</div>
-							<div className={styles.description}>
-								<h4 className={styles.descriptionh4}>Description</h4>
-								<p className={styles.descriptionText}>
-									<textarea
-										name='DESCRIPTION'
-										className={styles.descriptionTextArea}
-										value={editedShoe?.DESCRIPTION}
-										onChange={handleInputChange}
-										rows='6'
-									/>
-								</p>
-							</div>
-							<div>
-								<button className={styles.saveButton} type='submit'>
-									Save changes
-								</button>
-							</div>
+								)
+							})}
 						</div>
-					</form>
-				)}
-			</div>
-		</>
+					</div>
+					<div className={styles.descriptionContainer}>
+						<div className={styles.inputFieldGrid}>
+							<h1 className={styles.title}>
+								Name:
+								<input
+									type='text'
+									name='NAME'
+									value={editedShoe?.NAME}
+									onChange={handleInputChange}
+								/>
+							</h1>
+
+							<h2 className={styles.title}>
+								Code:
+								<input
+									type='text'
+									name='CODE'
+									value={editedShoe?.CODE}
+									onChange={handleInputChange}
+								/>
+							</h2>
+							<h2 className={styles.title}>
+								Status:
+								<div className={styles.statusContainer}>
+									<select
+										className={styles.selectStatus}
+										type='text'
+										name='STATUS'
+										value={editedShoe?.STATUS}
+										onChange={handleInputChange}
+									>
+										<option value='true'>
+											true <span>✅</span>
+										</option>
+										<option value='false'>
+											false <span>❌</span>
+										</option>
+									</select>
+								</div>
+							</h2>
+							<h2 className={styles.title}>
+								Type:
+								<div className={styles.statusContainer}>
+									<select
+										className={styles.selectStatus}
+										style={{ textAlign: 'left' }}
+										type='text'
+										name='TYPE'
+										value={editedShoe?.TYPE}
+										onChange={handleInputChange}
+									>
+										<option value='Low'>Low</option>
+										<option value='Mid'>Mid</option>
+										<option value='High'>High</option>
+									</select>
+								</div>
+							</h2>
+							<h2 className={styles.title}>
+								Price:
+								<input
+									type='text'
+									name='PRICE'
+									value={editedShoe?.PRICE}
+									onChange={handleInputChange}
+								/>
+							</h2>
+						</div>
+
+						<div className={styles.sizesContainer}>
+							<h1 className={styles.title}>Sizes:</h1>
+							<ul className={styles.sizesChecks}>
+								{sizes?.map(size => (
+									<li className={styles.sizeCheckInputContainer} key={size}>
+										<span
+											key={size}
+											className={
+												Number(editedShoe?.SIZE[size]) > 0
+													? styles.sizeCheck
+													: styles.sizeDisabled
+											}
+											value={size}
+										>
+											{size}
+										</span>
+										<input
+											className={styles.sizeInput}
+											type='text'
+											name={size}
+											value={editedShoe?.SIZE[size]}
+											onChange={handleSizesChange}
+										/>
+									</li>
+								))}
+							</ul>
+						</div>
+						<div className={styles.description}>
+							<h4 className={styles.descriptionh4}>Description</h4>
+							<p className={styles.descriptionText}>
+								<textarea
+									name='DESCRIPTION'
+									className={styles.descriptionTextArea}
+									value={editedShoe?.DESCRIPTION}
+									onChange={handleInputChange}
+									rows='6'
+								/>
+							</p>
+						</div>
+						<div>
+							<button className={styles.saveButton} type='submit'>
+								Save changes
+							</button>
+						</div>
+					</div>
+				</form>
+			)}
+		</div>
 	)
 }
 

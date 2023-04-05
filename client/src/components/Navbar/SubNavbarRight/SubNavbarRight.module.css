@@ -20,6 +20,7 @@
 
 .userPhoto {
 	color: #fff;
+	transform: translate(38%, 5%);
 }
 
 .userGreet:hover,
@@ -83,7 +84,7 @@
 	color: #c9c9c9;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
 	.userGreet {
 		display: block;
 	}
