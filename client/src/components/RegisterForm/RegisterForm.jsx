@@ -7,6 +7,7 @@ import {
 	startGoogleSignIn,
 	startRegistrationUserWithEmailPassword
 } from '../../redux/slices/auth'
+import { toast } from 'react-toastify'
 import logo from '../../assets/icons/air_land-black.svg'
 import registerHasErrors from '../../helpers/registerHasErrors'
 import './RegisterForm.css'
@@ -64,9 +65,20 @@ export function RegisterForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
+		let alert
 		if (status === 'not-authenticated' && errorMessage) {
-			alert(errorMessage)
+			if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') alert = 'Email already in use'
+			if (errorMessage === 'Firebase: Error (auth/missing-email).') alert = 'Missing email'
+			if (errorMessage === 'Firebase: Error (auth/internal-error).') alert = 'Internal error'
+			if (errorMessage === 'Firebase: Error (auth/invalid-email).') alert = 'Invalid email'
 		}
+		toast.error(alert, {
+			position: 'bottom-right',
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			theme: 'dark'
+		})
 		dispatch(checkingCredentials())
 	}, [status])
 

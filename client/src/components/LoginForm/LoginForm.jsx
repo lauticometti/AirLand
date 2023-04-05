@@ -9,6 +9,7 @@ import {
 } from '../../redux/slices/auth'
 import logo from '../../assets/icons/air_land-black.svg'
 import './LoginForm.css'
+import { toast } from 'react-toastify'
 
 const formData = {
 	email: '',
@@ -36,9 +37,19 @@ export function LoginForm() {
 	const switchShown = () => setShown(!shown)
 
 	useEffect(() => {
+		let alert
 		if (status === 'not-authenticated' && errorMessage) {
-			alert(errorMessage)
+			if (errorMessage === 'Firebase: Error (auth/wrong-password).') alert = 'Wrong password'
+			if (errorMessage === 'Firebase: Error (auth/user-not-found).') alert = 'User not found'
+			if (errorMessage === 'Firebase: Error (auth/invalid-email).') alert = 'Invalid email'
 		}
+		toast.error(alert, {
+			position: 'bottom-right',
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			theme: 'dark'
+		})
 		dispatch(checkingCredentials())
 	}, [status])
 

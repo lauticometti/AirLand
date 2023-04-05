@@ -83,9 +83,9 @@ const deleteUserAdress = async (req, res) => {
 			id: doc.id,
 			...doc.data()
 		}))
-		const addressToDelete = addressDB[index].id
+		const addressToDelete = addressDB[index]
 		db.collection(`users`)
-			.doc(`${userId}/addressInfo/${addressToDelete}`)
+			.doc(`${userId}/addressInfo/${addressToDelete.id}`)
 			.delete()
 		res.status(200).json('Address deleted!')
 	} catch (error) {

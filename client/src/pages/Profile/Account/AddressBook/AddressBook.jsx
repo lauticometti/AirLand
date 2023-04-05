@@ -58,7 +58,7 @@ export default function AddressBook() {
 						</div>
 
 						<div className={styles.addressCardBottom}>
-							<div>
+							{/* <div>
 								<button
 									className={styles.addressCardDeleteButton}
 									onClick={() => setShowDeleteAddress(true)}
@@ -70,9 +70,9 @@ export default function AddressBook() {
 									show={showDeleteAddress}
 									background='rgba(5, 5, 5, 0.335)'
 								>
-									<DeleteAddress onClose={() => setShowDeleteAddress(false)} />
+									<DeleteAddress onClose={() => setShowDeleteAddress(false)} index={i} />
 								</UserModal>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				))}

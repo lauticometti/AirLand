@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Loader, NotFound } from '../../../../components'
-import { useGetSizesQuery } from '../../../../redux/services/services'
+import { Loader } from '../../../../components'
+import {
+	useAddShoeMutation,
+	useGetSizesQuery
+} from '../../../../redux/services/services'
 import { firebaseStorage } from '../../../../firebase'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import Carousel from 'react-bootstrap/Carousel'
@@ -12,10 +15,12 @@ import swal from 'sweetalert'
 export function CreateSneaker() {
 	const dispatch = useDispatch()
 
+	const [addShoe] = useAddShoeMutation()
+
 	const { data: sizes } = useGetSizesQuery()
 
 	const [shoe, setShoe] = useState({
-		TYPE: '',
+		TYPE: 'Low',
 		IMAGE: {
 			TOPVIEW:
 				"https://firebasestorage.googleapis.com/v0/b/airland-9c55f.appspot.com/o/Zapatillas(images)%2FNike%20Air%20Force%201%20'07%20White%20(topview).webp?alt=media&token=e1e6a029-ad28-4e4d-b9ed-91b810fc8626",
@@ -102,7 +107,25 @@ export function CreateSneaker() {
 
 	const handleFormSubmit = event => {
 		event.preventDefault()
-		dispatch(setEditCount())
+		addShoe(shoe)
+			.unwrap()
+			.then(addedShoe => {
+				swal({
+					title: 'Created sucessfully!',
+					message: 'The sneaker has been added to the database.',
+					icon: 'success',
+					timer: 2000
+				})
+				dispatch(setEditCount())
+			})
+			.catch(error => {
+				swal({
+					title: 'An error occurred while updating',
+					message: error.message,
+					icon: 'warning',
+					timer: 2000
+				})
+			})
 	}
 
 	useEffect(() => {
