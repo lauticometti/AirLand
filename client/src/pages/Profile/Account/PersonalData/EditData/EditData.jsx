@@ -14,8 +14,8 @@ export default function EditData({ onClose }) {
 	)
 
 	const [form, setForm] = useState({
-		firstName,
-		lastName,
+		firstName: firstName && '',
+		lastName: lastName && '',
 		birthMonth: birthDate ? birthDate.split('/')[0] : '',
 		birthDay: birthDate ? birthDate.split('/')[1] : '',
 		birthYear: birthDate ? birthDate.split('/')[2] : '',
