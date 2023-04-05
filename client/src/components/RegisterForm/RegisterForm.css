@@ -8,14 +8,27 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+.registerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.logoContainer {
+	display: flex;
+	justify-content: center;
+	margin: 30px 0;
+}
+
+.logo {
+	width: 100px;
+}
+
 .container {
-	height: 100vh;
 	width: 100%;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	background-color: white;
-	column-gap: 30px;
 }
 
 .form {
@@ -23,7 +36,6 @@
 	border-width: 1px;
 	border-style: solid;
 
-	position: absolute;
 	max-width: 430px;
 	width: 100%;
 	padding: 30px;
@@ -78,11 +90,21 @@ form {
 .field input {
 	outline: none;
 	padding: 0 15px;
-	border: 1px solid#CACACA;
+	border: 1px solid #cacaca;
 }
 
 .field input:focus {
 	border-bottom-width: 2px;
+}
+
+.errors {
+	display: block;
+	width: 100%;
+	text-align: start;
+	margin-left: 10px;
+	font-size: 14px;
+	color: red;
+	opacity: 0.8;
 }
 
 .eye-icon {
@@ -97,14 +119,22 @@ form {
 }
 
 .field button {
-	color: #fff;
-	background-color: black;
+	color: #000;
+	font-weight: 600;
+	background-color: #fff;
+	border: 3px solid #000;
 	transition: all 0.3s ease;
 	cursor: pointer;
 }
-
 .field button:hover {
-	background-color: grey;
+	background-color: #fff;
+	color: green;
+}
+.disabled-button button:hover {
+	background-color: #fff;
+	color: #000;
+
+	cursor: default;
 }
 
 .form-link {
@@ -210,10 +240,6 @@ a.google span {
 
 .link:hover {
 	color: grey;
-}
-
-.logo {
-	margin-left: 47%;
 }
 
 @media screen and (max-width: 400px) {

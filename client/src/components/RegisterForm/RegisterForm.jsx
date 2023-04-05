@@ -8,6 +8,7 @@ import {
 	startRegistrationUserWithEmailPassword
 } from '../../redux/slices/auth'
 import logo from '../../assets/icons/air_land-black.svg'
+import registerHasErrors from '../../helpers/registerHasErrors'
 import './RegisterForm.css'
 
 const formData = {
@@ -17,9 +18,17 @@ const formData = {
 	repeatPassword: ''
 }
 
+const formErrors = {
+	displayName: '',
+	email: '',
+	password: '',
+	repeatPassword: ''
+}
+
 export function RegisterForm() {
 	const { status, errorMessage } = useSelector(state => state.auth)
 	const [form, setForm] = useState(formData)
+	const [errors, setErrors] = useState(formErrors)
 	const [shown, setShown] = useState(false)
 	const dispatch = useDispatch()
 
@@ -28,6 +37,23 @@ export function RegisterForm() {
 			...form,
 			[event.target.name]: event.target.value
 		})
+	}
+
+	const handleErrors = e => {
+		const { name, value } = e.target
+		const originalPassword = form.password
+		const error = registerHasErrors(name, value, originalPassword)
+		if (error) {
+			setErrors({
+				...errors,
+				[name]: error
+			})
+		} else {
+			setErrors({
+				...errors,
+				[name]: ''
+			})
+		}
 	}
 
 	const handleSubmit = event => {
@@ -45,8 +71,8 @@ export function RegisterForm() {
 	}, [status])
 
 	return (
-		<div>
-			<Link to='/'>
+		<div className='registerContainer'>
+			<Link to='/' className='logoContainer'>
 				<img src={logo} alt='logo' className='logo' />
 			</Link>
 			<section className='container forms'>
@@ -62,9 +88,13 @@ export function RegisterForm() {
 									name='displayName'
 									id='displayName'
 									onChange={handleChange}
+									onBlur={handleErrors}
 									value={form.displayName}
 								/>
 							</div>
+							{errors.displayName ? (
+								<span className='errors'>{errors.displayName}</span>
+							) : null}
 							<div className='field input-field'>
 								<input
 									className='input'
@@ -73,9 +103,13 @@ export function RegisterForm() {
 									name='email'
 									id='email'
 									onChange={handleChange}
+									onBlur={handleErrors}
 									value={form.email}
 								/>
 							</div>
+							{errors.email ? (
+								<span className='errors'>{errors.email}</span>
+							) : null}
 							<div className='field input-field'>
 								<input
 									className='password'
@@ -84,10 +118,15 @@ export function RegisterForm() {
 									name='password'
 									id='password'
 									onChange={handleChange}
+									onBlur={handleErrors}
 									value={form.password}
 								/>
+
 								<i className='bx bx-hide eye-icon' onClick={switchShown}></i>
 							</div>
+							{errors.password ? (
+								<span className='errors'>{errors.password}</span>
+							) : null}
 							<div className='field input-field'>
 								<input
 									className='password'
@@ -96,13 +135,32 @@ export function RegisterForm() {
 									name='repeatPassword'
 									id='repeatPassword'
 									onChange={handleChange}
+									onBlur={handleErrors}
 									value={form.repeatPassword}
 								/>
+
 								<i className='bx bx-hide eye-icon' onClick={switchShown}></i>
 							</div>
+							{errors.repeatPassword ? (
+								<span className='errors'>{errors.repeatPassword}</span>
+							) : null}
 
-							<div className='field button-field'>
-								<button>Sign Up</button>
+							<div
+								className={`field button-field ${
+									Object.values(form).some(input => input === '') ||
+									Object.values(errors).some(input => input !== '')
+										? 'disabled-button'
+										: ''
+								}`}
+							>
+								<button
+									disabled={
+										Object.values(form).some(input => input === '') ||
+										Object.values(errors).some(input => input !== '')
+									}
+								>
+									Sign Up
+								</button>
 							</div>
 							<div className='media-options'>
 								<Link
