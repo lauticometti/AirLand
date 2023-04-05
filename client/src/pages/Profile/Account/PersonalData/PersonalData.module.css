@@ -29,9 +29,11 @@
 	font-weight: 600;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	text-decoration: underline;
 	transition: background-color 0.1s, color 0.2s;
 	cursor: pointer;
+	border: 1px #000000AA solid;
+	padding: .3rem;
+	border-radius: .2rem;
 }
 
 .editSpan:hover,

@@ -45,7 +45,7 @@ export const startRegistrationUserWithEmailPassword = ({
 		// cuarto: logeo al usuario correctamente registrado
 		dispatch(signIn(data))
 		Swal.fire({
-			title: `Bienvenido ${data.displayName}`,
+			title: `Welcome ${data.displayName}`,
 			height: 600,
 			// icon: 'success',
 			timer: '2000'
@@ -78,7 +78,7 @@ export const startLoginUserWithEmailPassword = ({ email, password }) => {
 		dispatch(signIn(userData))
 		dispatch(loadUserAddress(addressData))
 		Swal.fire({
-			title: `Bienvenido otra véz, ${userData.displayName}`,
+			title: `Welcome again, ${userData.displayName}`,
 			// icon: 'success',
 			heigth: 600,
 			timer: '2000',
@@ -112,7 +112,7 @@ export const startGoogleSignIn = () => {
 		dispatch(signIn(userData))
 		dispatch(loadUserAddress(addressData))
 		Swal.fire({
-			title: `Bienvenido ${userData.displayName}`,
+			title: `Welcome ${userData.displayName}`,
 			height: 1000,
 			timer: '2000',
 			showConfirmButton: false
