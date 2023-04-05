@@ -24,7 +24,8 @@ export function AddReview({ onClose, sneakerID, sneakerName, sneakerImage }) {
         Swal.fire({
           title: data,
           icon: 'success',
-          timer: 2000
+          timer: 2000,
+          showConfirmButton: false
         })
       })
   }

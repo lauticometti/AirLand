@@ -11,7 +11,7 @@ import logo from '../../assets/icons/air_land-black.svg'
 import styles from './Profile.module.css'
 
 export function Profile() {
-	const { displayName, firstName } = useSelector(state => state.auth)
+	const { displayName, firstName, email } = useSelector(state => state.auth)
 
 	const [currentComponent, setCurrentComponent] = useState('account')
 
@@ -61,17 +61,21 @@ export function Profile() {
 						>
 							Purchases
 						</li>
-						<li
-							onClick={handleTabList}
-							id='adminDashboard'
-							className={
-								currentComponent === 'adminDashboard'
-									? styles.listItemActive
-									: styles.listItem
-							}
-						>
-							Dashboard
-						</li>
+						{
+							email === import.meta.env.VITE_ADMIN_MAIL
+								? <li
+									onClick={handleTabList}
+									id='adminDashboard'
+									className={
+										currentComponent === 'adminDashboard'
+											? styles.listItemActive
+											: styles.listItem
+									}
+								>
+									Dashboard
+								</li>
+								: ''
+						}
 					</ul>
 				</div>
 			</div>

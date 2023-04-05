@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {
 	Login,
 	Register,
@@ -19,7 +21,7 @@ import { EditSneaker } from './pages/Profile/AdminDashboard/'
 import './styles/App.css'
 
 function App() {
-	const { status, email } = useSelector(state => state.auth)
+	const { status } = useSelector(state => state.auth)
 	const { pathname } = useLocation()
 
 	useEffect(() => {
@@ -27,10 +29,9 @@ function App() {
 		localStorage.setItem('lastPath', pathname)
 	}, [pathname])
 
-	const adminEmail = 'administrador@email.com'
-
 	return (
 		<>
+			<ToastContainer />
 			<Routes>
 				{status === 'authenticated' ? (
 					<>
@@ -60,9 +61,6 @@ function App() {
 						/>
 						<Route path='/payment-success' element={<PaymentSuccess />} />
 						<Route path='*' element={<Page404 />} />
-						{/* {email === 'adminEmail' ? (
-							<Route path='/admin' element={<Admin />} />
-						) : null} */}
 					</>
 				) : (
 					<>
@@ -75,17 +73,17 @@ function App() {
 						<Route
 							exact
 							path='/profile'
-							element={<Navigate to={localStorage.getItem('lastPath')} />}
+							element={<Navigate to='/' />}
 						/>
 						<Route
 							exact
 							path='/store'
-							element={<Navigate to={localStorage.getItem('lastPath')} />}
+							element={<Navigate to='/' />}
 						/>
 						<Route
 							exact
 							path='/checkout'
-							element={<Navigate to={localStorage.getItem('lastPath')} />}
+							element={<Navigate to='/' />}
 						/>
 						<Route exact path='/contact' element={<Contact />} />
 						<Route path='*' element={<Page404 />} />

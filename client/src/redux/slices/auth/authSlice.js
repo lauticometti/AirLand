@@ -53,6 +53,9 @@ export const authSlice = createSlice({
 		},
 		loadUserAddress: (state, { payload }) => {
 			state.address = [...state.address, ...payload]
+		},
+		deleteAddressByIndex: (state, { payload }) => {
+			state.address = state.address.slice(payload, 1)
 		}
 	}
 })
@@ -63,5 +66,6 @@ export const {
 	signIn,
 	logOut,
 	loadUserData,
-	loadUserAddress
+	loadUserAddress,
+	deleteAddressByIndex
 } = authSlice.actions
