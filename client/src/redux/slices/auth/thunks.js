@@ -13,7 +13,8 @@ import {
 	loadUserAddress,
 	loadUserData,
 	logOut,
-	signIn
+	signIn,
+	deleteAddressByIndex
 } from './'
 
 const BASE_URL = import.meta.env.VITE_BACK_URL || 'http://localhost:3001/api'
@@ -184,14 +185,11 @@ export const deleteUserAddress = (index, uid) => {
 				userId: uid
 			}
 		)
-		const { data: addressData } = await axios.get(
-			`${BASE_URL}/users/user-address/${uid}`,
-		)
 		Swal.fire({
 			title: message,
 			icon: 'success',
 			timer: '2000'
 		})
-		dispatch(loadUserAddress(addressData))
+		dispatch(deleteAddressByIndex(index))
 	}
 }
