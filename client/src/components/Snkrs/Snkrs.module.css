@@ -1,0 +1,55 @@
+.mt50vh {
+	margin: 150px 0;
+	display: flex;
+	justify-content: center;
+}
+
+.section {
+	display: flex;
+	justify-content: center;
+	padding: 0 40px;
+	gap: 30px;
+}
+
+.card {
+	width: 250px;
+	text-decoration: none;
+	border-radius: 10px;
+	background-color: #fafafa;
+	padding: 0 10px;
+}
+
+.card:hover .name {
+	color: #000;
+}
+
+.imageContainer {
+	width: 230px;
+	border-bottom: 1px solid #313131;
+}
+
+.image {
+	width: 100%;
+}
+
+.price {
+	padding-top: 20px;
+	color: #000;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.name {
+	padding: 10px 0 5px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #313131;
+	transition: 0.2s;
+}
+
+@media (min-width: 768px) {
+	.section {
+		justify-content: space-between;
+		padding: 0 5%;
+	}
+}

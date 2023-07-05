@@ -1,0 +1,69 @@
+.orderBottomProduct {
+	border: 1px solid #dadada;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 25px;
+}
+
+.imageContainer {
+	width: 100px;
+	height: 100px;
+}
+
+.image {
+	width: 80%;
+}
+
+.orderDetails {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.orderName {
+	color: #222;
+	transition: 0.1s;
+}
+
+.orderName:hover {
+	color: #000;
+}
+
+.orderQuantity {
+	font-size: 15px;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.returnButton,
+.buyAgainButton {
+	padding: 5px 5px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #222;
+	text-align: center;
+}
+
+.returnButton:hover {
+	color: #101113;
+}
+
+.buyAgainButton {
+	padding: 5px 15px;
+	background: #3483fa;
+	font-size: 14px;
+	font-weight: 600;
+	color: #e2edfc;
+	border-radius: 5px;
+}
+
+.buyAgainButton:hover {
+	color: #d4d4d4;
+}

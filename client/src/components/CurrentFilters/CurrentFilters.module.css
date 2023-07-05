@@ -1,0 +1,28 @@
+.pillsContainer {
+	width: 50%;
+	margin-bottom: 40px;
+	display: flex;
+	gap: 15px;
+}
+
+.filter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+}
+
+.h2 {
+	font-size: 22px;
+	margin: 0;
+	border: 1px solid #181818cc;
+}
+
+.closeIcon {
+	font-size: 22px;
+	background-color: #181818;
+	width: 30px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}

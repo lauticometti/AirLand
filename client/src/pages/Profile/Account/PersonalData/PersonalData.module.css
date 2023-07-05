@@ -1,0 +1,96 @@
+.personalData {
+	color: #000;
+}
+
+.myDataTitle {
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #000;
+}
+
+.myDataDetail {
+	margin-top: 50px;
+	font-size: 1.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.myDataName {
+	text-transform: uppercase;
+}
+
+.myDataGender {
+	text-transform: uppercase;
+}
+
+.editSpan,
+.editSpan {
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: background-color 0.1s, color 0.2s;
+	cursor: pointer;
+	border: 1px #000000AA solid;
+	padding: .3rem;
+	border-radius: .2rem;
+}
+
+.editSpan:hover,
+.editSpan:hover {
+	background-color: #000;
+	text-decoration: none;
+	color: #fff;
+}
+
+.accessDataTitle {
+	margin-top: 50px;
+	font-size: 1.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.accessDataMail,
+.accessDataPassword,
+.logoutTitle,
+.deleteTitle {
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.logoutTitle,
+.deleteTitle {
+	margin-top: 50px;
+}
+
+.logoutText {
+	font-size: 15px;
+}
+
+.logoutButton,
+.deleteButton {
+	background: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 1.2px;
+	text-transform: uppercase;
+
+	border: 1px solid #000;
+	padding: 14px 12px;
+	width: 80%;
+	max-width: 400px;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.logoutArrow,
+.deleteArrow {
+	width: 24px;
+}
+
+.deleteText {
+	font-size: 15px;
+	margin-top: 20px;
+}

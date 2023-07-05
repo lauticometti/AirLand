@@ -1,0 +1,99 @@
+.cartItemContainer {
+	display: flex;
+	align-items: center;
+	margin: 0 50px;
+	border-bottom: 1px solid #cecece;
+	padding: 25px 0 50px 15px;
+}
+
+.articleCart {
+	display: flex;
+	gap: 40px;
+	width: 80%;
+}
+
+.itemCartInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-top: 20px;
+}
+
+.imgContainer > img {
+	width: 100px;
+	object-fit: cover;
+}
+
+.titleContainer {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+}
+
+.titleLink {
+	color: #181818;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.titleLink:hover {
+	color: #444;
+}
+
+.title {
+	font-size: 20px;
+	margin: 0;
+}
+
+.quantityForm {
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	border: 1px solid #cecece;
+	font-size: 20px;
+	border-radius: 5px;
+	padding: 15px 5px;
+	margin: 0;
+}
+
+.quantityInput {
+	text-align: center;
+	border: none;
+	padding: 0;
+	width: 70px;
+}
+
+.quantityButton {
+	font-size: 20px;
+	font-weight: 500;
+	width: 25px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.quantityButton:hover {
+	background-color: grey;
+	color: white;
+}
+
+.itemPriceContainer {
+	width: 100px;
+	height: 100%;
+	margin: 0 0 0 50px;
+	text-align: end;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.remove {
+	color: #ff0000;
+	cursor: pointer;
+}
+
+.remove:hover {
+	color: #444;
+}

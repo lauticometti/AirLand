@@ -1,0 +1,91 @@
+.container {
+	display: flex;
+	gap: 15px;
+}
+
+.signContainer {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-right: 8px;
+	text-decoration: none;
+}
+
+.userGreet {
+	display: none;
+	color: #fff;
+	font-size: 14px;
+	margin: 0;
+}
+
+.userPhoto {
+	color: #fff;
+	transform: translate(38%, 5%);
+}
+
+.userGreet:hover,
+.userPhoto:hover {
+	color: #c9c9c9;
+}
+
+.notSignContainer {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.createAccountLink,
+.signInLink,
+.cartLink {
+	font-size: 14px;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	transition: 0.2s;
+}
+
+.createAccountLink:hover,
+.signInLink:hover,
+.cartLink:hover {
+	color: #c9c9c9;
+}
+
+.cartContainer {
+	position: relative;
+}
+
+.cartLink {
+	font-size: 22px;
+	position: relative;
+}
+
+.cartSpan {
+	position: absolute;
+	right: -5px;
+	top: 0;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	font-size: 14px;
+	font-weight: 600;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: red;
+}
+
+.logout {
+	color: #fff;
+	cursor: pointer;
+}
+
+.logout:hover {
+	color: #c9c9c9;
+}
+
+@media (min-width: 900px) {
+	.userGreet {
+		display: block;
+	}
+}

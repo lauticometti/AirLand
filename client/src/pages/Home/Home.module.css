@@ -1,0 +1,25 @@
+.h2 {
+	font-family: Poppins, sans-serif;
+
+	padding: 10px 40px 40px;
+}
+
+.carouselSection {
+	margin-top: -50px;
+	margin-bottom: 80px;
+}
+
+.bestSellingSection {
+	background-color: #f1f1f1;
+	padding: 40px 0 100px;
+}
+
+.snkrsContainer {
+	padding-top: 50px;
+}
+
+@media (min-width: 768px) {
+	.h2 {
+		padding: 10px 5% 40px;
+	}
+}

@@ -1,0 +1,56 @@
+.deleteAddressContainer {
+	padding: 12px 20px 0;
+}
+
+.deleteAddressTitle {
+	margin-bottom: 25px;
+	font-size: 2rem;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+}
+
+.button,
+.buttonCancel {
+	background-color: #050505;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	width: 20%;
+	height: 50px;
+	padding: 5px 15px;
+
+	font-family: Poppins;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-align: start;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.button {
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.button img {
+	width: 30px;
+}
+
+.button:hover {
+	color: #a5a5a5;
+}
+
+.buttonCancel {
+	margin-left: 30px;
+	background-color: #fff;
+	color: #050505;
+	text-decoration: underline;
+}
+
+.buttonCancel:hover {
+	color: #555;
+}

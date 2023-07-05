@@ -1,0 +1,165 @@
+.adminCardContainer {
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	outline: solid #ddd 1px;
+	border: solid #ddd 1px;
+	padding: 0 1.5rem 0 1.5rem;
+	font-size: 1.3rem;
+	border-radius: 0.25rem;
+}
+
+.adminCardContainer:hover {
+	background-color: #f1f1f1;
+}
+
+.textContainer {
+	display: flex;
+	justify-content: space-between;
+	width: calc(100% - 1.5rem);
+	padding-left: 1.5rem;
+
+}
+
+label {
+	margin: 0 !important;
+}
+
+.iconsContainer {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 1.5rem;
+	padding-left: 1.5rem;
+	margin-bottom: 0.1rem;
+}
+
+.imageContainer {
+	width: 5rem;
+	height: 3.5rem;
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.imageLink {
+	color: #181818;
+}
+
+.name {
+	font-size: unset;
+	font-weight: 700;
+	height: 100%;
+}
+
+.shoeId {
+	opacity: 50%;
+	font-size: .8rem;
+}
+
+.nameIdContainer {
+	display: flex;
+	flex-direction: column;
+	;
+}
+
+.price {
+	font-weight: 700;
+	text-align: right;
+	font-size: unset;
+}
+
+.priceContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.link {
+	display: flex;
+	color: #181818;
+	text-decoration: none;
+}
+
+.link:hover {
+	color: #323232;
+}
+
+.editButton,
+.removeButton {
+	cursor: pointer;
+	transition: 200ms ease-in-out;
+}
+
+.editButton:hover {
+	color: rgb(0, 85, 255);
+	transform: scale(115%);
+}
+
+.removeButton:hover {
+	color: red;
+	transform: scale(115%);
+}
+
+.editModal {
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	overflow: auto;
+}
+
+.editModalContent {
+	position: relative;
+	background-color: #fefefe;
+	padding: 2rem;
+	border: 1px solid #888;
+	max-height: 55rem;
+	width: 1300px;
+}
+
+.close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	line-height: 2.2rem;
+	color: #aaa;
+	font-size: 3rem;
+	font-weight: bold;
+	cursor: pointer;
+	margin: 0.8rem;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.statusLabel {
+	position: absolute;
+	left: 65%;
+	color: white;
+	font-size: 1rem;
+	border-radius: .5rem;
+	padding: 0.2rem 0.8rem;
+}
+
+.statusTrue {
+	background-color: rgb(62, 189, 93);
+}
+
+.statusFalse {
+	background-color: rgb(233, 77, 77);
+}

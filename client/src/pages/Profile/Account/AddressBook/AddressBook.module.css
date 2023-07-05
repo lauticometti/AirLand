@@ -1,0 +1,79 @@
+.addressBookTitle {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+}
+
+.addressBookParagraph {
+	color: #000;
+}
+
+.addressBookParagraph span {
+	font-weight: 600;
+}
+
+.addresses {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.addressCard,
+.addAddressCard {
+	width: 400px;
+	padding: 20px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	border: 1px solid #cecece;
+}
+
+.addAddressCard {
+	cursor: pointer;
+}
+
+.addressCardContent {
+	margin-bottom: 64px;
+}
+
+.addressCard:hover,
+.addAddressCard:hover {
+	border-color: #000;
+}
+
+.addressCardTitle {
+	color: #000;
+}
+
+.addressCardSpace {
+	height: 85px;
+}
+
+.addressCardBottom {
+	display: flex;
+	justify-content: space-between;
+}
+
+.addressCardModifyButton,
+.addressCardDeleteButton {
+	display: block;
+	background-color: transparent;
+	font-size: 15px;
+	text-decoration: underline;
+	transition: background-color 0.1s, color 0.2s;
+}
+
+.addressCardModifyButton:hover,
+.addressCardDeleteButton:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+.addressCardDefaultButton {
+	background-color: transparent;
+	font-weight: 600;
+}
